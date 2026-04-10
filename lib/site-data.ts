@@ -22,9 +22,11 @@ export const business = {
   tentSizeRange: "10x10 to 100x250",
 };
 
-/** Primary header navigation (conversion-first order). */
-export const headerNavLinks = [
+/** Primary header navigation (conversion-first order). Optional `imageSrc` shows a small thumbnail next to the label (e.g. Weddings). */
+export const headerNavLinks: { href: string; label: string; imageSrc?: string }[] = [
   { href: "/tent-rentals", label: "Tents" },
+  { href: "/wedding-tent-rentals", label: "Weddings", imageSrc: "/images/wedding-tent-hero.png" },
+  { href: "/corporate-event-rentals", label: "Corporate" },
   { href: "/table-chair-rentals", label: "Tables & Chairs" },
   { href: "/yard-games", label: "Games" },
   { href: "/party-packages", label: "Packages" },

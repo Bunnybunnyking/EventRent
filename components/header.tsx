@@ -1,13 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { bookNowHeaderClass } from "@/lib/cta-styles";
 import { business, headerNavLinks } from "@/lib/site-data";
 
 /** Wish list — distinct from black: muted green-grey */
 const btnWishlist =
   "inline-flex shrink-0 touch-manipulation items-center justify-center rounded-full border border-[#6b7f78]/55 bg-[#3d4845] px-3.5 py-2.5 text-[0.75rem] font-semibold leading-none tracking-[0.06em] text-[#e8f0ec] shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-[#8a9e96]/65 hover:bg-[#46534f] hover:text-white sm:px-4 sm:py-2.5 sm:text-sm [font-family:var(--font-display)]";
+
+/** Book Now — same visual as original “Request a Consultation” (solid gold, compact). */
+const btnBookNowClassic =
+  "inline-flex shrink-0 touch-manipulation items-center justify-center rounded-full bg-[#b78a2d] px-3.5 py-2.5 text-[0.75rem] font-semibold leading-none tracking-[0.04em] text-[#1b1712] shadow-[0_0_0_1px_rgba(255,255,255,0.08)] transition hover:bg-[#c99d42] sm:px-4 sm:py-2.5 sm:text-sm [font-family:var(--font-display)]";
 
 /** Desktop / tablet: one row — scroll horizontally on narrow viewports instead of wrapping */
 const navLinkClass =
@@ -42,7 +46,7 @@ export function Header() {
             </div>
 
             <div className="flex justify-end pt-1">
-              <Link href="/contact#quote" className={bookNowHeaderClass}>
+              <Link href="/contact#quote" className={btnBookNowClassic}>
                 Book Now
               </Link>
             </div>
@@ -54,7 +58,23 @@ export function Header() {
               aria-label="Primary"
             >
               {headerNavLinks.map((link) => (
-                <Link key={`${link.label}-${link.href}`} href={link.href} className={navLinkClass}>
+                <Link
+                  key={`${link.label}-${link.href}`}
+                  href={link.href}
+                  className={`${navLinkClass} inline-flex items-center gap-2`}
+                >
+                  {link.imageSrc ? (
+                    <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-md ring-1 ring-[#b78a2d]/50 sm:h-8 sm:w-8">
+                      <Image
+                        src={link.imageSrc}
+                        alt=""
+                        width={32}
+                        height={32}
+                        className="h-full w-full object-cover"
+                        sizes="32px"
+                      />
+                    </span>
+                  ) : null}
                   {link.label}
                 </Link>
               ))}
@@ -82,7 +102,7 @@ export function Header() {
               <span className="sm:hidden">Wish List</span>
               <span className="hidden sm:inline">Add to Wish List</span>
             </Link>
-            <Link href="/contact#quote" className={`${bookNowHeaderClass} min-h-[48px] px-4 sm:min-h-0`}>
+            <Link href="/contact#quote" className={`${btnBookNowClassic} min-h-[48px] px-4 sm:min-h-0`}>
               Book Now
             </Link>
             <button
@@ -112,9 +132,21 @@ export function Header() {
                   key={`${link.label}-${link.href}`}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[52px] touch-manipulation items-center justify-center rounded-lg border border-white/[0.06] bg-[#181c1f] px-2 py-3 text-center text-[0.98rem] font-semibold leading-tight tracking-[0.02em] text-stone-100 [font-family:var(--font-display)] transition active:bg-[#252a2e] sm:min-h-[56px] sm:text-[1.05rem]"
+                  className="flex min-h-[52px] touch-manipulation flex-col items-center justify-center gap-1 rounded-lg border border-white/[0.06] bg-[#181c1f] px-2 py-2 text-center text-[0.9rem] font-semibold leading-tight tracking-[0.02em] text-stone-100 [font-family:var(--font-display)] transition active:bg-[#252a2e] sm:min-h-[56px] sm:text-[0.98rem]"
                 >
-                  {link.label}
+                  {link.imageSrc ? (
+                    <span className="relative h-10 w-14 shrink-0 overflow-hidden rounded-md ring-1 ring-[#b78a2d]/40">
+                      <Image
+                        src={link.imageSrc}
+                        alt=""
+                        width={112}
+                        height={56}
+                        className="h-full w-full object-cover"
+                        sizes="56px"
+                      />
+                    </span>
+                  ) : null}
+                  <span>{link.label}</span>
                 </Link>
               ))}
               <a
