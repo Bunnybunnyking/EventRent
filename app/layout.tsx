@@ -55,7 +55,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <LocalBusinessSchema />
         <WebSiteSchema />
         <Header />
-        <main className="pb-24 md:pb-0">{children}</main>
+        <main className="pb-28 md:pb-0">{children}</main>
         <Footer />
         <StickyMobileCTA />
       </body>
