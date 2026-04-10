@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { bookNowHeaderClass } from "@/lib/cta-styles";
@@ -55,23 +54,7 @@ export function Header() {
               aria-label="Primary"
             >
               {headerNavLinks.map((link) => (
-                <Link
-                  key={`${link.label}-${link.href}`}
-                  href={link.href}
-                  className={`${navLinkClass} inline-flex items-center gap-2`}
-                >
-                  {link.imageSrc ? (
-                    <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-md ring-1 ring-[#b78a2d]/50 sm:h-8 sm:w-8">
-                      <Image
-                        src={link.imageSrc}
-                        alt=""
-                        width={32}
-                        height={32}
-                        className="h-full w-full object-cover"
-                        sizes="32px"
-                      />
-                    </span>
-                  ) : null}
+                <Link key={`${link.label}-${link.href}`} href={link.href} className={navLinkClass}>
                   {link.label}
                 </Link>
               ))}
@@ -129,21 +112,9 @@ export function Header() {
                   key={`${link.label}-${link.href}`}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[52px] touch-manipulation flex-col items-center justify-center gap-1 rounded-lg border border-white/[0.06] bg-[#181c1f] px-2 py-2 text-center text-[0.9rem] font-semibold leading-tight tracking-[0.02em] text-stone-100 [font-family:var(--font-display)] transition active:bg-[#252a2e] sm:min-h-[56px] sm:text-[0.98rem]"
+                  className="flex min-h-[52px] touch-manipulation items-center justify-center rounded-lg border border-white/[0.06] bg-[#181c1f] px-2 py-3 text-center text-[0.98rem] font-semibold leading-tight tracking-[0.02em] text-stone-100 [font-family:var(--font-display)] transition active:bg-[#252a2e] sm:min-h-[56px] sm:text-[1.05rem]"
                 >
-                  {link.imageSrc ? (
-                    <span className="relative h-10 w-14 shrink-0 overflow-hidden rounded-md ring-1 ring-[#b78a2d]/40">
-                      <Image
-                        src={link.imageSrc}
-                        alt=""
-                        width={112}
-                        height={56}
-                        className="h-full w-full object-cover"
-                        sizes="56px"
-                      />
-                    </span>
-                  ) : null}
-                  <span>{link.label}</span>
+                  {link.label}
                 </Link>
               ))}
               <a
