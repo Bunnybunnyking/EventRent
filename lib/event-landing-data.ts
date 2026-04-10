@@ -284,7 +284,7 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
     planningItems: [
       "Decide early: dancing space vs. more seating: both need real square footage.",
       "Plan a gift/dessert zone away from the main food line.",
-      "If you’re using a grill or fryer, think ventilation and safe distances from tent walls.",
+      "Grills and fryers stay out of the guest tent; tell us if you’re cooking on site so we plan a proper prep area.",
       "Reserve a calm spot for family photos with decent light and fewer distractions.",
     ],
     weatherTitle: "Spring weather in Connecticut",

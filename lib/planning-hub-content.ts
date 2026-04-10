@@ -65,7 +65,7 @@ export const planningSteps: PlanningStep[] = [
     n: 4,
     title: "Think beyond tables and chairs",
     body:
-      "Buffet tables, bars, DJs, bands, gift tables, dessert stations, head tables, and clear walkways all consume floor space. A busy buffet and a dance or DJ zone often work better with a second tent or canopy so lines and speakers are not crammed into the main footprint. If you are cooking or grilling outdoors, tell us early so we plan spacing and ventilation. Say what matters early; it is often what turns a maybe tent size into the right plan.",
+      "Buffet tables, bars, DJs, bands, gift tables, dessert stations, head tables, and clear walkways all consume floor space. A busy buffet and a dance or DJ zone often work better with a second tent or canopy so lines and speakers are not crammed into the main footprint. Serving stays under the guest tent; cooking does not. If you need on-site cooking or grilling, tell us early so we place the right prep tent or area. Say what matters early; it is often what turns a maybe tent size into the right plan.",
   },
   {
     n: 5,
@@ -125,7 +125,7 @@ export const layoutExamples: LayoutExample[] = [
   {
     title: "Backyard party, seated",
     guests: "~60 seated",
-    layout: "Rounds or banquet rows, buffet or grill nearby",
+    layout: "Rounds or banquet rows, buffet service under tent; cooking off to the side",
     tent: "Often 20×40 or larger depending on dance floor and bars",
     why: "Seated counts eat floor space fast once you add aisles and service.",
     sizeUp: "Dance floor, DJ, or second food station usually pushes you up a class.",
@@ -237,7 +237,7 @@ export const eventTypeGuides: EventTypeGuide[] = [
   {
     title: "Backyard parties",
     matters: "Property lines, power for sound, lawn protection, neighbor-friendly timing.",
-    sizing: "House-to-tent flow and grill placement steer layout.",
+    sizing: "House-to-tent flow and where prep happens (outside guest tent) steer layout.",
     weather: "Coverage for the whole social window, not only the meal.",
     forget: "Trash, lighting paths, and where vendors park.",
     href: "/planning#layout-examples",

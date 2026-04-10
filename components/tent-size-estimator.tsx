@@ -297,7 +297,7 @@ export function TentSizeEstimator() {
           <p className="mt-3 text-xs leading-snug text-stone-600">{example}</p>
           <p className="mt-2 text-xs leading-snug text-stone-500">{result.rationale}</p>
           <p className="mt-3 rounded-lg bg-white/80 px-2.5 py-2 text-[0.7rem] leading-snug text-stone-700 ring-1 ring-stone-200/80">
-            Estimates only, not a quote. Heavy buffet or DJ programs often use a second tent; on-site cooking needs a heads-up. Confirm for your layout and site.
+            Estimates only, not a quote. Heavy buffet or DJ programs often use a second tent. Cooking stays out of guest tents; tell us if you need a prep area—we have setups for that. Confirm for your layout and site.
           </p>
         </div>
       </div>

@@ -148,13 +148,16 @@ export function PlanningHub() {
             intro="Start here: tent size depends on more than headcount. Layout, table style, buffet space, bars, dance floors, and how guests move all change the footprint. Use the estimator, then compare your range to the reference chart. Final picks should match your site and goals; call us to confirm."
           />
           <div className="mt-6 rounded-2xl border border-amber-200/90 bg-[#fffbf0] px-5 py-4 text-sm leading-relaxed text-stone-800 sm:px-6">
-            <p className="font-semibold text-stone-900">Buffet, DJ, and cooking</p>
+            <p className="font-semibold text-stone-900">Buffet, DJ, and food service</p>
             <p className="mt-2">
               A full buffet line and a DJ or band often deserve a{" "}
               <strong className="font-semibold text-stone-900">separate tent or canopy</strong> beside the main tent so food service, sound, and guest seating are not fighting the same square footage.
             </p>
             <p className="mt-2">
-              If you are <strong className="font-semibold text-stone-900">cooking or grilling on site</strong>, let us know when you plan. We need to plan for spacing, ventilation, and a safe layout around heat and equipment.
+              <strong className="font-semibold text-stone-900">Serving happens under the guest tent; cooking does not.</strong> We plan canopies for dining, buffets, and bars only. Open flame, grills, fryers, and full cooking belong outside the main guest tent.
+            </p>
+            <p className="mt-2">
+              If you will have <strong className="font-semibold text-stone-900">on-site cooking or grilling</strong>, tell us when you plan. We offer <strong className="font-semibold text-stone-900">tents and layouts designed for prep and heat</strong> so crews have a safe, ventilated area separate from where guests eat and drink.
             </p>
           </div>
           <div className="mt-8 sm:mt-10">
