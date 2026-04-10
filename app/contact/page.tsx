@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { QuoteForm } from "@/components/quote-form";
 import { createPageMetadata } from "@/lib/metadata";
@@ -27,7 +28,9 @@ export default function ContactPage() {
           </p>
         </div>
         <div id="quote" className="scroll-mt-28">
-          <QuoteForm />
+          <Suspense fallback={<div className="min-h-[28rem] rounded-3xl border border-stone-200 bg-stone-50/80 p-8 text-sm text-stone-500">Loading form…</div>}>
+            <QuoteForm />
+          </Suspense>
         </div>
       </div>
     </section>

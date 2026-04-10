@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CTASection, SectionHeading } from "@/components/sections";
 import { FAQAccordion } from "@/components/faq-accordion";
+import { QuickEventPlanner } from "@/components/quick-event-planner";
 import { TentSizeEstimator } from "@/components/tent-size-estimator";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { defaultOgImagePath } from "@/lib/metadata";
@@ -19,7 +20,9 @@ import { planningFaqItems } from "@/lib/planning-faq";
 import { business } from "@/lib/site-data";
 
 const sectionNav = [
-  { href: "#size-guide", label: "Sizing" },
+  { href: "#size-guide", label: "Planning tools" },
+  { href: "#tent-size-estimator", label: "Sq ft calculator" },
+  { href: "#quick-event-planner", label: "Quick planner" },
   { href: "#step-by-step", label: "Steps" },
   { href: "#layout-examples", label: "Examples" },
   { href: "#tent-types", label: "Tent types" },
@@ -112,13 +115,30 @@ export function PlanningHub() {
             <p className="mt-4 text-sm text-stone-600">
               Not sure what size tent you need? Start with a few details. We will guide the rest.
             </p>
-            <p className="mt-3">
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <a
                 href="#size-guide"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900"
               >
-                Tent size estimator and chart below <span aria-hidden>↓</span>
+                Planning tools (calculator + chart) <span aria-hidden>↓</span>
               </a>
+              <span className="hidden text-stone-300 sm:inline" aria-hidden>
+                |
+              </span>
+              <a
+                href="#quick-event-planner"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#c9a24a]/60 bg-[#fffbf0] px-3 py-1.5 text-sm font-semibold text-[#6b5220] shadow-sm hover:bg-[#fff7e6]"
+              >
+                Open Quick Event Planner →
+              </a>
+            </div>
+            <p className="mt-2 text-xs text-stone-500">
+              Planner not loading? Open the{" "}
+              <Link href="/quick-event-planner" className="font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
+                standalone Quick Event Planner page
+              </Link>{" "}
+              (<code className="rounded bg-stone-100 px-1 py-0.5 text-[0.7rem] text-stone-700">/quick-event-planner</code>
+              ).
             </p>
             <p className="mt-2 text-xs text-stone-500">
               Planning help from our event team, not just a rental list · Family owned since {business.establishedYear}
@@ -137,16 +157,44 @@ export function PlanningHub() {
         </div>
       </section>
 
-      {/* Tent size estimator + chart (high on page, right after hero) */}
+      {/* Planning tools: (1) Tent size / sq ft estimator + chart (2) Quick Event Planner */}
       <section id="size-guide" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Planning" }]} />
           <SectionHeading
             align="left"
-            eyebrow="Tent size guide"
-            title="How to estimate the right tent size"
-            intro="Start here: tent size depends on more than headcount. Layout, table style, buffet space, bars, dance floors, and how guests move all change the footprint. Use the estimator, then compare your range to the reference chart. Final picks should match your site and goals; call us to confirm."
+            eyebrow="Planning tools"
+            title="Two ways to plan your tent and setup"
+            intro="Pick the tool that fits where you are today. Use the square footage calculator for fast tent-size ranges and examples, or use the Quick Event Planner for a fuller starting checklist—chairs, tables, lighting, weather, and more. Both stay on this page; nothing replaces the other."
           />
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <a
+              href="#tent-size-estimator"
+              className="group rounded-2xl border-2 border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#c9a24a] hover:shadow-md sm:p-6"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8a6218]">Option 1 · Fast sizing</p>
+              <h3 className="mt-2 text-lg font-semibold text-stone-900">Tent size & square footage calculator</h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                Guest count, layout, and options—get low / high comfort ranges and example tent sizes. Includes the reference chart.
+              </p>
+              <span className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] group-hover:underline">
+                Jump to calculator →
+              </span>
+            </a>
+            <a
+              href="#quick-event-planner"
+              className="group rounded-2xl border-2 border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#c9a24a] hover:shadow-md sm:p-6"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8a6218]">Option 2 · Full plan</p>
+              <h3 className="mt-2 text-lg font-semibold text-stone-900">Quick Event Planner</h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                Short guided steps for chairs, tables, linens, dance floor, bar, lighting, weather, and what people forget.
+              </p>
+              <span className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] group-hover:underline">
+                Jump to planner →
+              </span>
+            </a>
+          </div>
           <div className="mt-6 rounded-2xl border border-amber-200/90 bg-[#fffbf0] px-5 py-4 text-sm leading-relaxed text-stone-800 sm:px-6">
             <p className="font-semibold text-stone-900">Buffet, DJ, and food service</p>
             <p className="mt-2">
@@ -160,11 +208,28 @@ export function PlanningHub() {
               If you will have <strong className="font-semibold text-stone-900">on-site cooking or grilling</strong>, tell us when you plan. We offer <strong className="font-semibold text-stone-900">tents and layouts designed for prep and heat</strong> so crews have a safe, ventilated area separate from where guests eat and drink.
             </p>
           </div>
-          <div className="mt-8 sm:mt-10">
-            <p className="mb-4 inline-flex items-center rounded-full border border-[#c9a24a]/50 bg-[#fffbf0] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#6b5220]">
+          <div id="tent-size-estimator" className="scroll-mt-36 border-t border-stone-200/80 pt-10 sm:mt-10 sm:pt-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Option 1</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-stone-900">Tent size & square footage calculator</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-600 sm:text-base">
+              Interactive ranges based on your guest count, program, and add-ons—use this when you want numbers and a comfort band before anything else.
+            </p>
+            <p className="mt-4 mb-4 inline-flex items-center rounded-full border border-[#c9a24a]/50 bg-[#fffbf0] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#6b5220]">
               Interactive estimator
             </p>
             <TentSizeEstimator />
+          </div>
+
+          {/* Quick Event Planner placed here (before the long chart) so it is easy to find on mobile and production */}
+          <div id="quick-event-planner" className="scroll-mt-36 mt-12 border-t border-stone-200 bg-stone-50/80 py-10 sm:mt-14 sm:py-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Option 2</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-stone-900">Quick Event Planner</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-600 sm:text-base">
+              A second tool—not a replacement for the calculator above. Walk through a few choices and get a starting plan for chairs, tables, service areas, lighting, weather, and more.
+            </p>
+            <div className="mt-8">
+              <QuickEventPlanner embedded />
+            </div>
           </div>
 
           <div className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:mt-12 sm:p-8">
@@ -216,7 +281,7 @@ export function PlanningHub() {
         </div>
       </section>
 
-      {/* Trust band */}
+      {/* Trust band (after both planning tools) */}
       <div className="border-b border-stone-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-3 px-4 py-4 sm:grid-cols-3 sm:px-6 lg:px-8">
           <p className="text-center text-sm font-medium text-stone-700">Experienced crew, clear communication</p>
@@ -623,7 +688,7 @@ export function PlanningHub() {
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Quick start</p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">Jump to what you need</h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm text-stone-600 sm:text-base">
-              Shortcuts to topics on this page. The tent estimator and sizing chart are at the top, right under the hero.
+              Shortcuts to topics on this page. The square footage calculator, sizing chart, and Quick Event Planner are grouped at the top, right under the hero.
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

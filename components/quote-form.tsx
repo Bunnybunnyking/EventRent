@@ -1,4 +1,8 @@
+"use client";
+
 import type { InputHTMLAttributes } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { bookNowSectionClass } from "@/lib/cta-styles";
 
 const inputClass =
@@ -8,6 +12,21 @@ const labelClass = "mb-1.5 block text-sm font-semibold text-stone-800";
 const optionalLabelClass = "mb-1.5 block text-sm font-medium text-stone-600";
 
 export function QuoteForm() {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const fromPlanner = sessionStorage.getItem("ctpr_planner_summary");
+    if (!fromPlanner) return;
+    const el = document.getElementById("eventDescription") as HTMLTextAreaElement | null;
+    if (el && !el.value.trim()) {
+      el.value = fromPlanner;
+    }
+    sessionStorage.removeItem("ctpr_planner_summary");
+  }, []);
+
+  const defaultEventType = searchParams.get("etype") ?? "";
+  const defaultGuests = searchParams.get("guests") ?? "";
+
   return (
     <form className="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm sm:p-8" noValidate>
       <div className="border-b border-stone-100 pb-6">
@@ -39,6 +58,7 @@ export function QuoteForm() {
             placeholder="e.g. wedding, corporate, graduation, backyard party"
             required
             className="sm:col-span-2"
+            defaultValue={defaultEventType}
           />
         </div>
       </div>
@@ -60,7 +80,13 @@ export function QuoteForm() {
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
             <OptionalField label="Venue name or town" name="venue" placeholder="Where will the event be held?" />
-            <OptionalField label="Approximate guest count" name="guestCount" inputMode="numeric" placeholder="e.g. 120" />
+            <OptionalField
+              label="Approximate guest count"
+              name="guestCount"
+              inputMode="numeric"
+              placeholder="e.g. 120"
+              defaultValue={defaultGuests}
+            />
             <OptionalField label="Budget range" name="budget" placeholder="Optional ballpark" className="sm:col-span-2" />
             <OptionalField
               label="Rental preferences"
@@ -132,6 +158,7 @@ function Field({
   inputMode,
   required,
   className = "",
+  defaultValue,
 }: {
   label: string;
   name: string;
@@ -141,6 +168,7 @@ function Field({
   inputMode?: InputHTMLAttributes<HTMLInputElement>["inputMode"];
   required?: boolean;
   className?: string;
+  defaultValue?: string;
 }) {
   return (
     <div className={className}>
@@ -155,6 +183,7 @@ function Field({
         placeholder={placeholder}
         inputMode={inputMode}
         required={required}
+        defaultValue={defaultValue}
         className={inputClass}
       />
     </div>
@@ -168,6 +197,7 @@ function OptionalField({
   placeholder,
   inputMode,
   className = "",
+  defaultValue,
 }: {
   label: string;
   name: string;
@@ -175,13 +205,22 @@ function OptionalField({
   placeholder?: string;
   inputMode?: InputHTMLAttributes<HTMLInputElement>["inputMode"];
   className?: string;
+  defaultValue?: string;
 }) {
   return (
     <div className={className}>
       <label htmlFor={name} className={optionalLabelClass}>
         {label} <span className="text-stone-400">(optional)</span>
       </label>
-      <input id={name} name={name} type={type} placeholder={placeholder} inputMode={inputMode} className={inputClass} />
+      <input
+        id={name}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        inputMode={inputMode}
+        defaultValue={defaultValue}
+        className={inputClass}
+      />
     </div>
   );
 }

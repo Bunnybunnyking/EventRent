@@ -3,7 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
-    return [{ source: "/gallery", destination: "/tents/gallery", permanent: true }];
+    return [
+      { source: "/gallery", destination: "/tents/gallery", permanent: true },
+      { source: "/event-planner", destination: "/quick-event-planner", permanent: false },
+    ];
   },
   images: {
     formats: ["image/avif", "image/webp"],
