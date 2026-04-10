@@ -69,8 +69,21 @@ function computeFootprint(
   return { low, high, comfortableLow, comfortableHigh, rationale };
 }
 
-function sqFtToExampleTents(low: number, high: number): string {
+function sqFtToExampleTents(
+  low: number,
+  high: number,
+  ctx: { planningGuests: number; largePlus: boolean; eventType: EventKind },
+): string {
   const mid = (low + high) / 2;
+  const largeFestivalStory =
+    ctx.largePlus ||
+    ctx.planningGuests >= 400 ||
+    mid >= 3000 ||
+    (ctx.eventType === "festival" && ctx.planningGuests >= 220);
+
+  if (largeFestivalStory) {
+    return "Festivals, fairs, and very large programs usually need deeper planning than a single square-foot number—vendor aisles, booths, displays, power, and crowd flow often drive the layout, sometimes across multiple tents. This range is a starting point; we refine it with your run of show and a site walk-through.";
+  }
   if (mid < 900) {
     return "Typical frame sizes in this band: 20×40, 30×30, or similar. Often paired with a small canopy for food or bar.";
   }
@@ -86,8 +99,13 @@ function sqFtToExampleTents(low: number, high: number): string {
   return "Large-event territory: often multiple structures or very wide frames. Site visit and detailed planning recommended.";
 }
 
+/** Guest count used in math: up to 500 on the slider, or a 500+ planning band when opted in. */
+const PLUS_PLANNING_GUESTS = 640;
+
 export function TentSizeEstimator() {
   const [guests, setGuests] = useState(100);
+  const [largeGuestPlus, setLargeGuestPlus] = useState(false);
+  const planningGuests = largeGuestPlus ? PLUS_PLANNING_GUESTS : guests;
   const [eventType, setEventType] = useState<EventKind>("wedding");
   const [seating, setSeating] = useState<SeatingKind>("seated");
   const [danceFloor, setDanceFloor] = useState(true);
@@ -100,7 +118,7 @@ export function TentSizeEstimator() {
   const result = useMemo(
     () =>
       computeFootprint(
-        guests,
+        planningGuests,
         eventType,
         seating,
         danceFloor,
@@ -110,14 +128,17 @@ export function TentSizeEstimator() {
         djBand,
         weatherBackup,
       ),
-    [guests, eventType, seating, danceFloor, buffetBar, programScope, tableStyle, djBand, weatherBackup],
+    [planningGuests, eventType, seating, danceFloor, buffetBar, programScope, tableStyle, djBand, weatherBackup],
   );
 
-  const example = useMemo(() => sqFtToExampleTents(result.low, result.high), [result.low, result.high]);
+  const example = useMemo(
+    () => sqFtToExampleTents(result.low, result.high, { planningGuests, largePlus: largeGuestPlus, eventType }),
+    [result.low, result.high, planningGuests, largeGuestPlus, eventType],
+  );
 
   return (
     <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
-      <div className="grid gap-6 lg:grid-cols-2 lg:gap-8 lg:items-start">
+      <div className="grid gap-6 md:grid-cols-2 md:gap-8 md:items-start">
         <div className="min-w-0 space-y-5">
           <div>
             <label htmlFor="plan-guests" className="text-sm font-semibold text-stone-800">
@@ -127,13 +148,36 @@ export function TentSizeEstimator() {
               id="plan-guests"
               type="range"
               min={20}
-              max={300}
+              max={500}
               step={10}
               value={guests}
+              disabled={largeGuestPlus}
               onChange={(e) => setGuests(Number(e.target.value))}
-              className="mt-2 w-full accent-[#9a7328]"
+              className="mt-2 w-full accent-[#9a7328] disabled:cursor-not-allowed disabled:opacity-50"
             />
-            <p className="mt-1 text-sm text-stone-600">{guests} guests</p>
+            <p className="mt-1 text-sm text-stone-600">
+              {largeGuestPlus ? (
+                <span className="font-medium text-stone-800">500+ guests</span>
+              ) : (
+                <>{guests} guests</>
+              )}
+            </p>
+            <label className="mt-3 flex cursor-pointer items-center gap-2.5 text-sm text-stone-700">
+              <input
+                type="checkbox"
+                checked={largeGuestPlus}
+                onChange={(e) => {
+                  const on = e.target.checked;
+                  setLargeGuestPlus(on);
+                  if (on) setGuests(500);
+                }}
+                className="h-4 w-4 shrink-0 rounded border-stone-400 accent-[#9a7328]"
+              />
+              <span>
+                <span className="font-semibold text-stone-800">500+ guests</span>
+                <span className="text-stone-600"> — expanded planning range (festivals, fairs, major events)</span>
+              </span>
+            </label>
           </div>
 
           <div>
@@ -276,7 +320,7 @@ export function TentSizeEstimator() {
           </div>
         </div>
 
-        <div className="flex flex-col rounded-2xl border border-[#b78a2d]/35 bg-gradient-to-br from-[#fffbf0] to-stone-50 p-5">
+        <div className="flex min-w-0 flex-col rounded-2xl border border-[#b78a2d]/35 bg-gradient-to-br from-[#fffbf0] to-stone-50 p-5 md:sticky md:top-24 md:self-start">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8a6a2a]">Estimated footprint</p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 sm:gap-2">
             <div className="rounded-xl bg-white/60 px-3 py-2.5 ring-1 ring-stone-200/80">
@@ -295,6 +339,11 @@ export function TentSizeEstimator() {
             </div>
           </div>
           <p className="mt-3 text-xs leading-snug text-stone-600">{example}</p>
+          {largeGuestPlus ? (
+            <p className="mt-2 text-xs leading-snug text-stone-700">
+              <span className="font-semibold text-stone-800">500+ note:</span> vendor aisles, booths, displays, and multi-tent layouts usually need a call and site walk-through—not this number alone.
+            </p>
+          ) : null}
           <p className="mt-2 text-xs leading-snug text-stone-500">{result.rationale}</p>
           <p className="mt-3 rounded-lg bg-white/80 px-2.5 py-2 text-[0.7rem] leading-snug text-stone-700 ring-1 ring-stone-200/80">
             Estimates only, not a quote. Heavy buffet or DJ programs often use a second tent. Cooking stays out of guest tents; tell us if you need a prep area—we have setups for that. Confirm for your layout and site.
