@@ -3,15 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { bookNowHeaderClass } from "@/lib/cta-styles";
 import { business, headerNavLinks } from "@/lib/site-data";
 
 /** Wish list — distinct from black: muted green-grey */
 const btnWishlist =
   "inline-flex shrink-0 touch-manipulation items-center justify-center rounded-full border border-[#6b7f78]/55 bg-[#3d4845] px-3.5 py-2.5 text-[0.75rem] font-semibold leading-none tracking-[0.06em] text-[#e8f0ec] shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-[#8a9e96]/65 hover:bg-[#46534f] hover:text-white sm:px-4 sm:py-2.5 sm:text-sm [font-family:var(--font-display)]";
-
-/** Book Now — same visual as original “Request a Consultation” (solid gold, compact). */
-const btnBookNowClassic =
-  "inline-flex shrink-0 touch-manipulation items-center justify-center rounded-full bg-[#b78a2d] px-3.5 py-2.5 text-[0.75rem] font-semibold leading-none tracking-[0.04em] text-[#1b1712] shadow-[0_0_0_1px_rgba(255,255,255,0.08)] transition hover:bg-[#c99d42] sm:px-4 sm:py-2.5 sm:text-sm [font-family:var(--font-display)]";
 
 /** Desktop / tablet: one row — scroll horizontally on narrow viewports instead of wrapping */
 const navLinkClass =
@@ -46,7 +43,7 @@ export function Header() {
             </div>
 
             <div className="flex justify-end pt-1">
-              <Link href="/contact#quote" className={btnBookNowClassic}>
+              <Link href="/contact#quote" className={bookNowHeaderClass}>
                 Book Now
               </Link>
             </div>
@@ -102,7 +99,7 @@ export function Header() {
               <span className="sm:hidden">Wish List</span>
               <span className="hidden sm:inline">Add to Wish List</span>
             </Link>
-            <Link href="/contact#quote" className={`${btnBookNowClassic} min-h-[48px] px-4 sm:min-h-0`}>
+            <Link href="/contact#quote" className={`${bookNowHeaderClass} min-h-[48px] px-4 sm:min-h-0`}>
               Book Now
             </Link>
             <button
