@@ -58,6 +58,9 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
+              <a href={business.phoneHref} className={`${navLinkClass} text-[#f5e0b3] hover:text-[#fff8e6]`}>
+                Call Now
+              </a>
             </nav>
           </div>
         </div>
@@ -119,9 +122,10 @@ export function Header() {
               ))}
               <a
                 href={business.phoneHref}
-                className="col-span-2 flex min-h-[52px] touch-manipulation items-center justify-center rounded-full bg-[#b78a2d] px-4 py-3.5 text-center text-base font-bold tracking-[0.04em] text-[#1b1712] shadow-[0_2px_0_rgba(0,0,0,0.2)] [font-family:var(--font-display)] active:bg-[#c99d42] sm:min-h-[56px] sm:text-lg"
+                onClick={() => setOpen(false)}
+                className="col-span-2 flex min-h-[52px] touch-manipulation items-center justify-center rounded-lg border-2 border-[#b78a2d]/90 bg-[#2a2318] px-4 py-3.5 text-center text-base font-extrabold tracking-[0.04em] text-[#f5e0b3] [font-family:var(--font-display)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition hover:bg-[#332a1c] active:bg-[#3d3424] sm:min-h-[56px] sm:text-lg"
               >
-                Call now
+                Call Now
               </a>
             </div>
           </div>

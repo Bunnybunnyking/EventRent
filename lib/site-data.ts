@@ -22,16 +22,14 @@ export const business = {
   tentSizeRange: "10x10 to 100x250",
 };
 
-/** Primary header navigation (conversion-first order). */
+/** Primary header navigation (internal routes). “Call Now” (`tel:`) is rendered separately in the header. */
 export const headerNavLinks = [
   { href: "/tent-rentals", label: "Tents" },
+  { href: "/party-packages", label: "Packages" },
   { href: "/wedding-tent-rentals", label: "Weddings" },
   { href: "/corporate-event-rentals", label: "Corporate" },
   { href: "/table-chair-rentals", label: "Tables & Chairs" },
   { href: "/yard-games", label: "Games" },
-  { href: "/party-packages", label: "Packages" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 /** Footer “Services” column — includes deep links not shown in the main nav. */

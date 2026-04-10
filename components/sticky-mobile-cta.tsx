@@ -22,9 +22,9 @@ export function StickyMobileCTA() {
         </Link>
         <a
           href={business.phoneHref}
-          className="touch-manipulation rounded-full border-2 border-stone-300 bg-[#1f2327] px-4 py-3.5 text-center text-base font-bold leading-snug text-white shadow-md ring-1 ring-white/10 transition hover:bg-[#2a3036] active:bg-[#333a42] sm:py-4 sm:text-[1.05rem]"
+          className="touch-manipulation rounded-full border-2 border-[#b78a2d]/70 bg-[#1f2327] px-4 py-3.5 text-center text-base font-extrabold leading-snug text-white shadow-md ring-1 ring-white/10 transition hover:bg-[#2a3036] active:bg-[#333a42] sm:py-4 sm:text-lg"
         >
-          Call now
+          Call Now
         </a>
       </div>
     </div>
