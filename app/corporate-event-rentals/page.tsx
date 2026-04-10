@@ -36,7 +36,11 @@ export default function CorporatePage() {
             ))}
           </div>
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-stone-600">
-            Planning a specific format? Our{" "}
+            For tent sizing, site readiness, and weather-aware layouts, start with our{" "}
+            <Link href="/planning" className="font-semibold text-stone-800 underline underline-offset-2">
+              Planning hub
+            </Link>
+            . Planning a specific format? Our{" "}
             <Link href="/events/community-school-town" className="font-semibold text-stone-800 underline underline-offset-2">
               community &amp; school
             </Link>

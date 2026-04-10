@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CTASection } from "@/components/sections";
-import { bookNowSectionClass } from "@/lib/cta-styles";
+import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { ServiceSchema } from "@/components/schema";
 import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
@@ -42,14 +42,11 @@ export default function WeddingTentPage() {
             Create a polished ceremony and reception experience with clean tent lines, thoughtful lighting, and weather-ready planning from a family-owned Connecticut team serving couples since{" "}
             {business.establishedYear}.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/contact#quote" className={bookNowSectionClass}>
               Book Now
             </Link>
-            <a
-              href={business.phoneHref}
-              className="rounded-full border border-stone-200 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
+            <a href={business.phoneHref} className={callNowSectionClass}>
               Call Now
             </a>
             <Link
@@ -73,7 +70,11 @@ export default function WeddingTentPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Planning that matches your vision</h2>
           <p className="mt-3 max-w-2xl text-stone-600">
-            From table spacing to rain backup, we help you plan with confidence so your wedding day looks and feels intentional. For receptions that need separate dining, dance, and cocktail zones, many{" "}
+            From table spacing to rain backup, we help you plan with confidence so your wedding day looks and feels intentional. For footprint, seating style, and weather-ready layouts, see our{" "}
+            <Link href="/planning" className="font-medium text-stone-800 underline underline-offset-2">
+              planning hub
+            </Link>
+            . For receptions that need separate dining, dance, and cocktail zones, many{" "}
             <Link href="/tent-rentals#modular-tent-systems" className="font-medium text-stone-800 underline underline-offset-2">
               frame tent layouts can connect
             </Link>{" "}

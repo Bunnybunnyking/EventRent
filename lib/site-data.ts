@@ -25,6 +25,7 @@ export const business = {
 /** Primary header navigation (internal routes). “Call Now” is on the homepage hero image, not in the nav. */
 export const headerNavLinks = [
   { href: "/tent-rentals", label: "Tents" },
+  { href: "/planning", label: "Planning" },
   { href: "/party-packages", label: "Packages" },
   { href: "/table-chair-rentals", label: "Tables & Chairs" },
   { href: "/wedding-tent-rentals", label: "Weddings" },

@@ -63,7 +63,11 @@ export default function HomePage() {
           </div>
           <p className="mt-3 text-xs text-stone-300">Fast quote turnaround. No-pressure planning help. Clear next steps from delivery to pickup.</p>
           <p className="mt-4 max-w-xl text-xs text-stone-400">
-            Serving hosts statewide—explore{" "}
+            Not sure about sizing or weather backup yet? Start with our{" "}
+            <Link href="/planning" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
+              planning guide
+            </Link>
+            . Serving hosts statewide—explore{" "}
             <Link href="/service-areas" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
               Connecticut tent rental service areas
             </Link>{" "}

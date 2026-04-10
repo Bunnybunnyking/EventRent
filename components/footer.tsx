@@ -3,6 +3,7 @@ import { business, eventOccasionGuideLinks, footerServiceLinks, townList } from 
 
 const companyLinks = [
   { href: "/about", label: "About" },
+  { href: "/planning", label: "Planning" },
   { href: "/contact#quote", label: "Contact & quote" },
   { href: "/rental-inventory", label: "Rental inventory" },
   { href: "/service-areas", label: "Service areas" },
@@ -74,6 +75,11 @@ export function Footer() {
         <div>
           <p className="font-medium text-white">Planning</p>
           <ul className="mt-3 space-y-2 text-sm">
+            <li>
+              <Link href="/planning" className="transition hover:text-white">
+                Planning hub
+              </Link>
+            </li>
             <li>
               <Link href="/faq#faq-tent-size" className="transition hover:text-white">
                 Tent sizing

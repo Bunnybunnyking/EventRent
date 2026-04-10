@@ -47,7 +47,11 @@ export default function PartyPackagesPage() {
             intro={`Family owned and operated since ${business.establishedYear}, we bundle tents, tables, chairs, and popular add-ons so planning stays simple. Every package is quoted to your date, town, and venue—not one-size-fits-all pricing surprises.`}
           />
           <p className="mx-auto mt-4 max-w-3xl text-center text-sm text-stone-600">
-            Start from our Connecticut{" "}
+            Unsure about footprint or weather backup? Our{" "}
+            <Link href="/planning" className="font-medium text-stone-800 underline underline-offset-2">
+              planning hub
+            </Link>{" "}
+            covers sizing, layout flow, and what to lock in first. Start from our Connecticut{" "}
             <Link href="/tent-rentals" className="font-medium text-stone-800 underline underline-offset-2">
               tent rental options
             </Link>{" "}

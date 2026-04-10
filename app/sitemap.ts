@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/contact",
     "/faq",
+    "/planning",
     "/service-areas",
     ...eventLandingSlugs.map((slug) => `/events/${slug}`),
   ];

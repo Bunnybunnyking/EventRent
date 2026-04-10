@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { createPageMetadata } from "@/lib/metadata";
+import { bookNowHeaderClass } from "@/lib/cta-styles";
 import { business, townList, townPageExtras } from "@/lib/site-data";
 
 type Props = {
@@ -113,11 +114,11 @@ export default async function TownPage({ params }: Props) {
               <li>Corporate and school event setups with clean presentation</li>
             </ul>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact" className="rounded-full bg-[#1d2124] px-5 py-3 text-sm font-semibold text-white">
-              Request a {townName} Quote
+          <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
+            <Link href="/contact" className={bookNowHeaderClass}>
+              Request a {townName} quote
             </Link>
-            <a href={business.phoneHref} className="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-800">
+            <a href={business.phoneHref} className={bookNowHeaderClass}>
               Call {business.phone}
             </a>
           </div>

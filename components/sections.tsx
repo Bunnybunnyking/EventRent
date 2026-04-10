@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { bookNowSectionClass } from "@/lib/cta-styles";
+import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { business, galleryItems, townList } from "@/lib/site-data";
 
 export function SectionHeading({
@@ -95,9 +95,6 @@ export function GalleryGrid({ preview = false }: { preview?: boolean }) {
   );
 }
 
-const callOutlineClass =
-  "inline-flex touch-manipulation items-center justify-center rounded-full border-2 border-stone-400/90 bg-transparent px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:border-white hover:bg-white/10 sm:px-6 sm:py-3.5 sm:text-base";
-
 /**
  * Bottom quote CTA band. Set `showPrimaryCta={false}` on pages where the large Book Now
  * control is omitted; concierge copy stays visible with call + contact link.
@@ -116,11 +113,11 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-300 sm:text-lg">
                 Tell us your date, town, and guest count. We will guide the setup plan, answer questions quickly, and help you lock in a clean, professional event layout.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-                <Link href="/contact#quote" className={bookNowSectionClass}>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
+                <Link href="/contact#quote" className={`${bookNowSectionClass} w-full justify-center sm:w-auto`}>
                   Book Now
                 </Link>
-                <a href={business.phoneHref} className={`${callOutlineClass} w-full sm:w-auto`}>
+                <a href={business.phoneHref} className={`${callNowSectionClass} w-full shrink-0 sm:w-auto`}>
                   Call {business.phone}
                 </a>
               </div>
@@ -138,15 +135,15 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
                 Our Event Concierge will walk you through the process—from venue constraints and guest flow to timeline and layout—so your event stays organized and on-brand. Share your date, town,
                 and guest count; we respond quickly with clear setup options, no-pressure guidance, and a professional layout plan you can trust.
               </p>
-              <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-center">
-                <a href={business.phoneHref} className={`${callOutlineClass} w-full justify-center sm:w-auto`}>
+              <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
+                <a href={business.phoneHref} className={`${callNowSectionClass} w-full justify-center sm:w-auto`}>
                   Call {business.phone}
                 </a>
                 <Link
                   href="/contact#quote"
-                  className="text-center text-base font-semibold text-[#f5e0b3] underline decoration-[#f5e0b3]/60 underline-offset-4 transition hover:text-white sm:text-left"
+                  className={`${bookNowSectionClass} w-full justify-center text-center sm:w-auto`}
                 >
-                  Complete our short contact form to book your date
+                  Book Now
                 </Link>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-stone-400">

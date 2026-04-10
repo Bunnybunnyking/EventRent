@@ -61,6 +61,14 @@ export default function TentRentalsPage() {
 
           <TentPageCtaStrip />
 
+          <p className="mt-8 rounded-2xl border border-stone-200 bg-white px-5 py-4 text-sm leading-relaxed text-stone-700 shadow-sm">
+            New to tent sizing and layout? Our{" "}
+            <Link href="/planning" className="font-semibold text-stone-900 underline underline-offset-2">
+              Planning hub
+            </Link>{" "}
+            walks through footprint estimates, weather readiness, and what changes the math—before you choose a structure.
+          </p>
+
           <div className="mt-10 space-y-0">
             <TentTypesSection />
             <ModularTentSystemsSection />

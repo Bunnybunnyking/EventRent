@@ -3,15 +3,9 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CTASection } from "@/components/sections";
 import { FAQAccordion } from "@/components/faq-accordion";
-import { bookNowSectionClass } from "@/lib/cta-styles";
+import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import type { EventLandingContent } from "@/lib/event-landing-data";
 import { business } from "@/lib/site-data";
-
-const callOnDarkClass =
-  "inline-flex touch-manipulation items-center justify-center rounded-full border-2 border-stone-400/90 bg-transparent px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:border-white hover:bg-white/10 sm:px-6 sm:py-3.5 sm:text-base";
-
-const callOnLightClass =
-  "inline-flex touch-manipulation items-center justify-center rounded-full border-2 border-stone-400/80 bg-white px-5 py-3 text-sm font-semibold text-stone-900 shadow-sm transition hover:border-stone-600 hover:bg-stone-50 sm:px-6 sm:py-3.5 sm:text-base";
 
 export function EventLandingTemplate({ content }: { content: EventLandingContent }) {
   return (
@@ -28,7 +22,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
               <Link href="/contact#quote" className={bookNowSectionClass}>
                 Start planning
               </Link>
-              <a href={business.phoneHref} className={callOnLightClass}>
+              <a href={business.phoneHref} className={`${callNowSectionClass} max-w-full`}>
                 Call {business.phone}
               </a>
             </div>
@@ -121,7 +115,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
               <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center`}>
                 Book now
               </Link>
-              <a href={business.phoneHref} className={`${callOnDarkClass} justify-center`}>
+              <a href={business.phoneHref} className={`${callNowSectionClass} justify-center`}>
                 Call now
               </a>
             </div>

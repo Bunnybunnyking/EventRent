@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { bookNowStickyClass } from "@/lib/cta-styles";
+import { bookNowStickyClass, callNowStickyClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 
 export function StickyMobileCTA() {
@@ -20,7 +20,7 @@ export function StickyMobileCTA() {
         <Link href={primaryHref} className={primaryClass}>
           {primaryLabel}
         </Link>
-        <a href={business.phoneHref} className={`${bookNowStickyClass} block w-full`}>
+        <a href={business.phoneHref} className={`${callNowStickyClass} block w-full`}>
           Call Now
         </a>
       </div>
