@@ -44,7 +44,7 @@ export function ServiceAreaBlock() {
         <SectionHeading
           eyebrow="Service Area"
           title={`Serving ${business.primaryCity}, Hartford County, and towns across Connecticut`}
-          intro="Searching for tent rentals near you? We deliver and install across the state with the same scheduling discipline—whether your event is in a suburban yard or a downtown venue."
+          intro="Looking for tent rentals near you? We deliver and install across Connecticut, from suburban yards to downtown lots, with the same scheduling standards either way."
         />
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           {townList.map((town) => (
@@ -111,7 +111,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
           {showPrimaryCta ? (
             <>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-300 sm:text-lg">
-                Tell us your date, town, and guest count. We will guide the setup plan, answer questions quickly, and help you lock in a clean, professional event layout.
+                Tell us your date, town, and guest count. We will walk through setup with you, answer questions without the runaround, and help you get a layout that works for your people and your place.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
                 <Link href="/contact#quote" className={`${bookNowSectionClass} w-full justify-center sm:w-auto`}>
@@ -122,7 +122,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
                 </a>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-stone-400">
-                No-pressure consultation. Fast quote turnaround. The quote form takes only a few minutes—start at{" "}
+                No pressure, fast quotes. The form takes a few minutes. Start on{" "}
                 <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
                   contact
                 </Link>
@@ -132,8 +132,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
           ) : (
             <>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-200 sm:text-lg">
-                Our Event Concierge will walk you through the process—from venue constraints and guest flow to timeline and layout—so your event stays organized and on-brand. Share your date, town,
-                and guest count; we respond quickly with clear setup options, no-pressure guidance, and a professional layout plan you can trust.
+                Our Event Concierge walks you through venue limits, guest flow, timeline, and layout so nothing gets lost. Share your date, town, and guest count; we get back to you with clear options and a plan you can actually use.
               </p>
               <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
                 <a href={business.phoneHref} className={`${callNowSectionClass} w-full justify-center sm:w-auto`}>
@@ -147,7 +146,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
                 </Link>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-stone-400">
-                Fast quote turnaround. No-pressure consultation. The quote form takes only a few minutes—start at{" "}
+                Fast quotes, no pressure. The form takes a few minutes. Start on{" "}
                 <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
                   contact
                 </Link>

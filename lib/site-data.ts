@@ -13,7 +13,7 @@ export const business = {
   celebrationTagline: "Celebrating 80+ years in business",
   /** Polished hero tagline — oldest in CT + quality / service (see homepage hero) */
   heroBrandTagline:
-    "Connecticut's oldest party rental company—trusted service and elevated events since 1946.",
+    "Connecticut's oldest party rental company. Trusted service since 1946, still family run.",
   /** Party Packages / tent bundle sales page */
   partyPackagesTagline: "We set the stage. You steal the show.",
   /** FAQ page — line under the celebration / trust line */
@@ -46,7 +46,7 @@ export const footerServiceLinks = [
 ];
 
 export const trustPoints = [
-  "Celebrating 80+ years in business — family owned and operated",
+  "Celebrating 80+ years in business, family owned and operated",
   "Fast quote turnaround",
   "Clean equipment prepared for every event",
   "Delivery, setup, and breakdown handled by our team",
@@ -56,7 +56,7 @@ export const trustPoints = [
 export const services = [
   {
     title: "Tent Rentals",
-    description: "Frame tents, pole tents, and sailcloth options for polished outdoor events.",
+    description: "Frame tents, pole tents, and sailcloth for outdoor events from backyards to full receptions.",
     href: "/tent-rentals",
   },
   {
@@ -66,22 +66,22 @@ export const services = [
   },
   {
     title: "Wedding Tent Rentals",
-    description: "Elevated tent layouts, lighting, and sidewall plans designed for elegant wedding flow.",
+    description: "Tent layouts, lighting, and sidewalls planned so your wedding day runs smoothly outside.",
     href: "/wedding-tent-rentals",
   },
   {
     title: "Corporate Event Rentals",
-    description: "Organized setups for company events, school functions, municipal programs, and festivals.",
+    description: "Company picnics, school events, town programs, and festivals with setups that match your run of show.",
     href: "/corporate-event-rentals",
   },
   {
     title: "Yard Games",
-    description: "Cornhole, giant Jenga, Connect 4, and more—delivered for backyard parties, graduations, and team events.",
+    description: "Cornhole, giant Jenga, Connect 4, and more. We deliver for backyard parties, graduations, and team events.",
     href: "/yard-games",
   },
   {
     title: "Bounce Houses",
-    description: "Clean, inspected inflatables sized for real yards—with safety-first setup and optional game bundles.",
+    description: "Clean, inspected inflatables sized for real yards, with setup that puts safety first and optional game bundles.",
     href: "/bounce-houses",
   },
 ];
@@ -168,20 +168,20 @@ export type FaqItem = {
 
 /**
  * Homepage FAQ preview uses the first five (highest-intent topics).
- * Questions mirror what planners ask tent companies—answered in our voice, not copied from competitors.
+ * Questions mirror what planners ask; answers in our voice.
  */
 export const faqItems: FaqItem[] = [
   {
     id: "tent-size",
     question: "What size tent do I need for my event?",
     answer:
-      "Size follows your real layout—not a generic chart. We factor seated vs. standing mix, dance floor, buffet or bar lines, head table, DJ or band footprint, and aisle width so servers and guests move comfortably. During planning we sketch a practical flow for your Connecticut venue, then match tent dimensions and style (frame, pole, or sailcloth) to that plan. If your guest count shifts before the event, we adjust recommendations so you are not guessing alone.",
+      "It depends how you use the space, not just a chart on a wall. We look at seated versus standing, dance floor, buffet or bar lines, head table, DJ or band, and how wide the aisles need to be so people and servers are not bumping chairs all night. We walk through your Connecticut venue with you, then pick tent size and style (frame, pole, or sailcloth) that fits. If your count moves before the event, we tweak the plan with you.",
   },
   {
     id: "tent-capacity",
     question: "How many guests fit under a tent?",
     answer:
-      "A rough planning rule is about one guest per ten to twelve square feet of tent floor when you are seating people at tables—tighter for ceremony-style rows, more generous for lounge or mixed seating. Always add square footage for dance floors, bars, stages, and service lanes; those pieces shrink usable capacity fast. We translate your headcount and program into a tent size that fits the footprint, not just the math on paper.",
+      "Rough rule of thumb: about one guest per ten to twelve square feet under the tent when people sit at tables (tighter if it is ceremony rows, more if it is lounge or mixed seating). Dance floors, bars, stages, and paths for staff eat space fast, so do not forget to add that in. We turn your headcount and how you run the event into a real footprint, not just a number on paper.",
   },
   {
     id: "rain-plan",
@@ -191,7 +191,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     id: "delivery-setup",
-    question: "Do you deliver and set up—and when will you arrive?",
+    question: "Do you deliver and set up, and when will you arrive?",
     answer:
       "Yes. Our crew delivers, installs, and returns for takedown so you are not coordinating rentals on event day. We schedule arrival within an agreed window and confirm timing ahead of your date so vendors and venues know what to expect. Access paths, parking, and surface type all affect schedule; we bake that into the plan when you book.",
   },
@@ -199,7 +199,7 @@ export const faqItems: FaqItem[] = [
     id: "pricing",
     question: "How does pricing work?",
     answer:
-      "Quotes reflect your date, location, tent size and type, accessories (sidewalls, lighting, climate), tables and chairs, labor for setup and strike, and site conditions such as stairs, distance to the setup area, or hard-surface anchoring. You get line-item clarity—not a vague package—so you can compare options and decide with confidence. Ask us anything on the quote; we prefer upfront questions to surprises later.",
+      "Your quote lists what you are paying for: date and place, tent size and style, add-ons like sidewalls and lights, tables and chairs, labor to set up and take down, and anything odd about the site (stairs, long carries, anchoring on pavement). You see line items, not one blob of a price, so you can compare and ask questions. We would rather hear them now than on the morning of your event.",
   },
   {
     id: "reserve-ahead",

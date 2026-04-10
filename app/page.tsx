@@ -48,13 +48,13 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-12 sm:px-6 sm:pt-16 md:pb-28 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#edc16c]">{business.name}</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            Tent rentals in Wethersfield, {business.primaryCity}, and statewide—polished setups that run on schedule.
+            Tent rentals in Wethersfield, {business.primaryCity}, and across Connecticut. We show up when we say we will, and we treat your lawn like it matters.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#e8dcc4] [font-family:var(--font-display)] sm:text-lg">
             {business.heroBrandTagline}
           </p>
           <p className="mt-5 max-w-2xl text-base text-stone-200">
-            Family owned and operated since {business.establishedYear}, we help weddings, backyard celebrations, and corporate events feel organized, elevated, and stress-free with clean equipment, professional setup, and responsive communication.
+            We are family owned and have been at this since {business.establishedYear}. Weddings, graduations, cookouts, company picnics, whatever you are planning, we bring clean gear, a crew that knows how to set up, and real people you can call with questions.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link href="/contact#quote" className={bookNowSectionClass}>
@@ -63,15 +63,15 @@ export default function HomePage() {
           </div>
           <p className="mt-3 text-xs text-stone-300">Fast quote turnaround. No-pressure planning help. Clear next steps from delivery to pickup.</p>
           <p className="mt-4 max-w-xl text-xs text-stone-400">
-            Not sure about sizing or weather backup yet? Start with our{" "}
+            Not sure about sizing or a rain plan yet? Browse our{" "}
             <Link href="/planning" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
               planning guide
             </Link>
-            . Serving hosts statewide—explore{" "}
+            . We work all over the state. See{" "}
             <Link href="/service-areas" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
-              Connecticut tent rental service areas
+              where we deliver
             </Link>{" "}
-            or start with a quote above.
+            or tap Book Now when you are ready.
           </p>
         </div>
       </section>
@@ -90,7 +90,7 @@ export default function HomePage() {
 
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Featured Rentals" title="Built for events that need to look right and run right" />
+          <SectionHeading eyebrow="Featured Rentals" title="Tents, tables, and the rest of what you actually need" />
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {services.map((service) => (
               <article key={service.title} className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:shadow-md">
@@ -113,7 +113,7 @@ export default function HomePage() {
 
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Event Types" title="Designed for weddings, private events, and organized public programs" />
+          <SectionHeading eyebrow="Event Types" title="Weddings, backyards, schools, companies, and everything in between" />
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {eventTypeLinks.map((event) => (
               <Link
@@ -134,21 +134,21 @@ export default function HomePage() {
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
           <div className="rounded-3xl border border-stone-200 bg-white p-7 shadow-sm">
-            <h2 className="text-2xl font-semibold tracking-tight">What clients worry about, solved up front</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">What people ask before they book</h2>
             <ul className="mt-5 space-y-3 text-sm text-stone-700">
-              <li>Concerned about no-shows? We confirm timing windows and keep communication clear before event day.</li>
-              <li>Worried about equipment condition? Every tent, table, and chair is inspected before deployment.</li>
-              <li>Need rain confidence? We plan sidewalls and weather-ready options in advance.</li>
-              <li>Afraid of hidden charges? We provide transparent quote details and practical recommendations.</li>
+              <li>Will you actually show up? We lock delivery windows and keep you in the loop before the day of.</li>
+              <li>Will the stuff look decent? We inspect tents, tables, and chairs before they leave our warehouse.</li>
+              <li>What if it rains? We talk through sidewalls and backup options while we still have time to plan.</li>
+              <li>What will this cost? We quote line by item so you are not guessing what is in the number.</li>
             </ul>
           </div>
           <div className="rounded-3xl border border-stone-200 bg-[#111315] p-7 text-stone-100 shadow-sm">
             <h2 className="text-2xl font-semibold tracking-tight">How it works</h2>
             <ol className="mt-5 space-y-3 text-sm text-stone-300">
-              <li>1. Share your date, town, and guest count.</li>
-              <li>2. We recommend a tent size and rental package.</li>
-              <li>3. You receive a clear quote with timeline details.</li>
-              <li>4. Our crew delivers, sets up, and returns for breakdown.</li>
+              <li>1. Tell us your date, town, and roughly how many people.</li>
+              <li>2. We suggest tent size and what else usually goes with it.</li>
+              <li>3. You get a quote you can read without a spreadsheet.</li>
+              <li>4. Our crew delivers, sets up, and comes back to take it down.</li>
             </ol>
             <Link href="/contact#quote" className={`${bookNowSectionClass} mt-5 inline-flex text-base sm:text-lg`}>
               Book Now
@@ -162,15 +162,15 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Tent Planning"
             title="Not sure what size tent you need?"
-            intro="We plan around guest count, seating style, dance floor, food service, and weather backup so your layout works in real life, not just on paper."
+            intro="We plan around headcount, how you want people seated, whether there is dancing, food, and what happens if the weather turns. Real life, not a sketch on the back of a napkin."
           />
           <div className="mt-8 grid gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-6 sm:grid-cols-3">
             <div>
-              <p className="text-sm font-semibold text-stone-900">60-80 guests</p>
+              <p className="text-sm font-semibold text-stone-900">60 to 80 guests</p>
               <p className="mt-1 text-sm text-stone-600">Popular for backyard celebrations and graduation parties.</p>
             </div>
             <div>
-              <p className="text-sm font-semibold text-stone-900">100-150 guests</p>
+              <p className="text-sm font-semibold text-stone-900">100 to 150 guests</p>
               <p className="mt-1 text-sm text-stone-600">Ideal for wedding receptions and larger private events.</p>
             </div>
             <div>
@@ -208,7 +208,7 @@ export default function HomePage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 flex items-end justify-between gap-4">
-            <SectionHeading eyebrow="Gallery Preview" title="Clean setups with polished, professional presentation" />
+            <SectionHeading eyebrow="Gallery Preview" title="A few setups we have done lately" />
             <Link href="/tents/gallery" className="hidden text-sm font-semibold text-stone-800 underline underline-offset-4 md:block">
               View full gallery
             </Link>
@@ -225,7 +225,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="FAQ"
             title="Answers before you have to call"
-            intro="Sizing, guest counts, rain backup, delivery timing, pricing, booking, and hard-surface setups—plain language for Connecticut hosts."
+            intro="Sizing, guest counts, rain backup, when we show up, pricing, booking, and tents on driveways. Plain language, no jargon."
           />
           <div className="mt-8">
             <FAQAccordion items={faqItems.slice(0, 5)} />

@@ -12,7 +12,7 @@ import { SectionHeading } from "@/components/sections";
 function formatQty(item: { quantity?: number; quantityNote?: string }) {
   if (item.quantityNote) return item.quantityNote;
   if (item.quantity !== undefined) return item.quantity.toLocaleString();
-  return "—";
+  return "Varies";
 }
 
 function InventoryCategoryCard({ category }: { category: InventoryCategory }) {
@@ -24,7 +24,7 @@ function InventoryCategoryCard({ category }: { category: InventoryCategory }) {
       <h3 className="text-lg font-semibold tracking-tight text-stone-900">{category.title}</h3>
       {category.description ? <p className="mt-1.5 text-xs leading-relaxed text-stone-500">{category.description}</p> : null}
       {category.overviewOnly ? (
-        <p className="mt-4 text-sm font-medium text-stone-700">Large rental selection — details confirmed on quote.</p>
+        <p className="mt-4 text-sm font-medium text-stone-700">Large rental selection; exact counts confirmed on your quote.</p>
       ) : (
         <ul className="mt-4 space-y-2 border-t border-stone-100 pt-4">
           {category.items.map((item) => (
@@ -39,24 +39,24 @@ function InventoryCategoryCard({ category }: { category: InventoryCategory }) {
   );
 }
 
-/** “More than tents” — breadth of Connecticut event rentals */
+/** “More than tents”: breadth of Connecticut event rentals */
 export function WhatWeOfferSection() {
   const pillars = [
     {
       title: "Tent rentals & large structures",
-      body: "Frame and expansion tents for Connecticut weddings, corporate programs, festivals, and high-guest-count layouts—with anchoring planned for grass or hard surfaces.",
+      body: "Frame tents and larger builds for weddings, company events, festivals, and big guest lists. We plan anchoring for grass or pavement so you are not guessing on install day.",
     },
     {
       title: "Tables & chairs at scale",
-      body: "Round, banquet, and high-top tables with plastic and padded seating for ceremonies, dining, and buffet flow.",
+      body: "Round, banquet, and high-top tables with plastic and padded chairs for ceremonies, dinner, and buffet lines that actually flow.",
     },
     {
       title: "Dance floors, lighting & siding",
-      body: "Layer dance floor, event lighting, and sidewall plans so your tent feels finished, not improvised.",
+      body: "Dance floor, lights, and sidewalls so the tent feels like a room, not a last-minute tarp.",
     },
     {
       title: "Yard games, bounce houses & add-ons",
-      body: "Family-friendly entertainment and enhancements for backyard parties, school events, and community gatherings—bundled with tents when you want one coordinated order.",
+      body: "Games and bounce houses for backyards, schools, and town events. Bundle with a tent when you want one order and one crew to think about.",
     },
   ];
 
@@ -65,8 +65,8 @@ export function WhatWeOfferSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Connecticut event rentals"
-          title="More than tents—full event rental depth"
-          intro={`${business.name} supplies Connecticut event rentals beyond a single tent line: structures, seating, tables, lighting, siding, and popular add-ons for events from intimate yards to large-scale gatherings.`}
+          title="More than tents: full rental depth"
+          intro={`${business.name} is not only tents. Structures, seating, tables, lighting, sidewalls, and the extras people forget, from small yards to full field setups.`}
         />
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {pillars.map((p) => (
@@ -77,7 +77,7 @@ export function WhatWeOfferSection() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-stone-600">
-          Backyard parties, weddings, corporate events, school functions, and festivals across {business.state}—one organized team, responsive communication, and professional delivery and setup.
+          Backyard parties, weddings, company events, schools, and festivals across {business.state}. One team, clear communication, delivery and setup included.
         </p>
       </div>
     </section>
@@ -90,8 +90,8 @@ export function InventoryOverviewSection({ compact = false }: { compact?: boolea
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Rental inventory overview"
-          title="Extensive Connecticut inventory—planned for your guest count"
-          intro="High-capacity tent, table, and chair availability for Connecticut event rentals. The overview below is grouped for planning—confirmed availability is always tied to your date and schedule."
+          title="Extensive Connecticut inventory, planned around your guest count"
+          intro="High-capacity tents, tables, and chairs for Connecticut events. The overview below helps you plan; what is available always ties to your date and our schedule."
         />
         <p className="mx-auto mt-4 max-w-3xl rounded-xl border border-amber-200/80 bg-amber-50/90 px-4 py-3 text-center text-xs leading-relaxed text-amber-950/90">
           {inventoryDisclaimer}
@@ -147,7 +147,7 @@ export function PopularRentalCategoriesSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#edc16c]">Start here</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Popular rental categories</h2>
           <p className="mt-4 text-sm leading-relaxed text-stone-400">
-            Jump to the event rental path that matches your Connecticut event—then request a custom quote with inventory matched to your date.
+            Pick what matches your event, then ask for a quote with inventory locked to your date.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -171,8 +171,8 @@ export function PopularRentalCategoriesSection() {
 export function QuoteWorkflowSection() {
   const steps = [
     { title: "Your date & town", text: "Lock the when and where so we can check schedule and routing." },
-    { title: "Guest count & event type", text: "Wedding, corporate, school, backyard, or festival—each drives layout and inventory." },
-    { title: "What you need", text: "Tent size, tables, chairs, lighting, siding, dance floor, games—tell us priorities; we fill gaps." },
+    { title: "Guest count & event type", text: "Wedding, company, school, backyard, or festival: each one changes layout and what you rent." },
+    { title: "What you need", text: "Tent size, tables, chairs, lighting, siding, dance floor, games. Tell us what matters most and we help with the rest." },
     { title: "Custom quote", text: "You receive a clear line-item plan you can adjust before we reserve gear for your day." },
   ];
 
@@ -181,8 +181,8 @@ export function QuoteWorkflowSection() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Quote workflow"
-          title="Plan your event—then we build the rental list"
-          intro="This flow mirrors how we will connect quotes to your rental catalog—including future Goodshuffle-driven line items—so nothing is vague when you are ready to book."
+          title="Plan your event, then we build the rental list"
+          intro="This is how we work through a quote with you: date and place first, then headcount and event type, then the gear list. Nothing vague when you are ready to book."
         />
         <ol className="mt-10 space-y-4">
           {steps.map((s, i) => (
