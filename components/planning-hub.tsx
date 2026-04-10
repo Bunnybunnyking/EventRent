@@ -21,7 +21,6 @@ import { business } from "@/lib/site-data";
 const sectionNav = [
   { href: "#size-guide", label: "Sizing" },
   { href: "#step-by-step", label: "Steps" },
-  { href: "#quick-start", label: "Quick start" },
   { href: "#layout-examples", label: "Examples" },
   { href: "#tent-types", label: "Tent types" },
   { href: "#site-surface", label: "Site" },
@@ -30,6 +29,7 @@ const sectionNav = [
   { href: "#forgot", label: "Easy to forget" },
   { href: "#occasions", label: "By event" },
   { href: "#timeline", label: "Timeline" },
+  { href: "#quick-start", label: "Quick start" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -243,39 +243,6 @@ export function PlanningHub() {
           <p className="mx-auto mt-10 max-w-3xl rounded-2xl border border-amber-200/80 bg-[#fffbf0] px-5 py-4 text-center text-sm leading-relaxed text-stone-800">
             You do not need every detail figured out before you call. Start with what you know (date, location, rough headcount). We help you fill in the rest without pressure.
           </p>
-        </div>
-      </section>
-
-      {/* Quick start jump cards */}
-      <section id="quick-start" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center lg:mt-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Quick start</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">Jump to what you need</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm text-stone-600 sm:text-base">
-              Shortcuts to the rest of this guide. You can also use the topic bar at the top.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {planningQuickStartCards.map((card) => (
-              <article
-                key={card.title}
-                className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-stone-300 hover:shadow-md"
-              >
-                <h3 className="text-lg font-semibold text-stone-900">{card.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{card.description}</p>
-                {"external" in card && card.external ? (
-                  <Link href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
-                    {card.cta} →
-                  </Link>
-                ) : (
-                  <a href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
-                    {card.cta} →
-                  </a>
-                )}
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -636,7 +603,40 @@ export function PlanningHub() {
         </div>
       </section>
 
-      {/* 13. FAQ */}
+      {/* Quick start jump cards (end of guide: shortcuts back to key sections) */}
+      <section id="quick-start" className="scroll-mt-36 border-t border-stone-200 bg-white py-10 sm:py-14 lg:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Quick start</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">Jump to what you need</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-stone-600 sm:text-base">
+              Shortcuts to topics on this page. The tent estimator and sizing chart are at the top, right under the hero.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {planningQuickStartCards.map((card) => (
+              <article
+                key={card.title}
+                className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-stone-300 hover:shadow-md"
+              >
+                <h3 className="text-lg font-semibold text-stone-900">{card.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{card.description}</p>
+                {"external" in card && card.external ? (
+                  <Link href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
+                    {card.cta} →
+                  </Link>
+                ) : (
+                  <a href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
+                    {card.cta} →
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
       <section id="faq" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-semibold tracking-tight text-stone-900">Planning questions, answered</h2>
