@@ -7,7 +7,7 @@ import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 export const metadata: Metadata = createPageMetadata({
   title: "Quick Event Planner | Chairs, Tables, Tent & Setup",
   description:
-    "Step through a short planner for your Connecticut event: tent size starting point, chairs, tables, linens, lighting, weather, and more. Use alongside our square-footage calculator on the Planning page.",
+    "Three quick steps: event basics, setup and style, then your recommended plan with rental package and add-ons. Pairs with our square-footage calculator on the Planning page.",
   path: "/quick-event-planner",
   ogImage: defaultOgImagePath,
 });

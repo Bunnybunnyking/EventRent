@@ -188,7 +188,7 @@ export function PlanningHub() {
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8a6218]">Option 2 · Full plan</p>
               <h3 className="mt-2 text-lg font-semibold text-stone-900">Quick Event Planner</h3>
               <p className="mt-2 text-sm leading-relaxed text-stone-600">
-                Short guided steps for chairs, tables, linens, dance floor, bar, lighting, weather, and what people forget.
+                Three quick tabs—basics, setup, and your plan—with chairs, tables, lighting, add-ons, and a recommended rental package.
               </p>
               <span className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] group-hover:underline">
                 Jump to planner →

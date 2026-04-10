@@ -1,6 +1,6 @@
 /**
- * Quick Event Planner — safe-side recommendation rules (editable).
- * Connecticut & New York outdoor events; conservative counts.
+ * Quick Event Planner — safe-side rules (editable).
+ * 3-step flow: infer tent/coverage; lighting included by default in copy.
  */
 
 export type EventTypeId =
@@ -17,53 +17,42 @@ export type EventTypeId =
   | "birthday"
   | "other";
 
+/** TAB 1 — event style (maps to internal footprint behavior) */
+export type EventStyleId = "seated" | "cocktail" | "ceremony" | "buffet_casual" | "dance" | "mixed";
+
 export type QuickPlannerInput = {
   eventType: EventTypeId;
   guestCount: number;
   eventTime: "morning" | "afternoon" | "evening" | "night";
-  season: "spring" | "summer" | "fall" | "winter" | "";
-  format:
-    | "seated"
-    | "cocktail"
-    | "ceremony"
-    | "buffet"
-    | "open_house"
-    | "dance"
-    | "mixed";
+  eventStyle: EventStyleId;
   seatingStyle: "rounds" | "banquet" | "mixed" | "standing";
-  allSeated: "yes" | "no" | "unsure";
-  food: "none" | "light" | "buffet" | "plated" | "stations";
-  cateringHelp: "yes" | "no" | "maybe";
+  food: "none" | "dessert_only" | "buffet" | "plated" | "stations";
   drinks: "none" | "self" | "bar";
   music: "none" | "background" | "mic" | "dj" | "live";
   danceFloor: "yes" | "no" | "maybe";
-  tentKnown: "yes" | "unsure" | "no";
-  weatherGoal: "basic" | "rain" | "comfort" | "full";
-  separateFoodTent: "yes" | "no" | "unsure";
-  eveningExtended: "yes" | "no";
-  extraRestroom: boolean;
   extraGames: boolean;
   extraGiftCake: boolean;
-  extraServiceTables: boolean;
   extraLounge: boolean;
-  extraPhoto: boolean;
+  extraRestroom: boolean;
+  extraFoodServiceTent: boolean;
   comfortableBoost: boolean;
 };
 
+export type RentalPackageBlock = {
+  name: string;
+  why: string;
+  includes: string[];
+  optionalAddOns: string[];
+};
+
+export type AddOnWithWhy = { title: string; why: string };
+
 export type QuickPlannerResult = {
-  headline: string;
-  startingSetup: { label: string; value: string }[];
-  addOns: string[];
-  foodNotes: string[];
-  comfortNotes: string[];
-  forgottenItems: string[];
-  audioNote: string;
-  lightingNote: string;
-  weatherItems: string[];
-  danceFloorRec: string | null;
-  partnershipNote: string | null;
-  restroomNote: string | null;
-  gamesNote: string | null;
+  summaryLine: string;
+  recommendedSetup: string[];
+  rentalPackage: RentalPackageBlock;
+  helpfulAddOns: AddOnWithWhy[];
+  planningNotes: string[];
   disclaimer: string;
 };
 
@@ -80,8 +69,27 @@ function ceilTo(n: number, step: number) {
   return Math.ceil(n / step) * step;
 }
 
-function perGuestSqFt(format: QuickPlannerInput["format"]): number {
-  switch (format) {
+type InternalFormat = "seated" | "cocktail" | "ceremony" | "buffet" | "dance" | "mixed";
+
+function toInternalFormat(style: EventStyleId): InternalFormat {
+  switch (style) {
+    case "buffet_casual":
+      return "buffet";
+    case "seated":
+      return "seated";
+    case "cocktail":
+      return "cocktail";
+    case "ceremony":
+      return "ceremony";
+    case "dance":
+      return "dance";
+    default:
+      return "mixed";
+  }
+}
+
+function perGuestSqFt(f: InternalFormat): number {
+  switch (f) {
     case "ceremony":
       return 7;
     case "cocktail":
@@ -89,8 +97,6 @@ function perGuestSqFt(format: QuickPlannerInput["format"]): number {
     case "buffet":
     case "seated":
       return 14;
-    case "open_house":
-      return 10;
     case "dance":
       return 13;
     default:
@@ -121,60 +127,61 @@ function eventTypeMult(t: EventTypeId): number {
 function wantsDanceFloor(inp: QuickPlannerInput): boolean {
   if (inp.danceFloor === "yes") return true;
   if (inp.danceFloor === "maybe") {
-    return ["wedding", "sweet16", "quince", "fundraiser", "birthday"].includes(inp.eventType) || inp.format === "dance";
+    return ["wedding", "sweet16", "quince", "fundraiser", "birthday"].includes(inp.eventType) || inp.eventStyle === "dance";
   }
   return false;
 }
 
 function danceFloorSize(guests: number, inp: QuickPlannerInput): string {
   const strong =
-    ["wedding", "sweet16", "quince", "fundraiser"].includes(inp.eventType) || inp.music === "dj" || inp.format === "dance";
-  if (guests < 50) return strong ? "12×12 ft (minimum; size up if you expect a big dance crowd)" : "12×12 ft";
-  if (guests < 100) return "12×16 ft or 16×16 ft";
-  if (guests < 150) return "16×16 ft or 16×20 ft";
-  return "16×20 ft or larger — we’ll custom-fit to your floor plan";
+    ["wedding", "sweet16", "quince", "fundraiser"].includes(inp.eventType) || inp.music === "dj" || inp.eventStyle === "dance";
+  if (guests < 50) return strong ? "12×12 ft (size up if you expect a big dance crowd)" : "12×12 ft";
+  if (guests < 100) return "12×16 or 16×16 ft";
+  if (guests < 150) return "16×16 or 16×20 ft";
+  return "16×20 ft or larger — we’ll fit to your floor plan";
+}
+
+/** Prefer rounds vs banquet when user hasn’t forced one style */
+function defaultPreferRounds(eventType: EventTypeId, eventStyle: EventStyleId): boolean {
+  if (["wedding", "graduation", "fundraiser", "sweet16", "quince"].includes(eventType)) return true;
+  if (["backyard", "community", "tailgate", "festival"].includes(eventType)) return false;
+  if (eventStyle === "buffet_casual" || eventStyle === "cocktail") return false;
+  if (eventStyle === "seated" || eventStyle === "ceremony") return true;
+  return true;
+}
+
+function resolveTableMode(inp: QuickPlannerInput): "rounds" | "banquet" | "mixed" | "standing" {
+  if (inp.seatingStyle === "mixed") return "mixed";
+  if (inp.seatingStyle === "standing") return "standing";
+  if (inp.seatingStyle === "rounds" || inp.seatingStyle === "banquet") return inp.seatingStyle;
+  return defaultPreferRounds(inp.eventType, inp.eventStyle) ? "rounds" : "banquet";
 }
 
 export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerResult {
   const guests = Math.max(10, Math.min(500, inp.guestCount || 50));
   const boost = inp.comfortableBoost ? 1.08 : 1;
+  const internal = toInternalFormat(inp.eventStyle);
 
-  let baseSq = guests * perGuestSqFt(inp.format) * eventTypeMult(inp.eventType);
+  let baseSq = guests * perGuestSqFt(internal) * eventTypeMult(inp.eventType);
 
-  if (inp.seatingStyle === "rounds" && (inp.format === "seated" || inp.format === "buffet")) baseSq *= 1.06;
-  if (inp.seatingStyle === "banquet") baseSq *= 0.98;
-  if (inp.allSeated === "yes") baseSq *= 1.1;
+  const mode = resolveTableMode(inp);
+  if (mode === "rounds" && (internal === "seated" || internal === "buffet")) baseSq *= 1.06;
+  if (mode === "banquet") baseSq *= 0.98;
+  if (inp.eventStyle === "seated" || inp.eventStyle === "ceremony") baseSq *= 1.06;
 
   if (inp.food === "buffet" || inp.food === "stations") baseSq += 220;
-  if (inp.food === "plated") baseSq += 120;
-  if (inp.food === "light") baseSq += 80;
+  if (inp.food === "plated") baseSq += 130;
+  if (inp.food === "dessert_only") baseSq += 70;
   if (inp.drinks === "bar") baseSq += 140;
   if (inp.drinks === "self") baseSq += 60;
 
-  if (wantsDanceFloor(inp)) {
-    baseSq += Math.max(280, Math.round(guests * 2.8));
-  }
+  if (wantsDanceFloor(inp)) baseSq += Math.max(280, Math.round(guests * 2.8));
+  if (inp.extraFoodServiceTent) baseSq += 420;
 
-  if (inp.separateFoodTent === "yes" || (inp.separateFoodTent === "unsure" && (inp.food === "buffet" || inp.food === "stations"))) {
-    baseSq += 420;
-  }
-
-  switch (inp.weatherGoal) {
-    case "full":
-      baseSq *= 1.14;
-      break;
-    case "rain":
-      baseSq *= 1.1;
-      break;
-    case "comfort":
-      baseSq *= 1.08;
-      break;
-    default:
-      baseSq *= 1.04;
-  }
-
-  if (inp.tentKnown === "unsure" || inp.tentKnown === "no") baseSq *= 1.06;
-  if (inp.eveningExtended === "yes") baseSq *= 1.05;
+  // Outdoor tented event: safe-side coverage (no “do you need a tent?” question)
+  baseSq *= 1.08;
+  if (inp.eventTime === "evening" || inp.eventTime === "night") baseSq *= 1.05;
+  if (internal === "cocktail" || inp.eventStyle === "mixed") baseSq *= 1.04;
 
   baseSq *= boost;
 
@@ -186,31 +193,43 @@ export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerR
   }
 
   let chairBuffer = 1.08;
-  if (inp.format === "ceremony" || inp.eventType === "community" || inp.eventType === "festival") chairBuffer += 0.06;
-  if (inp.allSeated === "yes") chairBuffer += 0.04;
-  if (inp.seatingStyle === "standing" || inp.format === "cocktail") {
-    chairBuffer = 0.42;
+  if (internal === "ceremony" || inp.eventType === "community" || inp.eventType === "festival") chairBuffer += 0.05;
+  if (inp.eventStyle === "mixed") chairBuffer += 0.04;
+  if (inp.eventType === "fundraiser") chairBuffer += 0.03;
+
+  if (mode === "standing" || internal === "cocktail") {
+    chairBuffer = 0.4;
   }
+
   let chairs = Math.ceil(guests * chairBuffer);
-  if (inp.seatingStyle !== "standing") chairs = ceilTo(chairs + (inp.comfortableBoost ? 8 : 4), 5);
-  else chairs = Math.max(20, ceilTo(Math.ceil(guests * 0.35) + 24, 5));
+  if (mode !== "standing" && internal !== "cocktail") {
+    chairs = ceilTo(chairs + (inp.comfortableBoost ? 8 : 5), 5);
+  } else {
+    chairs = Math.max(24, ceilTo(Math.ceil(guests * 0.38) + 20, 5));
+  }
+
+  const seatedPad = inp.eventStyle === "seated" || inp.food === "plated" ? 1 : 0;
 
   let roundTables = 0;
   let banquetTables = 0;
-  if (inp.seatingStyle !== "standing") {
-    const seatedPad = inp.allSeated === "yes" ? 1 : 0;
-    if (inp.seatingStyle === "mixed") {
-      roundTables = Math.ceil((guests * 0.58) / 8) + seatedPad;
-      banquetTables = Math.max(1, Math.ceil((guests * 0.38) / 8) + seatedPad);
-    } else if (inp.seatingStyle === "banquet") {
-      banquetTables = Math.ceil(guests / 8) + seatedPad;
+
+  if (mode === "mixed") {
+    roundTables = Math.ceil((guests * 0.56) / 8) + seatedPad;
+    banquetTables = Math.max(1, Math.ceil((guests * 0.36) / 8) + (seatedPad ? 1 : 0));
+  } else if (mode === "banquet") {
+    banquetTables = Math.ceil(guests / 8) + (seatedPad ? 1 : 0);
+  } else if (mode === "rounds") {
+    if (internal === "cocktail") {
+      roundTables = Math.max(2, Math.ceil((guests * 0.42) / 8));
     } else {
-      roundTables = Math.ceil(guests / 8) + seatedPad;
+      roundTables = Math.ceil(guests / 8) + (seatedPad ? 1 : 0);
     }
+  } else {
+    roundTables = Math.max(0, Math.ceil((guests * 0.28) / 8));
   }
 
   let cocktailTables = 0;
-  if (["cocktail", "mixed", "open_house"].includes(inp.format) || inp.drinks === "bar") {
+  if (internal === "cocktail" || inp.eventStyle === "mixed" || inp.drinks === "bar") {
     cocktailTables = Math.max(2, Math.ceil(guests / 10));
   }
 
@@ -219,174 +238,234 @@ export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerR
     if (guests < 60) buffetTables = 2;
     else if (guests < 120) buffetTables = 3;
     else buffetTables = 4;
-  } else if (inp.food === "light") {
+  } else if (inp.food === "dessert_only") {
     buffetTables = 1;
   }
 
   const barTables = inp.drinks === "bar" ? (guests > 100 ? 2 : 1) : 0;
-  let serviceExtra = 0;
-  if (inp.extraServiceTables) serviceExtra += 2;
-  if (inp.cateringHelp === "yes" || inp.cateringHelp === "maybe") serviceExtra += 1;
 
   let giftCakeTables = 0;
   if (inp.extraGiftCake || ["wedding", "graduation", "sweet16", "quince", "birthday"].includes(inp.eventType)) {
     giftCakeTables = 1;
   }
 
-  const linenSets =
-    roundTables +
-    banquetTables +
-    buffetTables +
-    barTables +
-    giftCakeTables +
-    (inp.extraPhoto ? 1 : 0) +
-    serviceExtra;
+  const isEvening = inp.eventTime === "evening" || inp.eventTime === "night";
 
-  const needsLighting =
-    inp.eventTime === "night" ||
-    inp.eventTime === "evening" ||
-    inp.eveningExtended === "yes" ||
-    inp.format === "dance" ||
-    ["wedding", "fundraiser", "sweet16", "quince"].includes(inp.eventType) ||
-    (inp.eventType === "backyard" && inp.eventTime !== "morning");
+  const lightingBullet = isEvening
+    ? "Bistro / tent lighting — plan this from the start for visibility, safety, and atmosphere (evening event)"
+    : "Bistro / tent lighting — recommended for ambiance and a finished look under the tent";
 
-  const addOns: string[] = [];
-  if (inp.weatherGoal === "rain" || inp.weatherGoal === "full" || inp.weatherGoal === "comfort") {
-    addOns.push("Sidewalls or window panels for weather flexibility");
-  }
-  if (
-    (inp.eveningExtended === "yes" || inp.eventTime === "evening" || inp.eventTime === "night") &&
-    !needsLighting
-  ) {
-    addOns.push("Tent lighting package (evening and night events)");
-  }
-  if (wantsDanceFloor(inp)) {
-    addOns.push(`Dance floor: ${danceFloorSize(guests, inp)}`);
-  }
+  let audioBullet = "";
+  if (inp.music === "none") audioBullet = "Sound: add later if you add music or speeches";
+  else if (inp.music === "background") audioBullet = "Small speaker setup for background music";
+  else if (inp.music === "mic") audioBullet = "Speaker + wireless mic for announcements and toasts";
+  else audioBullet = "Power and placement for DJ or band — we coordinate with your entertainment";
 
-  if (inp.music === "background") addOns.push("Compact speaker setup for background music");
-  if (inp.music === "mic") addOns.push("Speaker plus wireless microphone for announcements");
-  if (inp.music === "dj" || inp.music === "live") {
-    addOns.push(inp.eventType === "festival" || inp.eventType === "community" ? "Professional sound support recommended" : "DJ-ready power and placement — confirm with your entertainment");
-  }
+  const recommendedSetup: string[] = [
+    `Tent: ${tentPick.label} (~${tentPick.sqFt.toLocaleString()} sq ft) — sized on the safe side for comfort and flow`,
+    `Chairs: ${chairs} (includes a safe buffer for real-world seating)`,
+  ];
+  if (roundTables > 0) recommendedSetup.push(`Tables: ${roundTables} round tables (~8 guests each, rounded up)`);
+  if (banquetTables > 0) recommendedSetup.push(`Tables: ${banquetTables} eight-foot banquet tables (~8 guests per table)`);
+  if (cocktailTables > 0) recommendedSetup.push(`Cocktail / high-top tables: ${cocktailTables}`);
+  if (buffetTables > 0) recommendedSetup.push(`Buffet / service tables: ${buffetTables}`);
+  if (barTables > 0) recommendedSetup.push(`Bar tables: ${barTables}`);
+  if (giftCakeTables > 0) recommendedSetup.push(`Gift / cake table: ${giftCakeTables}`);
+  recommendedSetup.push(lightingBullet);
+  if (audioBullet) recommendedSetup.push(audioBullet);
+  if (wantsDanceFloor(inp)) recommendedSetup.push(`Dance floor: ${danceFloorSize(guests, inp)}`);
 
-  if (inp.season === "winter" || inp.season === "fall") addOns.push("Heaters or climate planning for cool weather");
-  if (inp.season === "summer") addOns.push("Fans or airflow planning for warm afternoons");
+  const rentalPackage = buildRentalPackage(inp, tentPick.label, wantsDanceFloor(inp), isEvening);
 
-  let audioNote = "";
-  if (inp.music === "none") audioNote = "No sound gear suggested from your answers; add if you change plans.";
-  else if (inp.music === "background") audioNote = "Background music: one or two powered speakers usually cover a tent this size.";
-  else if (inp.music === "mic") audioNote = "Announcements: we’ll help you place speakers and a mic so everyone hears toasts and cues.";
-  else if (inp.music === "dj" || inp.music === "live") {
-    audioNote =
-      inp.eventType === "festival" || guests > 150
-        ? "Larger crowds call for professional audio; we coordinate power and tent placement with your vendor."
-        : "DJ or band: plan power drops, covered equipment space, and cable paths away from guest traffic.";
-  }
+  const helpfulAddOns = buildHelpfulAddOns(inp, guests, wantsDanceFloor(inp), isEvening);
 
-  let lightingNote = "";
-  if (inp.eventTime === "night" || inp.eventTime === "evening" || inp.eveningExtended === "yes") {
-    lightingNote = "Evening or night timing: tent lighting is strongly recommended for safety, food service, and photos.";
-  } else if (inp.format === "dance" || inp.music === "dj") {
-    lightingNote = "Dance-focused program: add ambient plus task lighting so the floor and paths stay safe after dark.";
-  } else {
-    lightingNote = "If your event runs past sunset, add lighting early so you are not scrambling week-of.";
-  }
-
-  const comfortNotes: string[] = [];
-  if (inp.weatherGoal === "rain" || inp.weatherGoal === "full") {
-    comfortNotes.push("Rain backup: covered food service and protected transitions between tents beat a last-minute scramble.");
-  }
-  if (inp.separateFoodTent === "yes") {
-    comfortNotes.push("Separate food-service or prep coverage keeps cooking and heat out of the guest tent and protects your meal service.");
-  }
-  comfortNotes.push(
-    "If you want more circulation, weather flexibility, or a more comfortable guest experience, sizing up is usually the better fit.",
-  );
-
-  const foodNotes: string[] = [];
+  const planningNotes: string[] = [
+    "This setup is estimated on the safe side for comfort, flow, and small surprises in headcount.",
+    "If you want more circulation or weather flexibility, sizing up the tent is often the better call.",
+  ];
   if (inp.food !== "none") {
-    foodNotes.push("Serving stays under the guest tent; open flame and full cooking belong in designated prep areas — tell us if you need that layout.");
+    planningNotes.push("Covered service space usually keeps food and lines running more smoothly than squeezing everything into one tight lane.");
   }
-  if (inp.cateringHelp === "yes" || inp.cateringHelp === "maybe") {
-    foodNotes.push("We may be able to connect you with food or catering partners — ask when you call.");
+  if (isEvening) {
+    planningNotes.push("For evening events, lighting should be part of the plan from day one—not a last-minute add.");
   }
-  if (inp.separateFoodTent === "yes" || (inp.separateFoodTent === "unsure" && inp.food !== "none")) {
-    foodNotes.push("Buffet or stations with a crowd often work better with a satellite canopy for lines and staging.");
-  }
-
-  const forgottenItems = [
-    "Trash and recycling stations near food and bar",
-    "Extra linens for buffet, bar, cake, or gift tables",
-    "Non-slip surfacing or flooring if grass may be soft",
-    "Clear access path for catering and rental delivery",
-  ];
-  if (inp.extraLounge) forgottenItems.push("Lounge seating and side tables for overflow mingling");
-  if (inp.extraGames) forgottenItems.push("Open lawn or paved area for games without blocking exits");
-
-  let restroomNote: string | null = null;
-  if (inp.extraRestroom || guests > 90 || (guests > 60 && ["festival", "fundraiser", "community", "wedding"].includes(inp.eventType))) {
-    restroomNote =
-      "For larger or longer outdoor events, it is worth planning restroom access or portable restroom support near guest flow.";
-  }
-
-  let gamesNote: string | null = null;
   if (inp.extraGames) {
-    gamesNote = "Games and activities need open footprint — we’ll leave buffer in the layout so lanes stay clear.";
-  } else if (inp.eventType === "backyard" || inp.eventType === "graduation" || inp.eventType === "birthday") {
-    gamesNote = "Optional: lawn games or a kids’ zone — say the word and we’ll reserve space in the plan.";
+    planningNotes.push("Games or activities need open footprint—we’ll keep lanes clear for exits and flow.");
+  }
+  if (inp.extraRestroom || guests > 85 || (guests > 55 && ["festival", "fundraiser", "community", "wedding"].includes(inp.eventType))) {
+    planningNotes.push("For larger or longer outdoor events, restroom access or portable units near guest flow are worth planning early.");
   }
 
-  const partnershipNote =
-    inp.cateringHelp === "yes" || inp.cateringHelp === "maybe"
-      ? "Partners: we can discuss trusted food and service vendors when you book."
-      : null;
+  const summaryLine =
+    "Here’s a practical starting plan you can share with our team—clear, comfortable, and easy to adjust once we see your site.";
 
-  const weatherItems: string[] = [];
-  if (inp.weatherGoal !== "basic") weatherItems.push("Sidewalls or panels matched to wind and rain exposure");
-  if (inp.eveningExtended === "yes") weatherItems.push("Temperature often drops after sunset — plan layers for staff and guests");
+  const disclaimer =
+    "This is a smart starting plan from your event details. Final picks may change with layout, site conditions, weather, and venue rules.";
 
-  const startingSetup: { label: string; value: string }[] = [
-    { label: "Main tent (starting point)", value: `${tentPick.label} class (~${tentPick.sqFt.toLocaleString()} sq ft covered)` },
-    { label: "Chairs (with buffer)", value: `${chairs} chairs` },
+  return {
+    summaryLine,
+    recommendedSetup,
+    rentalPackage,
+    helpfulAddOns,
+    planningNotes,
+    disclaimer,
+  };
+}
+
+function buildRentalPackage(
+  inp: QuickPlannerInput,
+  tentLabel: string,
+  dance: boolean,
+  evening: boolean,
+): RentalPackageBlock {
+  const { name, why } = packageNameAndWhy(inp);
+  const includes: string[] = [
+    `Main tent starting point: ${tentLabel}`,
+    "Guest seating counts with buffer",
+    "Bistro / tent lighting in the plan",
+    "Layout guidance for your property",
   ];
-  if (roundTables > 0) startingSetup.push({ label: "60″ round guest tables", value: `${roundTables} tables (~8 guests each, rounded up)` });
-  if (banquetTables > 0) startingSetup.push({ label: "8′ banquet tables", value: `${banquetTables} tables` });
-  if (cocktailTables > 0) startingSetup.push({ label: "Cocktail / high-top tables", value: `${cocktailTables} tables` });
-  if (buffetTables > 0) startingSetup.push({ label: "Buffet / food tables", value: `${buffetTables} tables` });
-  if (barTables > 0) startingSetup.push({ label: "Bar tables", value: `${barTables}` });
-  if (giftCakeTables > 0) startingSetup.push({ label: "Gift / cake / display", value: `${giftCakeTables} table` });
-  if (serviceExtra > 0) startingSetup.push({ label: "Extra service / staging tables", value: `${serviceExtra}` });
-  if (needsLighting) {
-    startingSetup.push({
-      label: "Tent lighting",
-      value: inp.eventTime === "night" || inp.format === "dance" ? "Strongly recommended" : "Recommended",
+  if (inp.food !== "none") includes.push("Buffet, bar, or cake/service table planning as needed");
+  if (dance) includes.push("Dance floor sizing aligned to your guest count");
+  if (evening) includes.push("Evening lighting treated as standard—not optional");
+
+  const optionalAddOns: string[] = [];
+  if (inp.drinks === "bar") optionalAddOns.push("Sidewalls or window panels for wind and light rain");
+  if (inp.extraFoodServiceTent) optionalAddOns.push("Satellite canopy for catering or prep");
+  if (inp.extraLounge) optionalAddOns.push("Lounge seating cluster");
+  if (optionalAddOns.length === 0) optionalAddOns.push("Sidewalls, climate fans/heaters by season, upgraded linens");
+
+  return { name, why, includes, optionalAddOns };
+}
+
+function packageNameAndWhy(inp: QuickPlannerInput): { name: string; why: string } {
+  const g = inp.guestCount;
+  switch (inp.eventType) {
+    case "wedding":
+      return {
+        name: "Wedding Reception Starter Package",
+        why: "Balances dining space, service flow, and room to move—typical for Connecticut outdoor receptions.",
+      };
+    case "graduation":
+      return {
+        name: "Graduation Party Package",
+        why: "A smart mix of seating, food service, and gathering space for family and friends.",
+      };
+    case "backyard":
+      return {
+        name: "Backyard Celebration Package",
+        why: "Relaxed seating and service layout that fits most lawns and driveways without feeling cramped.",
+      };
+    case "sweet16":
+    case "quince":
+      return {
+        name: inp.eventType === "quince" ? "Quinceañera Celebration Package" : "Sweet 16 Celebration Package",
+        why: "Designed for photos, food, and dancing with age-appropriate flow and extra comfort built in.",
+      };
+    case "corporate":
+      return {
+        name: "Corporate Event Package",
+        why: "Professional footprint for programs, networking, and branded service areas.",
+      };
+    case "fundraiser":
+      return {
+        name: inp.eventStyle === "cocktail" ? "Cocktail Fundraiser Package" : "Fundraiser Event Package",
+        why: "Supports mingling, remarks, and service so donors move easily and the program stays on track.",
+      };
+    case "community":
+    case "festival":
+      return {
+        name: "Community Event Package",
+        why: "Scales for town and school events with flexible seating and service staging.",
+      };
+    case "tailgate":
+      return {
+        name: "Tailgate Package",
+        why: "Compact, social layout for standing, drinks, and casual food.",
+      };
+    case "birthday":
+      return {
+        name: "Birthday Celebration Package",
+        why: "Flexible layout for cake, gifts, and guests—without over-building the footprint.",
+      };
+    default:
+      if (inp.eventStyle === "cocktail") {
+        return {
+          name: "Cocktail & Mingling Package",
+          why: "Emphasizes high-tops, bar flow, and open movement for " + g + " guests.",
+        };
+      }
+      return {
+        name: "Outdoor Celebration Package",
+        why: "A balanced starting setup for your guest count and program style.",
+      };
+  }
+}
+
+function buildHelpfulAddOns(inp: QuickPlannerInput, guests: number, dance: boolean, evening: boolean): AddOnWithWhy[] {
+  const out: AddOnWithWhy[] = [];
+
+  if (inp.drinks === "bar" || inp.food === "buffet" || inp.food === "stations" || guests > 75 || evening) {
+    out.push({
+      title: "Sidewalls or window panels",
+      why: "Helps with wind, light rain, and temperature—more flexibility if the forecast shifts.",
     });
   }
 
-  startingSetup.push({ label: "Linens (planning count)", value: `About ${linenSets}+ linen sets — confirm final counts when you order` });
+  if (dance) {
+    out.push({
+      title: "Dance floor",
+      why: "Keeps dancing defined, protects grass, and gives your celebration a natural focal point.",
+    });
+  }
 
-  const headline = "Based on your answers, here is a smart, comfortable starting plan.";
+  if (inp.extraFoodServiceTent || inp.food === "stations") {
+    out.push({
+      title: "Extra food-service or prep tent",
+      why: "Protects catering lines and prep so heat and traffic stay out of the guest area.",
+    });
+  }
 
-  const disclaimer =
-    "This is a starting plan from your event details. Final recommendations can change with layout, site conditions, weather, and town or venue rules.";
+  if (inp.drinks === "bar") {
+    out.push({
+      title: "Bar tables & organized beverage service",
+      why: "Keeps drink traffic predictable and service out of the main walkways.",
+    });
+  }
 
-  return {
-    headline,
-    startingSetup,
-    addOns,
-    foodNotes,
-    comfortNotes,
-    forgottenItems,
-    audioNote,
-    lightingNote,
-    weatherItems,
-    danceFloorRec: wantsDanceFloor(inp) ? danceFloorSize(guests, inp) : null,
-    partnershipNote,
-    restroomNote,
-    gamesNote,
-    disclaimer,
-  };
+  out.push({
+    title: "Linens",
+    why: "Pulls the look together and protects tables—especially for buffet, bar, and cake.",
+  });
+
+  out.push({
+    title: "Trash & recycling stations",
+    why: "Keeps the tent and lawn presentable through the whole event.",
+  });
+
+  if (inp.extraGames || inp.eventType === "backyard" || inp.eventType === "graduation") {
+    out.push({
+      title: "Games / activity space",
+      why: "Great for family crowds—worth carving layout space so exits stay clear.",
+    });
+  }
+
+  if (inp.extraRestroom || guests > 90) {
+    out.push({
+      title: "Restroom planning",
+      why: "Larger or longer outdoor events run smoother with restrooms near guest flow.",
+    });
+  }
+
+  // Climate — no season question; light touch
+  if (inp.eventTime === "afternoon") {
+    out.push({
+      title: "Fans or airflow options",
+      why: "Warm afternoons under a tent are more comfortable with a little air movement.",
+    });
+  }
+
+  return out.slice(0, 8);
 }
 
 export function defaultQuickPlannerInput(): QuickPlannerInput {
@@ -394,60 +473,46 @@ export function defaultQuickPlannerInput(): QuickPlannerInput {
     eventType: "wedding",
     guestCount: 75,
     eventTime: "afternoon",
-    season: "",
-    format: "mixed",
+    eventStyle: "mixed",
     seatingStyle: "rounds",
-    allSeated: "unsure",
     food: "buffet",
-    cateringHelp: "maybe",
     drinks: "bar",
     music: "background",
     danceFloor: "maybe",
-    tentKnown: "unsure",
-    weatherGoal: "comfort",
-    separateFoodTent: "unsure",
-    eveningExtended: "no",
-    extraRestroom: false,
     extraGames: false,
     extraGiftCake: false,
-    extraServiceTables: false,
     extraLounge: false,
-    extraPhoto: false,
+    extraRestroom: false,
+    extraFoodServiceTent: false,
     comfortableBoost: false,
   };
 }
 
-/** Plain-text plan for email, clipboard, or sessionStorage prefill. */
 export function formatQuickPlannerSummary(inp: QuickPlannerInput, res: QuickPlannerResult): string {
+  const pkg = res.rentalPackage;
   const lines = [
-    "Quick Event Planner — starting plan",
+    "Quick Event Planner",
     "",
-    res.headline,
+    res.summaryLine,
     "",
-    "YOUR STARTING SETUP",
-    ...res.startingSetup.map((r) => `• ${r.label}: ${r.value}`),
+    "YOUR RECOMMENDED SETUP",
+    ...res.recommendedSetup.map((s) => `• ${s}`),
     "",
-    "RECOMMENDED ADD-ONS",
-    ...(res.addOns.length ? res.addOns.map((a) => `• ${a}`) : ["• (none flagged beyond your setup)"]),
+    "RENTAL PACKAGE WE RECOMMEND",
+    pkg.name,
+    pkg.why,
+    "Includes:",
+    ...pkg.includes.map((i) => `• ${i}`),
+    "Optional add-ons:",
+    ...pkg.optionalAddOns.map((i) => `• ${i}`),
     "",
-    "FOOD & SERVICE",
-    ...res.foodNotes.map((n) => `• ${n}`),
-    res.partnershipNote ? `• ${res.partnershipNote}` : "",
+    "HELPFUL ADD-ONS",
+    ...res.helpfulAddOns.map((a) => `• ${a.title} — ${a.why}`),
     "",
-    "COMFORT & WEATHER",
-    ...res.comfortNotes.map((n) => `• ${n}`),
-    res.lightingNote ? `• ${res.lightingNote}` : "",
-    ...res.weatherItems.map((w) => `• ${w}`),
-    "",
-    "AUDIO",
-    `• ${res.audioNote}`,
-    "",
-    "COMMONLY FORGOTTEN",
-    ...res.forgottenItems.map((f) => `• ${f}`),
-    res.restroomNote ? `• ${res.restroomNote}` : "",
-    res.gamesNote ? `• ${res.gamesNote}` : "",
+    "PLANNING NOTES",
+    ...res.planningNotes.map((n) => `• ${n}`),
     "",
     res.disclaimer,
-  ].filter(Boolean);
+  ];
   return lines.join("\n");
 }
