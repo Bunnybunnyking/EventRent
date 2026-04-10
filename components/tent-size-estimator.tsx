@@ -117,8 +117,8 @@ export function TentSizeEstimator() {
 
   return (
     <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
-      <div className="grid gap-8 xl:grid-cols-2 xl:gap-12">
-        <div className="space-y-5">
+      <div className="grid gap-6 lg:grid-cols-2 lg:gap-8 lg:items-start">
+        <div className="min-w-0 space-y-5">
           <div>
             <label htmlFor="plan-guests" className="text-sm font-semibold text-stone-800">
               Approximate guests
@@ -276,27 +276,28 @@ export function TentSizeEstimator() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center rounded-2xl border border-[#b78a2d]/35 bg-gradient-to-br from-[#fffbf0] to-stone-50 p-6">
+        <div className="flex flex-col rounded-2xl border border-[#b78a2d]/35 bg-gradient-to-br from-[#fffbf0] to-stone-50 p-5">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8a6a2a]">Estimated footprint</p>
-          <div className="mt-4 space-y-4">
-            <div>
-              <p className="text-xs font-semibold text-stone-500">Good fit range</p>
-              <p className="text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">
-                {result.low.toLocaleString()}–{result.high.toLocaleString()} sq ft
+          <div className="mt-3 grid gap-3 sm:grid-cols-2 sm:gap-2">
+            <div className="rounded-xl bg-white/60 px-3 py-2.5 ring-1 ring-stone-200/80">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-stone-500">Good fit</p>
+              <p className="mt-0.5 text-xl font-semibold tabular-nums tracking-tight text-stone-900 sm:text-2xl">
+                {result.low.toLocaleString()}–{result.high.toLocaleString()}{" "}
+                <span className="text-sm font-medium text-stone-600">sq ft</span>
               </p>
             </div>
-            <div className="rounded-xl border border-[#c9a24a]/40 bg-white/90 px-4 py-3">
-              <p className="text-xs font-semibold text-[#6b5220]">More comfortable fit</p>
-              <p className="mt-1 text-lg font-semibold text-stone-900">
-                {result.comfortableLow.toLocaleString()}–{result.comfortableHigh.toLocaleString()} sq ft
+            <div className="rounded-xl border border-[#c9a24a]/40 bg-white/90 px-3 py-2.5">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-[#6b5220]">More comfortable</p>
+              <p className="mt-0.5 text-lg font-semibold tabular-nums text-stone-900 sm:text-xl">
+                {result.comfortableLow.toLocaleString()}–{result.comfortableHigh.toLocaleString()}{" "}
+                <span className="text-sm font-medium text-stone-600">sq ft</span>
               </p>
-              <p className="mt-2 text-xs text-stone-600">Extra circulation and service space. Worth it when you want generous aisles or room to grow.</p>
             </div>
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-stone-700">{example}</p>
-          <p className="mt-3 text-xs leading-relaxed text-stone-600">{result.rationale}</p>
-          <p className="mt-4 rounded-xl bg-white/80 p-3 text-xs font-medium text-stone-800 ring-1 ring-stone-200/80">
-            Starting estimates only, not a quote. Final tent size depends on your layout, site boundaries, equipment, and how we anchor on your property.
+          <p className="mt-3 text-xs leading-snug text-stone-600">{example}</p>
+          <p className="mt-2 text-xs leading-snug text-stone-500">{result.rationale}</p>
+          <p className="mt-3 rounded-lg bg-white/80 px-2.5 py-2 text-[0.7rem] leading-snug text-stone-700 ring-1 ring-stone-200/80">
+            Estimates only, not a quote. Confirm for your layout and site.
           </p>
         </div>
       </div>
