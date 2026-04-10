@@ -147,6 +147,16 @@ export function PlanningHub() {
             title="How to estimate the right tent size"
             intro="Start here: tent size depends on more than headcount. Layout, table style, buffet space, bars, dance floors, and how guests move all change the footprint. Use the estimator, then compare your range to the reference chart. Final picks should match your site and goals; call us to confirm."
           />
+          <div className="mt-6 rounded-2xl border border-amber-200/90 bg-[#fffbf0] px-5 py-4 text-sm leading-relaxed text-stone-800 sm:px-6">
+            <p className="font-semibold text-stone-900">Buffet, DJ, and cooking</p>
+            <p className="mt-2">
+              A full buffet line and a DJ or band often deserve a{" "}
+              <strong className="font-semibold text-stone-900">separate tent or canopy</strong> beside the main tent so food service, sound, and guest seating are not fighting the same square footage.
+            </p>
+            <p className="mt-2">
+              If you are <strong className="font-semibold text-stone-900">cooking or grilling on site</strong>, let us know when you plan. We need to plan for spacing, ventilation, and a safe layout around heat and equipment.
+            </p>
+          </div>
           <div className="mt-8 sm:mt-10">
             <p className="mb-4 inline-flex items-center rounded-full border border-[#c9a24a]/50 bg-[#fffbf0] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#6b5220]">
               Interactive estimator
@@ -157,7 +167,7 @@ export function PlanningHub() {
           <div className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:mt-12 sm:p-8">
             <h3 className="text-lg font-semibold text-stone-900">Reference chart: common tent sizes and seated capacity</h3>
             <p className="mt-2 text-sm text-stone-600">
-              Seated counts assume typical table layouts; your program may need more room. Banquet rows often pack tighter than rounds. Ceremony seating usually needs less space than a full dinner reception. Buffets, bars, and dance floors push you toward the larger end or the next size class.
+              Seated counts assume typical table layouts; your program may need more room. Banquet rows often pack tighter than rounds. Ceremony seating usually needs less space than a full dinner reception. Buffets, bars, and dance floors push you toward the larger end or the next size class. Large buffet or DJ setups may use a separate tent instead of one oversized main tent.
             </p>
             <div className="mt-6 overflow-x-auto">
               <table className="w-full min-w-[640px] border-collapse text-left text-sm">

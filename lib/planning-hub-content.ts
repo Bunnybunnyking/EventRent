@@ -65,7 +65,7 @@ export const planningSteps: PlanningStep[] = [
     n: 4,
     title: "Think beyond tables and chairs",
     body:
-      "Buffet tables, bars, DJs, bands, gift tables, dessert stations, head tables, and clear walkways all consume floor space. If any of those matter to your event, say so early. They are often what pushes a “maybe” tent size into the right size class.",
+      "Buffet tables, bars, DJs, bands, gift tables, dessert stations, head tables, and clear walkways all consume floor space. A busy buffet and a dance or DJ zone often work better with a second tent or canopy so lines and speakers are not crammed into the main footprint. If you are cooking or grilling outdoors, tell us early so we plan spacing and ventilation. Say what matters early; it is often what turns a maybe tent size into the right plan.",
   },
   {
     n: 5,
@@ -189,7 +189,14 @@ export const forgotCategories: ForgotCategory[] = [
   },
   {
     title: "Food and service",
-    items: ["Buffet and bar tables", "Catering prep or satellite tent", "Extra service tables", "Generator and power paths"],
+    items: [
+      "Separate tent or canopy for buffet and/or DJ when the main tent should stay for guests",
+      "Buffet and bar tables",
+      "Catering prep or satellite tent",
+      "On-site cooking or grilling (tell us so we plan layout and safety)",
+      "Extra service tables",
+      "Generator and power paths",
+    ],
   },
   {
     title: "Flow and experience",
