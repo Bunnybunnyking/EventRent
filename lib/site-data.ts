@@ -97,11 +97,12 @@ export const eventTypeLinks: { label: string; href: string }[] = [
   { label: "Quinceañeras", href: "/events/quinceaneras" },
   { label: "Tailgates", href: "/events/tailgating" },
   { label: "Corporate events", href: "/corporate-event-rentals" },
-  { label: "Backyard parties", href: "/faq#faq-backyard-party" },
+  { label: "Backyard parties", href: "/planning#party-planner" },
 ];
 
 /** Footer and cross-page links to occasion landing pages (not shown in main header nav). */
 export const eventOccasionGuideLinks: { label: string; href: string }[] = [
+  { label: "Backyard parties", href: "/planning#party-planner" },
   { label: "Community & school", href: "/events/community-school-town" },
   { label: "Festivals & fairs", href: "/events/festivals-fairs" },
   { label: "Graduation parties", href: "/events/graduation-parties" },

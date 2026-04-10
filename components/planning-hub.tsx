@@ -11,6 +11,7 @@ import { business } from "@/lib/site-data";
 
 const sectionNav = [
   { href: "#size-guide", label: "Tent size" },
+  { href: "#party-planner", label: "Party planner" },
   { href: "#tent-types", label: "Tent types" },
   { href: "#site-surface", label: "Site & surface" },
   { href: "#weather", label: "Weather" },
@@ -56,10 +57,9 @@ const quickCards: QuickCard[] = [
   },
   {
     title: "Backyard parties",
-    text: "Yards, decks, and driveways need realistic footprints—plus backup when the grill line gets busy.",
-    href: "/faq#faq-backyard-party",
-    cta: "Backyard planning",
-    external: true,
+    text: "At-home cookouts and celebrations—realistic footprints, sound and power paths, lawn care, and weather backup.",
+    href: "#backyard-parties",
+    cta: "Backyard party tips",
   },
   {
     title: "Birthdays & celebrations",
@@ -83,9 +83,9 @@ const quickCards: QuickCard[] = [
   },
 ];
 
-function PlanningSectionNav({ className = "" }: { className?: string }) {
+function PlanningSectionNav() {
   return (
-    <nav aria-label="Jump to planning topics" className={className}>
+    <nav aria-label="Jump to planning topics">
       <ul className="flex gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] md:flex-wrap md:justify-center md:gap-2.5">
         {sectionNav.map((item) => (
           <li key={item.href} className="shrink-0">
@@ -119,7 +119,11 @@ export function PlanningHub() {
               The right tent size, layout, and weather plan save you stress long before delivery day. Whether you are hosting in Wethersfield, along the shoreline, or anywhere statewide, we help you think through what actually happens under the canopy—not just guest count on a spreadsheet.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-stone-600">
-              You do not need every detail finalized to call. Bring your date, location, and a rough headcount—we will help you sequence the rest.
+              You do not need every detail finalized to call. Bring your date, location, and a rough headcount—we will help you sequence the rest. Planning{" "}
+              <Link href="#party-planner" className="font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
+                backyard parties
+              </Link>
+              , birthdays, and other milestones starts with the right footprint—not a guess.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
               <Link
@@ -188,13 +192,13 @@ export function PlanningHub() {
         </div>
       </section>
 
-      <section className="bg-white py-12 lg:py-14">
+      <section id="party-planner" className="scroll-mt-28 bg-white py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Planning" }]} />
           <SectionHeading
-            eyebrow="Quick start"
+            eyebrow="Party planner"
             title="The shortest path from “I have a date” to a solid plan"
-            intro="Skim what matters most, then go deeper in the sections below. Each link jumps you to the same topic on this page—or to backyard, birthday, and package ideas elsewhere on the site."
+            intro="Skim the cards below—backyard parties, birthdays, packages, and more—then use the topic chips at the top or keep scrolling for sizing, weather, and layout."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {quickCards.map((card) => (
@@ -422,45 +426,48 @@ export function PlanningHub() {
             intro="Short cues for common Connecticut events. Follow the links for deeper occasion guides where we have them."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Weddings",
-                focus: "Ceremony hold, dinner rounds, dance floor sightlines, lighting for photos.",
-                href: "/wedding-tent-rentals",
-              },
-              {
-                title: "Graduation parties",
-                focus: "Flexible headcount, food lines, gift and dessert zones, sunset timing.",
-                href: "/events/graduation-parties",
-              },
-              {
-                title: "Backyard parties",
-                focus: "Cookouts and tent coverage at home—property lines, power for sound, lawn protection, neighbor-friendly teardown.",
-                href: "/faq#faq-backyard-party",
-              },
-              {
-                title: "Birthday parties",
-                focus: "Kids or adults—cake and gift zones, seating mix, games nearby, and weather backup for the whole afternoon or evening.",
-                href: "/party-packages",
-              },
-              {
-                title: "Corporate & galas",
-                focus: "Registration flow, AV paths, donor sightlines, brand-clean presentation.",
-                href: "/corporate-event-rentals",
-              },
-              {
-                title: "Community & school",
-                focus: "Vendor rows, accessibility, permits, volunteer-friendly layout.",
-                href: "/events/community-school-town",
-              },
-              {
-                title: "Festivals & fundraisers",
-                focus: "Throughput, weather ops, multi-day strike plans, donor comfort.",
-                href: "/events/festivals-fairs",
-              },
-            ].map((o) => (
+            {(
+              [
+                {
+                  title: "Weddings",
+                  focus: "Ceremony hold, dinner rounds, dance floor sightlines, lighting for photos.",
+                  href: "/wedding-tent-rentals",
+                },
+                {
+                  title: "Graduation parties",
+                  focus: "Flexible headcount, food lines, gift and dessert zones, sunset timing.",
+                  href: "/events/graduation-parties",
+                },
+                {
+                  title: "Backyard parties",
+                  focus: "Cookouts and tent coverage at home—property lines, power for sound, lawn protection, neighbor-friendly teardown.",
+                  href: "/faq#faq-backyard-party",
+                },
+                {
+                  title: "Birthday parties",
+                  focus: "Kids or adults—cake and gift zones, seating mix, games nearby, and weather backup for the whole afternoon or evening.",
+                  href: "/party-packages",
+                },
+                {
+                  title: "Corporate & galas",
+                  focus: "Registration flow, AV paths, donor sightlines, brand-clean presentation.",
+                  href: "/corporate-event-rentals",
+                },
+                {
+                  title: "Community & school",
+                  focus: "Vendor rows, accessibility, permits, volunteer-friendly layout.",
+                  href: "/events/community-school-town",
+                },
+                {
+                  title: "Festivals & fundraisers",
+                  focus: "Throughput, weather ops, multi-day strike plans, donor comfort.",
+                  href: "/events/festivals-fairs",
+                },
+              ]
+            ).map((o) => (
               <Link
                 key={o.title}
+                id={o.title === "Backyard parties" ? "backyard-parties" : undefined}
                 href={o.href}
                 className="group rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#c9a24a] hover:shadow-md"
               >
