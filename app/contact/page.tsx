@@ -17,9 +17,13 @@ export default function ContactPage() {
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
         <div className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a97a21]">Contact</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-stone-900">Request a quote for your Connecticut event</h1>
-          <p className="mt-3 max-w-2xl text-stone-600">
-            Share a few details and we will reply with clear recommendations and next steps. Call <a href={business.phoneHref} className="font-semibold underline">{business.phone}</a> for immediate help.
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">Book your Connecticut event</h1>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg">
+            Quick form below—add more detail anytime after you submit. Prefer the phone? Call{" "}
+            <a href={business.phoneHref} className="font-semibold text-stone-800 underline underline-offset-2">
+              {business.phone}
+            </a>
+            .
           </p>
         </div>
         <div id="quote" className="scroll-mt-28">
