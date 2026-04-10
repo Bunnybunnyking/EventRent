@@ -38,7 +38,7 @@ function suggestFootprintSqFt(
   const high = Math.round(base * 1.12);
 
   const rationale =
-    "Includes rough allowance for aisles and service. Dance floors, bars, stages, head tables, or tight sites may require more—or a modular layout.";
+    "Includes rough allowance for aisles and service. Dance floors, bars, stages, head tables, or tight sites may require more, or a modular layout.";
 
   return { low, high, rationale };
 }
@@ -46,10 +46,10 @@ function suggestFootprintSqFt(
 function sqFtToExampleTents(low: number, high: number): string {
   const mid = (low + high) / 2;
   if (mid < 900) {
-    return "Examples: 20×40, 30×30, or similar—often paired with a canopy for food or bar.";
+    return "Examples: 20×40, 30×30, or similar, often paired with a canopy for food or bar.";
   }
   if (mid < 1600) {
-    return "Examples: 30×45, 40×40, 40×50—verify against your actual table map and walkways.";
+    return "Examples: 30×45, 40×40, 40×50; verify against your actual table map and walkways.";
   }
   if (mid < 2600) {
     return "Examples: 40×60 to 40×80 class structures, or modular sections connected with gutters.";
@@ -57,7 +57,7 @@ function sqFtToExampleTents(low: number, high: number): string {
   if (mid < 4000) {
     return "Examples: 40×100, 50×70+, or multi-bay frame layouts for programs with multiple zones.";
   }
-  return "Large-event territory—often multiple structures or very wide frames. Site visit and CAD-style planning recommended.";
+  return "Large-event territory: often multiple structures or very wide frames. Site visit and CAD-style planning recommended.";
 }
 
 export function TentSizeEstimator() {
@@ -165,7 +165,7 @@ export function TentSizeEstimator() {
           <p className="mt-3 text-sm leading-relaxed text-stone-700">{example}</p>
           <p className="mt-4 text-xs leading-relaxed text-stone-600">{result.rationale}</p>
           <p className="mt-4 rounded-xl bg-white/80 p-3 text-xs font-medium text-stone-800 ring-1 ring-stone-200/80">
-            This is a planning estimate only—not a quote. Final tent size depends on your exact layout, site boundaries, equipment, and Connecticut weather planning.
+            This is a planning estimate only, not a quote. Final tent size depends on your exact layout, site boundaries, equipment, and Connecticut weather planning.
           </p>
         </div>
       </div>

@@ -7,10 +7,42 @@ import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import type { EventLandingContent } from "@/lib/event-landing-data";
 import { business } from "@/lib/site-data";
 
+const eventSectionNav = [
+  { href: "#overview", label: "Overview" },
+  { href: "#priorities", label: "Priorities" },
+  { href: "#planning", label: "Planning" },
+  { href: "#upgrades", label: "Upgrades" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#related", label: "Links" },
+];
+
+function EventLandingStickyNav() {
+  return (
+    <div className="sticky z-40 border-b border-stone-200/90 bg-[#faf9f7]/95 py-2 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md supports-[backdrop-filter]:bg-[#faf9f7]/90 [top:max(0px,calc(env(safe-area-inset-top,0px)+6.25rem))] md:[top:max(0px,calc(env(safe-area-inset-top,0px)+9.25rem))] lg:static lg:z-auto lg:border-0 lg:bg-transparent lg:py-0 lg:shadow-none lg:backdrop-blur-none">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Jump to sections on this page">
+          <ul className="flex gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] md:flex-wrap md:justify-center md:gap-2.5">
+            {eventSectionNav.map((item) => (
+              <li key={item.href} className="shrink-0">
+                <a
+                  href={item.href}
+                  className="inline-flex rounded-full border border-stone-200 bg-white px-3.5 py-2 text-xs font-semibold text-stone-800 shadow-[0_1px_0_rgba(0,0,0,0.04)] transition hover:border-stone-300 hover:bg-stone-50 sm:px-4 sm:text-sm"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
+}
+
 export function EventLandingTemplate({ content }: { content: EventLandingContent }) {
   return (
     <>
-      <section className="border-b border-stone-200 bg-gradient-to-br from-[#faf9f7] via-white to-stone-100 py-12 lg:py-16">
+      <section className="border-b border-stone-200 bg-gradient-to-br from-[#faf9f7] via-white to-stone-100 py-10 sm:py-12 lg:py-16">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8">
           <div className="order-2 lg:order-1">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">{content.heroEyebrow}</p>
@@ -43,6 +75,8 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         </div>
       </section>
 
+      <EventLandingStickyNav />
+
       <section className="border-b border-stone-200 bg-white py-3">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: content.h1 }]} />
@@ -54,7 +88,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         <p className="mt-1 text-xs text-stone-500">Family owned · Since {business.establishedYear} · {business.celebrationTagline}</p>
       </div>
 
-      <section className="py-14 lg:py-16">
+      <section id="overview" className="scroll-mt-36 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 lg:items-start">
             <div>
@@ -72,7 +106,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         </div>
       </section>
 
-      <section className="bg-white py-12 lg:py-14">
+      <section id="priorities" className="scroll-mt-36 bg-white py-10 sm:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg ring-1 ring-stone-200/80 lg:order-1">
@@ -104,9 +138,9 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         </div>
       </section>
 
-      <section className="py-12 lg:py-14">
+      <section className="py-10 sm:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] px-6 py-10 text-stone-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)] sm:px-10 md:flex md:items-center md:justify-between md:gap-8">
+          <div className="rounded-3xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] px-6 py-8 text-stone-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)] sm:px-10 sm:py-10 md:flex md:items-center md:justify-between md:gap-8">
             <div className="max-w-xl">
               <h2 className="text-2xl font-semibold tracking-tight sm:text-[1.65rem]">{content.midCtaHeadline}</h2>
               <p className="mt-3 text-base leading-relaxed text-stone-300">{content.midCtaSub}</p>
@@ -123,7 +157,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         </div>
       </section>
 
-      <section className="bg-stone-50 py-14 lg:py-16">
+      <section id="planning" className="scroll-mt-36 bg-stone-50 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
             <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
@@ -152,7 +186,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         </div>
       </section>
 
-      <section className="py-14 lg:py-16">
+      <section id="upgrades" className="scroll-mt-36 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-stone-900">{content.upgradesTitle}</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -166,11 +200,11 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         </div>
       </section>
 
-      <section className="border-t border-stone-200 bg-white py-14 lg:py-16">
+      <section id="faq" className="scroll-mt-36 border-t border-stone-200 bg-white py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-stone-900">Questions we hear often</h2>
           <p className="mx-auto mt-3 max-w-lg text-center text-sm text-stone-600">
-            Straight answers—call us if yours is not listed.
+            Straight answers. Call us if yours is not listed.
           </p>
           <div className="mt-8">
             <FAQAccordion items={content.faq} />
@@ -178,7 +212,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
         </div>
       </section>
 
-      <section className="bg-stone-50 py-10">
+      <section id="related" className="scroll-mt-36 bg-stone-50 py-8 sm:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm font-semibold uppercase tracking-[0.12em] text-stone-500">Related planning</p>
           <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2">

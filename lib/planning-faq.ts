@@ -1,14 +1,14 @@
-/** FAQ content for `/planning` — used on-page and for FAQPage JSON-LD. */
+/** FAQ content for `/planning` (on-page and FAQPage JSON-LD). */
 export const planningFaqItems = [
   {
     question: "What size tent do I need for 50, 100, or 150 guests in Connecticut?",
     answer:
-      "Headcount is only the starting point. The same guest count needs a larger footprint for seated rounds with a dance floor than for a standing cocktail layout. Buffets, bars, stages, and aisles all consume space. Use our on-page estimator as a rough guide, then call us with your date and site—we translate your real program into tent dimensions and inventory.",
+      "Headcount is only the starting point. The same guest count needs a larger footprint for seated rounds with a dance floor than for a standing cocktail layout. Buffets, bars, stages, and aisles all consume space. Use our on-page estimator as a rough guide, then call us with your date and site. We translate your real program into tent dimensions and inventory.",
   },
   {
     question: "Do I need a tent if the forecast looks good?",
     answer:
-      "Often, yes. Tents manage harsh sun, wind, and quick-moving storms—not only steady rain. They also give your event a defined home base for food, music, and seating so your schedule does not depend on perfect weather.",
+      "Often, yes. Tents manage harsh sun, wind, and quick-moving storms, not only steady rain. They also give your event a defined home base for food, music, and seating so your schedule does not depend on perfect weather.",
   },
   {
     question: "Can you set up on a driveway, patio, or parking lot?",
@@ -28,12 +28,12 @@ export const planningFaqItems = [
   {
     question: "How much extra space do I need beyond tables and chairs?",
     answer:
-      "Plan for aisles, staff movement, equipment, and lines at bars or buffets—typically well beyond the table map alone. Crowded layouts look full in a floor plan but feel tight in real life. We help you leave breathing room.",
+      "Plan for aisles, staff movement, equipment, and lines at bars or buffets, typically well beyond the table map alone. Crowded layouts look full in a floor plan but feel tight in real life. We help you leave breathing room.",
   },
   {
     question: "Can you help if I do not have my final layout yet?",
     answer:
-      "Yes. Most people book with a guest range and a rough program. We help you sequence decisions—what to lock first, what can flex later—so you are not stuck guessing alone.",
+      "Yes. Most people book with a guest range and a rough program. We help you sequence decisions (what to lock first, what can flex later) so you are not stuck guessing alone.",
   },
   {
     question: "Do permits matter for tent rentals in Connecticut?",
@@ -43,6 +43,6 @@ export const planningFaqItems = [
   {
     question: "When should I book my tent?",
     answer:
-      "Prime spring and summer weekends fill first statewide. Once your date and location are firm, reach out—even if details are still moving. Early booking protects your preferred tent style and sizing options.",
+      "Prime spring and summer weekends fill first statewide. Once your date and location are firm, reach out, even if details are still moving. Early booking protects your preferred tent style and sizing options.",
   },
 ];
