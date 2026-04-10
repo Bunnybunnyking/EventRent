@@ -22,13 +22,13 @@ export const business = {
   tentSizeRange: "10x10 to 100x250",
 };
 
-/** Primary header navigation (internal routes). “Call Now” (`tel:`) is rendered separately in the header. */
+/** Primary header navigation (internal routes). “Call Now” is on the homepage hero image, not in the nav. */
 export const headerNavLinks = [
   { href: "/tent-rentals", label: "Tents" },
   { href: "/party-packages", label: "Packages" },
+  { href: "/table-chair-rentals", label: "Tables & Chairs" },
   { href: "/wedding-tent-rentals", label: "Weddings" },
   { href: "/corporate-event-rentals", label: "Corporate" },
-  { href: "/table-chair-rentals", label: "Tables & Chairs" },
   { href: "/yard-games", label: "Games" },
 ];
 
@@ -85,15 +85,29 @@ export const services = [
   },
 ];
 
-/** Homepage “event types” row — each item links to a relevant service or FAQ for internal linking. */
+/** Homepage “event types” row — each item links to a relevant service, occasion guide, or FAQ for internal linking. */
 export const eventTypeLinks: { label: string; href: string }[] = [
   { label: "Weddings", href: "/wedding-tent-rentals" },
-  { label: "Backyard parties", href: "/faq#faq-backyard-party" },
-  { label: "Graduation parties", href: "/faq#faq-graduation-events" },
+  { label: "Graduation parties", href: "/events/graduation-parties" },
+  { label: "Festivals & fairs", href: "/events/festivals-fairs" },
+  { label: "Fundraisers & galas", href: "/events/fundraisers-galas" },
+  { label: "Community & school events", href: "/events/community-school-town" },
+  { label: "Sweet 16 parties", href: "/events/sweet-16-parties" },
+  { label: "Quinceañeras", href: "/events/quinceaneras" },
+  { label: "Tailgates", href: "/events/tailgating" },
   { label: "Corporate events", href: "/corporate-event-rentals" },
-  { label: "School events", href: "/faq#faq-corporate-school" },
-  { label: "Community festivals", href: "/corporate-event-rentals" },
-  { label: "Nonprofit and municipal events", href: "/corporate-event-rentals" },
+  { label: "Backyard parties", href: "/faq#faq-backyard-party" },
+];
+
+/** Footer and cross-page links to occasion landing pages (not shown in main header nav). */
+export const eventOccasionGuideLinks: { label: string; href: string }[] = [
+  { label: "Community & school", href: "/events/community-school-town" },
+  { label: "Festivals & fairs", href: "/events/festivals-fairs" },
+  { label: "Graduation parties", href: "/events/graduation-parties" },
+  { label: "Sweet 16", href: "/events/sweet-16-parties" },
+  { label: "Quinceañeras", href: "/events/quinceaneras" },
+  { label: "Tailgating", href: "/events/tailgating" },
+  { label: "Fundraisers & galas", href: "/events/fundraisers-galas" },
 ];
 
 export const townList = [

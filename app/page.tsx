@@ -8,7 +8,7 @@ import {
   WhatWeOfferSection,
 } from "@/components/inventory-sections";
 import { CTASection, GalleryGrid, SectionHeading, ServiceAreaBlock } from "@/components/sections";
-import { bookNowSectionClass } from "@/lib/cta-styles";
+import { bookNowSectionClass, callNowHeroClass } from "@/lib/cta-styles";
 import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 import { business, eventTypeLinks, faqItems, services, testimonials, townList, trustPoints } from "@/lib/site-data";
 import { FAQSchemaItems } from "@/components/schema";
@@ -35,8 +35,13 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center hero-home-fade-in"
           />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#15181b] to-transparent sm:h-20" aria-hidden />
+          <div className="absolute right-3 top-3 z-10 sm:right-5 sm:top-5 md:right-6 md:top-6">
+            <a href={business.phoneHref} className={`${callNowHeroClass} pointer-events-auto`}>
+              Call Now
+            </a>
+          </div>
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#15181b] to-transparent sm:h-20" aria-hidden />
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#15181b] text-white">
@@ -55,9 +60,6 @@ export default function HomePage() {
             <Link href="/contact#quote" className={bookNowSectionClass}>
               Book Now
             </Link>
-            <a href={business.phoneHref} className="rounded-full border border-stone-200 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
-              Call Now
-            </a>
           </div>
           <p className="mt-3 text-xs text-stone-300">Fast quote turnaround. No-pressure planning help. Clear next steps from delivery to pickup.</p>
           <p className="mt-4 max-w-xl text-xs text-stone-400">

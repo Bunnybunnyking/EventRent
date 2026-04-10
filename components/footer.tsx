@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { business, footerServiceLinks, townList } from "@/lib/site-data";
+import { business, eventOccasionGuideLinks, footerServiceLinks, townList } from "@/lib/site-data";
 
 const companyLinks = [
   { href: "/about", label: "About" },
@@ -119,11 +119,16 @@ export function Footer() {
                 Backyard parties
               </Link>
             </li>
-            <li>
-              <Link href="/faq#faq-graduation-events" className="transition hover:text-white">
-                Graduations
-              </Link>
-            </li>
+          </ul>
+          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.1em] text-stone-500">Occasion guides</p>
+          <ul className="mt-2 space-y-2 text-sm">
+            {eventOccasionGuideLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="transition hover:text-white">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

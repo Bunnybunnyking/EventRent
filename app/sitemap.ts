@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteBaseUrl } from "@/lib/metadata";
+import { eventLandingSlugs } from "@/lib/event-landing-data";
 import { townList } from "@/lib/site-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/faq",
     "/service-areas",
+    ...eventLandingSlugs.map((slug) => `/events/${slug}`),
   ];
 
   const townRoutes = townList.map((town) => `/service-areas/${town.toLowerCase().replace(/\s+/g, "-")}`);

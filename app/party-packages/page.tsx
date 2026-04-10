@@ -100,7 +100,19 @@ export default function PartyPackagesPage() {
               <Link href="/corporate-event-rentals" className="font-semibold text-stone-800 underline underline-offset-2">
                 corporate events
               </Link>
-              —then we’ll shape a package quote that fits.
+              . Milestone celebrations often start from our{" "}
+              <Link href="/events/graduation-parties" className="font-semibold text-stone-800 underline underline-offset-2">
+                graduation
+              </Link>
+              ,{" "}
+              <Link href="/events/sweet-16-parties" className="font-semibold text-stone-800 underline underline-offset-2">
+                Sweet 16
+              </Link>
+              , or{" "}
+              <Link href="/events/quinceaneras" className="font-semibold text-stone-800 underline underline-offset-2">
+                quinceañera
+              </Link>{" "}
+              planning guides—then we’ll shape a package quote that fits.
             </p>
           </div>
         </div>

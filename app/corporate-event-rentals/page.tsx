@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CTASection, SectionHeading } from "@/components/sections";
 import { createPageMetadata } from "@/lib/metadata";
@@ -34,6 +35,21 @@ export default function CorporatePage() {
               </div>
             ))}
           </div>
+          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-stone-600">
+            Planning a specific format? Our{" "}
+            <Link href="/events/community-school-town" className="font-semibold text-stone-800 underline underline-offset-2">
+              community &amp; school
+            </Link>
+            ,{" "}
+            <Link href="/events/festivals-fairs" className="font-semibold text-stone-800 underline underline-offset-2">
+              festival
+            </Link>
+            , and{" "}
+            <Link href="/events/fundraisers-galas" className="font-semibold text-stone-800 underline underline-offset-2">
+              fundraiser &amp; gala
+            </Link>{" "}
+            guides walk through layout, weather backup, and crowd flow—without adding noise to your main navigation.
+          </p>
         </div>
       </section>
       <CTASection showPrimaryCta={false} />
