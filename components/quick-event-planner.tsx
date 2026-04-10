@@ -21,10 +21,10 @@ const eventTypes: { id: EventTypeId; label: string }[] = [
   { id: "backyard", label: "Backyard party" },
   { id: "sweet16", label: "Sweet 16" },
   { id: "quince", label: "Quinceañera" },
-  { id: "corporate", label: "Corporate" },
+  { id: "corporate", label: "Corporate event" },
   { id: "fundraiser", label: "Fundraiser" },
   { id: "festival", label: "Festival / fair" },
-  { id: "community", label: "Community / town" },
+  { id: "community", label: "Community / town event" },
   { id: "tailgate", label: "Tailgate" },
   { id: "birthday", label: "Birthday party" },
   { id: "other", label: "Other" },
@@ -153,7 +153,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Interactive</p>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight text-stone-900 sm:text-[1.65rem]">Quick Event Planner</h2>
             <p className="mt-2 max-w-xl text-sm text-stone-600 sm:text-base">
-              Three quick steps—a starting plan you can share with our team. No long forms.
+              Tell us a few quick things—we’ll build your starting event plan. Three tabs, no long forms.
             </p>
           </div>
           <p className="text-xs font-medium text-stone-500">{TAB_COUNT} steps · mobile-friendly</p>
@@ -345,7 +345,6 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
             </div>
             <div>
               <p className="text-sm font-semibold text-stone-900">Extras</p>
-              <p className="mt-1 text-xs text-stone-500">Toggle what applies.</p>
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 <ToggleRow label="Games / activity area" checked={inp.extraGames} onChange={(v) => patch({ extraGames: v })} />
                 <ToggleRow label="Gift / cake table" checked={inp.extraGiftCake} onChange={(v) => patch({ extraGiftCake: v })} />
