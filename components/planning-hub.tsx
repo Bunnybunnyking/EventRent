@@ -19,9 +19,9 @@ import { planningFaqItems } from "@/lib/planning-faq";
 import { business } from "@/lib/site-data";
 
 const sectionNav = [
-  { href: "#quick-start", label: "Quick start" },
-  { href: "#step-by-step", label: "Steps" },
   { href: "#size-guide", label: "Sizing" },
+  { href: "#step-by-step", label: "Steps" },
+  { href: "#quick-start", label: "Quick start" },
   { href: "#layout-examples", label: "Examples" },
   { href: "#tent-types", label: "Tent types" },
   { href: "#site-surface", label: "Site" },
@@ -112,6 +112,14 @@ export function PlanningHub() {
             <p className="mt-4 text-sm text-stone-600">
               Not sure what size tent you need? Start with a few details. We will guide the rest.
             </p>
+            <p className="mt-3">
+              <a
+                href="#size-guide"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900"
+              >
+                Tent size estimator and chart below <span aria-hidden>↓</span>
+              </a>
+            </p>
             <p className="mt-2 text-xs text-stone-500">
               Planning help from our event team, not just a rental list · Family owned since {business.establishedYear}
             </p>
@@ -129,6 +137,72 @@ export function PlanningHub() {
         </div>
       </section>
 
+      {/* Tent size estimator + chart (high on page, right after hero) */}
+      <section id="size-guide" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-12 lg:py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Planning" }]} />
+          <SectionHeading
+            align="left"
+            eyebrow="Tent size guide"
+            title="How to estimate the right tent size"
+            intro="Start here: tent size depends on more than headcount. Layout, table style, buffet space, bars, dance floors, and how guests move all change the footprint. Use the estimator, then compare your range to the reference chart. Final picks should match your site and goals; call us to confirm."
+          />
+          <div className="mt-8 sm:mt-10">
+            <p className="mb-4 inline-flex items-center rounded-full border border-[#c9a24a]/50 bg-[#fffbf0] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#6b5220]">
+              Interactive estimator
+            </p>
+            <TentSizeEstimator />
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:mt-12 sm:p-8">
+            <h3 className="text-lg font-semibold text-stone-900">Reference chart: common tent sizes and seated capacity</h3>
+            <p className="mt-2 text-sm text-stone-600">
+              Seated counts assume typical table layouts; your program may need more room. Banquet rows often pack tighter than rounds. Ceremony seating usually needs less space than a full dinner reception. Buffets, bars, and dance floors push you toward the larger end or the next size class.
+            </p>
+            <div className="mt-6 overflow-x-auto">
+              <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-stone-200 text-xs font-semibold uppercase tracking-wide text-stone-500">
+                    <th className="py-3 pr-4">Dimensions</th>
+                    <th className="py-3 pr-4">Approx. sq ft</th>
+                    <th className="py-3 pr-4">Seated range (typical)</th>
+                    <th className="py-3">Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tentSizeChartRows.map((row, i) => (
+                    <tr
+                      key={row.size}
+                      className={`border-b border-stone-100 text-stone-700 transition-colors hover:bg-amber-50/50 ${i % 2 === 1 ? "bg-stone-50/70" : ""}`}
+                    >
+                      <td className="py-3 pr-4 font-semibold text-stone-900">{row.size}</td>
+                      <td className="py-3 pr-4">{row.sqFt}</td>
+                      <td className="py-3 pr-4">{row.seated}</td>
+                      <td className="py-3 text-stone-600">{row.notes}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p className="mt-8 text-center text-sm text-stone-600 sm:mt-10">
+            More context:{" "}
+            <Link href="/faq#faq-tent-size" className="font-semibold text-stone-900 underline underline-offset-2">
+              tent sizing FAQ
+            </Link>{" "}
+            ·{" "}
+            <Link href="/tent-rentals" className="font-semibold text-stone-900 underline underline-offset-2">
+              tent rental options
+            </Link>{" "}
+            ·{" "}
+            <Link href="/party-packages" className="font-semibold text-stone-900 underline underline-offset-2">
+              party packages
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* Trust band */}
       <div className="border-b border-stone-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-3 px-4 py-4 sm:grid-cols-3 sm:px-6 lg:px-8">
@@ -138,41 +212,7 @@ export function PlanningHub() {
         </div>
       </div>
 
-      {/* 2. Quick start */}
-      <section id="quick-start" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Planning" }]} />
-          <div className="mt-6 text-center lg:mt-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Quick start</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">Jump to what you need</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm text-stone-600 sm:text-base">
-              Pick a topic below or use the topic bar at the top. Each section is built to answer a real planning question.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {planningQuickStartCards.map((card) => (
-              <article
-                key={card.title}
-                className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-stone-300 hover:shadow-md"
-              >
-                <h3 className="text-lg font-semibold text-stone-900">{card.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{card.description}</p>
-                {"external" in card && card.external ? (
-                  <Link href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
-                    {card.cta} →
-                  </Link>
-                ) : (
-                  <a href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
-                    {card.cta} →
-                  </a>
-                )}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Step by step */}
+      {/* How to plan (step by step) */}
       <section id="step-by-step" className="scroll-mt-36 bg-white py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -206,66 +246,40 @@ export function PlanningHub() {
         </div>
       </section>
 
-      {/* 4. Tent size + estimator + chart */}
-      <section id="size-guide" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-14 lg:py-16">
+      {/* Quick start jump cards */}
+      <section id="quick-start" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            align="left"
-            eyebrow="Tent size guide"
-            title="How to estimate the right tent size"
-            intro="Tent size depends on more than headcount. Layout, table style, buffet space, bars, dance floors, and how you want guests to move all change the footprint. The tool below is a starting point. Final recommendations should match your layout, site, and goals."
-          />
-          <div className="mt-8 sm:mt-10">
-            <TentSizeEstimator />
-          </div>
-
-          <div className="mt-12 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
-            <h3 className="text-lg font-semibold text-stone-900">Reference chart: common tent sizes</h3>
-            <p className="mt-2 text-sm text-stone-600">
-              Seated counts assume typical table layouts; your program may need more room. Banquet rows often pack tighter than rounds. Ceremony seating usually needs less space than a full dinner reception. Buffets, bars, and dance floors push you toward the larger end or the next size class.
+          <div className="text-center lg:mt-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Quick start</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">Jump to what you need</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-stone-600 sm:text-base">
+              Shortcuts to the rest of this guide. You can also use the topic bar at the top.
             </p>
-            <div className="mt-6 overflow-x-auto">
-              <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-                <thead>
-                  <tr className="border-b border-stone-200 text-xs font-semibold uppercase tracking-wide text-stone-500">
-                    <th className="py-3 pr-4">Dimensions</th>
-                    <th className="py-3 pr-4">Approx. sq ft</th>
-                    <th className="py-3 pr-4">Seated range (typical)</th>
-                    <th className="py-3">Notes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {tentSizeChartRows.map((row) => (
-                    <tr key={row.size} className="border-b border-stone-100 text-stone-700">
-                      <td className="py-3 pr-4 font-semibold text-stone-900">{row.size}</td>
-                      <td className="py-3 pr-4">{row.sqFt}</td>
-                      <td className="py-3 pr-4">{row.seated}</td>
-                      <td className="py-3 text-stone-600">{row.notes}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </div>
-
-          <p className="mt-8 text-center text-sm text-stone-600">
-            More context:{" "}
-            <Link href="/faq#faq-tent-size" className="font-semibold text-stone-900 underline underline-offset-2">
-              tent sizing FAQ
-            </Link>{" "}
-            ·{" "}
-            <Link href="/tent-rentals" className="font-semibold text-stone-900 underline underline-offset-2">
-              tent rental options
-            </Link>{" "}
-            ·{" "}
-            <Link href="/party-packages" className="font-semibold text-stone-900 underline underline-offset-2">
-              party packages
-            </Link>
-          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {planningQuickStartCards.map((card) => (
+              <article
+                key={card.title}
+                className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:border-stone-300 hover:shadow-md"
+              >
+                <h3 className="text-lg font-semibold text-stone-900">{card.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{card.description}</p>
+                {"external" in card && card.external ? (
+                  <Link href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
+                    {card.cta} →
+                  </Link>
+                ) : (
+                  <a href={card.href} className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-4 hover:text-stone-900">
+                    {card.cta} →
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 5. Layout examples */}
+      {/* Layout examples */}
       <section id="layout-examples" className="scroll-mt-36 bg-white py-10 sm:py-14 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
