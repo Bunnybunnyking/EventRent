@@ -15,6 +15,13 @@ import { business } from "@/lib/site-data";
 
 const TAB_COUNT = 3;
 
+/** User must use Next to unlock steps; cannot jump from step 1 → 3. */
+function canNavigateToTab(target: 1 | 2 | 3, current: 1 | 2 | 3, furthest: 1 | 2 | 3): boolean {
+  if (target === 1) return true;
+  if (target === 2) return furthest >= 2;
+  return furthest >= 3 && (current === 2 || current === 3);
+}
+
 const eventTypes: { id: EventTypeId; label: string }[] = [
   { id: "wedding", label: "Wedding" },
   { id: "graduation", label: "Graduation" },
@@ -112,6 +119,8 @@ function SectionCard({ title, children, highlight }: { title: string; children: 
 
 export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) {
   const [tab, setTab] = useState<1 | 2 | 3>(1);
+  /** Highest step reached via Next — controls which tabs are clickable. */
+  const [furthestStep, setFurthestStep] = useState<1 | 2 | 3>(1);
   const [inp, setInp] = useState<QuickPlannerInput>(() => defaultQuickPlannerInput());
 
   const patch = (p: Partial<QuickPlannerInput>) => setInp((s) => ({ ...s, ...p }));
@@ -153,36 +162,52 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Interactive</p>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight text-stone-900 sm:text-[1.65rem]">Quick Event Planner</h2>
             <p className="mt-2 max-w-xl text-sm text-stone-600 sm:text-base">
-              Tell us a few quick things—we’ll build your starting event plan. Three tabs, no long forms.
+              Tell us a few quick things—we’ll build your starting event plan. Use <strong className="font-semibold text-stone-800">Next</strong> for each step so your plan stays accurate—you can’t skip ahead.
             </p>
           </div>
           <p className="text-xs font-medium text-stone-500">{TAB_COUNT} steps · mobile-friendly</p>
         </div>
       ) : (
         <div className="border-b border-amber-100/80 pb-4">
-          <p className="text-xs font-medium text-stone-500">{TAB_COUNT} steps · mobile-friendly</p>
+          <p className="text-xs font-medium text-stone-500">{TAB_COUNT} steps · use Next to unlock each step</p>
         </div>
       )}
 
-      {/* Tab bar */}
+      {/* Tab bar — steps unlock only after Next (no skipping to Your plan) */}
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-3" role="tablist" aria-label="Planner steps">
-        {[1, 2, 3].map((n) => (
-          <button
-            key={n}
-            type="button"
-            role="tab"
-            aria-selected={tab === n}
-            onClick={() => setTab(n as 1 | 2 | 3)}
-            className={`min-h-[48px] flex-1 rounded-2xl border px-3 py-3 text-center text-sm font-bold transition sm:px-4 ${
-              tab === n
-                ? "border-stone-900 bg-stone-900 text-[#f5e0b3] shadow-md"
-                : "border-stone-200 bg-white text-stone-700 hover:border-stone-300"
-            }`}
-          >
-            <span className="block text-[0.65rem] font-semibold uppercase tracking-wide opacity-80">Step {n}</span>
-            <span className="mt-0.5 block">{tabLabels[n - 1]}</span>
-          </button>
-        ))}
+        {([1, 2, 3] as const).map((n) => {
+          const allowed = canNavigateToTab(n, tab, furthestStep);
+          return (
+            <button
+              key={n}
+              type="button"
+              role="tab"
+              aria-selected={tab === n}
+              aria-disabled={!allowed}
+              disabled={!allowed}
+              title={
+                !allowed
+                  ? n === 2
+                    ? "Use Next on step 1 to unlock"
+                    : "Complete steps 1 and 2 with Next to unlock (or open step 2, then this tab)"
+                  : undefined
+              }
+              onClick={() => {
+                if (allowed) setTab(n);
+              }}
+              className={`min-h-[48px] flex-1 rounded-2xl border px-3 py-3 text-center text-sm font-bold transition sm:px-4 ${
+                tab === n
+                  ? "border-stone-900 bg-stone-900 text-[#f5e0b3] shadow-md"
+                  : allowed
+                    ? "border-stone-200 bg-white text-stone-700 hover:border-stone-300"
+                    : "cursor-not-allowed border-stone-100 bg-stone-100/90 text-stone-400"
+              }`}
+            >
+              <span className="block text-[0.65rem] font-semibold uppercase tracking-wide opacity-80">Step {n}</span>
+              <span className="mt-0.5 block">{tabLabels[n - 1]}</span>
+            </button>
+          );
+        })}
       </div>
 
       <div className="mt-8">
@@ -492,7 +517,15 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
         {tab < 3 ? (
           <button
             type="button"
-            onClick={() => setTab((prev) => (prev === 1 ? 2 : 3))}
+            onClick={() => {
+              if (tab === 1) {
+                setFurthestStep((f) => (f < 2 ? 2 : f));
+                setTab(2);
+              } else {
+                setFurthestStep(3);
+                setTab(3);
+              }
+            }}
             className="min-h-[48px] rounded-full bg-stone-900 px-7 py-2.5 text-sm font-bold text-[#f5e0b3] shadow-sm hover:bg-stone-800"
           >
             {tab === 2 ? "See my plan" : "Next"}
@@ -501,7 +534,10 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
           <div className="ml-auto flex flex-wrap gap-2">
             <button
               type="button"
-              onClick={() => setTab(1)}
+              onClick={() => {
+                setTab(1);
+                setFurthestStep(1);
+              }}
               className="min-h-[48px] rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 hover:bg-stone-50"
             >
               Edit answers
@@ -510,6 +546,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               type="button"
               onClick={() => {
                 setTab(1);
+                setFurthestStep(1);
                 setInp(defaultQuickPlannerInput());
               }}
               className="min-h-[48px] rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 hover:bg-stone-50"
