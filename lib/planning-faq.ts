@@ -1,48 +1,53 @@
-/** FAQ content for `/planning` (on-page and FAQPage JSON-LD). */
+/** FAQ content for `/planning` (on-page and FAQPage JSON-LD). Answer-engine friendly, human tone. */
 export const planningFaqItems = [
   {
-    question: "What size tent do I need for 50, 100, or 150 guests in Connecticut?",
+    question: "What size tent do I need for 50 guests?",
     answer:
-      "Headcount is only the starting point. The same guest count needs a larger footprint for seated rounds with a dance floor than for a standing cocktail layout. Buffets, bars, stages, and aisles all consume space. Use our on-page estimator as a rough guide, then call us with your date and site. We translate your real program into tent dimensions and inventory.",
+      "For 50 people, the tent size depends on whether they are seated at rounds, standing cocktail style, or mixed. A seated dinner with rounds and aisles needs more floor space than a ceremony in rows or a casual open house. Add dance floor, buffet, or bar zones on top of that. Use our estimator on this page for a starting range, then call with your layout goals so we match a real tent class to your site.",
   },
   {
-    question: "Do I need a tent if the forecast looks good?",
+    question: "What size tent do I need for 100 guests?",
     answer:
-      "Often, yes. Tents manage harsh sun, wind, and quick-moving storms, not only steady rain. They also give your event a defined home base for food, music, and seating so your schedule does not depend on perfect weather.",
+      "At 100 guests, program drives size. A seated reception with dance floor and head table is a different footprint than cocktail-only or ceremony seating. Buffets, bars, and service lanes eat space quickly. Many Connecticut receptions land in the 30×40 class or larger when dancing and full dinner service are in play, but your table map and property lines decide the final call.",
   },
   {
-    question: "Can you set up on a driveway, patio, or parking lot?",
+    question: "Do I need a tent if the forecast looks clear?",
     answer:
-      "Frequently, yes. Hard surfaces usually mean ballast instead of stakes, and we plan anchoring, access, and equipment paths accordingly. Send photos or schedule a quick site discussion so we recommend the right structure and labor plan.",
+      "Often, yes. Tents cut harsh sun, give wind relief, and anchor your schedule when a quick storm rolls through. They also define where food, music, and seating live so you are not rearranging the whole day around weather. We plan options early so you are not deciding in a panic the week of the event.",
   },
   {
-    question: "What if my yard is sloped or uneven?",
+    question: "Can you set up on a driveway or parking lot?",
     answer:
-      "Slope and soft ground affect flooring, seating comfort, and where water runs in rain. We may suggest leveling strategies, flooring sections, or layout shifts. The earlier we see the site, the simpler the fix.",
+      "Frequently. Hard surfaces usually mean ballast instead of stakes. We plan anchoring, access, and how equipment moves across the lot. Photos or a short site conversation help us recommend structure and labor before you commit.",
+  },
+  {
+    question: "What if my yard is sloped?",
+    answer:
+      "Slope affects seating comfort, flooring, and where water goes in rain. We may suggest leveling strategies, flooring in sections, or layout shifts. The earlier we see photos or walk the site with you, the simpler the fix.",
   },
   {
     question: "Do I need sidewalls?",
     answer:
-      "Not always, but they are useful more often than people expect. Sidewalls cut wind, retain heat for cool evenings, and protect food service from weather and insects. Many hosts combine clear window sections with open sides for balance.",
+      "Not always, but they help more often than people expect. Sidewalls cut wind, hold warmth on cool evenings, and protect food service from weather and bugs. Many events mix clear window sections with open sides so you keep light and airflow where you want it.",
   },
   {
-    question: "How much extra space do I need beyond tables and chairs?",
+    question: "How much space do I need beyond tables and chairs?",
     answer:
-      "Plan for aisles, staff movement, equipment, and lines at bars or buffets, typically well beyond the table map alone. Crowded layouts look full in a floor plan but feel tight in real life. We help you leave breathing room.",
+      "Plan for aisles, staff carrying trays, equipment, and lines at bars or buffets. Those paths are usually wider than a tight table diagram suggests. A layout that looks full on paper often feels cramped for guests and servers. We help you leave real circulation space.",
   },
   {
     question: "Can you help if I do not have my final layout yet?",
     answer:
-      "Yes. Most people book with a guest range and a rough program. We help you sequence decisions (what to lock first, what can flex later) so you are not stuck guessing alone.",
+      "Yes. Most hosts book with a guest range and a rough program. We sequence what to lock first and what can flex so you are not guessing alone. Final table maps can come later; early direction on tent size and site protects your date.",
+  },
+  {
+    question: "When should I book?",
+    answer:
+      "Spring and summer weekends go first statewide. When your date and location are firm, reach out even if details are still moving. Early booking holds better style and size options. Last-minute can sometimes work, but inventory gets tighter.",
   },
   {
     question: "Do permits matter for tent rentals in Connecticut?",
     answer:
-      "Sometimes. Towns, venues, and HOAs can have rules for tents, staking, noise, or overnight equipment. We are used to working within those requirements and can advise what questions to ask your venue or municipal office.",
-  },
-  {
-    question: "When should I book my tent?",
-    answer:
-      "Prime spring and summer weekends fill first statewide. Once your date and location are firm, reach out, even if details are still moving. Early booking protects your preferred tent style and sizing options.",
+      "Sometimes. Towns, venues, and HOAs may have rules for tents, staking, noise, or overnight gear. We are used to working within those requirements and can suggest what to ask your venue or town hall.",
   },
 ];

@@ -6,9 +6,9 @@ import { business } from "@/lib/site-data";
 import { planningFaqItems } from "@/lib/planning-faq";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Event & Tent Planning Guide — Sizing, Weather & Layout",
+  title: "Connecticut Tent & Event Planning Guide | Sizing, Weather, Layout",
   description:
-    "Connecticut tent rental planning: tent size guidance, rain and weather backup, site and surface checks, tables and chairs layout, and what hosts often forget—plus a simple footprint estimator. Family-owned support since 1946.",
+    "Plan tent size, layout, rain backup, and site details with a Connecticut event rental team. Step-by-step guide, interactive footprint estimator, layout examples, and FAQs. Family-owned since 1946.",
   path: "/planning",
   ogImage: defaultOgImagePath,
 });
