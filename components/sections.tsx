@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { business, galleryItems, townList } from "@/lib/site-data";
 
 export function SectionHeading({
@@ -62,7 +63,7 @@ export function ServiceAreaBlock() {
           </Link>{" "}
           · Need a date held?{" "}
           <Link href="/contact#quote" className="font-medium text-stone-200 underline underline-offset-2 hover:text-white">
-            Request a quote
+            Book now
           </Link>
           .
         </p>
@@ -94,35 +95,69 @@ export function GalleryGrid({ preview = false }: { preview?: boolean }) {
   );
 }
 
-export function CTASection() {
+const callOutlineClass =
+  "inline-flex touch-manipulation items-center justify-center rounded-full border-2 border-stone-400/90 bg-transparent px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:border-white hover:bg-white/10 sm:px-6 sm:py-3.5 sm:text-base";
+
+/**
+ * Bottom quote CTA band. Set `showPrimaryCta={false}` on pages where the large Book Now
+ * control is omitted; concierge copy stays visible with call + contact link.
+ */
+export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean }) {
   return (
     <section className="py-16" aria-labelledby="cta-quote-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] p-8 text-stone-100 md:p-12">
-          <h2 id="cta-quote-heading" className="text-3xl font-semibold tracking-tight">
+        <div className="rounded-3xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] p-8 text-stone-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)] md:p-12">
+          <h2 id="cta-quote-heading" className="text-3xl font-semibold tracking-tight sm:text-[2rem]">
             Ready for a quote you can trust?
           </h2>
-          <p className="mt-3 max-w-2xl text-stone-300">
-            Tell us your date, town, and guest count. We will guide the setup plan, answer questions quickly, and help you lock in a clean, professional event layout.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/contact#quote"
-              className="rounded-full bg-[#b78a2d] px-5 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]"
-            >
-              Request a Quote
-            </Link>
-            <a href={business.phoneHref} className="rounded-full border border-stone-400 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800">
-              Call {business.phone}
-            </a>
-          </div>
-          <p className="mt-3 text-xs text-stone-400">
-            No-pressure consultation. Fast quote turnaround. The quote form takes only a few minutes—start at{" "}
-            <Link href="/contact#quote" className="text-stone-200 underline underline-offset-2 hover:text-white">
-              contact
-            </Link>
-            .
-          </p>
+
+          {showPrimaryCta ? (
+            <>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-300 sm:text-lg">
+                Tell us your date, town, and guest count. We will guide the setup plan, answer questions quickly, and help you lock in a clean, professional event layout.
+              </p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+                <Link href="/contact#quote" className={bookNowSectionClass}>
+                  Book Now
+                </Link>
+                <a href={business.phoneHref} className={`${callOutlineClass} w-full sm:w-auto`}>
+                  Call {business.phone}
+                </a>
+              </div>
+              <p className="mt-6 text-sm leading-relaxed text-stone-400">
+                No-pressure consultation. Fast quote turnaround. The quote form takes only a few minutes—start at{" "}
+                <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
+                  contact
+                </Link>
+                .
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-200 sm:text-lg">
+                Our Event Concierge will walk you through the process—from venue constraints and guest flow to timeline and layout—so your event stays organized and on-brand. Share your date, town,
+                and guest count; we respond quickly with clear setup options, no-pressure guidance, and a professional layout plan you can trust.
+              </p>
+              <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-center">
+                <a href={business.phoneHref} className={`${callOutlineClass} w-full justify-center sm:w-auto`}>
+                  Call {business.phone}
+                </a>
+                <Link
+                  href="/contact#quote"
+                  className="text-center text-base font-semibold text-[#f5e0b3] underline decoration-[#f5e0b3]/60 underline-offset-4 transition hover:text-white sm:text-left"
+                >
+                  Complete our short contact form to book your date
+                </Link>
+              </div>
+              <p className="mt-6 text-sm leading-relaxed text-stone-400">
+                Fast quote turnaround. No-pressure consultation. The quote form takes only a few minutes—start at{" "}
+                <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
+                  contact
+                </Link>
+                .
+              </p>
+            </>
+          )}
         </div>
       </div>
     </section>

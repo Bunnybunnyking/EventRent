@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 import {
   inventoryDisclaimer,
@@ -117,11 +118,8 @@ export function InventoryOverviewSection({ compact = false }: { compact?: boolea
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-3 border-t border-stone-100 pt-10">
-          <Link
-            href="/contact#quote"
-            className="rounded-full bg-[#1d2124] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#131517]"
-          >
-            Request a quote
+          <Link href="/contact#quote" className={bookNowSectionClass}>
+            Book Now
           </Link>
           <Link
             href="/wishlist"
@@ -203,8 +201,8 @@ export function QuoteWorkflowSection() {
           ))}
         </ol>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link href="/contact#quote" className="rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]">
-            Start your quote
+          <Link href="/contact#quote" className={bookNowSectionClass}>
+            Book Now
           </Link>
           <Link href="/rental-inventory" className="rounded-full border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-800 transition hover:bg-stone-50">
             View full inventory overview

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { TentSectionTabs } from "@/components/tent-section-tabs";
 import { ServiceSchema } from "@/components/schema";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
@@ -244,11 +245,8 @@ export default function JobsiteCoveragePage() {
               Ask about Shade Station, Hydration Station, and Heat Relief packages—or lock in extended construction tent rentals with 14-day jobsite pricing. Share your site, dates, and crew size; we will recommend coverage that fits the work.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/contact#quote"
-                className="rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]"
-              >
-                Request a Quote
+              <Link href="/contact#quote" className={bookNowSectionClass}>
+                Book Now
               </Link>
               <Link href="/tent-rentals" className="rounded-full border border-stone-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-800">
                 Event tent rentals
@@ -257,8 +255,8 @@ export default function JobsiteCoveragePage() {
           </section>
 
           <div className="mt-10 flex flex-wrap gap-3 border-t border-stone-200/80 pt-8">
-            <Link href="/contact#quote" className="rounded-full bg-[#1d2124] px-5 py-3 text-sm font-semibold text-white">
-              Request a jobsite quote
+            <Link href="/contact#quote" className={bookNowSectionClass}>
+              Book Now
             </Link>
             <Link href="/rental-inventory" className="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-800">
               Full inventory list

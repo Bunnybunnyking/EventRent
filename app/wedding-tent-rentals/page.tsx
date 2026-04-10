@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CTASection } from "@/components/sections";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { ServiceSchema } from "@/components/schema";
 import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
@@ -41,12 +42,9 @@ export default function WeddingTentPage() {
             Create a polished ceremony and reception experience with clean tent lines, thoughtful lighting, and weather-ready planning from a family-owned Connecticut team serving couples since{" "}
             {business.establishedYear}.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/contact#quote"
-              className="rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]"
-            >
-              Request a Quote
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link href="/contact#quote" className={bookNowSectionClass}>
+              Book Now
             </Link>
             <a
               href={business.phoneHref}
@@ -150,7 +148,7 @@ export default function WeddingTentPage() {
         </div>
       </section>
 
-      <CTASection />
+      <CTASection showPrimaryCta={false} />
     </>
   );
 }

@@ -8,6 +8,7 @@ import {
   WhatWeOfferSection,
 } from "@/components/inventory-sections";
 import { CTASection, GalleryGrid, SectionHeading, ServiceAreaBlock } from "@/components/sections";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 import { business, eventTypeLinks, faqItems, services, testimonials, townList, trustPoints } from "@/lib/site-data";
 import { FAQSchemaItems } from "@/components/schema";
@@ -50,9 +51,9 @@ export default function HomePage() {
           <p className="mt-5 max-w-2xl text-base text-stone-200">
             Family owned and operated since {business.establishedYear}, we help weddings, backyard celebrations, and corporate events feel organized, elevated, and stress-free with clean equipment, professional setup, and responsive communication.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact#quote" className="rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]">
-              Request a Quote
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link href="/contact#quote" className={bookNowSectionClass}>
+              Book Now
             </Link>
             <a href={business.phoneHref} className="rounded-full border border-stone-200 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
               Call Now
@@ -143,8 +144,8 @@ export default function HomePage() {
               <li>3. You receive a clear quote with timeline details.</li>
               <li>4. Our crew delivers, sets up, and returns for breakdown.</li>
             </ol>
-            <Link href="/contact#quote" className="mt-5 inline-block rounded-full bg-[#b78a2d] px-4 py-2 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]">
-              Start your quote
+            <Link href="/contact#quote" className={`${bookNowSectionClass} mt-5 inline-flex text-base sm:text-lg`}>
+              Book Now
             </Link>
           </div>
         </div>
@@ -227,11 +228,8 @@ export default function HomePage() {
             <Link href="/faq" className="text-sm font-semibold text-stone-800 underline underline-offset-4">
               Browse the full FAQ library
             </Link>
-            <Link
-              href="/contact#quote"
-              className="inline-flex justify-center rounded-full bg-[#1d2124] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#131517]"
-            >
-              Still have questions? Request a quote
+            <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center`}>
+              Book Now
             </Link>
           </div>
         </div>
@@ -253,7 +251,7 @@ export default function HomePage() {
             </Link>{" "}
             ·{" "}
             <Link href="/contact#quote" className="font-semibold text-stone-800 underline underline-offset-2">
-              Get a quote
+              Book now
             </Link>
           </p>
         </div>

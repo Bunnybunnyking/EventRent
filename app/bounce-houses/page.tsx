@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { CTASection, SectionHeading } from "@/components/sections";
 import { BreadcrumbListSchema, ServiceSchema } from "@/components/schema";
@@ -128,11 +129,8 @@ export default function BounceHousesPage() {
             Parents and planners trust us for equipment that looks sharp, smells clean, and is installed with safety-first anchoring—so kids can play hard and you can breathe easier.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/contact#quote"
-              className="rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]"
-            >
-              Get a Quote
+            <Link href="/contact#quote" className={bookNowSectionClass}>
+              Book Now
             </Link>
             <a
               href="#popular-inflatables"

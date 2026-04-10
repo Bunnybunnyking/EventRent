@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { TentGalleryLightbox } from "@/components/tent-gallery-lightbox";
 import { SectionHeading } from "@/components/sections";
 import { BreadcrumbListSchema } from "@/components/schema";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { createPageMetadata } from "@/lib/metadata";
 import { business, galleryItems } from "@/lib/site-data";
 
@@ -63,11 +64,8 @@ export default function TentsGalleryPage() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 border-t border-stone-200/90 pt-10 sm:flex-row">
             <p className="text-center text-sm text-stone-600">Planning an outdoor event? Lock in tents, tables, and timing with one quote.</p>
-            <Link
-              href="/contact#quote"
-              className="inline-flex rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]"
-            >
-              Get a Tent Quote
+            <Link href="/contact#quote" className={`${bookNowSectionClass} inline-flex`}>
+              Book Now
             </Link>
           </div>
         </div>

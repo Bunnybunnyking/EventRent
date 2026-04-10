@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { CTASection, SectionHeading } from "@/components/sections";
 import { BreadcrumbListSchema, ServiceSchema } from "@/components/schema";
@@ -123,11 +124,8 @@ export default function YardGamesPage() {
             >
               Browse Games
             </a>
-            <Link
-              href="/contact#quote"
-              className="rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]"
-            >
-              Get a Quote
+            <Link href="/contact#quote" className={bookNowSectionClass}>
+              Book Now
             </Link>
           </div>
           <p className="mt-6 text-sm text-stone-600">

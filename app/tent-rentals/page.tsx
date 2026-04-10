@@ -11,6 +11,7 @@ import {
   TentTypesSection,
 } from "@/components/tent-page-sections";
 import { ServiceSchema } from "@/components/schema";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
@@ -52,11 +53,8 @@ export default function TentRentalsPage() {
               >
                 View Tent Gallery
               </Link>
-              <Link
-                href="/contact#quote"
-                className="inline-flex items-center justify-center rounded-full bg-[#b78a2d] px-5 py-3 text-center text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]"
-              >
-                Get a Tent Quote
+              <Link href="/contact#quote" className={`${bookNowSectionClass} w-full text-center sm:w-auto`}>
+                Book Now
               </Link>
             </div>
           </div>
@@ -148,9 +146,9 @@ export default function TentRentalsPage() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/contact#quote" className="rounded-full bg-[#1d2124] px-5 py-3 text-sm font-semibold text-white">
-              Request a tent quote
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Link href="/contact#quote" className={bookNowSectionClass}>
+              Book Now
             </Link>
             <Link href="/wedding-tent-rentals" className="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-800">
               Wedding tent rentals

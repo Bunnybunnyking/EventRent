@@ -24,14 +24,12 @@ export const business = {
 
 /** Primary header navigation (conversion-first order). */
 export const headerNavLinks = [
-  { href: "/", label: "Home" },
   { href: "/tent-rentals", label: "Tents" },
   { href: "/table-chair-rentals", label: "Tables & Chairs" },
   { href: "/yard-games", label: "Games" },
   { href: "/party-packages", label: "Packages" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-  { href: "/contact#quote", label: "Get a Quote" },
 ];
 
 /** Footer “Services” column — includes deep links not shown in the main nav. */

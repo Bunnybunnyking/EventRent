@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { TentSectionTabs } from "@/components/tent-section-tabs";
 import { InventoryOverviewSection } from "@/components/inventory-sections";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
@@ -51,8 +52,8 @@ export default function RentalInventoryPage() {
       <InventoryOverviewSection />
       <section className="pb-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <Link href="/contact#quote" className="inline-flex rounded-full bg-[#b78a2d] px-6 py-3 text-sm font-semibold text-[#1b1712] transition hover:bg-[#d6a645]">
-            Request a quote for your date
+          <Link href="/contact#quote" className={`${bookNowSectionClass} inline-flex`}>
+            Book Now
           </Link>
         </div>
       </section>

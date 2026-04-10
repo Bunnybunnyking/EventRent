@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 
 const cardClass =
   "rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-stone-300 hover:shadow-md";
@@ -145,8 +146,8 @@ export function TentPageCtaStrip() {
   return (
     <div className="mt-10 flex flex-col gap-3 border-y border-stone-200 py-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
       <div className="flex flex-wrap gap-2">
-        <Link href="/contact#quote" className="rounded-full bg-[#1d2124] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#131517]">
-          Request a tent quote
+        <Link href="/contact#quote" className={bookNowSectionClass}>
+          Book Now
         </Link>
         <Link href="/contact#quote" className="rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 transition hover:bg-stone-50">
           Plan your tent setup

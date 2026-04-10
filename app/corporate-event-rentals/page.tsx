@@ -36,7 +36,7 @@ export default function CorporatePage() {
           </div>
         </div>
       </section>
-      <CTASection />
+      <CTASection showPrimaryCta={false} />
     </>
   );
 }
