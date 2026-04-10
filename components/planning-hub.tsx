@@ -55,6 +55,20 @@ const quickCards: QuickCard[] = [
     cta: "Site readiness",
   },
   {
+    title: "Backyard parties",
+    text: "Yards, decks, and driveways need realistic footprints—plus backup when the grill line gets busy.",
+    href: "/faq#faq-backyard-party",
+    cta: "Backyard planning",
+    external: true,
+  },
+  {
+    title: "Birthdays & celebrations",
+    text: "Milestone birthdays and family celebrations—cake zones, seating mix, and weather-smart coverage.",
+    href: "/party-packages",
+    cta: "See party packages",
+    external: true,
+  },
+  {
     title: "Add-ons hosts overlook",
     text: "Sidewalls, lighting, power paths, and service zones often make or break flow.",
     href: "#forgot",
@@ -69,12 +83,34 @@ const quickCards: QuickCard[] = [
   },
 ];
 
+function PlanningSectionNav({ className = "" }: { className?: string }) {
+  return (
+    <nav aria-label="Jump to planning topics" className={className}>
+      <ul className="flex gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] md:flex-wrap md:justify-center md:gap-2.5">
+        {sectionNav.map((item) => (
+          <li key={item.href} className="shrink-0">
+            <a
+              href={item.href}
+              className="inline-flex rounded-full border border-stone-200 bg-white px-3.5 py-2 text-xs font-semibold text-stone-800 shadow-[0_1px_0_rgba(0,0,0,0.04)] transition hover:border-stone-300 hover:bg-stone-50 sm:px-4 sm:text-sm"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 export function PlanningHub() {
   return (
     <>
       <section className="border-b border-stone-200 bg-gradient-to-br from-[#faf9f7] via-white to-stone-100">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-14 lg:py-16 lg:px-8">
-          <div>
+        <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 sm:pt-8 lg:px-8">
+          <PlanningSectionNav />
+        </div>
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-14 lg:py-14 lg:px-8">
+          <div className="order-2 lg:order-1">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Planning hub · Connecticut</p>
             <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-stone-900 sm:text-4xl lg:text-[2.35rem] lg:leading-[1.15]">
               Plan your outdoor event before you pick inventory
@@ -86,7 +122,12 @@ export function PlanningHub() {
               You do not need every detail finalized to call. Bring your date, location, and a rough headcount—we will help you sequence the rest.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Link href="/contact#quote" className={bookNowSectionClass}>
+              <Link
+                href="/contact#quote"
+                className={bookNowSectionClass}
+                title="Open the quote request form"
+                prefetch={true}
+              >
                 Book Now
               </Link>
               <a href={business.phoneHref} className={callNowSectionClass}>
@@ -97,7 +138,7 @@ export function PlanningHub() {
               Family owned since {business.establishedYear} · {business.celebrationTagline}
             </p>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl ring-1 ring-stone-200/90">
+          <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-2xl shadow-xl ring-1 ring-stone-200/90 lg:order-2">
             <Image
               src={defaultOgImagePath}
               alt="Outdoor reception tent in Connecticut—planning tent size, layout, and weather backup with professional guidance"
@@ -110,22 +151,42 @@ export function PlanningHub() {
         </div>
       </section>
 
-      <div className="sticky top-0 z-30 border-b border-stone-200 bg-white/95 shadow-sm backdrop-blur-md">
-        <nav aria-label="Planning sections" className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-          <ul className="flex gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] md:flex-wrap md:justify-center md:gap-2">
-            {sectionNav.map((item) => (
-              <li key={item.href} className="shrink-0">
-                <a
-                  href={item.href}
-                  className="inline-flex rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-semibold text-stone-700 transition hover:border-[#b78a2d] hover:bg-[#fffbf0] sm:text-sm"
-                >
-                  {item.label}
-                </a>
-              </li>
+      <section id="size-guide" className="scroll-mt-28 border-t border-stone-200 bg-stone-50 py-12 lg:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            align="left"
+            eyebrow="Tent size guide"
+            title="Sizing is about your program—not a single number"
+            intro="Guest count alone does not determine tent size. Seating style, dance floors, buffets, bars, stages, aisles, and lounge pockets all change the footprint. The estimator below gives a realistic range; your final plan should reflect how people move, not just where they sit."
+          />
+          <div className="mt-10">
+            <TentSizeEstimator />
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+              { band: "40–80 guests", note: "Often backyard milestones, birthdays, showers, or team events—watch food lines and gift tables." },
+              { band: "90–140 guests", note: "Common wedding and gala band; dance floor + head table can jump you up a tent class fast." },
+              { band: "150–250+ guests", note: "Think in zones: ceremony hold, cocktail, dinner, dance—sometimes multiple bays or connected frames." },
+            ].map((row) => (
+              <div key={row.band} className="rounded-2xl border border-stone-200 bg-white p-5">
+                <p className="text-sm font-semibold text-[#7a5a18]">{row.band}</p>
+                <p className="mt-2 text-sm leading-relaxed text-stone-600">{row.note}</p>
+              </div>
             ))}
-          </ul>
-        </nav>
-      </div>
+          </div>
+          <p className="mt-8 text-center text-sm text-stone-600">
+            Compare with our{" "}
+            <Link href="/faq#faq-tent-size" className="font-semibold text-stone-900 underline underline-offset-2">
+              tent sizing FAQ
+            </Link>{" "}
+            and{" "}
+            <Link href="/tent-rentals" className="font-semibold text-stone-900 underline underline-offset-2">
+              tent rental options
+            </Link>{" "}
+            when you are ready to talk dimensions in plain English.
+          </p>
+        </div>
+      </section>
 
       <section className="bg-white py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -133,7 +194,7 @@ export function PlanningHub() {
           <SectionHeading
             eyebrow="Quick start"
             title="The shortest path from “I have a date” to a solid plan"
-            intro="Skim what matters most, then go deeper in the sections below. Each link jumps you to the same topic on this page."
+            intro="Skim what matters most, then go deeper in the sections below. Each link jumps you to the same topic on this page—or to backyard, birthday, and package ideas elsewhere on the site."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {quickCards.map((card) => (
@@ -155,43 +216,6 @@ export function PlanningHub() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="size-guide" className="scroll-mt-28 border-t border-stone-200 bg-stone-50 py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            align="left"
-            eyebrow="Tent size guide"
-            title="Sizing is about your program—not a single number"
-            intro="Guest count alone does not determine tent size. Seating style, dance floors, buffets, bars, stages, aisles, and lounge pockets all change the footprint. The estimator below gives a realistic range; your final plan should reflect how people move, not just where they sit."
-          />
-          <div className="mt-10">
-            <TentSizeEstimator />
-          </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {[
-              { band: "40–80 guests", note: "Often backyard milestones, showers, or team events—watch food lines and gift tables." },
-              { band: "90–140 guests", note: "Common wedding and gala band; dance floor + head table can jump you up a tent class fast." },
-              { band: "150–250+ guests", note: "Think in zones: ceremony hold, cocktail, dinner, dance—sometimes multiple bays or connected frames." },
-            ].map((row) => (
-              <div key={row.band} className="rounded-2xl border border-stone-200 bg-white p-5">
-                <p className="text-sm font-semibold text-[#7a5a18]">{row.band}</p>
-                <p className="mt-2 text-sm leading-relaxed text-stone-600">{row.note}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-8 text-center text-sm text-stone-600">
-            Compare with our{" "}
-            <Link href="/faq#faq-tent-size" className="font-semibold text-stone-900 underline underline-offset-2">
-              tent sizing FAQ
-            </Link>{" "}
-            and{" "}
-            <Link href="/tent-rentals" className="font-semibold text-stone-900 underline underline-offset-2">
-              tent rental options
-            </Link>{" "}
-            when you are ready to talk dimensions in plain English.
-          </p>
         </div>
       </section>
 
@@ -411,8 +435,13 @@ export function PlanningHub() {
               },
               {
                 title: "Backyard parties",
-                focus: "Property lines, power for sound, lawn protection, neighbor-friendly teardown.",
+                focus: "Cookouts and tent coverage at home—property lines, power for sound, lawn protection, neighbor-friendly teardown.",
                 href: "/faq#faq-backyard-party",
+              },
+              {
+                title: "Birthday parties",
+                focus: "Kids or adults—cake and gift zones, seating mix, games nearby, and weather backup for the whole afternoon or evening.",
+                href: "/party-packages",
               },
               {
                 title: "Corporate & galas",
