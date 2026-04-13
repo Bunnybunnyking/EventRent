@@ -27,7 +27,7 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-/** Site title: Cormorant Garamond (display), matches nav — not script */
+/** Site title: Cormorant Garamond (display), matches nav, not script */
 @layer components {
   .site-header-logo {
     font-family: var(--font-display), ui-serif, Georgia, serif;

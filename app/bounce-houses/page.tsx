@@ -15,7 +15,7 @@ export const metadata = createPageMetadata({
 
 const popularInflatables = [
   { name: "Classic bounce house", blurb: "Iconic castle-style jumper sized for younger guests and birthday parties." },
-  { name: "Combo slide unit", blurb: "Bounce plus slide for higher energy—great when you have room to run." },
+  { name: "Combo slide unit", blurb: "Bounce plus slide for higher energy, great when you have room to run." },
   { name: "Obstacle course", blurb: "Team-friendly lanes for school fields and larger flat setups." },
   { name: "Toddler inflatable", blurb: "Lower walls and gentler play for the smallest guests." },
 ] as const;
@@ -23,7 +23,7 @@ const popularInflatables = [
 const safetyPoints = [
   {
     title: "Inspection between events",
-    body: "We check seams, anchors, blower connections, and landing zones before your rental goes out—if it is not fit for guests, it does not ship.",
+    body: "We check seams, anchors, blower connections, and landing zones before your rental goes out, if it is not fit for guests, it does not ship.",
   },
   {
     title: "Sanitizing & cleanliness",
@@ -31,7 +31,7 @@ const safetyPoints = [
   },
   {
     title: "Setup discipline",
-    body: "Anchoring matches surface type—stakes on grass, ballasts where stakes are not an option—and we review wind thresholds with you before event day.",
+    body: "Anchoring matches surface type, stakes on grass, ballasts where stakes are not an option, and we review wind thresholds with you before event day.",
   },
 ] as const;
 
@@ -46,7 +46,7 @@ const packages = [
   },
   {
     title: "School / event bundle",
-    body: "Higher throughput layouts for field days and community events—multiple units, staggered timing, and clear load-in paths.",
+    body: "Higher throughput layouts for field days and community events, multiple units, staggered timing, and clear load-in paths.",
   },
 ] as const;
 
@@ -57,7 +57,7 @@ const steps = [
   },
   {
     title: "Power & placement plan",
-    body: "Most units need a dedicated outlet or generator plan within specified cord lengths—we confirm amp needs and safe routing.",
+    body: "Most units need a dedicated outlet or generator plan within specified cord lengths, we confirm amp needs and safe routing.",
   },
   {
     title: "Delivery, setup, supervision reminders",
@@ -74,12 +74,12 @@ const bounceFaq = [
   {
     question: "What surfaces work for setup?",
     answer:
-      "Grass is ideal for staking. Driveways and pavement can work with ballast systems where allowed—surface slope, underground utilities, and HOA rules all factor into the plan.",
+      "Grass is ideal for staking. Driveways and pavement can work with ballast systems where allowed, surface slope, underground utilities, and HOA rules all factor into the plan.",
   },
   {
     question: "What happens if rain or wind is forecast?",
     answer:
-      "Inflatable safety depends on wind speed and lightning. We align with manufacturer limits and may reschedule or pause setup if conditions are unsafe—your contract spells out the weather process.",
+      "Inflatable safety depends on wind speed and lightning. We align with manufacturer limits and may reschedule or pause setup if conditions are unsafe, your contract spells out the weather process.",
   },
   {
     question: "Is supervision included?",
@@ -89,18 +89,18 @@ const bounceFaq = [
   {
     question: "Do you require a deposit?",
     answer:
-      "Many dates require a deposit to hold inventory—amounts vary by order size and season. Your quote lists payment milestones clearly.",
+      "Many dates require a deposit to hold inventory, amounts vary by order size and season. Your quote lists payment milestones clearly.",
   },
 ];
 
 const testimonials = [
   {
     quote: "The unit looked spotless on delivery. Setup was quick and the team walked us through wind and capacity rules clearly.",
-    name: "Host placeholder — West Hartford area",
+    name: "Host placeholder, West Hartford area",
   },
   {
-    quote: "We combined a bounce house with yard games for a school field day—logistics were easier with one vendor.",
-    name: "Coordinator placeholder — Glastonbury area",
+    quote: "We combined a bounce house with yard games for a school field day, logistics were easier with one vendor.",
+    name: "Coordinator placeholder, Glastonbury area",
   },
 ] as const;
 
@@ -109,7 +109,7 @@ export default function BounceHousesPage() {
     <>
       <ServiceSchema
         name="Bounce house and inflatable rentals in Connecticut"
-        description="Clean, inspected bounce houses and inflatables for Connecticut birthdays, schools, and community events—with safe setup, anchoring guidance, and optional bundles with yard games and tents."
+        description="Clean, inspected bounce houses and inflatables for Connecticut birthdays, schools, and community events, with safe setup, anchoring guidance, and optional bundles with yard games and tents."
         path="/bounce-houses"
       />
       <BreadcrumbListSchema
@@ -123,10 +123,10 @@ export default function BounceHousesPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a97a21]">Inflatables</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
-            Bounce houses &amp; inflatables—clean, inspected, ready for Connecticut yards
+            Bounce houses &amp; inflatables, clean, inspected, ready for Connecticut yards
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-stone-600">
-            Parents and planners trust us for equipment that looks sharp, smells clean, and is installed with safety-first anchoring—so kids can play hard and you can breathe easier.
+            Parents and planners trust us for equipment that looks sharp, smells clean, and is installed with safety-first anchoring, so kids can play hard and you can breathe easier.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/contact#quote" className={bookNowSectionClass}>
@@ -158,7 +158,7 @@ export default function BounceHousesPage() {
           <SectionHeading
             eyebrow="Rentals"
             title="Most popular inflatables"
-            intro="Inventory rotates by season—your quote confirms exact units, colors, and dimensions available on your date."
+            intro="Inventory rotates by season, your quote confirms exact units, colors, and dimensions available on your date."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {popularInflatables.map((item) => (
@@ -176,7 +176,7 @@ export default function BounceHousesPage() {
           <SectionHeading
             eyebrow="Trust"
             title="Safety &amp; cleanliness"
-            intro="Non-negotiable standards on every delivery—because inflatable fun only works when setup is disciplined."
+            intro="Non-negotiable standards on every delivery, because inflatable fun only works when setup is disciplined."
             variant="dark"
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -194,7 +194,7 @@ export default function BounceHousesPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">What fits in your yard</h2>
           <p className="mt-3 text-sm leading-relaxed text-stone-600">
-            Most residential bounce units need a flat area larger than the footprint—clearance for stakes or ballasts, blower placement, and safe approach paths. Measure gate widths along the delivery route; narrow gates may require smaller units or alternate access. Power should be within the manufacturer’s cord length or paired with an approved generator.
+            Most residential bounce units need a flat area larger than the footprint, clearance for stakes or ballasts, blower placement, and safe approach paths. Measure gate widths along the delivery route; narrow gates may require smaller units or alternate access. Power should be within the manufacturer’s cord length or paired with an approved generator.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-stone-700">
             <li className="flex gap-2">
@@ -263,7 +263,7 @@ export default function BounceHousesPage() {
 
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Reviews" title="What planners say" intro="Placeholder reviews—swap in verified testimonials as you collect them." />
+          <SectionHeading eyebrow="Reviews" title="What planners say" intro="Placeholder reviews, swap in verified testimonials as you collect them." />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
               <figure key={t.name} className="rounded-2xl border border-stone-200 bg-stone-50/80 p-6">

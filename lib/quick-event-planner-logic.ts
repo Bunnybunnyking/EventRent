@@ -1,5 +1,5 @@
 /**
- * Quick Event Planner — safe-side rules (editable).
+ * Quick Event Planner, safe-side rules (editable).
  * 3-step flow: infer tent/coverage; lighting included by default in copy.
  */
 
@@ -17,7 +17,7 @@ export type EventTypeId =
   | "birthday"
   | "other";
 
-/** TAB 1 — event style (maps to internal footprint behavior) */
+/** TAB 1, event style (maps to internal footprint behavior) */
 export type EventStyleId = "seated" | "cocktail" | "ceremony" | "buffet_casual" | "dance" | "mixed";
 
 export type QuickPlannerInput = {
@@ -138,7 +138,7 @@ function danceFloorSize(guests: number, inp: QuickPlannerInput): string {
   if (guests < 50) return strong ? "12×12 ft (size up if you expect a big dance crowd)" : "12×12 ft";
   if (guests < 100) return "12×16 or 16×16 ft";
   if (guests < 150) return "16×16 or 16×20 ft";
-  return "16×20 ft or larger — we’ll fit to your floor plan";
+  return "16×20 ft or larger, we’ll fit to your floor plan";
 }
 
 /** Prefer rounds vs banquet when user hasn’t forced one style */
@@ -253,17 +253,17 @@ export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerR
   const isEvening = inp.eventTime === "evening" || inp.eventTime === "night";
 
   const lightingBullet = isEvening
-    ? "Bistro / tent lighting (especially if evening) — standard for visibility, safety, and atmosphere after dark"
-    : "Bistro / tent lighting — recommended for ambiance and visibility under the tent (plan it from the start)";
+    ? "Bistro / tent lighting (especially if evening), standard for visibility, safety, and atmosphere after dark"
+    : "Bistro / tent lighting, recommended for ambiance and visibility under the tent (plan it from the start)";
 
   let audioBullet = "";
   if (inp.music === "none") audioBullet = "Sound: add speakers or a mic later if you add music or speeches";
   else if (inp.music === "background") audioBullet = "Speaker setup: one or two small speakers for background music";
   else if (inp.music === "mic") audioBullet = "Speaker + wireless mic for announcements and toasts";
-  else audioBullet = "Power and placement for DJ or live music — we coordinate with your entertainment";
+  else audioBullet = "Power and placement for DJ or live music, we coordinate with your entertainment";
 
   const recommendedSetup: string[] = [
-    `Tent: ${tentPick.label} — a safer, more comfortable starting fit (~${tentPick.sqFt.toLocaleString()} sq ft covered)`,
+    `Tent: ${tentPick.label}, a safer, more comfortable starting fit (~${tentPick.sqFt.toLocaleString()} sq ft covered)`,
     `Chairs: ${chairs} (~8–10% buffer for real-world seating${inp.eventStyle === "mixed" ? "; extra flexibility because your program is mixed" : ""})`,
   ];
   if (roundTables > 0) recommendedSetup.push(`Tables: ${roundTables} round tables (~8 guests each, rounded up)`);
@@ -285,16 +285,16 @@ export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerR
     "If you want more circulation or extra weather flexibility, sizing up is often worth it.",
   ];
   if (inp.eventStyle === "mixed") {
-    planningNotes.push("Mixed program? We’re leaving flexibility in the layout—we’ll tighten flow when we see your site.");
+    planningNotes.push("Mixed program? We’re leaving flexibility in the layout, we’ll tighten flow when we see your site.");
   }
   if (inp.food !== "none") {
     planningNotes.push("When food is part of the day, covered service space usually helps the event run more smoothly.");
   }
   if (isEvening) {
-    planningNotes.push("For evening events, lighting should be part of the plan from the beginning—not a week-of add.");
+    planningNotes.push("For evening events, lighting should be part of the plan from the beginning, not a week-of add.");
   }
   if (wantsDanceFloor(inp)) {
-    planningNotes.push("Dance floor in the plan—we’ve allowed tent space so the layout doesn’t feel tight around the floor.");
+    planningNotes.push("Dance floor in the plan, we’ve allowed tent space so the layout doesn’t feel tight around the floor.");
   }
   if (inp.extraGames) {
     planningNotes.push("If games or activities matter, we’ll leave open space in the layout for exits and flow.");
@@ -304,7 +304,7 @@ export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerR
   }
 
   const summaryLine =
-    "Based on what you shared, here’s a starting plan we’re comfortable recommending—then we fine-tune for your site and date.";
+    "Based on what you shared, here’s a starting plan we’re comfortable recommending, then we fine-tune for your site and date.";
 
   const disclaimer =
     "This is a smart starting plan based on your event details. Final recommendations may change based on layout, site conditions, and weather planning.";
@@ -330,7 +330,7 @@ function buildRentalPackage(
     `Recommended tent: ${tentLabel}`,
     "Guest tables and chairs (with buffer)",
     evening
-      ? "Bistro / tent lighting (especially if evening) — built into the plan, not an afterthought"
+      ? "Bistro / tent lighting (especially if evening), built into the plan, not an afterthought"
       : "Bistro / tent lighting for ambiance and visibility under the tent",
     "Basic layout guidance for your property",
   ];
@@ -357,7 +357,7 @@ function packageNameAndWhy(inp: QuickPlannerInput): { name: string; why: string 
     case "wedding":
       return {
         name: "Wedding Reception Starter Package",
-        why: "Balances dining space, service flow, and room to move—typical for Connecticut outdoor receptions.",
+        why: "Balances dining space, service flow, and room to move, typical for Connecticut outdoor receptions.",
       };
     case "graduation":
       return {
@@ -399,7 +399,7 @@ function packageNameAndWhy(inp: QuickPlannerInput): { name: string; why: string 
     case "birthday":
       return {
         name: "Birthday Celebration Package",
-        why: "Flexible layout for cake, gifts, and guests—without over-building the footprint.",
+        why: "Flexible layout for cake, gifts, and guests, without over-building the footprint.",
       };
     default:
       if (inp.eventStyle === "cocktail") {
@@ -428,7 +428,7 @@ function buildHelpfulAddOns(inp: QuickPlannerInput, guests: number, dance: boole
   if (inp.drinks === "bar" || inp.food === "buffet" || inp.food === "stations" || guests > 75 || evening) {
     out.push({
       title: "Sidewalls",
-      why: "Helps with wind, light rain, and weather flexibility—worth discussing for Connecticut outdoor dates.",
+      why: "Helps with wind, light rain, and weather flexibility, worth discussing for Connecticut outdoor dates.",
     });
   }
 
@@ -442,7 +442,7 @@ function buildHelpfulAddOns(inp: QuickPlannerInput, guests: number, dance: boole
   if (dance) {
     out.push({
       title: "Dance floor",
-      why: "Keeps dancing contained and gives the event a clear focal point—especially on grass.",
+      why: "Keeps dancing contained and gives the event a clear focal point, especially on grass.",
     });
   }
 
@@ -469,7 +469,7 @@ function buildHelpfulAddOns(inp: QuickPlannerInput, guests: number, dance: boole
 
   out.push({
     title: "Linens",
-    why: "A more finished, coordinated look—especially for buffet, bar, gift, and cake.",
+    why: "A more finished, coordinated look, especially for buffet, bar, gift, and cake.",
   });
 
   out.push({
@@ -480,7 +480,7 @@ function buildHelpfulAddOns(inp: QuickPlannerInput, guests: number, dance: boole
   if (inp.extraGames || inp.eventType === "backyard" || inp.eventType === "graduation") {
     out.push({
       title: "Games / activity area",
-      why: "Great for backyard and family events—plan footprint so exits and paths stay clear.",
+      why: "Great for backyard and family events, plan footprint so exits and paths stay clear.",
     });
   }
 
@@ -501,7 +501,7 @@ function buildHelpfulAddOns(inp: QuickPlannerInput, guests: number, dance: boole
   if (evening || inp.eventTime === "night") {
     out.push({
       title: "Heaters or cool-evening planning",
-      why: "Connecticut evenings can cool off fast—climate options keep guests comfortable after sunset.",
+      why: "Connecticut evenings can cool off fast, climate options keep guests comfortable after sunset.",
     });
   }
 
@@ -553,7 +553,7 @@ export function formatQuickPlannerSummary(inp: QuickPlannerInput, res: QuickPlan
     ...pkg.optionalAddOns.map((i) => `• ${i}`),
     "",
     "HELPFUL ADD-ONS",
-    ...res.helpfulAddOns.map((a) => `• ${a.title} — ${a.why}`),
+    ...res.helpfulAddOns.map((a) => `• ${a.title}, ${a.why}`),
     "",
     "PLANNING NOTES",
     ...res.planningNotes.map((n) => `• ${n}`),

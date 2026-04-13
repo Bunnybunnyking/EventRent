@@ -14,9 +14,9 @@ export const metadata = createPageMetadata({
 });
 
 const popularGames = [
-  { name: "Cornhole", blurb: "Classic tailgate favorite—easy to learn, fun for all ages." },
+  { name: "Cornhole", blurb: "Classic tailgate favorite, easy to learn, fun for all ages." },
   { name: "Giant Jenga", blurb: "Stack-and-pull tension that draws a crowd at any backyard." },
-  { name: "Connect 4", blurb: "Supersized strategy—great for kids and adults side by side." },
+  { name: "Connect 4", blurb: "Supersized strategy, great for kids and adults side by side." },
   { name: "KanJam", blurb: "Fast-paced disc game for teams that want a little competition." },
   { name: "Ladder Toss", blurb: "Lightweight setup, perfect for grass or pavement." },
   { name: "Bocce", blurb: "Lawn game elegance for mingling and casual tournaments." },
@@ -27,15 +27,15 @@ const popularGames = [
 const packages = [
   {
     title: "Backyard Party Bundle",
-    body: "Curated mix of crowd-pleasers sized for typical residential yards—great for birthdays, anniversaries, and casual cookouts.",
+    body: "Curated mix of crowd-pleasers sized for typical residential yards, great for birthdays, anniversaries, and casual cookouts.",
   },
   {
     title: "Graduation Bundle",
-    body: "Games that keep guests rotating while speeches and food run on a schedule—paired layouts we can align with tent and table plans.",
+    body: "Games that keep guests rotating while speeches and food run on a schedule, paired layouts we can align with tent and table plans.",
   },
   {
     title: "Corporate Team Games",
-    body: "Low-friction icebreakers and light competition for company picnics and outdoor all-hands—delivery and pickup windows that respect your campus or park rules.",
+    body: "Low-friction icebreakers and light competition for company picnics and outdoor all-hands, delivery and pickup windows that respect your campus or park rules.",
   },
 ] as const;
 
@@ -46,7 +46,7 @@ const steps = [
   },
   {
     title: "We build a game lineup",
-    body: "We recommend titles that fit your footprint, age mix, and weather backup—no guesswork on what travels well in Connecticut.",
+    body: "We recommend titles that fit your footprint, age mix, and weather backup, no guesswork on what travels well in Connecticut.",
   },
   {
     title: "Delivery, setup & pickup",
@@ -63,12 +63,12 @@ const yardGamesFaq = [
   {
     question: "Do you set up the games for us?",
     answer:
-      "Yes. We place and level games for safe play, adjust for surface conditions when possible, and strike them on pickup—so you are not assembling giant sets during your party.",
+      "Yes. We place and level games for safe play, adjust for surface conditions when possible, and strike them on pickup, so you are not assembling giant sets during your party.",
   },
   {
     question: "What if the weather turns?",
     answer:
-      "Outdoor games need dry surfaces and safe wind conditions. We help you plan a sensible rain backup—often paired with a tent rental—and adjust timing if a short weather window is forecast.",
+      "Outdoor games need dry surfaces and safe wind conditions. We help you plan a sensible rain backup, often paired with a tent rental, and adjust timing if a short weather window is forecast.",
   },
   {
     question: "How is pricing structured?",
@@ -84,12 +84,12 @@ const yardGamesFaq = [
 
 const testimonials = [
   {
-    quote: "Cornhole and giant Jenga were the hit of our block party—setup was fast and the crew was professional.",
-    name: "Host placeholder — Hartford area",
+    quote: "Cornhole and giant Jenga were the hit of our block party, setup was fast and the crew was professional.",
+    name: "Host placeholder, Hartford area",
   },
   {
     quote: "We bundled games with a tent for a graduation cookout. One quote, one schedule, zero stress.",
-    name: "Host placeholder — Farmington area",
+    name: "Host placeholder, Farmington area",
   },
 ] as const;
 
@@ -98,7 +98,7 @@ export default function YardGamesPage() {
     <>
       <ServiceSchema
         name="Yard game rentals in Connecticut"
-        description="Outdoor yard game rentals including cornhole, giant Jenga, Connect 4, KanJam, ladder toss, bocce, Spikeball, and giant tic-tac-toe for backyard parties, graduations, and corporate events—with delivery and setup."
+        description="Outdoor yard game rentals including cornhole, giant Jenga, Connect 4, KanJam, ladder toss, bocce, Spikeball, and giant tic-tac-toe for backyard parties, graduations, and corporate events, with delivery and setup."
         path="/yard-games"
       />
       <BreadcrumbListSchema
@@ -115,7 +115,7 @@ export default function YardGamesPage() {
             Yard game rentals for unforgettable outdoor gatherings
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-stone-600">
-            Elevate backyard parties, graduations, and team events with professional-grade yard games—delivered and staged so your guests spend time playing, not waiting.
+            Elevate backyard parties, graduations, and team events with professional-grade yard games, delivered and staged so your guests spend time playing, not waiting.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -162,7 +162,7 @@ export default function YardGamesPage() {
 
       <section className="border-y border-stone-200 bg-stone-50/80 py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Bundles" title="Packages" intro="Starter themes we customize to your footprint and schedule—quote always confirms inventory." />
+          <SectionHeading eyebrow="Bundles" title="Packages" intro="Starter themes we customize to your footprint and schedule, quote always confirms inventory." />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {packages.map((pkg) => (
               <article key={pkg.title} className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
@@ -179,7 +179,7 @@ export default function YardGamesPage() {
           <SectionHeading
             eyebrow="Process"
             title="How it works"
-            intro="Straightforward planning from first message to pickup—built for busy hosts and coordinators."
+            intro="Straightforward planning from first message to pickup, built for busy hosts and coordinators."
           />
           <ol className="mt-10 space-y-6">
             {steps.map((step, i) => (
@@ -208,7 +208,7 @@ export default function YardGamesPage() {
 
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Social proof" title="What hosts say" intro="Placeholder testimonials—replace with real client quotes when available." />
+          <SectionHeading eyebrow="Social proof" title="What hosts say" intro="Placeholder testimonials, replace with real client quotes when available." />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
               <figure key={t.name} className="rounded-2xl border border-stone-200 bg-stone-50/80 p-6">

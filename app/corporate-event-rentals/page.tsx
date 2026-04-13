@@ -52,7 +52,7 @@ export default function CorporatePage() {
             <Link href="/events/fundraisers-galas" className="font-semibold text-stone-800 underline underline-offset-2">
               fundraiser &amp; gala
             </Link>{" "}
-            guides walk through layout, weather backup, and crowd flow—without adding noise to your main navigation.
+            guides walk through layout, weather backup, and crowd flow, without adding noise to your main navigation.
           </p>
         </div>
       </section>

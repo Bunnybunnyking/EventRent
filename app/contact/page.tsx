@@ -20,7 +20,7 @@ export default function ContactPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a97a21]">Contact</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">Book your Connecticut event</h1>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg">
-            Quick form below—add more detail anytime after you submit. Prefer the phone? Call{" "}
+            Quick form below, add more detail anytime after you submit. Prefer the phone? Call{" "}
             <a href={business.phoneHref} className="font-semibold text-stone-800 underline underline-offset-2">
               {business.phone}
             </a>

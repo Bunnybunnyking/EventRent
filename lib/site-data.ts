@@ -11,12 +11,12 @@ export const business = {
   establishedYear: "1946",
   /** Trust line (header strip + footer); credibility, not the hero brand tagline */
   celebrationTagline: "Celebrating 80+ years in business",
-  /** Polished hero tagline — oldest in CT + quality / service (see homepage hero) */
+  /** Polished hero tagline, oldest in CT + quality / service (see homepage hero) */
   heroBrandTagline:
     "Connecticut's oldest party rental company. Trusted service since 1946, still family run.",
   /** Party Packages / tent bundle sales page */
   partyPackagesTagline: "We set the stage. You steal the show.",
-  /** FAQ page — line under the celebration / trust line */
+  /** FAQ page, line under the celebration / trust line */
   faqPageTagline: "Still hot in tent years",
   ownership: "Family owned and operated",
   tentSizeRange: "10x10 to 100x250",
@@ -24,7 +24,8 @@ export const business = {
 
 /** Primary header navigation (internal routes). “Call Now” is on the homepage hero image, not in the nav. */
 export const headerNavLinks = [
-  { href: "/tent-rentals", label: "Tents" },
+  { href: "/tents", label: "Tents" },
+  { href: "/party-guides", label: "Party guides" },
   { href: "/planning", label: "Planning" },
   { href: "/party-packages", label: "Packages" },
   { href: "/table-chair-rentals", label: "Tables & Chairs" },
@@ -33,8 +34,10 @@ export const headerNavLinks = [
   { href: "/yard-games", label: "Games" },
 ];
 
-/** Footer “Services” column — includes deep links not shown in the main nav. */
+/** Footer “Services” column, includes deep links not shown in the main nav. */
 export const footerServiceLinks = [
+  { href: "/party-guides", label: "Party guides" },
+  { href: "/tents", label: "Tent guide" },
   { href: "/tent-rentals", label: "Tent rentals" },
   { href: "/tent-rentals/jobsite-coverage", label: "Jobsite coverage" },
   { href: "/table-chair-rentals", label: "Tables & chairs" },
@@ -57,7 +60,7 @@ export const services = [
   {
     title: "Tent Rentals",
     description: "Frame tents, pole tents, and sailcloth for outdoor events from backyards to full receptions.",
-    href: "/tent-rentals",
+    href: "/tents",
   },
   {
     title: "Table & Chair Rentals",
@@ -86,7 +89,7 @@ export const services = [
   },
 ];
 
-/** Homepage “event types” row — each item links to a relevant service, occasion guide, or FAQ for internal linking. */
+/** Homepage “event types” row, each item links to a relevant service, occasion guide, or FAQ for internal linking. */
 export const eventTypeLinks: { label: string; href: string }[] = [
   { label: "Weddings", href: "/wedding-tent-rentals" },
   { label: "Graduation parties", href: "/events/graduation-parties" },
@@ -211,7 +214,7 @@ export const faqItems: FaqItem[] = [
     id: "booking-process",
     question: "How do I book a tent rental?",
     answer:
-      "Start with a quote: share your date, town or venue, guest count, and event type. We respond with recommendations, options, and pricing. When you are ready to move forward, we confirm equipment, schedule delivery and installation, and walk through surface conditions and weather considerations. You always know the next step—no mystery process.",
+      "Start with a quote: share your date, town or venue, guest count, and event type. We respond with recommendations, options, and pricing. When you are ready to move forward, we confirm equipment, schedule delivery and installation, and walk through surface conditions and weather considerations. You always know the next step, no mystery process.",
   },
   {
     id: "hard-surface-anchoring",
@@ -223,7 +226,7 @@ export const faqItems: FaqItem[] = [
     id: "lawn-utilities",
     question: "What should I know about lawn staking and underground utilities?",
     answer:
-      "For grass installs we typically stake for stability. Clear the area of furniture, hoses, and debris before we arrive; freshly mowed, level lawn helps with a clean setup. If you have irrigation, septic, or buried electric, tell us early so we can position stakes safely—when in doubt, locate utility lines before event day. Steep slopes or soft ground may change anchoring; we address that in planning.",
+      "For grass installs we typically stake for stability. Clear the area of furniture, hoses, and debris before we arrive; freshly mowed, level lawn helps with a clean setup. If you have irrigation, septic, or buried electric, tell us early so we can position stakes safely, when in doubt, locate utility lines before event day. Steep slopes or soft ground may change anchoring; we address that in planning.",
   },
   {
     id: "tables-without-tent",
@@ -235,7 +238,7 @@ export const faqItems: FaqItem[] = [
     id: "backyard-party",
     question: "Do you rent tents for backyard parties in Connecticut?",
     answer:
-      "Yes. We review access for our truck and crew, staking vs. ballasting, neighbor-friendly timing, and how guests will move from house to tent. Backyard parties are a staple for us—whether it is a birthday, anniversary, or casual celebration—so the setup feels intentional, not improvised.",
+      "Yes. We review access for our truck and crew, staking vs. ballasting, neighbor-friendly timing, and how guests will move from house to tent. Backyard parties are a staple for us, whether it is a birthday, anniversary, or casual celebration, so the setup feels intentional, not improvised.",
   },
   {
     id: "graduation-events",

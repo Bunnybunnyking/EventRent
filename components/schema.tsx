@@ -126,3 +126,28 @@ export function BreadcrumbListSchema({ items }: { items: BreadcrumbItem[] }) {
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }
+
+type ArticleSchemaProps = {
+  headline: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified: string;
+};
+
+/** Article / BlogPosting for guide and content pages */
+export function ArticleSchema({ headline, description, path, datePublished, dateModified }: ArticleSchemaProps) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    datePublished,
+    dateModified,
+    author: { "@type": "Organization", name: business.name },
+    publisher: { "@id": businessId },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteBaseUrl}${path}` },
+  };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+}

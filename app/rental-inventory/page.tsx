@@ -9,7 +9,7 @@ import { business } from "@/lib/site-data";
 export const metadata = createPageMetadata({
   title: `Rental Inventory Overview | Tents, Tables & Chairs | ${business.primaryCity} CT`,
   description:
-    "Connecticut event rental inventory overview: high-capacity tents, tables, chairs, dance floor, lighting, siding, yard games, and bounce houses. Estimated counts for planning—quote confirms availability.",
+    "Connecticut event rental inventory overview: high-capacity tents, tables, chairs, dance floor, lighting, siding, yard games, and bounce houses. Estimated counts for planning, quote confirms availability.",
   path: "/rental-inventory",
 });
 
@@ -22,7 +22,7 @@ export default function RentalInventoryPage() {
           <TentSectionTabs active="inventory" />
           <h1 className="text-4xl font-semibold tracking-tight text-stone-900">Connecticut event rental inventory overview</h1>
           <p className="mt-4 text-lg text-stone-600">
-            Party rentals and event rentals in Connecticut—from{" "}
+            Party rentals and event rentals in Connecticut, from{" "}
             <Link href="/tent-rentals" className="font-medium text-stone-800 underline underline-offset-2">
               tent rentals
             </Link>{" "}

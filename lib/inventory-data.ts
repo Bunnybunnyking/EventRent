@@ -1,5 +1,5 @@
 /**
- * Estimated rental inventory — grouped for scanning. Goodshuffle-ready: replace with API; keep `id` stable.
+ * Estimated rental inventory, grouped for scanning. Goodshuffle-ready: replace with API; keep `id` stable.
  */
 
 export type InventoryLineItem = {
@@ -22,9 +22,9 @@ export type InventoryCategory = {
 export const inventoryDisclaimer =
   "Figures below are an estimated inventory overview for planning. Availability varies by date, season, and concurrent events. Your quote confirms what we can reserve for your specific day.";
 
-/** Near tent inventory — modular / gutter systems */
+/** Near tent inventory, modular / gutter systems */
 export const tentConnectionNote =
-  "Many frame and expansion-style systems can be connected with gutters to form larger covered layouts when your guest count, program, or site calls for it—subject to tent type, anchoring, and conditions. We confirm what is possible on your date during planning.";
+  "Many frame and expansion-style systems can be connected with gutters to form larger covered layouts when your guest count, program, or site calls for it, subject to tent type, anchoring, and conditions. We confirm what is possible on your date during planning.";
 
 export type InventorySectionGroup = {
   id: string;
@@ -61,7 +61,7 @@ export const inventoryOverviewGroups: InventorySectionGroup[] = [
     id: "expandable-systems",
     title: "Expandable tent systems",
     description:
-      "Components and expansion inventory used to build custom layouts—including connected runs with gutters for dining, dance, bar, and walkway zones.",
+      "Components and expansion inventory used to build custom layouts, including connected runs with gutters for dining, dance, bar, and walkway zones.",
     categories: [
       {
         id: "tent-expandable",
@@ -111,7 +111,7 @@ export const inventoryOverviewGroups: InventorySectionGroup[] = [
   {
     id: "event-equipment",
     title: "Dance floors, lighting & other event equipment",
-    description: "Complete the tented space—details and counts confirmed when you quote.",
+    description: "Complete the tented space, details and counts confirmed when you quote.",
     categories: [
       {
         id: "dance-floor",
@@ -145,7 +145,7 @@ export const inventoryOverviewGroups: InventorySectionGroup[] = [
         id: "bounce-houses",
         title: "Bounce houses",
         overviewOnly: true,
-        description: "Family-friendly inflatables—coordinate power and placement with your site.",
+        description: "Family-friendly inflatables, coordinate power and placement with your site.",
         items: [],
       },
       {
@@ -201,7 +201,7 @@ export const popularRentalCategories: PopularCategoryCard[] = [
   {
     id: "packages",
     title: "Tent packages",
-    description: "Bundled starting points—always quoted to your date and venue.",
+    description: "Bundled starting points, always quoted to your date and venue.",
     href: "/party-packages",
   },
   {

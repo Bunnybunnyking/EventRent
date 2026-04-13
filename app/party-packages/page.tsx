@@ -19,7 +19,7 @@ const packages = [
   },
   {
     name: "Reception-style gathering",
-    blurb: "Elevated flow for mingling, dining, and dancing—popular for weddings and milestone parties.",
+    blurb: "Elevated flow for mingling, dining, and dancing, popular for weddings and milestone parties.",
     includes: ["Larger tent and floor plan options", "Dining and cocktail seating mix", "Lighting and accessory options available", "Coordinated delivery timing with your venue"],
   },
   {
@@ -44,7 +44,7 @@ export default function PartyPackagesPage() {
             titleAs="h1"
             eyebrow="Party Packages"
             title="Rental packages built around your guest count and event style"
-            intro={`Family owned and operated since ${business.establishedYear}, we bundle tents, tables, chairs, and popular add-ons so planning stays simple. Every package is quoted to your date, town, and venue—not one-size-fits-all pricing surprises.`}
+            intro={`Family owned and operated since ${business.establishedYear}, we bundle tents, tables, chairs, and popular add-ons so planning stays simple. Every package is quoted to your date, town, and venue, not one-size-fits-all pricing surprises.`}
           />
           <p className="mx-auto mt-4 max-w-3xl text-center text-sm text-stone-600">
             Unsure about footprint or weather backup? Our{" "}
@@ -116,7 +116,7 @@ export default function PartyPackagesPage() {
               <Link href="/events/quinceaneras" className="font-semibold text-stone-800 underline underline-offset-2">
                 quinceañera
               </Link>{" "}
-              planning guides—then we’ll shape a package quote that fits.
+              planning guides, then we’ll shape a package quote that fits.
             </p>
           </div>
         </div>

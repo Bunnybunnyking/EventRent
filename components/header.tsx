@@ -5,11 +5,11 @@ import { useState } from "react";
 import { bookNowHeaderClass } from "@/lib/cta-styles";
 import { business, headerNavLinks } from "@/lib/site-data";
 
-/** Wish list — distinct from black: muted green-grey */
+/** Wish list, distinct from black: muted green-grey */
 const btnWishlist =
   "inline-flex shrink-0 touch-manipulation items-center justify-center rounded-full border border-[#6b7f78]/55 bg-[#3d4845] px-3.5 py-2.5 text-[0.75rem] font-semibold leading-none tracking-[0.06em] text-[#e8f0ec] shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-[#8a9e96]/65 hover:bg-[#46534f] hover:text-white sm:px-4 sm:py-2.5 sm:text-sm [font-family:var(--font-display)]";
 
-/** Desktop / tablet: one row — scroll horizontally on narrow viewports instead of wrapping */
+/** Desktop / tablet: one row, scroll horizontally on narrow viewports instead of wrapping */
 const navLinkClass =
   "shrink-0 whitespace-nowrap px-2.5 py-1.5 text-[1.14rem] font-semibold leading-tight tracking-[0.03em] text-[#f0ebe3] [font-family:var(--font-display)] transition hover:text-[#f5e0b3] md:text-[1.22rem] lg:text-[1.28rem] xl:text-[1.32rem]";
 
@@ -19,7 +19,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-[#0f1113] shadow-[0_1px_0_rgba(183,138,45,0.25)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        {/* —— Desktop / tablet: reference layout —— */}
+        {/* ,   Desktop / tablet: reference layout ,   */}
         <div className="hidden md:block">
           <div className="grid grid-cols-[1fr_minmax(0,auto)_1fr] items-start gap-x-4 pb-1 pt-6 lg:gap-x-8 lg:pt-7">
             <div className="flex justify-start pt-1">
@@ -62,7 +62,7 @@ export function Header() {
           </div>
         </div>
 
-        {/* —— Mobile: hierarchy brand → subtitle → actions → menu —— */}
+        {/* ,   Mobile: hierarchy brand → subtitle → actions → menu ,   */}
         <div className="md:hidden">
           <div className="flex flex-col items-center px-2 pb-2 pt-4 text-center sm:pt-5">
             <Link
@@ -121,7 +121,7 @@ export function Header() {
           </div>
         ) : null}
 
-        {/* Thin gold divider — full width of header */}
+        {/* Thin gold divider, full width of header */}
         <div className="h-px w-full bg-[#b78a2d]/85" aria-hidden />
       </div>
     </header>

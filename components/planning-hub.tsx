@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { EventLooksSection } from "@/components/event-looks-section";
 import { CTASection, SectionHeading } from "@/components/sections";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { QuickEventPlanner } from "@/components/quick-event-planner";
 import { TentSizeEstimator } from "@/components/tent-size-estimator";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
+import { cardRowHintClass, interactiveCardClass } from "@/lib/interactive-styles";
 import { defaultOgImagePath } from "@/lib/metadata";
 import {
   eventTypeGuides,
@@ -20,6 +22,7 @@ import { planningFaqItems } from "@/lib/planning-faq";
 import { business } from "@/lib/site-data";
 
 const sectionNav = [
+  { href: "#planning-paths", label: "Paths & looks" },
   { href: "#size-guide", label: "Planning tools" },
   { href: "#tent-size-estimator", label: "Sq ft calculator" },
   { href: "#quick-event-planner", label: "Quick planner" },
@@ -102,7 +105,11 @@ export function PlanningHub() {
               <Link href="/contact#quote" className="font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
                 reach out
               </Link>{" "}
-              when you want a real pair of eyes on your date and property.
+              when you want a real pair of eyes on your date and property. For shorter topic guides (sizing mindset, backyard checklists, rain plans), see{" "}
+              <Link href="/party-guides" className="font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
+                Party guides
+              </Link>
+              .
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
               <a href={business.phoneHref} className={callNowSectionClass}>
@@ -157,6 +164,53 @@ export function PlanningHub() {
         </div>
       </section>
 
+      <EventLooksSection variant="planning" />
+
+      <section
+        id="planning-paths"
+        className="scroll-mt-36 border-b border-stone-200 bg-white py-10 sm:py-12"
+        aria-labelledby="planning-paths-heading"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 id="planning-paths-heading" className="text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">
+            Choose your planning path
+          </h2>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-600">
+            Tools give you numbers. Guides explain tradeoffs. Tent pages connect to our real inventory: frame sizes from 10×10 through large 60×60–60×150 structures, expandable 20′ and 30′ systems, pole tents, and marquee walkways, plus tables and chairs.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <Link href="/party-guides" className={`${interactiveCardClass} flex flex-col p-5`}>
+              <h3 className="text-lg font-semibold text-stone-900 [font-family:var(--font-display)]">Party guides</h3>
+              <p className="mt-2 flex-1 text-sm text-stone-600">Layout-first answers on sizing, weather, backyards, graduations, and flow.</p>
+              <span className={cardRowHintClass}>
+                Browse guides <span aria-hidden>→</span>
+              </span>
+            </Link>
+            <Link href="/tents" className={`${interactiveCardClass} flex flex-col p-5`}>
+              <h3 className="text-lg font-semibold text-stone-900 [font-family:var(--font-display)]">Tent families</h3>
+              <p className="mt-2 flex-1 text-sm text-stone-600">Frame, expandable, pole, large structures, and marquee walkways.</p>
+              <span className={cardRowHintClass}>
+                Explore tents <span aria-hidden>→</span>
+              </span>
+            </Link>
+            <Link href="/tents/frame-tents/20x40-frame-tent-rental" className={`${interactiveCardClass} flex flex-col p-5`}>
+              <h3 className="text-lg font-semibold text-stone-900 [font-family:var(--font-display)]">Popular size: 20×40</h3>
+              <p className="mt-2 flex-1 text-sm text-stone-600">Eight hundred square feet of clear-span context, inventory-aware.</p>
+              <span className={cardRowHintClass}>
+                View size page <span aria-hidden>→</span>
+              </span>
+            </Link>
+            <Link href="/contact#quote" className={`${interactiveCardClass} flex flex-col border-[#b78a2d]/30 bg-[#fffdf8] p-5`}>
+              <h3 className="text-lg font-semibold text-stone-900 [font-family:var(--font-display)]">Talk with our team</h3>
+              <p className="mt-2 flex-1 text-sm text-stone-600">Share your date, town, and guest flow for a quote tied to real gear.</p>
+              <span className={cardRowHintClass}>
+                Request a quote <span aria-hidden>→</span>
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Planning tools: (1) Tent size / sq ft estimator + chart (2) Quick Event Planner */}
       <section id="size-guide" className="scroll-mt-36 border-t border-stone-200 bg-stone-50 py-10 sm:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -165,33 +219,33 @@ export function PlanningHub() {
             align="left"
             eyebrow="Planning tools"
             title="Two ways to plan your tent and setup"
-            intro="Pick the tool that fits where you are today. Use the square footage calculator for fast tent-size ranges and examples, or use the Quick Event Planner for a fuller starting checklist—chairs, tables, lighting, weather, and more. Both stay on this page; nothing replaces the other."
+            intro="Pick the tool that fits where you are today. Use the square footage calculator for fast tent-size ranges and examples, or use the Quick Event Planner for a fuller starting checklist, chairs, tables, lighting, weather, and more. Both stay on this page; nothing replaces the other."
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <a
               href="#tent-size-estimator"
-              className="group rounded-2xl border-2 border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#c9a24a] hover:shadow-md sm:p-6"
+              className={`group ${interactiveCardClass} flex flex-col p-5 sm:p-6`}
             >
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8a6218]">Option 1 · Fast sizing</p>
               <h3 className="mt-2 text-lg font-semibold text-stone-900">Tent size & square footage calculator</h3>
               <p className="mt-2 text-sm leading-relaxed text-stone-600">
-                Guest count, layout, and options—get low / high comfort ranges and example tent sizes. Includes the reference chart.
+                Guest count, layout, and options, get low / high comfort ranges and example tent sizes. Includes the reference chart.
               </p>
-              <span className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] group-hover:underline">
-                Jump to calculator →
+              <span className={cardRowHintClass}>
+                Jump to calculator <span aria-hidden>→</span>
               </span>
             </a>
             <a
               href="#quick-event-planner"
-              className="group rounded-2xl border-2 border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#c9a24a] hover:shadow-md sm:p-6"
+              className={`group ${interactiveCardClass} flex flex-col p-5 sm:p-6`}
             >
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8a6218]">Option 2 · Full plan</p>
               <h3 className="mt-2 text-lg font-semibold text-stone-900">Quick Event Planner</h3>
               <p className="mt-2 text-sm leading-relaxed text-stone-600">
-                Three quick tabs—basics, setup, and your plan—with chairs, tables, lighting, add-ons, and a recommended rental package.
+                Three quick tabs, basics, setup, and your plan, with chairs, tables, lighting, add-ons, and a recommended rental package.
               </p>
-              <span className="mt-4 inline-flex text-sm font-semibold text-[#8a6218] group-hover:underline">
-                Jump to planner →
+              <span className={cardRowHintClass}>
+                Jump to planner <span aria-hidden>→</span>
               </span>
             </a>
           </div>
@@ -212,7 +266,7 @@ export function PlanningHub() {
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Option 1</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-stone-900">Tent size & square footage calculator</h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-600 sm:text-base">
-              Interactive ranges based on your guest count, program, and add-ons—use this when you want numbers and a comfort band before anything else.
+              Interactive ranges based on your guest count, program, and add-ons, use this when you want numbers and a comfort band before anything else.
             </p>
             <p className="mt-4 mb-4 inline-flex items-center rounded-full border border-[#c9a24a]/50 bg-[#fffbf0] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#6b5220]">
               Interactive estimator
@@ -221,11 +275,13 @@ export function PlanningHub() {
           </div>
 
           {/* Quick Event Planner placed here (before the long chart) so it is easy to find on mobile and production */}
-          <div id="quick-event-planner" className="scroll-mt-36 mt-12 border-t border-stone-200 bg-stone-50/80 py-10 sm:mt-14 sm:py-12">
+          <div className="mt-12 border-t border-stone-200 bg-stone-50/80 py-10 sm:mt-14 sm:py-12">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Option 2</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-stone-900">Quick Event Planner</h2>
+            <h2 id="quick-event-planner" className="scroll-mt-36 mt-2 text-2xl font-semibold tracking-tight text-stone-900">
+              Quick Event Planner
+            </h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-600 sm:text-base">
-              A second tool—not a replacement for the calculator above. Walk through a few choices and get a starting plan for chairs, tables, service areas, lighting, weather, and more.
+              A second tool, not a replacement for the calculator above. Walk through a few choices and get a starting plan for chairs, tables, service areas, lighting, weather, and more.
             </p>
             <div className="mt-8">
               <QuickEventPlanner embedded />
@@ -266,6 +322,10 @@ export function PlanningHub() {
 
           <p className="mt-8 text-center text-sm text-stone-600 sm:mt-10">
             More context:{" "}
+            <Link href="/party-guides" className="font-semibold text-stone-900 underline underline-offset-2">
+              party guides
+            </Link>{" "}
+            ·{" "}
             <Link href="/faq#faq-tent-size" className="font-semibold text-stone-900 underline underline-offset-2">
               tent sizing FAQ
             </Link>{" "}

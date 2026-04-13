@@ -32,7 +32,7 @@ export type EventLandingContent = {
 
 const baseRelated = [
   { label: "Party packages", href: "/party-packages" },
-  { label: "Tent rentals", href: "/tent-rentals" },
+  { label: "Tent rentals", href: "/tents" },
   { label: "Table & chair rentals", href: "/table-chair-rentals" },
   { label: "Contact & quote", href: "/contact#quote" },
 ];

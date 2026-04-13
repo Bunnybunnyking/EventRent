@@ -101,7 +101,7 @@ export default function JobsiteCoveragePage() {
     <>
       <ServiceSchema
         name="Jobsite tent rentals and heat relief stations"
-        description="Temporary tent coverage, hydration stations, and heat relief packages for Connecticut contractors—roofing, construction, paving, landscaping, and outdoor crews. Delivery, setup, and extended 14-day jobsite rentals."
+        description="Temporary tent coverage, hydration stations, and heat relief packages for Connecticut contractors, roofing, construction, paving, landscaping, and outdoor crews. Delivery, setup, and extended 14-day jobsite rentals."
         path="/tent-rentals/jobsite-coverage"
       />
       <section className="border-b border-stone-200/80 bg-[#f7f5f1] py-8 sm:py-10">
@@ -121,14 +121,14 @@ export default function JobsiteCoveragePage() {
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a97a21]">Tent Rentals</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">Jobsite Coverage</h1>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-stone-600">
-              Temporary tent coverage for outdoor job sites that need reliable shade, organized hydration, and heat-relief staging—planned for active crews, tight schedules, and real-world site conditions across Connecticut.
+              Temporary tent coverage for outdoor job sites that need reliable shade, organized hydration, and heat-relief staging, planned for active crews, tight schedules, and real-world site conditions across Connecticut.
             </p>
           </div>
 
           <div className="mt-10 space-y-4 text-left">
             <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Jobsite Heat &amp; Hydration Stations</h2>
             <p className="max-w-3xl text-sm leading-relaxed text-stone-600">
-              Summer heat and long shifts put crews at risk when there is nowhere to cool down or refill water. We deliver temporary tent coverage sized for your laydown area—so roofing, construction, paving, and landscaping teams get consistent shade, a defined hydration point, and a professional setup that stays put for the job duration. Tell us your crew size, site access, and schedule; we recommend a station layout and rental window that fits how you actually work.
+              Summer heat and long shifts put crews at risk when there is nowhere to cool down or refill water. We deliver temporary tent coverage sized for your laydown area, so roofing, construction, paving, and landscaping teams get consistent shade, a defined hydration point, and a professional setup that stays put for the job duration. Tell us your crew size, site access, and schedule; we recommend a station layout and rental window that fits how you actually work.
             </p>
             <p className="rounded-xl border border-amber-200/80 bg-amber-50/90 px-4 py-3 text-sm font-medium text-stone-800">
               Minimum jobsite rental order: <span className="font-semibold">$300</span>
@@ -138,7 +138,7 @@ export default function JobsiteCoveragePage() {
           <div className="mt-12">
             <h2 className="text-center text-2xl font-semibold tracking-tight text-stone-900">Jobsite packages</h2>
             <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-stone-600">
-              Shade, hydration, and heat relief bundles—delivery, setup, and pickup handled by our team unless noted.
+              Shade, hydration, and heat relief bundles, delivery, setup, and pickup handled by our team unless noted.
             </p>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {packages.map((pkg) => (
@@ -164,7 +164,7 @@ export default function JobsiteCoveragePage() {
           <div className="mt-16 text-left">
             <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Extended Construction Tent Rentals</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">
-              These are <strong className="font-semibold text-stone-800">14-day jobsite tent rental</strong> rates for roofing, construction, exterior work, crew break areas, staging, and temporary weather coverage—built for longer runs on active sites, not single-day parties.
+              These are <strong className="font-semibold text-stone-800">14-day jobsite tent rental</strong> rates for roofing, construction, exterior work, crew break areas, staging, and temporary weather coverage, built for longer runs on active sites, not single-day parties.
             </p>
 
             <div className="mt-6 overflow-x-auto rounded-2xl border border-stone-200 bg-white shadow-sm">
@@ -199,7 +199,7 @@ export default function JobsiteCoveragePage() {
           <div className="mt-14">
             <h2 className="text-center text-2xl font-semibold tracking-tight text-stone-900">Tent Coverage Guide</h2>
             <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-stone-600">
-              Quick reference for common jobsite footprints—your quote may combine sizes or add sidewalls and accessories.
+              Quick reference for common jobsite footprints, your quote may combine sizes or add sidewalls and accessories.
             </p>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {coverageGuide.map((card) => (
@@ -242,7 +242,7 @@ export default function JobsiteCoveragePage() {
               Need Tent Coverage for Your Next Jobsite?
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-300 sm:text-base">
-              Ask about Shade Station, Hydration Station, and Heat Relief packages—or lock in extended construction tent rentals with 14-day jobsite pricing. Share your site, dates, and crew size; we will recommend coverage that fits the work.
+              Ask about Shade Station, Hydration Station, and Heat Relief packages, or lock in extended construction tent rentals with 14-day jobsite pricing. Share your site, dates, and crew size; we will recommend coverage that fits the work.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/contact#quote" className={bookNowSectionClass}>

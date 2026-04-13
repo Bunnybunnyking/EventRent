@@ -3,7 +3,7 @@ import { business } from "./site-data";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-/** Exists under `public/` — used for OG, schema, and homepage hero */
+/** Exists under `public/`, used for OG, schema, and homepage hero */
 export const defaultOgImagePath = "/images/wethersfield-ct-party-tent-rental-wedding-reception.png";
 
 export function createPageMetadata({

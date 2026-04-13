@@ -34,6 +34,14 @@ export default function TentRentalsPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb className="mb-3" items={[{ label: "Home", href: "/" }, { label: "Tent Rentals" }]} />
 
+          <p className="mb-5 rounded-xl border border-[#e8e0d5] bg-white px-4 py-3 text-sm text-stone-700 shadow-sm">
+            Looking for tent families, popular sizes, and layout-first guides? Start at our{" "}
+            <Link href="/tents" className="font-semibold text-stone-900 underline underline-offset-2">
+              tent guide hub
+            </Link>
+            . This page still has modular systems, add-ons, and jobsite coverage.
+          </p>
+
           <TentSectionTabs active="tent-rentals" />
 
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
@@ -41,7 +49,7 @@ export default function TentRentalsPage() {
               <SectionHeading
                 eyebrow="Tent rentals"
                 title={`Connecticut tent rentals & custom tent layouts`}
-                intro={`Choose the right tent setup for your guest count, site, and event type—weddings, graduations, backyard parties, corporate events, and school programs. Family owned and operated since ${business.establishedYear}, we help you build expandable layouts, not just rent a single box.`}
+                intro={`Choose the right tent setup for your guest count, site, and event type: weddings, graduations, backyard parties, corporate events, and school programs. Family owned and operated since ${business.establishedYear}, we help you build expandable layouts, not just rent a single box.`}
                 titleAs="h1"
                 align="left"
               />
@@ -66,7 +74,7 @@ export default function TentRentalsPage() {
             <Link href="/planning" className="font-semibold text-stone-900 underline underline-offset-2">
               Planning hub
             </Link>{" "}
-            walks through footprint estimates, weather readiness, and what changes the math—before you choose a structure.
+            walks through footprint estimates, weather readiness, and what changes the math before you choose a structure.
           </p>
 
           <div className="mt-10 space-y-0">
@@ -93,14 +101,14 @@ export default function TentRentalsPage() {
               <div className="relative aspect-[16/10] w-full md:aspect-[2.1/1]">
                 <Image
                   src="/images/tent-sidewalls-window-walls-tennis-court.png"
-                  alt="Connecticut frame tent with clear window sidewalls and ballast weights on a tennis court—example of tent siding and hard-surface installation"
+                  alt="Connecticut frame tent with clear window sidewalls and ballast weights on a tennis court, example of tent siding and hard-surface installation"
                   fill
                   sizes="(max-width: 768px) 100vw, 1024px"
                   className="object-cover object-center"
                 />
               </div>
               <figcaption className="border-t border-stone-200 bg-white px-4 py-3 text-center text-sm text-stone-600">
-                Frame tent with window sidewalls and ballasts on a hard surface—combine siding types with your lighting and layout plan.
+                Frame tent with window sidewalls and ballasts on a hard surface, combine siding types with your lighting and layout plan.
               </figcaption>
             </figure>
           </div>
@@ -123,7 +131,7 @@ export default function TentRentalsPage() {
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Corporate, school & community</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-600">
-                Large event tent rentals for company picnics, graduations, and public programs—with load-in timing and presentation that match your run-of-show. See{" "}
+                Large event tent rentals for company picnics, graduations, and public programs with load-in timing and presentation that match your run-of-show. See{" "}
                 <Link href="/corporate-event-rentals" className="font-medium text-stone-800 underline underline-offset-2">
                   corporate event rentals
                 </Link>{" "}
@@ -137,7 +145,7 @@ export default function TentRentalsPage() {
             <div className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
               <h2 className="text-xl font-semibold">Still deciding on size?</h2>
               <p className="mt-2 text-sm text-stone-600">
-                We size tents from your guest count, seating style, and program—not guesswork. Read{" "}
+                We size tents from your guest count, seating style, and program, not guesswork. Read{" "}
                 <Link href="/faq#faq-tent-size" className="font-medium text-stone-800 underline underline-offset-2">
                   how we size tents
                 </Link>

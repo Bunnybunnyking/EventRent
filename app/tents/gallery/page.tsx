@@ -10,7 +10,7 @@ import { business, galleryItems } from "@/lib/site-data";
 export const metadata = createPageMetadata({
   title: `Tent Photo Gallery | Connecticut Party & Wedding Setups | ${business.primaryCity}`,
   description:
-    "Connecticut tent rental photo gallery: wedding, backyard, corporate, and community setups—layouts, lighting, and presentation ideas. Click any image to view full size.",
+    "Connecticut tent rental photo gallery: wedding, backyard, corporate, and community setups, layouts, lighting, and presentation ideas. Click any image to view full size.",
   path: "/tents/gallery",
 });
 
@@ -20,7 +20,7 @@ export default function TentsGalleryPage() {
       <BreadcrumbListSchema
         items={[
           { name: "Home", path: "/" },
-          { name: "Tents", path: "/tent-rentals" },
+          { name: "Tents", path: "/tents" },
           { name: "Tent gallery", path: "/tents/gallery" },
         ]}
       />
@@ -31,7 +31,7 @@ export default function TentsGalleryPage() {
               className="mb-0"
               items={[
                 { label: "Home", href: "/" },
-                { label: "Tent rentals", href: "/tent-rentals" },
+                { label: "Tents", href: "/tents" },
                 { label: "Tent gallery" },
               ]}
             />
@@ -43,10 +43,10 @@ export default function TentsGalleryPage() {
                 Get a Tent Quote
               </Link>
               <Link
-                href="/tent-rentals"
+                href="/tents"
                 className="rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 transition hover:bg-stone-50"
               >
-                Tent rentals
+                Tent guide
               </Link>
             </div>
           </div>

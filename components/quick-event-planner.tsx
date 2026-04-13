@@ -119,7 +119,7 @@ function SectionCard({ title, children, highlight }: { title: string; children: 
 
 export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) {
   const [tab, setTab] = useState<1 | 2 | 3>(1);
-  /** Highest step reached via Next — controls which tabs are clickable. */
+  /** Highest step reached via Next, controls which tabs are clickable. */
   const [furthestStep, setFurthestStep] = useState<1 | 2 | 3>(1);
   const [inp, setInp] = useState<QuickPlannerInput>(() => defaultQuickPlannerInput());
 
@@ -162,7 +162,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Interactive</p>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight text-stone-900 sm:text-[1.65rem]">Quick Event Planner</h2>
             <p className="mt-2 max-w-xl text-sm text-stone-600 sm:text-base">
-              Tell us a few quick things—we’ll build your starting event plan. Use <strong className="font-semibold text-stone-800">Next</strong> for each step so your plan stays accurate—you can’t skip ahead.
+              Tell us a few quick things, we’ll build your starting event plan. Use <strong className="font-semibold text-stone-800">Next</strong> for each step so your plan stays accurate, you can’t skip ahead.
             </p>
           </div>
           <p className="text-xs font-medium text-stone-500">{TAB_COUNT} steps · mobile-friendly</p>
@@ -173,7 +173,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
         </div>
       )}
 
-      {/* Tab bar — steps unlock only after Next (no skipping to Your plan) */}
+      {/* Tab bar, steps unlock only after Next (no skipping to Your plan) */}
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-3" role="tablist" aria-label="Planner steps">
         {([1, 2, 3] as const).map((n) => {
           const allowed = canNavigateToTab(n, tab, furthestStep);
@@ -439,7 +439,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
                 {result.helpfulAddOns.map((a) => (
                   <li key={a.title} className="border-b border-stone-100 pb-3 last:border-0 last:pb-0">
                     <span className="font-semibold text-stone-900">{a.title}</span>
-                    <span className="text-stone-600"> — {a.why}</span>
+                    <span className="text-stone-600">, {a.why}</span>
                   </li>
                 ))}
               </ul>
@@ -455,7 +455,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
 
             <SectionCard title="5. Next step">
               <p className="text-sm text-stone-700">
-                Share this plan when you call or book—we’ll align layout, power load-in, and weather with your site.
+                Share this plan when you call or book, we’ll align layout, power load-in, and weather with your site.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href={business.phoneHref} className={`${callNowSectionClass} justify-center`}>

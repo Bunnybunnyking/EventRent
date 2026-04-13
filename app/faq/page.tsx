@@ -28,7 +28,7 @@ export default function FAQPage() {
         </div>
         <h1 className="mt-8 text-4xl font-semibold tracking-tight text-stone-900">Frequently asked questions</h1>
         <p className="mt-3 text-stone-600">
-          Straight answers on sizing, weather, surfaces, delivery, and booking—whether you are planning a wedding in {business.primaryCity}, a backyard party, or a school or corporate program elsewhere in Connecticut.
+          Straight answers on sizing, weather, surfaces, delivery, and booking, whether you are planning a wedding in {business.primaryCity}, a backyard party, or a school or corporate program elsewhere in Connecticut.
         </p>
         <p className="mt-4 text-sm text-stone-600">
           Do not see your question?{" "}

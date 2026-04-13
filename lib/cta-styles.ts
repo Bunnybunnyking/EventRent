@@ -1,5 +1,5 @@
 /**
- * Site-wide primary CTA system — “Book Now” & “Call Now”
+ * Site-wide primary CTA system, “Book Now” & “Call Now”
  * Rich gold fill, near-black text, strong contrast, focus rings, premium hover/active.
  * Use `bookNow*` for quote actions; `callNow*` for phone (same gold, slightly smaller text when label includes phone number).
  */
@@ -24,25 +24,25 @@ const goldCtaCore =
 const headerShell =
   "inline-flex shrink-0 items-center justify-center rounded-full min-h-[44px] px-5 py-2.5 text-sm leading-tight sm:min-h-[48px] sm:px-6 sm:py-3 sm:text-base md:text-lg";
 
-/** Header — Book Now */
+/** Header, Book Now */
 export const bookNowHeaderClass = `${headerShell} ${goldCtaCore}`;
 
 /**
- * Homepage hero — Call Now on photo (extra lift + ring so gold stays legible on imagery).
+ * Homepage hero, Call Now on photo (extra lift + ring so gold stays legible on imagery).
  */
 export const callNowHeroClass = `${headerShell} ${goldCtaCore} ring-2 ring-black/35 shadow-[0_10px_40px_rgba(0,0,0,0.45),0_0_0_1px_rgba(0,0,0,0.12)]`;
 
-/** Section / hero — Book Now (largest label) */
+/** Section / hero, Book Now (largest label) */
 export const bookNowSectionClass =
   `inline-flex items-center justify-center rounded-full min-h-[52px] px-7 py-3.5 text-lg leading-tight sm:px-9 sm:py-4 sm:text-xl md:text-2xl md:py-[1.125rem] ${goldCtaCore}`;
 
 /**
- * Section — Call Now / Call + phone (slightly smaller type so long numbers wrap cleanly).
+ * Section, Call Now / Call + phone (slightly smaller type so long numbers wrap cleanly).
  */
 export const callNowSectionClass =
   `inline-flex max-w-full items-center justify-center rounded-full min-h-[52px] px-6 py-3.5 text-center text-base leading-snug sm:px-8 sm:py-4 sm:text-lg md:text-xl md:py-[1.05rem] ${goldCtaCore}`;
 
-/** Sticky mobile bar — full-width tap targets */
+/** Sticky mobile bar, full-width tap targets */
 export const bookNowStickyClass =
   `inline-flex w-full items-center justify-center rounded-full min-h-[52px] px-4 py-3.5 text-center text-base font-extrabold leading-snug sm:min-h-[56px] sm:py-4 sm:text-lg ${goldCtaCore}`;
 

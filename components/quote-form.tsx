@@ -32,10 +32,10 @@ export function QuoteForm() {
       <div className="border-b border-stone-100 pb-6">
         <h2 className="text-2xl font-semibold tracking-tight text-stone-900 sm:text-[1.75rem]">Get started</h2>
         <p className="mt-2 text-base leading-relaxed text-stone-600">
-          A few quick fields—we’ll reply with next steps. You can share more about your event afterward.
+          A few quick fields, we’ll reply with next steps. You can share more about your event afterward.
         </p>
         <p className="mt-3 rounded-xl border border-amber-100/80 bg-amber-50/50 px-4 py-3 text-sm leading-relaxed text-stone-700">
-          <span className="font-semibold text-stone-800">Our Event Concierge will follow up</span> to finalize tent size, layout, timing, and any special requests—no pressure.
+          <span className="font-semibold text-stone-800">Our Event Concierge will follow up</span> to finalize tent size, layout, timing, and any special requests, no pressure.
         </p>
       </div>
 
@@ -76,7 +76,7 @@ export function QuoteForm() {
         </summary>
         <div className="space-y-4 border-t border-stone-200/80 px-4 pb-5 pt-2 sm:px-5">
           <p className="text-sm leading-relaxed text-stone-600">
-            Skip this for now if you’re unsure—we’ll cover guest count, venue, budget, and rentals when we reach out.
+            Skip this for now if you’re unsure, we’ll cover guest count, venue, budget, and rentals when we reach out.
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
             <OptionalField label="Venue name or town" name="venue" placeholder="Where will the event be held?" />

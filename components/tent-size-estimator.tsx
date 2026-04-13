@@ -82,7 +82,7 @@ function sqFtToExampleTents(
     (ctx.eventType === "festival" && ctx.planningGuests >= 220);
 
   if (largeFestivalStory) {
-    return "Festivals, fairs, and very large programs usually need deeper planning than a single square-foot number—vendor aisles, booths, displays, power, and crowd flow often drive the layout, sometimes across multiple tents. This range is a starting point; we refine it with your run of show and a site walk-through.";
+    return "Festivals, fairs, and very large programs usually need deeper planning than a single square-foot number, vendor aisles, booths, displays, power, and crowd flow often drive the layout, sometimes across multiple tents. This range is a starting point; we refine it with your run of show and a site walk-through.";
   }
   if (mid < 900) {
     return "Typical frame sizes in this band: 20×40, 30×30, or similar. Often paired with a small canopy for food or bar.";
@@ -175,7 +175,7 @@ export function TentSizeEstimator() {
               />
               <span>
                 <span className="font-semibold text-stone-800">500+ guests</span>
-                <span className="text-stone-600"> — expanded planning range (festivals, fairs, major events)</span>
+                <span className="text-stone-600">, expanded planning range (festivals, fairs, major events)</span>
               </span>
             </label>
           </div>
@@ -341,12 +341,12 @@ export function TentSizeEstimator() {
           <p className="mt-3 text-xs leading-snug text-stone-600">{example}</p>
           {largeGuestPlus ? (
             <p className="mt-2 text-xs leading-snug text-stone-700">
-              <span className="font-semibold text-stone-800">500+ note:</span> vendor aisles, booths, displays, and multi-tent layouts usually need a call and site walk-through—not this number alone.
+              <span className="font-semibold text-stone-800">500+ note:</span> vendor aisles, booths, displays, and multi-tent layouts usually need a call and site walk-through, not this number alone.
             </p>
           ) : null}
           <p className="mt-2 text-xs leading-snug text-stone-500">{result.rationale}</p>
           <p className="mt-3 rounded-lg bg-white/80 px-2.5 py-2 text-[0.7rem] leading-snug text-stone-700 ring-1 ring-stone-200/80">
-            Estimates only, not a quote. Heavy buffet or DJ programs often use a second tent. Cooking stays out of guest tents; tell us if you need a prep area—we have setups for that. Confirm for your layout and site.
+            Estimates only, not a quote. Heavy buffet or DJ programs often use a second tent. Cooking stays out of guest tents; tell us if you need a prep area, we have setups for that. Confirm for your layout and site.
           </p>
         </div>
       </div>

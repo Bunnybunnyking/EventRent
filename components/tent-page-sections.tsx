@@ -12,15 +12,15 @@ export function TentTypesSection() {
     },
     {
       title: "Larger tent structures",
-      body: "High-footprint tents for receptions, galas, and festivals—scaled to guest count, staging, and service areas. We plan anchoring and access with your venue, whether the event is on grass, pavement, or a mixed surface.",
+      body: "High-footprint tents for receptions, galas, and festivals, scaled to guest count, staging, and service areas. We plan anchoring and access with your venue, whether the event is on grass, pavement, or a mixed surface.",
     },
     {
       title: "Expandable & modular layouts",
-      body: "Many of our systems are designed to grow with your program: connected sections for dining, dance, bars, and walkways—see modular systems below for how gutters create one continuous covered space.",
+      body: "Many of our systems are designed to grow with your program: connected sections for dining, dance, bars, and walkways, see modular systems below for how gutters create one continuous covered space.",
     },
     {
       title: "The right fit for your event",
-      body: "Guest count, site shape, event type (wedding, graduation, corporate picnic, school function), and weather exposure all steer the recommendation. We help you choose a tent setup that fits the day—not a generic default.",
+      body: "Guest count, site shape, event type (wedding, graduation, corporate picnic, school function), and weather exposure all steer the recommendation. We help you choose a tent setup that fits the day, not a generic default.",
     },
   ];
 
@@ -28,7 +28,7 @@ export function TentTypesSection() {
     <div id="tent-types" className="scroll-mt-28">
       <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Types of tent rentals we offer</h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">
-        Connecticut tent rentals from our inventory span frame-style structures, larger event tents, and modular expansion options. Here is how we talk about them in planning—your quote ties specific equipment to your date and venue.
+        Connecticut tent rentals from our inventory span frame-style structures, larger event tents, and modular expansion options. Here is how we talk about them in planning, your quote ties specific equipment to your date and venue.
       </p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {types.map((t) => (
@@ -51,7 +51,7 @@ export function ModularTentSystemsSection() {
         <strong className="font-semibold text-stone-900">gutter systems</strong>, allowing us to create larger covered spaces for weddings, corporate events, graduations, and private parties across Connecticut.
       </p>
       <p className="mt-4 max-w-3xl text-sm leading-relaxed text-stone-700">
-        Your setup is not limited to a single footprint. Depending on tent style and site layout, we can connect tents to cover seating, buffet or bar areas, dance floors, staging, or walkways between sections—so guests stay dry and the flow feels intentional. Weather protection and a unified look across connected sections are often easier than treating every zone as a separate tent.
+        Your setup is not limited to a single footprint. Depending on tent style and site layout, we can connect tents to cover seating, buffet or bar areas, dance floors, staging, or walkways between sections, so guests stay dry and the flow feels intentional. Weather protection and a unified look across connected sections are often easier than treating every zone as a separate tent.
       </p>
       <ul className="mt-6 grid gap-3 sm:grid-cols-2">
         {[
@@ -98,7 +98,7 @@ export function TentAddOnsSection() {
     <div id="tent-add-ons" className="scroll-mt-28 mt-14">
       <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Tent add-ons & completing the space</h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">
-        A tent rental is rarely just fabric overhead. We help you complete the space with options that match your event type—so the result feels finished and comfortable, not bare.
+        A tent rental is rarely just fabric overhead. We help you complete the space with options that match your event type, so the result feels finished and comfortable, not bare.
       </p>
       <ul className="mt-6 grid gap-3 sm:grid-cols-2">
         {addOns.map((a) => (
@@ -132,11 +132,11 @@ export function TentPagePlanningSummary() {
     <div id="plan-your-tent" className="scroll-mt-28 mt-14 rounded-2xl border border-[#b78a2d]/35 bg-[#111315] p-6 text-stone-100 sm:p-8">
       <h2 className="text-xl font-semibold text-white">Planning-oriented tent rentals in Connecticut</h2>
       <p className="mt-3 text-sm leading-relaxed text-stone-300">
-        Our tent systems offer more flexibility than a single standard footprint. Many structures—especially frame tents and compatible expansion inventory—can be connected using gutters to create larger covered event spaces. That lets us build custom tent layouts around your guest count, venue, and flow. Layer in sidewalls, lighting, flooring, dance floors, and coordinated{" "}
+        Our tent systems offer more flexibility than a single standard footprint. Many structures, especially frame tents and compatible expansion inventory, can be connected using gutters to create larger covered event spaces. That lets us build custom tent layouts around your guest count, venue, and flow. Layer in sidewalls, lighting, flooring, dance floors, and coordinated{" "}
         <Link href="/table-chair-rentals" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
           tables and chairs
         </Link>
-        , and we help you assemble a complete, comfortable setup—not just a tent in a field.
+        , and we help you assemble a complete, comfortable setup, not just a tent in a field.
       </p>
     </div>
   );
