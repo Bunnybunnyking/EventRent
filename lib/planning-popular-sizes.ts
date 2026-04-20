@@ -1,0 +1,16 @@
+/**
+ * Quick links to representative inventory sizes and tent families for the Planning page.
+ * Aligns with Connecticut Party Rentals frame, expandable, large structure, and marquee positioning.
+ */
+export const planningPopularInventoryLinks = [
+  { href: "/tents/frame-tents/10x10-frame-tent-rental", label: "10×10", hint: "DJ, bar, buffet, service" },
+  { href: "/tents/frame-tents/12x12-frame-tent-rental", label: "12×12", hint: "Satellite / standing" },
+  { href: "/tents/frame-tents/16x16-frame-tent-rental", label: "16×16", hint: "~25 or fewer if seated" },
+  { href: "/tents/frame-tents/20x20-frame-tent-rental", label: "20×20", hint: "Typical backyard minimum" },
+  { href: "/tents/frame-tents/20x40-frame-tent-rental", label: "20×40", hint: "Popular seated" },
+  { href: "/tents/frame-tents/30x30-frame-tent-rental", label: "30×30", hint: "Larger clear-span" },
+  { href: "/tents/frame-tents/30x60-frame-tent-rental", label: "30×60", hint: "Max frame class" },
+  { href: "/tents/expandable-frame-tents", label: "Expandable", hint: "20′ & 30′ systems" },
+  { href: "/tents/large-event-structures", label: "Large structures", hint: "60×60–60×150" },
+  { href: "/tents/marquee-walkways", label: "Marquee", hint: "Walkways & flow" },
+] as const;

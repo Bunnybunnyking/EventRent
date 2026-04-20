@@ -10,6 +10,7 @@ export function SectionHeading({
   titleAs = "h2",
   align = "center",
   variant = "light",
+  compact = false,
 }: {
   eyebrow: string;
   title: string;
@@ -19,6 +20,8 @@ export function SectionHeading({
   align?: "center" | "left";
   /** `dark` = light text on charcoal bands (e.g. service sections). */
   variant?: "light" | "dark";
+  /** Tighter vertical rhythm (e.g. tent hub hero). */
+  compact?: boolean;
 }) {
   const TitleTag = titleAs;
   const wrap =
@@ -28,11 +31,13 @@ export function SectionHeading({
   const titleColor = variant === "dark" ? "text-stone-100" : "text-stone-900";
   const introColor = variant === "dark" ? "text-stone-300" : "text-stone-600";
   const eyebrowColor = variant === "dark" ? "text-[#d4a84b]" : "text-[#a97a21]";
+  const titleMt = compact ? "mt-2" : "mt-3";
+  const introMt = compact ? "mt-2.5" : "mt-4";
   return (
     <div className={wrap}>
       <p className={`text-xs font-semibold uppercase tracking-[0.16em] ${eyebrowColor}`}>{eyebrow}</p>
-      <TitleTag className={`mt-3 text-3xl font-semibold tracking-tight sm:text-4xl ${titleColor}`}>{title}</TitleTag>
-      {intro ? <p className={`mt-4 ${introColor}`}>{intro}</p> : null}
+      <TitleTag className={`${titleMt} text-3xl font-semibold tracking-tight sm:text-4xl ${titleColor}`}>{title}</TitleTag>
+      {intro ? <p className={`${introMt} ${introColor}`}>{intro}</p> : null}
     </div>
   );
 }
@@ -105,7 +110,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] p-8 text-stone-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)] md:p-12">
           <h2 id="cta-quote-heading" className="text-3xl font-semibold tracking-tight sm:text-[2rem]">
-            Ready for a quote you can trust?
+            Ready to book with confidence?
           </h2>
 
           {showPrimaryCta ? (
@@ -122,7 +127,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
                 </a>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-stone-400">
-                No pressure, fast quotes. The form takes a few minutes. Start on{" "}
+                No pressure, fast responses. The form takes a few minutes. Start on{" "}
                 <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
                   contact
                 </Link>
@@ -146,7 +151,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
                 </Link>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-stone-400">
-                Fast quotes, no pressure. The form takes a few minutes. Start on{" "}
+                Fast responses, no pressure. The form takes a few minutes. Start on{" "}
                 <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
                   contact
                 </Link>

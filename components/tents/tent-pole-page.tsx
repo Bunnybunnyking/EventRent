@@ -54,7 +54,7 @@ export function TentPolePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-4">
             <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center text-center`}>
-              Get a quote
+              Book Now
             </Link>
             <Link href="/tents/frame-tents" className="inline-flex min-h-[48px] items-center rounded-full border-2 border-stone-800 bg-white px-6 py-3 text-sm font-semibold text-stone-900">
               Browse frame sizes

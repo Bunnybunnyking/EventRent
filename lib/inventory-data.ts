@@ -184,7 +184,7 @@ export const popularRentalCategories: PopularCategoryCard[] = [
     id: "backyard",
     title: "Backyard party rentals",
     description: "Yard celebrations with tents, seating, and weather planning.",
-    href: "/tent-rentals#plan-your-tent",
+    href: "/tent-rentals#tent-types",
   },
   {
     id: "corporate",

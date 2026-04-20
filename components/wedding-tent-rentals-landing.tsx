@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { WeddingOutdoorFaqAccordion } from "@/components/wedding-outdoor-faq-accordion";
 import { bookNowSectionClass, callNowHeroClass } from "@/lib/cta-styles";
 import { business, galleryItems } from "@/lib/site-data";
 
@@ -8,77 +9,105 @@ const shell = "mx-auto w-full max-w-[min(100%,88rem)] px-4 sm:px-6 lg:px-10";
 const secondaryBtnLightClass =
   "inline-flex min-h-[48px] items-center justify-center rounded-full border-2 border-stone-300 bg-white px-6 py-3 text-base font-semibold text-stone-900 shadow-sm transition hover:border-stone-400 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#e8c547] focus-visible:ring-offset-2 sm:min-h-[52px] sm:px-8 sm:text-lg";
 
-const outdoorFaq = [
+const outdoorWeddingFaqItems = [
   {
-    q: "Do I need a tent for an outdoor wedding?",
-    a: "Not always, but many couples use a tent to create weather protection, define the event space, and make the wedding feel more complete and comfortable.",
+    id: "wfaq-tent-size",
+    question: "What size tent do I need for a wedding?",
+    answer:
+      "Tent size depends on guest count plus your layout—dinner style, dance floor, bar, and head table included. We size from how the day actually moves, not a single headcount shortcut. Share your guest count and flow, and we will recommend a footprint that fits Connecticut properties.",
   },
   {
-    q: "How do I know what size tent I need?",
-    a: "Tent size depends on more than guest count. It also depends on your dining layout, dance floor, bar area, entertainment, and how open you want the reception to feel.",
+    id: "wfaq-driveway-patio",
+    question: "Can a wedding tent go on a driveway or patio?",
+    answer:
+      "Often yes, when the surface is level, stable for weight, and clearances work for stakes or ballast. We confirm access, setbacks, and any HOA or venue rules before locking placement. Send photos or a site address early so we can flag constraints.",
   },
   {
-    q: "What else do I need besides the tent?",
-    a: "Most outdoor weddings also need a plan for tables, chairs, lighting, weather backup, guest flow, and practical logistics like catering, access, and comfort.",
+    id: "wfaq-sidewalls",
+    question: "Do I need sidewalls for a wedding tent?",
+    answer:
+      "Sidewalls are optional, not mandatory. They add wind and rain protection and a more enclosed feel; open sides maximize views and airflow. Many Connecticut weddings combine sidewalls for weather readiness with open areas for cocktails or dancing.",
   },
   {
-    q: "What happens if it rains?",
-    a: "That is exactly why outdoor weddings should be planned with weather in mind from the start. A strong setup should still feel functional and calm if conditions change.",
+    id: "wfaq-book-ahead",
+    question: "How far in advance should I book?",
+    answer:
+      "Book as soon as your date is firm—peak Saturdays fill first. Outdoor weddings benefit from earlier planning so tent style, layout, and backup options stay available. If your date is soon, ask anyway; we will be direct about what is still realistic.",
   },
   {
-    q: "Can a tent expand an existing venue?",
-    a: "Yes. A tent can add guest capacity, create weather flexibility, support cocktail hour, or expand the reception footprint outdoors.",
+    id: "wfaq-tables-chairs",
+    question: "Can I rent tables and chairs with the tent?",
+    answer:
+      "Yes. Coordinating tables, chairs, lighting, and dance floors with the tent keeps layout and load-in simpler than piecing vendors together. We help match inventory to your footprint and timeline.",
   },
   {
-    q: "Can you help with backyard weddings?",
-    a: "Yes. Backyard weddings often need more intentional planning because the property is not already functioning like an event venue.",
+    id: "wfaq-backyard-layout",
+    question: "Can you help with backyard wedding layouts?",
+    answer:
+      "Yes. Backyards are not built like venues, so we focus on guest flow, utilities, catering access, and tent placement that still feels intentional. Bring rough dimensions and photos—we translate that into a workable plan.",
   },
   {
-    q: "How early should we book?",
-    a: "Earlier is better, especially for popular wedding dates. Outdoor weddings usually involve more planning than people expect.",
-  },
-  {
-    q: "Can you work with my wedding planner or venue?",
-    a: "Yes. We coordinate with planners and venue teams so timelines, load-in, and layout decisions stay aligned with your run of show.",
+    id: "wfaq-rain",
+    question: "What happens if it rains?",
+    answer:
+      "Plan for rain from day one. A strong layout uses tent coverage, sidewall strategy, and walkways so guests stay dry and the timeline stays calm. Build the backup into the footprint instead of improvising the week of the wedding.",
   },
 ] as const;
 
-/** On-page FAQ JSON-LD (distinct from global `/faq` schema). */
-export const weddingTentOutdoorFaqSchemaItems = outdoorFaq.map((item) => ({
-  question: item.q,
-  answer: item.a,
+/** On-page FAQ JSON-LD — must match visible accordion copy. */
+export const weddingTentOutdoorFaqSchemaItems = outdoorWeddingFaqItems.map((item) => ({
+  question: item.question,
+  answer: item.answer,
 }));
 
 const planningItems = [
   {
-    title: "Guest count",
-    body: "Your guest count helps shape the right tent size, seating layout, and overall event footprint.",
+    title: "Guest Count",
+    body: "Drives tent size, seating, and layout.",
   },
   {
-    title: "Dining style",
-    body: "A seated dinner, buffet, stations, or cocktail-style reception all use space differently.",
+    title: "Dining Style",
+    body: "Dinner, buffet, stations, or cocktail flow all use space differently.",
   },
   {
-    title: "Dance floor and entertainment",
-    body: "Your layout changes if you need room for a DJ, band, stage, or a full dance floor.",
+    title: "Dance & Entertainment",
+    body: "Plan for a DJ, band, stage, or dance floor.",
   },
   {
-    title: "Rain backup",
-    body: "Outdoor weddings should feel prepared, not rushed. Build the weather plan in early.",
+    title: "Rain Backup",
+    body: "Build the weather plan in from the start.",
   },
   {
     title: "Lighting",
-    body: "Good lighting helps the space feel warm, polished, and usable after sunset.",
+    body: "Keeps the space polished after sunset.",
   },
   {
-    title: "Guest comfort",
-    body: "Bathrooms, sidewalls, walk paths, and flow matter more than many couples realize.",
+    title: "Guest Comfort",
+    body: "Bathrooms, sidewalls, walkways, and flow matter.",
   },
   {
-    title: "Vendor logistics",
-    body: "Catering, bar service, parking, loading access, and setup space should be considered early.",
+    title: "Vendor Logistics",
+    body: "Catering, bar access, parking, and setup space need room.",
   },
 ] as const;
+
+const outdoorPlanningItemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "What to plan for an outdoor wedding",
+  description:
+    "Key planning factors for outdoor weddings in Connecticut: guest count, dining style, entertainment, weather backup, lighting, comfort, and vendor logistics.",
+  numberOfItems: planningItems.length,
+  itemListElement: planningItems.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Thing",
+      name: item.title,
+      description: item.body,
+    },
+  })),
+};
 
 const pairedRentals = [
   "Reception tables",
@@ -179,7 +208,7 @@ export function WeddingTentRentalsLanding() {
                 href="/contact#quote"
                 className={`${bookNowSectionClass} !min-h-[46px] w-full justify-center !px-5 !py-2.5 !text-base sm:!text-lg`}
               >
-                Request a Wedding Quote
+                Book Now
               </Link>
               <Link
                 href="/tents/gallery"
@@ -239,7 +268,7 @@ export function WeddingTentRentalsLanding() {
                 We help planners simplify tented wedding logistics with clearer rental support, better layout conversations, and easier coordination.
               </p>
               <ul className="mt-4 space-y-2 text-sm text-stone-700">
-                {["Cleaner planning support", "Practical layout thinking", "Faster quote conversations", "Easier event flow coordination"].map((x) => (
+                {["Cleaner planning support", "Practical layout thinking", "Faster booking conversations", "Easier event flow coordination"].map((x) => (
                   <li key={x} className="flex gap-2">
                     <span className="text-[#a97a21]" aria-hidden>
                       ·
@@ -290,7 +319,7 @@ export function WeddingTentRentalsLanding() {
                   party guides
                 </Link>
                 , and{" "}
-                <Link href="/tent-rentals#plan-your-tent" className="font-semibold text-stone-900 underline decoration-[#b78a2d]/50 underline-offset-4 hover:decoration-stone-900">
+                <Link href="/tent-rentals#tent-types" className="font-semibold text-stone-900 underline decoration-[#b78a2d]/50 underline-offset-4 hover:decoration-stone-900">
                   how we plan tent footprints
                 </Link>
                 .
@@ -320,48 +349,78 @@ export function WeddingTentRentalsLanding() {
         </div>
       </section>
 
-      {/* 4. What to plan for */}
-      <section className="border-y border-stone-200 bg-white py-14 sm:py-16" id="plan-outdoor-wedding" aria-labelledby="plan-outdoor-heading">
+      {/* 4. What to plan for — compact planning grid */}
+      <section
+        className="border-y border-stone-200 bg-gradient-to-b from-white via-white to-stone-50/40 py-7 sm:py-9"
+        id="plan-outdoor-wedding"
+        aria-labelledby="plan-outdoor-heading"
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(outdoorPlanningItemListJsonLd) }}
+        />
         <div className={shell}>
-          <h2 id="plan-outdoor-heading" className="max-w-3xl font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
-            What do you need to plan for an outdoor wedding?
-          </h2>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-stone-600 sm:text-lg">
-            Most outdoor weddings need more than a tent. The best setups are built around how the wedding will actually move, not just how it will look in a photo.
-          </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
-            {planningItems.map((item, i) => (
-              <article key={item.title} className="rounded-xl border border-stone-200/90 bg-[#faf8f5] p-5 sm:p-6">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#8a6d3a]">
-                  {i + 1}. {item.title}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-stone-700 sm:text-[15px]">{item.body}</p>
-              </article>
-            ))}
+          <div className="mx-auto max-w-5xl">
+            <h2
+              id="plan-outdoor-heading"
+              className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl"
+            >
+              What do you need to plan for an outdoor wedding?
+            </h2>
+            <p className="mt-1.5 max-w-xl text-[13px] leading-snug text-stone-600 sm:mt-2 sm:text-sm sm:leading-snug">
+              Great outdoor weddings are planned around flow, comfort, and backup—not just the photo.
+            </p>
+            <ol className="mt-4 grid list-none gap-2 p-0 sm:mt-5 sm:grid-cols-2 sm:gap-2.5 lg:grid-cols-3 xl:grid-cols-4">
+              {planningItems.map((item, i) => (
+                <li key={item.title} className="min-w-0">
+                  <article className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-md border border-stone-200/90 bg-white px-3 pb-2.5 pt-2.5 shadow-[0_1px_0_rgba(0,0,0,0.03),0_4px_14px_rgba(15,15,15,0.05)] ring-1 ring-stone-900/[0.03] transition duration-200 sm:px-3.5 sm:pb-3 sm:pt-2.5 sm:hover:-translate-y-px sm:hover:border-stone-300/90 sm:hover:shadow-[0_8px_22px_rgba(15,15,15,0.07)]">
+                    <div
+                      className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-[#8a6d3a]/90 via-[#c9a24a] to-[#8a6d3a]/90"
+                      aria-hidden
+                    />
+                    <div className="flex items-start gap-2">
+                      <span
+                        className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-[#c9a24a]/40 bg-[#fcf9f4] text-[10px] font-bold tabular-nums leading-none text-[#5c4a2a]"
+                        aria-hidden="true"
+                      >
+                        {i + 1}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-[0.78rem] font-bold leading-tight tracking-tight text-stone-900 sm:text-[0.8125rem]">
+                          {item.title}
+                        </h3>
+                        <p className="mt-0.5 text-[11px] leading-[1.35] text-stone-600 text-pretty sm:text-[11.5px] sm:leading-snug">
+                          {item.body}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      {/* 5. FAQ grid */}
-      <section className="bg-[#111315] py-14 text-stone-100 sm:py-16" id="outdoor-wedding-faq" aria-labelledby="faq-heading">
+      {/* 5. FAQ accordion */}
+      <section
+        className="bg-[#111315] py-9 text-stone-100 sm:py-11"
+        id="outdoor-wedding-faq"
+        aria-labelledby="faq-heading"
+      >
         <div className={shell}>
           <h2 id="faq-heading" className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-4xl">
-            Common outdoor wedding questions
+            Wedding tent &amp; outdoor reception FAQs
           </h2>
-          <p className="mt-3 max-w-2xl text-sm text-stone-400 sm:text-base">
-            Straight answers in plain language, helpful for couples and{" "}
+          <p className="mt-2 max-w-2xl text-[13px] leading-snug text-stone-400 sm:text-sm">
+            Tap a question for a direct answer—written for Connecticut couples, planners, and venues. Ready to move forward? Start with{" "}
             <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
-              quote requests
+              booking
             </Link>
             .
           </p>
-          <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-10">
-            {outdoorFaq.map(({ q, a }) => (
-              <div key={q}>
-                <h3 className="text-lg font-semibold leading-snug text-white sm:text-xl">{q}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-stone-300 sm:text-[15px]">{a}</p>
-              </div>
-            ))}
+          <div className="mt-5 sm:mt-6">
+            <WeddingOutdoorFaqAccordion items={outdoorWeddingFaqItems} />
           </div>
         </div>
       </section>
@@ -384,7 +443,7 @@ export function WeddingTentRentalsLanding() {
                 "Help thinking through weather and comfort",
                 "Guidance around dining, dancing, and event flow",
                 "Support pairing tents with tables, chairs, and lighting",
-                "A more practical path from idea to quote",
+                "A more practical path from idea to booking",
               ].map((line) => (
                 <li key={line} className="flex gap-3 border-b border-stone-200/80 py-3 text-sm text-stone-800 last:border-0 last:pb-0 first:pt-0 sm:text-[15px]">
                   <span className="font-semibold text-[#a97a21]">→</span>
@@ -403,7 +462,7 @@ export function WeddingTentRentalsLanding() {
             <div className="order-2 lg:order-1">
               <ul className="grid gap-3 sm:grid-cols-2">
                 {[
-                  "Faster quote conversations",
+                  "Faster booking conversations",
                   "Cleaner layout planning",
                   "Better support for dining, dancing, and bar flow",
                   "Easier weather-readiness conversations",
@@ -434,7 +493,7 @@ export function WeddingTentRentalsLanding() {
                 </Link>
                 ,{" "}
                 <Link href="/contact#quote" className="font-medium text-stone-800 underline underline-offset-2">
-                  contact for quotes
+                  contact to book
                 </Link>
                 .
               </p>
@@ -507,7 +566,7 @@ export function WeddingTentRentalsLanding() {
       <section className="bg-[#1a1d20] py-14 text-stone-100 sm:py-16" id="quote-checklist" aria-labelledby="checklist-heading">
         <div className={shell}>
           <h2 id="checklist-heading" className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight sm:text-4xl">
-            What to have ready before you request a quote
+            What to have ready before you book
           </h2>
           <p className="mt-3 max-w-3xl text-stone-400">
             Even a rough starting point helps. The more we know, the easier it is to build a useful recommendation, including{" "}
@@ -544,7 +603,7 @@ export function WeddingTentRentalsLanding() {
           </ul>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact#quote" className={bookNowSectionClass}>
-              Request a Wedding Quote
+              Book Now
             </Link>
             {phoneOk ? (
               <a href={business.phoneHref} className={callNowHeroClass}>
@@ -630,7 +689,7 @@ export function WeddingTentRentalsLanding() {
                   <p className="mt-6 text-sm text-stone-600">
                     Prefer to start online?{" "}
                     <Link href="/contact#quote" className="font-semibold text-stone-900 underline decoration-[#b78a2d]/40 underline-offset-4">
-                      Request a quote
+                      Book Now
                     </Link>{" "}
                    , we respond with clear next steps and layout guidance.
                   </p>
@@ -638,7 +697,7 @@ export function WeddingTentRentalsLanding() {
               </div>
               <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
                 <Link href="/contact#quote" className={`${bookNowSectionClass} w-full justify-center text-center`}>
-                  Request a Wedding Quote
+                  Book Now
                 </Link>
                 <Link href="/tents/gallery" className={`${secondaryBtnLightClass} w-full justify-center`}>
                   View Tent Gallery

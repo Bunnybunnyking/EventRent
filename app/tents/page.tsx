@@ -5,9 +5,9 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
 export const metadata: Metadata = createPageMetadata({
-  title: `Tent Rentals Guide | Frame, Pole, Modular & Large Structures | ${business.primaryCity}`,
+  title: `Connecticut Tent Rentals | Largest Tent Fleet in CT | ${business.primaryCity}`,
   description:
-    "Connecticut Party Rentals tent guide: frame tents, expandable modular systems, pole tents, large structures, and marquee walkways, layout-first sizing, popular footprints, and links to planning and quotes.",
+    "Connecticut Party Rentals tent guide: one of the largest tent fleets in the state—frame tents, modular systems, pole tents, large structures, and marquee walkways—plus layout-first sizing, popular footprints, and links to inventory and quotes.",
   path: "/tents",
 });
 

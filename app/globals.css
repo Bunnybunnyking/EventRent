@@ -22,6 +22,14 @@ html {
   text-size-adjust: 100%;
 }
 
+/**
+ * Goodshuffle Website Integration — gold wishlist heart (uses --gspro-brand-color).
+ * Inherits into shadow DOM; count badge falls back to the same brand color.
+ */
+:root {
+  --gspro-brand-color: #b8860b;
+}
+
 body {
   @apply bg-[#f8f6f2] text-stone-900 antialiased;
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
@@ -51,4 +59,5 @@ body {
     letter-spacing: 0.18em;
     font-family: var(--font-display), ui-serif, Georgia, serif;
   }
+
 }

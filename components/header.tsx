@@ -2,33 +2,33 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { bookNowHeaderClass } from "@/lib/cta-styles";
+import { usePathname } from "next/navigation";
+import { bookNowHeaderClass, bookNowHeaderHomeAccentClass, browseInventoryHeaderClass } from "@/lib/cta-styles";
 import { business, headerNavLinks } from "@/lib/site-data";
-
-/** Wish list, distinct from black: muted green-grey */
-const btnWishlist =
-  "inline-flex shrink-0 touch-manipulation items-center justify-center rounded-full border border-[#6b7f78]/55 bg-[#3d4845] px-3.5 py-2.5 text-[0.75rem] font-semibold leading-none tracking-[0.06em] text-[#e8f0ec] shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-[#8a9e96]/65 hover:bg-[#46534f] hover:text-white sm:px-4 sm:py-2.5 sm:text-sm [font-family:var(--font-display)]";
 
 /** Desktop / tablet: one row, scroll horizontally on narrow viewports instead of wrapping */
 const navLinkClass =
-  "shrink-0 whitespace-nowrap px-2.5 py-1.5 text-[1.14rem] font-semibold leading-tight tracking-[0.03em] text-[#f0ebe3] [font-family:var(--font-display)] transition hover:text-[#f5e0b3] md:text-[1.22rem] lg:text-[1.28rem] xl:text-[1.32rem]";
+  "shrink-0 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[1.14rem] font-semibold leading-tight tracking-[0.03em] text-[#f0ebe3] [font-family:var(--font-display)] transition hover:text-[#f5e0b3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1113] md:text-[1.22rem] lg:text-[1.28rem] xl:text-[1.32rem]";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <header className="sticky top-0 z-50 bg-[#0f1113] shadow-[0_1px_0_rgba(183,138,45,0.25)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         {/* ,   Desktop / tablet: reference layout ,   */}
         <div className="hidden md:block">
-          <div className="grid grid-cols-[1fr_minmax(0,auto)_1fr] items-start gap-x-4 pb-1 pt-6 lg:gap-x-8 lg:pt-7">
-            <div className="flex justify-start pt-1">
-              <Link href="/wishlist" className={btnWishlist}>
-                Add to Wish List
-              </Link>
+          <div className="grid grid-cols-[1fr_minmax(0,auto)_1fr] items-start gap-x-3 gap-y-1 pb-1 pt-6 lg:gap-x-6 lg:pt-7">
+            <div className="flex min-h-[42px] min-w-0 items-start justify-self-start self-start pt-0.5">
+              {isHome ? (
+                <Link href="/rental-inventory" className={browseInventoryHeaderClass} title="Browse rental inventory">
+                  <span className="relative z-10">Browse inventory</span>
+                </Link>
+              ) : null}
             </div>
-
-            <div className="flex min-w-0 flex-col items-center text-center">
+            <div className="flex min-w-0 flex-col items-center justify-self-center text-center">
               <Link
                 href="/"
                 className="site-header-logo max-w-[min(100vw-8rem,38rem)] text-balance text-[2.1rem] leading-[1.08] tracking-[0.03em] sm:text-[2.25rem] lg:text-[2.65rem] xl:text-[2.85rem]"
@@ -40,10 +40,13 @@ export function Header() {
                 {business.celebrationTagline}
               </p>
             </div>
-
-            <div className="flex justify-end pt-1">
-              <Link href="/contact#quote" className={bookNowHeaderClass}>
-                Book Now
+            <div className="flex min-h-[42px] min-w-0 items-start justify-self-end self-start justify-end pt-0.5">
+              <Link
+                href="/contact#quote"
+                className={isHome ? bookNowHeaderHomeAccentClass : bookNowHeaderClass}
+                title="Book now"
+              >
+                <span className="relative z-10">Book Now</span>
               </Link>
             </div>
           </div>
@@ -78,12 +81,21 @@ export function Header() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2 px-2 pb-2 sm:gap-2.5">
-            <Link href="/wishlist" className={`${btnWishlist} min-h-[44px] px-3 sm:min-h-0 sm:px-4`}>
-              <span className="sm:hidden">Wish List</span>
-              <span className="hidden sm:inline">Add to Wish List</span>
-            </Link>
-            <Link href="/contact#quote" className={`${bookNowHeaderClass} min-h-[48px] px-4 sm:min-h-0`}>
-              Book Now
+            {isHome ? (
+              <Link
+                href="/rental-inventory"
+                className={`${browseInventoryHeaderClass} min-h-[44px] px-3 sm:min-h-0 sm:px-4`}
+                title="Browse rental inventory"
+              >
+                <span className="relative z-10">Browse inventory</span>
+              </Link>
+            ) : null}
+            <Link
+              href="/contact#quote"
+              className={`${isHome ? bookNowHeaderHomeAccentClass : bookNowHeaderClass} min-h-[44px] px-4 sm:min-h-0`}
+              title="Book now"
+            >
+              <span className="relative z-10">Book Now</span>
             </Link>
             <button
               type="button"

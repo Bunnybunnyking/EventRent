@@ -1,18 +1,28 @@
 import type { Metadata } from "next";
 import { PartyGuidesArchive } from "@/components/party-guides/party-guides-archive";
-import { BreadcrumbListSchema, ServiceSchema } from "@/components/schema";
+import { BreadcrumbListSchema, CollectionItemListSchema, ServiceSchema } from "@/components/schema";
 import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
+import { getPartyGuide, partyGuideSlugs } from "@/lib/party-guides-data";
 import { business } from "@/lib/site-data";
+
+const partyGuidesHubDescription =
+  "Premium planning guides for Connecticut events: tent sizing context, backyard checklists, wedding rain plans, corporate flow, and links to our planners and quotes.";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Party Guides | Tent Sizing, Layout, and Outdoor Event Planning",
-  description:
-    "Premium planning guides for Connecticut events: tent sizing context, backyard checklists, wedding rain plans, corporate flow, and links to our planners and quotes.",
+  description: partyGuidesHubDescription,
   path: "/party-guides",
   ogImage: defaultOgImagePath,
 });
 
 export default function PartyGuidesPage() {
+  const listItems = partyGuideSlugs.map((slug) => {
+    const guide = getPartyGuide(slug);
+    return guide
+      ? { name: guide.title, path: `/party-guides/${slug}`, description: guide.metaDescription }
+      : { name: slug, path: `/party-guides/${slug}` };
+  });
+
   return (
     <>
       <ServiceSchema
@@ -25,6 +35,12 @@ export default function PartyGuidesPage() {
           { name: "Home", path: "/" },
           { name: "Party guides", path: "/party-guides" },
         ]}
+      />
+      <CollectionItemListSchema
+        name="Party planning guides"
+        description={partyGuidesHubDescription}
+        path="/party-guides"
+        items={listItems}
       />
       <PartyGuidesArchive />
     </>

@@ -33,15 +33,15 @@ type Variant = "planning" | "guides";
 const copy: Record<Variant, { eyebrow: string; title: string; intro: string }> = {
   planning: {
     eyebrow: "Editorial",
-    title: "Event Looks",
+    title: "Explore Event Looks",
     intro:
       "Start with real photography and structure choices, then connect ideas to sizing and layout. This is your bridge between inspiration and a quote that matches your property.",
   },
   guides: {
     eyebrow: "Editorial",
-    title: "Event Looks",
+    title: "Explore Event Looks",
     intro:
-      "Guides explain the “why” behind tent choices. Pair them with our gallery and tent family pages to see how setups translate to real inventory.",
+      "Guides explain the why behind tent choices. Pair them with our gallery and tent family pages to see how setups translate to real inventory.",
   },
 };
 

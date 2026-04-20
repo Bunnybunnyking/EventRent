@@ -147,7 +147,7 @@ export function PopularRentalCategoriesSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#edc16c]">Start here</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Popular rental categories</h2>
           <p className="mt-4 text-sm leading-relaxed text-stone-400">
-            Pick what matches your event, then ask for a quote with inventory locked to your date.
+            Pick what matches your event, then book with inventory locked to your date.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -5,9 +5,9 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
 export const metadata = createPageMetadata({
-  title: `Request a Quote | Tent & Event Rentals ${business.primaryCity} CT`,
+  title: `Book & Contact | Tent & Event Rentals ${business.primaryCity} CT`,
   description:
-    "Request a Connecticut tent rental quote: weddings, parties, graduations, corporate events. Fast response, clear setup planning, no-pressure consultation.",
+    "Book Connecticut tent and event rentals: weddings, parties, graduations, corporate events. Fast response, clear setup planning, no-pressure consultation.",
   path: "/contact",
 });
 

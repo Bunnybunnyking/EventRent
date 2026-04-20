@@ -28,7 +28,7 @@ export function TentLargeFamilyPage() {
             <TentImagePlaceholder label="Large clear-span structure, hero image" />
           </div>
           <Link href="/contact#quote" className={`${bookNowSectionClass} mt-8 inline-flex justify-center text-center`}>
-            Talk through large-structure logistics
+            Book Now
           </Link>
         </div>
       </section>

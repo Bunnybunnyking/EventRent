@@ -6,9 +6,9 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business, faqItems } from "@/lib/site-data";
 
 export const metadata = createPageMetadata({
-  title: `Tent Rental FAQ | Sizing, Weather, Surfaces & Booking`,
+  title: "Tent rental FAQ",
   description:
-    "Connecticut tent rental FAQ: tent sizing and guest capacity, rain backup, delivery windows, pricing, booking steps, hard surfaces vs. lawn staking, backyard and wedding events.",
+    "Sizing and guest counts, rain backup, delivery and setup windows, pricing, booking, hard-surface anchoring, lawns and utilities, backyard parties, and more—straight answers for Connecticut hosts.",
   path: "/faq",
 });
 
@@ -33,7 +33,7 @@ export default function FAQPage() {
         <p className="mt-4 text-sm text-stone-600">
           Do not see your question?{" "}
           <Link href="/contact#quote" className="font-semibold text-stone-800 underline underline-offset-2">
-            Request a quote
+            Book now
           </Link>{" "}
           and we will respond with specifics for your date and venue.
         </p>

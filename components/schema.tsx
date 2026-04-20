@@ -2,6 +2,16 @@ import { business, faqItems, type FaqItem } from "@/lib/site-data";
 import { defaultOgImagePath, siteBaseUrl } from "@/lib/metadata";
 
 const businessId = `${siteBaseUrl}/#localbusiness`;
+/** Stable @id for WebSite so Article / CollectionPage can reference the same graph node. */
+const websiteId = `${siteBaseUrl}/#website`;
+
+function absolutePageUrl(path: string) {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${siteBaseUrl}${p}`;
+}
+
+const hasPublishableStreetAddress =
+  Boolean(business.address?.trim()) && !/\[INSERT|PLACEHOLDER|TBD\b/i.test(business.address);
 
 export function LocalBusinessSchema() {
   const heroImage = `${siteBaseUrl}${defaultOgImagePath}`;
@@ -15,13 +25,24 @@ export function LocalBusinessSchema() {
     telephone: business.phone,
     email: business.email,
     url: siteBaseUrl,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: business.address,
-      addressLocality: business.primaryCity,
-      addressRegion: "CT",
-      addressCountry: "US",
-    },
+    ...(hasPublishableStreetAddress
+      ? {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: business.address,
+            addressLocality: business.primaryCity,
+            addressRegion: "CT",
+            addressCountry: "US",
+          },
+        }
+      : {
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: business.primaryCity,
+            addressRegion: "CT",
+            addressCountry: "US",
+          },
+        }),
     geo: {
       "@type": "GeoCoordinates",
       latitude: 41.7658,
@@ -71,14 +92,11 @@ export function WebSiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": websiteId,
     name: business.name,
     url: siteBaseUrl,
+    inLanguage: "en-US",
     publisher: { "@id": businessId },
-    potentialAction: {
-      "@type": "ContactAction",
-      target: `${siteBaseUrl}/contact#quote`,
-      name: "Request a quote",
-    },
   };
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
@@ -88,22 +106,29 @@ type ServiceSchemaProps = {
   name: string;
   description: string;
   path: string;
+  /** When set (e.g. town service pages), adds a City alongside Connecticut for clearer local relevance. */
+  serviceAreaCity?: string;
 };
 
 /** Use on service pages; references LocalBusiness @id from layout */
-export function ServiceSchema({ name, description, path }: ServiceSchemaProps) {
+export function ServiceSchema({ name, description, path, serviceAreaCity }: ServiceSchemaProps) {
+  const areaServed = serviceAreaCity
+    ? [
+        { "@type": "State", name: "Connecticut" },
+        { "@type": "City", name: serviceAreaCity, containedInPlace: { "@type": "State", name: "Connecticut" } },
+      ]
+    : { "@type": "State", name: "Connecticut" };
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name,
     description,
     serviceType: name,
-    url: `${siteBaseUrl}${path}`,
+    url: absolutePageUrl(path),
     provider: { "@id": businessId },
-    areaServed: {
-      "@type": "State",
-      name: "Connecticut",
-    },
+    isPartOf: { "@id": websiteId },
+    areaServed,
   };
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
@@ -120,7 +145,7 @@ export function BreadcrumbListSchema({ items }: { items: BreadcrumbItem[] }) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${siteBaseUrl}${item.path === "/" ? "" : item.path}`.replace(/\/$/, "") || siteBaseUrl,
+      item: absolutePageUrl(item.path === "/" ? "/" : item.path).replace(/\/$/, "") || siteBaseUrl,
     })),
   };
 
@@ -133,10 +158,20 @@ type ArticleSchemaProps = {
   path: string;
   datePublished: string;
   dateModified: string;
+  /** https://schema.org/articleSection */
+  articleSection?: string;
 };
 
 /** Article / BlogPosting for guide and content pages */
-export function ArticleSchema({ headline, description, path, datePublished, dateModified }: ArticleSchemaProps) {
+export function ArticleSchema({
+  headline,
+  description,
+  path,
+  datePublished,
+  dateModified,
+  articleSection,
+}: ArticleSchemaProps) {
+  const pageUrl = absolutePageUrl(path);
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -144,9 +179,57 @@ export function ArticleSchema({ headline, description, path, datePublished, date
     description,
     datePublished,
     dateModified,
+    ...(articleSection ? { articleSection } : {}),
     author: { "@type": "Organization", name: business.name },
     publisher: { "@id": businessId },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteBaseUrl}${path}` },
+    isPartOf: { "@id": websiteId },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+      url: pageUrl,
+      isPartOf: { "@id": websiteId },
+    },
+  };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+}
+
+type ItemListSchemaEntry = { name: string; path: string; description?: string };
+
+/** Collection + ItemList for hub pages (e.g. /guides). */
+export function CollectionItemListSchema({
+  name,
+  description,
+  path,
+  items,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  items: ItemListSchemaEntry[];
+}) {
+  const pageUrl = absolutePageUrl(path);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: pageUrl,
+    isPartOf: { "@id": websiteId },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "WebPage",
+          name: item.name,
+          url: absolutePageUrl(item.path),
+          ...(item.description ? { description: item.description } : {}),
+        },
+      })),
+    },
   };
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;

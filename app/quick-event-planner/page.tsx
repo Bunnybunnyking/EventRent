@@ -5,9 +5,9 @@ import { QuickEventPlanner } from "@/components/quick-event-planner";
 import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Quick Event Planner | Chairs, Tables, Tent & Setup",
+  title: "Quick Event Planner",
   description:
-    "Three quick steps: event basics, setup and style, then your recommended plan with rental package and add-ons. Pairs with our square-footage calculator on the Planning page.",
+    "Three steps—event basics, setup and style, then a starter plan with packages and add-ons. Use with the square-footage calculator on the Planning page for tent sizing.",
   path: "/quick-event-planner",
   ogImage: defaultOgImagePath,
 });
@@ -41,7 +41,7 @@ export default function QuickEventPlannerPage() {
           </Link>{" "}
           ·{" "}
           <Link href="/contact#quote" className="font-semibold text-stone-900 underline underline-offset-2" prefetch={true}>
-            Request a quote
+            Book Now
           </Link>
         </p>
       </div>

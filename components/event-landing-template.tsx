@@ -52,7 +52,7 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
             <p className="mt-5 text-base leading-relaxed text-stone-600 sm:text-lg">{content.heroIntro}</p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link href="/contact#quote" className={bookNowSectionClass}>
-                Start planning
+                Book Now
               </Link>
               <a href={business.phoneHref} className={`${callNowSectionClass} max-w-full`}>
                 Call {business.phone}
@@ -147,10 +147,10 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
             </div>
             <div className="mt-6 flex shrink-0 flex-col gap-3 sm:flex-row md:mt-0">
               <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center`}>
-                Book now
+                Book Now
               </Link>
               <a href={business.phoneHref} className={`${callNowSectionClass} justify-center`}>
-                Call now
+                Call Now
               </a>
             </div>
           </div>

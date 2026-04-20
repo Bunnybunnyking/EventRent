@@ -22,30 +22,34 @@ export const business = {
   tentSizeRange: "10x10 to 100x250",
 };
 
-/** Primary header navigation (internal routes). “Call Now” is on the homepage hero image, not in the nav. */
+/** Primary header navigation (internal routes). Party guides and FAQ live under Planning, footer, and in-content links—not here. */
 export const headerNavLinks = [
   { href: "/tents", label: "Tents" },
-  { href: "/party-guides", label: "Party guides" },
   { href: "/planning", label: "Planning" },
   { href: "/party-packages", label: "Packages" },
   { href: "/table-chair-rentals", label: "Tables & Chairs" },
   { href: "/wedding-tent-rentals", label: "Weddings" },
-  { href: "/corporate-event-rentals", label: "Corporate" },
-  { href: "/yard-games", label: "Games" },
+  { href: "/events", label: "Events" },
+  { href: "/av-games", label: "AV/Games" },
 ];
 
 /** Footer “Services” column, includes deep links not shown in the main nav. */
 export const footerServiceLinks = [
-  { href: "/party-guides", label: "Party guides" },
   { href: "/tents", label: "Tent guide" },
+  { href: "/rental-inventory", label: "Browse inventory" },
   { href: "/tent-rentals", label: "Tent rentals" },
   { href: "/tent-rentals/jobsite-coverage", label: "Jobsite coverage" },
   { href: "/table-chair-rentals", label: "Tables & chairs" },
-  { href: "/yard-games", label: "Yard games" },
-  { href: "/bounce-houses", label: "Bounce houses" },
   { href: "/party-packages", label: "Party packages" },
   { href: "/wedding-tent-rentals", label: "Weddings" },
-  { href: "/corporate-event-rentals", label: "Corporate" },
+  { href: "/events", label: "Events" },
+  { href: "/corporate-event-rentals", label: "Corporate events" },
+  { href: "/av-games", label: "AV/Games" },
+  { href: "/yard-games", label: "Yard games" },
+  { href: "/bounce-houses", label: "Bounce houses" },
+  { href: "/party-guides", label: "Party guides" },
+  { href: "/guides", label: "Tent & event guides" },
+  { href: "/how-it-works", label: "How delivery & setup works" },
 ];
 
 export const trustPoints = [
@@ -73,19 +77,15 @@ export const services = [
     href: "/wedding-tent-rentals",
   },
   {
-    title: "Corporate Event Rentals",
-    description: "Company picnics, school events, town programs, and festivals with setups that match your run of show.",
-    href: "/corporate-event-rentals",
+    title: "Events & occasions",
+    description:
+      "Corporate picnics, schools, graduations, festivals, and community programs. Start with the events hub, then open occasion guides or corporate rentals.",
+    href: "/events",
   },
   {
-    title: "Yard Games",
-    description: "Cornhole, giant Jenga, Connect 4, and more. We deliver for backyard parties, graduations, and team events.",
-    href: "/yard-games",
-  },
-  {
-    title: "Bounce Houses",
-    description: "Clean, inspected inflatables sized for real yards, with setup that puts safety first and optional game bundles.",
-    href: "/bounce-houses",
+    title: "Games & inflatables",
+    description: "Yard games and bounce houses coordinated with tents, tables, and your run of show.",
+    href: "/av-games",
   },
 ];
 
@@ -99,7 +99,7 @@ export const eventTypeLinks: { label: string; href: string }[] = [
   { label: "Sweet 16 parties", href: "/events/sweet-16-parties" },
   { label: "Quinceañeras", href: "/events/quinceaneras" },
   { label: "Tailgates", href: "/events/tailgating" },
-  { label: "Corporate events", href: "/corporate-event-rentals" },
+  { label: "Corporate & events", href: "/events" },
   { label: "Backyard parties", href: "/planning#backyard-parties" },
 ];
 
@@ -169,10 +169,7 @@ export type FaqItem = {
   answer: string;
 };
 
-/**
- * Homepage FAQ preview uses the first five (highest-intent topics).
- * Questions mirror what planners ask; answers in our voice.
- */
+/** FAQ page content + FAQPage JSON-LD; questions mirror what planners ask. */
 export const faqItems: FaqItem[] = [
   {
     id: "tent-size",
@@ -253,35 +250,6 @@ export const faqItems: FaqItem[] = [
       "Yes. We align with load-in windows, run-of-show constraints, and presentation standards for company events, school functions, nonprofits, and municipal programs. Repeatable layouts, clear communication with your facilities contact, and dependable teardown timing are built into how we work.",
   },
 ];
-
-/** Optional rich content for specific town service-area pages (hero image, SEO, copy) */
-export type TownPageExtra = {
-  metaTitle: string;
-  metaDescription: string;
-  h1: string;
-  intro: string;
-  hero: {
-    src: string;
-    alt: string;
-    caption: string;
-  };
-};
-
-export const townPageExtras: Partial<Record<string, TownPageExtra>> = {
-  Farmington: {
-    metaTitle: "Farmington CT Tent Rental",
-    metaDescription:
-      "Tent rental setup in Farmington, CT featuring a large white event tent on a scenic waterfront lawn, ideal for weddings and private events.",
-    h1: "Farmington CT Tent Rental",
-    intro:
-      "From party tent rental to wedding tent rental, we help Farmington hosts plan outdoor events with delivery and setup you can count on. Whether you need an event tent rental in Farmington for a reception by the water or a Connecticut tent rental backed by decades of local experience, we align tent size, tables, and chairs to your guest count and venue.",
-    hero: {
-      src: "/images/farmington-tent-rental-lakeside-event-tent.png",
-      alt: "Farmington CT tent rental setup on a scenic waterfront lawn for a private event",
-      caption: "Large white event tent setup in Farmington, Connecticut",
-    },
-  },
-};
 
 /** Only includes files present under `public/images/` (avoids broken gallery thumbnails). */
 export const galleryItems = [

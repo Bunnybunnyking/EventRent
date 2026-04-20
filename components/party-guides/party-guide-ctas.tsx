@@ -18,7 +18,7 @@ export function PartyGuideCtas({ variant = "band" }: { variant?: "band" | "inlin
           Quick event planner
         </Link>
         <Link href="/contact#quote" className={tertiaryLinkClass}>
-          Request a quote
+          Book Now
         </Link>
       </div>
     );
@@ -37,7 +37,7 @@ export function PartyGuideCtas({ variant = "band" }: { variant?: "band" | "inlin
           href="/contact#quote"
           className="text-sm font-semibold text-[#edc16c] underline underline-offset-4 decoration-[#edc16c]/50 transition hover:text-white hover:decoration-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#edc16c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111315] rounded-sm"
         >
-          Request a quote
+          Book Now
         </Link>
       </div>
     </div>

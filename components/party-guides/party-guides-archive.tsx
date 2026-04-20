@@ -86,7 +86,7 @@ export function PartyGuidesArchive() {
               href="/contact#quote"
               className="inline-flex min-h-[48px] items-center justify-center rounded-full border-2 border-stone-800 bg-white px-6 py-3 text-sm font-semibold text-stone-900 shadow-sm transition hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2"
             >
-              Request a quote
+              Book Now
             </Link>
           </div>
           <div className="mt-10 max-w-2xl">
@@ -177,7 +177,7 @@ export function PartyGuidesArchive() {
                 Share your date, town, guest count, and flow. We respond with options tied to real tent families and add-ons.
               </p>
               <Link href="/contact#quote" className={`${bookNowSectionClass} mt-6 inline-flex justify-center`}>
-                Request a quote
+                Book Now
               </Link>
             </div>
           </div>

@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { Breadcrumb } from "@/components/breadcrumb";
 import { SectionHeading } from "@/components/sections";
-import { bookNowSectionClass } from "@/lib/cta-styles";
+import { bookNowHeaderClass, browseInventoryHeaderClass } from "@/lib/cta-styles";
 import { cardRowHintClass, interactiveCardClass, interactiveTileClass } from "@/lib/interactive-styles";
 import { business } from "@/lib/site-data";
 import {
@@ -16,41 +15,98 @@ import { TentPlannerCallout } from "./tent-planner-callout";
 export function TentHubPage() {
   return (
     <>
-      <section className="border-b border-stone-200/80 bg-[#f7f5f1] py-8 sm:py-10">
+      <section className="border-b border-stone-200/80 bg-[#f7f5f1] py-4 sm:py-5">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb className="mb-6" items={[{ label: "Home", href: "/" }, { label: "Tents" }]} />
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <nav aria-label="Breadcrumb" className="sr-only">
+            <ol>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li aria-current="page">Tents</li>
+            </ol>
+          </nav>
+
+          <div className="mb-4 rounded-2xl border border-[#c9a87a]/55 bg-gradient-to-br from-[#fcf6e8] via-[#f4e4c4] to-[#e9d5b0] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_8px_28px_rgba(139,106,52,0.08)] sm:p-4">
+            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5 lg:gap-6">
+              <Link
+                href="/rental-inventory"
+                className={`group shrink-0 ${browseInventoryHeaderClass} w-full justify-center sm:w-auto`}
+                title="Open the full rental catalog"
+              >
+                <span className="relative z-10">Browse inventory</span>
+                <span className="relative z-10 ml-1.5 transition group-hover:translate-x-0.5" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+              <div className="min-w-0 flex-1 border-t border-[#b8935c]/35 pt-3 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0">
+                <p className="text-[0.78rem] leading-snug text-stone-800 sm:text-[0.8125rem] sm:leading-relaxed">
+                  Open the live catalog for{" "}
+                  <Link href="/rental-inventory#inv-tents" className="font-semibold text-[#5c4518] underline decoration-[#a67c28]/45 underline-offset-2 transition hover:text-stone-950">
+                    tents
+                  </Link>
+                  ,{" "}
+                  <Link href="/rental-inventory#inv-chairs" className="font-semibold text-[#5c4518] underline decoration-[#a67c28]/45 underline-offset-2 transition hover:text-stone-950">
+                    chairs
+                  </Link>
+                  ,{" "}
+                  <Link href="/rental-inventory#inv-tables" className="font-semibold text-[#5c4518] underline decoration-[#a67c28]/45 underline-offset-2 transition hover:text-stone-950">
+                    tables
+                  </Link>
+                  , and{" "}
+                  <Link href="/rental-inventory#inv-lighting-heating" className="font-semibold text-[#5c4518] underline decoration-[#a67c28]/45 underline-offset-2 transition hover:text-stone-950">
+                    lighting &amp; heating
+                  </Link>
+                  , plus{" "}
+                  <Link href="/rental-inventory#inv-tent-guide" className="font-semibold text-[#5c4518] underline decoration-[#a67c28]/45 underline-offset-2 transition hover:text-stone-950">
+                    tent types
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/rental-inventory#inv-planning" className="font-semibold text-[#5c4518] underline decoration-[#a67c28]/45 underline-offset-2 transition hover:text-stone-950">
+                    planning notes
+                  </Link>
+                  —so you can see what we carry before you request a quote.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
             <div className="min-w-0 max-w-3xl">
               <SectionHeading
                 eyebrow="Tents"
-                title="Connecticut tent rentals & layout-forward planning"
+                title="Connecticut Tent Rentals & The Largest Tent Fleet in CT"
                 intro={`Choose a tent family and size with real layout logic: clear-span frame tents, expandable systems, pole tents, large structures, and marquee walkways. Family owned since ${business.establishedYear}.`}
                 titleAs="h1"
                 align="left"
+                compact
               />
+              <p className="mt-2.5 max-w-3xl text-left text-sm font-semibold leading-snug text-stone-800 sm:text-[0.9375rem] sm:leading-relaxed">
+                We have <span className="whitespace-nowrap">87,000 square feet</span> of tent coverage and{" "}
+                <span className="whitespace-nowrap">16.6 miles</span> of tent canopy—one of the largest tent fleets in Connecticut.
+              </p>
             </div>
-            <div className="flex shrink-0 flex-col gap-2 sm:flex-row lg:flex-col">
-              <Link href="/party-guides" className="inline-flex items-center justify-center rounded-full border-2 border-stone-200 bg-white px-5 py-3 text-sm font-semibold text-stone-900 shadow-sm transition hover:border-[#b78a2d]/50 hover:bg-stone-50">
-                Party guides
+            <div className="flex shrink-0 flex-col gap-1.5 sm:flex-row lg:flex-col">
+              <Link
+                href="/tent-rentals#tent-resource-tabs"
+                className="inline-flex min-h-[36px] items-center justify-center rounded-full border border-[#9a7a45]/90 bg-white/95 px-3 py-1.5 text-center text-xs font-semibold leading-tight text-stone-900 shadow-sm transition hover:border-[#b78a2d] hover:bg-white sm:min-h-0 sm:px-3.5 sm:py-2"
+              >
+                Tent rentals + guide tabs
               </Link>
-              <Link href="/tent-rentals" className="inline-flex items-center justify-center rounded-full border-2 border-[#9a7a45] bg-white px-5 py-3 text-sm font-semibold text-stone-900 shadow-sm transition hover:bg-stone-50">
-                Classic tent rentals page
-              </Link>
-              <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center text-center`}>
-                Get a quote
+              <Link href="/contact#quote" className={`${bookNowHeaderClass} justify-center text-center text-xs`}>
+                Book Now
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 sm:py-14">
+      <section className="py-7 sm:py-9">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-stone-900 sm:text-3xl">Tent families</h2>
           <p className="mt-2 max-w-3xl text-stone-600">
             Start with how your event moves: cocktail, seated dinner, ceremony, dinner plus dance, then right-size the footprint. Inventory-aware guidance, not generic boilerplate.
           </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {tentFamilies.map((f) => (
               <Link
                 key={f.slug}
@@ -70,13 +126,13 @@ export function TentHubPage() {
         </div>
       </section>
 
-      <section className="border-y border-stone-200 bg-[#faf8f5] py-12 sm:py-14">
+      <section className="border-y border-stone-200 bg-[#faf8f5] py-7 sm:py-9">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-stone-900">What type of tent is right for your event?</h2>
           <p className="mt-2 max-w-3xl text-stone-600">
             If you need clear-span seating and dance space, start with frame or expandable systems. If you want a classic peaked look and can plan around center poles, pole tents may fit. For arrivals and weather-protected flow, add marquee walkways.
           </p>
-          <div className="mt-8 overflow-x-auto rounded-xl border border-stone-200 bg-white">
+          <div className="mt-5 overflow-x-auto rounded-xl border border-stone-200 bg-white">
             <table className="min-w-full text-left text-sm">
               <thead className="border-b border-stone-200 bg-stone-50 text-xs font-semibold uppercase tracking-wider text-stone-500">
                 <tr>
@@ -101,11 +157,11 @@ export function TentHubPage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-14">
+      <section className="py-7 sm:py-9">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-stone-900">Popular tent sizes</h2>
           <p className="mt-2 text-sm text-stone-600">Estimated use cases, every quote is layout-specific.</p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {tentHubPopularSizes.map((s) => (
               <Link
                 key={s.href}
@@ -124,13 +180,13 @@ export function TentHubPage() {
         </div>
       </section>
 
-      <section className="border-y border-stone-200 bg-white py-12 sm:py-14">
+      <section className="border-y border-stone-200 bg-white py-7 sm:py-9">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-stone-900">What fits? (preview)</h2>
           <p className="mt-2 max-w-3xl text-sm text-stone-600">
             Quick table math for rounds and banquet rows, still talk through aisles, dance floor, and buffet with your planner.
           </p>
-          <div className="mt-6 overflow-x-auto rounded-xl border border-stone-200">
+          <div className="mt-4 overflow-x-auto rounded-xl border border-stone-200">
             <table className="min-w-full text-left text-sm">
               <thead className="border-b border-stone-200 bg-[#faf8f5] text-xs font-semibold uppercase tracking-wider text-stone-500">
                 <tr>
@@ -165,30 +221,33 @@ export function TentHubPage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-14">
+      <section className="py-7 sm:py-9">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-stone-900">Visual library</h2>
           <p className="mt-2 text-sm text-stone-600">Room for family-level photography, placeholders for now.</p>
-          <div className="mt-6">
+          <div className="mt-4">
             <TentImagePlaceholder label="Tent family hero, frame, pole, marquee, large structure" />
           </div>
         </div>
       </section>
 
-      <section className="border-t border-stone-200 bg-[#faf8f5] py-12 sm:py-16">
+      <section className="border-t border-stone-200 bg-[#faf8f5] py-7 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <TentPlannerCallout />
-          <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm">
-            <Link href="/wedding-tent-rentals" className="font-semibold text-stone-800 underline underline-offset-4">
+          <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+            <Link href="/wedding-tent-rentals" className="font-semibold text-stone-800 underline underline-offset-4 transition hover:text-stone-950">
               Weddings
             </Link>
-            <Link href="/corporate-event-rentals" className="font-semibold text-stone-800 underline underline-offset-4">
-              Corporate
+            <Link href="/events" className="font-semibold text-stone-800 underline underline-offset-4 transition hover:text-stone-950">
+              Events
             </Link>
-            <Link href="/planning#backyard-parties" className="font-semibold text-stone-800 underline underline-offset-4">
-              Backyard events
+            <Link href="/party-guides" className="font-semibold text-stone-800 underline underline-offset-4 transition hover:text-stone-950">
+              Party guides
             </Link>
-            <Link href="/tents/gallery" className="font-semibold text-stone-800 underline underline-offset-4">
+            <Link href="/planning#occasions" className="font-semibold text-stone-800 underline underline-offset-4 transition hover:text-stone-950">
+              Planning by event type
+            </Link>
+            <Link href="/tents/gallery" className="font-semibold text-stone-800 underline underline-offset-4 transition hover:text-stone-950">
               Gallery
             </Link>
           </div>

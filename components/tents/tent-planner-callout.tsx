@@ -37,7 +37,7 @@ export function TentPlannerCallout({ variant = "light" }: { variant?: "light" | 
           href="/contact#quote"
           className={`text-center text-sm font-semibold underline underline-offset-4 ${variant === "dark" ? "text-stone-300 hover:text-white" : "text-stone-700 hover:text-stone-900"}`}
         >
-          Request a quote
+          Book Now
         </Link>
       </div>
     </aside>

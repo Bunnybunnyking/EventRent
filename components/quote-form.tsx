@@ -139,7 +139,7 @@ export function QuoteForm() {
 
       <div className="mt-8 space-y-4">
         <button type="submit" className={`${bookNowSectionClass} w-full justify-center sm:w-full sm:py-4 sm:text-lg`}>
-          Submit request
+          Book Now
         </button>
         <p className="text-center text-sm text-stone-500">
           No payment required to start. We’ll reach out using the email or phone above.

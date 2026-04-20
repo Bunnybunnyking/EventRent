@@ -36,11 +36,8 @@ export default function TentsGalleryPage() {
               ]}
             />
             <div className="flex flex-wrap gap-2">
-              <Link
-                href="/contact#quote"
-                className="rounded-full bg-[#1d2124] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#131517]"
-              >
-                Get a Tent Quote
+              <Link href="/contact#quote" className={`${bookNowSectionClass} !min-h-[44px] !px-5 !py-2.5 !text-sm sm:!text-base`}>
+                Book Now
               </Link>
               <Link
                 href="/tents"

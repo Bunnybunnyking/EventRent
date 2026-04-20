@@ -2,6 +2,14 @@
 
 export const planningQuickStartCards = [
   {
+    title: "Party guides library",
+    description:
+      "Layout-first articles: sizing mindset, 20×40 fit, frame vs pole, rain plans, buffets and dance floors, and logistics people forget.",
+    href: "/party-guides",
+    cta: "Browse guides",
+    external: true,
+  },
+  {
     title: "Find your tent size",
     description: "Use the interactive estimator and sizing chart, then confirm with us for your real site.",
     href: "#size-guide",
@@ -95,7 +103,30 @@ export type TentChartRow = {
 };
 
 export const tentSizeChartRows: TentChartRow[] = [
-  { size: "20×20", sqFt: "400", seated: "Roughly 32–40 seated", notes: "Light cocktail or small seated block; tight for food lines." },
+  {
+    size: "10×10",
+    sqFt: "100",
+    seated: "Standing / service",
+    notes: "Not a mid-size or typical seated-reception tent—use for DJ, bar, buffet, registration, or add-on cover.",
+  },
+  {
+    size: "12×12",
+    sqFt: "144",
+    seated: "Standing / service",
+    notes: "Same idea as 10×10: satellite zones and tight lots, not your main seated dinner footprint.",
+  },
+  {
+    size: "16×16",
+    sqFt: "256",
+    seated: "Seated only if very small",
+    notes: "Sometimes seated for about 25 guests or fewer in a tight backyard; otherwise buffet, DJ, standing, or lounge—not our usual main party tent.",
+  },
+  {
+    size: "20×20",
+    sqFt: "400",
+    seated: "Roughly 32–40 seated",
+    notes: "Typical minimum we recommend for most backyard parties as the main tent; smaller sizes above are usually service or standing coverage.",
+  },
   { size: "20×30", sqFt: "600", seated: "Roughly 48–60 seated", notes: "Small gatherings; better circulation than 20×20 for food." },
   { size: "20×40", sqFt: "800", seated: "Roughly 64–80 seated", notes: "Common backyard milestone size; watch buffets and dance area." },
   { size: "30×30", sqFt: "900", seated: "Roughly 72–90 seated", notes: "Balanced mid-size option when layout is simple." },
@@ -232,7 +263,7 @@ export const eventTypeGuides: EventTypeGuide[] = [
     sizing: "Late spring weather and quick storms often decide sidewall and flooring needs.",
     weather: "Afternoon sun and passing showers both show up in May and June.",
     forget: "Photos, speeches, and overflow seating happen in the same few hours.",
-    href: "/events/graduation-parties",
+    href: "/party-guides/graduation-party-tent-backyard-connecticut",
   },
   {
     title: "Backyard parties",
@@ -240,7 +271,7 @@ export const eventTypeGuides: EventTypeGuide[] = [
     sizing: "House-to-tent flow and where prep happens (outside guest tent) steer layout.",
     weather: "Coverage for the whole social window, not only the meal.",
     forget: "Trash, lighting paths, and where vendors park.",
-    href: "/planning#layout-examples",
+    href: "/party-guides/backyard-party-checklist-connecticut",
   },
   {
     title: "Corporate events",

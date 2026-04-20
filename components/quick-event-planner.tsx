@@ -493,7 +493,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
                   className="rounded-full border border-stone-200 bg-white px-4 py-2.5 text-sm font-semibold text-stone-800 hover:bg-stone-50"
                   prefetch={true}
                 >
-                  Send to quote form
+                  Book Now
                 </Link>
               </div>
               <p className="mt-4 text-xs leading-relaxed text-stone-500">{result.disclaimer}</p>

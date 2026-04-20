@@ -7,34 +7,46 @@ const cardClass =
 export function TentTypesSection() {
   const types = [
     {
-      title: "Frame tents",
-      body: "Clear-span style structures that work well when you need flexible layouts, tighter sites, or the option to connect multiple units. Popular for Connecticut wedding tent rentals, corporate events, and large private parties where flow matters as much as coverage.",
+      title: "Frame & clear-span",
+      body: "Open interiors without center poles—ideal for rounds, dance floors, and sidewalls. Works across many Connecticut sites when anchoring is planned.",
+      footprint: "~100–2,400+ sq ft per single unit (e.g. 10×10 through ~40×60 class); many dinners land ~800–1,400 sq ft before dance and service.",
+      guests: "Often ~40–150 seated in mid-size footprints; every layout changes the math.",
     },
     {
-      title: "Larger tent structures",
-      body: "High-footprint tents for receptions, galas, and festivals, scaled to guest count, staging, and service areas. We plan anchoring and access with your venue, whether the event is on grass, pavement, or a mixed surface.",
+      title: "Large event structures",
+      body: "High-footprint clear-span for galas, festivals, and big receptions. Anchoring, access, and staging are planned with your venue.",
+      footprint: "~3,600–9,000+ sq ft common spans (e.g. 60×60 through 60×150 class); multi-bay totals go higher.",
+      guests: "Roughly ~150–500+ guests possible depending on program, staging, and clear height—site survey drives the plan.",
     },
     {
-      title: "Expandable & modular layouts",
-      body: "Many of our systems are designed to grow with your program: connected sections for dining, dance, bars, and walkways, see modular systems below for how gutters create one continuous covered space.",
-    },
-    {
-      title: "The right fit for your event",
-      body: "Guest count, site shape, event type (wedding, graduation, corporate picnic, school function), and weather exposure all steer the recommendation. We help you choose a tent setup that fits the day, not a generic default.",
+      title: "Expandable & modular",
+      body: "Connected bays with gutters for dining, dance, bars, and walkways—one continuous covered plan instead of scattered small tents.",
+      footprint: "Typical connected bays ~400–1,800 sq ft each; total sq ft is the sum of linked sections plus gutters.",
+      guests: "Common connected layouts ~60–200+ seated; scales up as bays and headcount grow.",
     },
   ];
 
   return (
-    <div id="tent-types" className="scroll-mt-28">
-      <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Types of tent rentals we offer</h2>
-      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">
-        Connecticut tent rentals from our inventory span frame-style structures, larger event tents, and modular expansion options. Here is how we talk about them in planning, your quote ties specific equipment to your date and venue.
+    <div id="tent-types" className="scroll-mt-24">
+      <h2 className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">What we rent</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-snug text-stone-600">
+        Your quote ties real inventory to date and layout. Square footage is the geometry; guest counts depend on tables, dance floor, aisles, and service—see the{" "}
+        <a href="#tent-resource-tabs" className="font-semibold text-stone-900 underline underline-offset-2">
+          guide tab
+        </a>{" "}
+        for popular footprints and a seating preview table.
       </p>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+      <div className="mt-5 grid gap-3 sm:grid-cols-3">
         {types.map((t) => (
-          <div key={t.title} className={cardClass}>
-            <h3 className="text-base font-semibold text-stone-900">{t.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-stone-600">{t.body}</p>
+          <div key={t.title} className={`${cardClass} !p-4`}>
+            <h3 className="text-sm font-semibold text-stone-900">{t.title}</h3>
+            <p className="mt-1.5 text-xs leading-snug text-stone-600 sm:text-sm sm:leading-snug">{t.body}</p>
+            <p className="mt-2 border-t border-stone-100 pt-2 text-[11px] font-medium leading-snug text-stone-800 sm:text-xs">
+              <span className="text-stone-500">Footprint:</span> {t.footprint}
+            </p>
+            <p className="mt-1 text-[11px] leading-snug text-stone-600 sm:text-xs">
+              <span className="font-medium text-stone-700">Guests (est.):</span> {t.guests}
+            </p>
           </div>
         ))}
       </div>
@@ -44,23 +56,19 @@ export function TentTypesSection() {
 
 export function ModularTentSystemsSection() {
   return (
-    <div id="modular-tent-systems" className="scroll-mt-28 mt-14 rounded-2xl border border-stone-200 bg-[#faf8f5] p-6 sm:p-8">
-      <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Modular tent systems & expandable layouts</h2>
-      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-stone-700">
-        Many of our tents can be configured to fit the needs of your event. Our frame tents and compatible expansion systems can often be connected together using{" "}
-        <strong className="font-semibold text-stone-900">gutter systems</strong>, allowing us to create larger covered spaces for weddings, corporate events, graduations, and private parties across Connecticut.
+    <div id="modular-tent-systems" className="scroll-mt-24 mt-8 rounded-xl border border-stone-200 bg-[#faf8f5] p-5 sm:p-6">
+      <h2 className="text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">Modular layouts &amp; gutters</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-snug text-stone-700">
+        Compatible frame and expansion bays often connect with <strong className="font-semibold text-stone-900">gutters</strong> so seating, dance, bar, and walkways sit under one coordinated roof—better weather continuity and cleaner sight lines than separate tents.
       </p>
-      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-stone-700">
-        Your setup is not limited to a single footprint. Depending on tent style and site layout, we can connect tents to cover seating, buffet or bar areas, dance floors, staging, or walkways between sections, so guests stay dry and the flow feels intentional. Weather protection and a unified look across connected sections are often easier than treating every zone as a separate tent.
-      </p>
-      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+      <ul className="mt-4 grid gap-2 sm:grid-cols-2">
         {[
-          "Better fit for guest count and program length",
-          "Custom layouts for dining, dance, and mingling zones",
-          "Flexible options for irregular or split sites",
-          "Sidewalls and lighting applied across a connected plan",
+          "Sized to guest count and run of show",
+          "Dining, dance, and mingling zones in one plan",
+          "Works on split or irregular sites when surveyed",
+          "Sidewalls & lighting across the linked footprint",
         ].map((line) => (
-          <li key={line} className="flex gap-2 text-sm text-stone-700">
+          <li key={line} className="flex gap-2 text-xs leading-snug text-stone-700 sm:text-sm">
             <span className="text-[#b78a2d]" aria-hidden>
               ✓
             </span>
@@ -68,16 +76,14 @@ export function ModularTentSystemsSection() {
           </li>
         ))}
       </ul>
-      <p className="mt-6 text-sm text-stone-600">
-        See how inventory supports large layouts in our{" "}
+      <p className="mt-4 text-xs text-stone-600 sm:text-sm">
         <Link href="/rental-inventory" className="font-medium text-stone-800 underline underline-offset-2">
-          rental inventory overview
+          Inventory
         </Link>
-        , or jump to{" "}
+        {" · "}
         <Link href="/contact#quote" className="font-medium text-stone-800 underline underline-offset-2">
-          plan your tent setup with a quote
+          Book a layout consult
         </Link>
-        .
       </p>
     </div>
   );
@@ -85,58 +91,40 @@ export function ModularTentSystemsSection() {
 
 export function TentAddOnsSection() {
   const addOns = [
-    { label: "Sidewalls & tent siding", note: "Solid, window, and mixed walls for wind and rain" },
-    { label: "Lighting", note: "String, uplighting, and packages to match your tent and timeline" },
-    { label: "Gutters & connections", note: "For linked, expandable tent layouts where applicable" },
-    { label: "Flooring & dance floors", note: "Define dance areas and level surfaces underfoot" },
-    { label: "Tables & chairs", note: "Scaled to guest count and service style" },
-    { label: "Staging & accessories", note: "When your program needs elevation or extras" },
-    { label: "Heating & cooling comfort", note: "Seasonal options discussed during quoting" },
+    { label: "Sidewalls & siding", note: "Solid, window, mixed—wind, rain, sun control" },
+    { label: "Lighting", note: "String, uplight, packages matched to timeline" },
+    { label: "Gutters & links", note: "Modular connected layouts" },
+    { label: "Floors & dance", note: "Defined dance areas, leveling" },
+    { label: "Tables & chairs", note: "Scaled to service style" },
+    { label: "Staging & climate", note: "Elevation, heat/cool as quoted" },
   ];
 
   return (
-    <div id="tent-add-ons" className="scroll-mt-28 mt-14">
-      <h2 className="text-2xl font-semibold tracking-tight text-stone-900">Tent add-ons & completing the space</h2>
-      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">
-        A tent rental is rarely just fabric overhead. We help you complete the space with options that match your event type, so the result feels finished and comfortable, not bare.
+    <div id="tent-add-ons" className="scroll-mt-24 mt-8">
+      <h2 className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">Add-ons that finish the tent</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-snug text-stone-600">
+        Most events need more than a roof—sidewalls, light, and floor define how the space feels at night and in weather.
       </p>
-      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+      <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {addOns.map((a) => (
-          <li key={a.label} className={`${cardClass} !p-4`}>
-            <p className="font-medium text-stone-900">{a.label}</p>
-            <p className="mt-1 text-xs text-stone-600">{a.note}</p>
+          <li key={a.label} className={`${cardClass} !p-3`}>
+            <p className="text-sm font-medium text-stone-900">{a.label}</p>
+            <p className="mt-0.5 text-xs text-stone-600">{a.note}</p>
           </li>
         ))}
       </ul>
-      <p className="mt-6 text-sm text-stone-600">
-        Pair seating and dining inventory from our{" "}
+      <p className="mt-4 text-xs text-stone-600 sm:text-sm">
         <Link href="/table-chair-rentals" className="font-medium text-stone-800 underline underline-offset-2">
-          table and chair rentals
+          Tables &amp; chairs
         </Link>
-        , explore{" "}
+        {" · "}
         <Link href="/party-packages" className="font-medium text-stone-800 underline underline-offset-2">
-          tent packages
-        </Link>{" "}
-        as a starting point, or{" "}
-        <Link href="/rental-inventory#category-lighting" className="font-medium text-stone-800 underline underline-offset-2">
-          view lighting and dance floor
-        </Link>{" "}
-        in the inventory overview.
-      </p>
-    </div>
-  );
-}
-
-export function TentPagePlanningSummary() {
-  return (
-    <div id="plan-your-tent" className="scroll-mt-28 mt-14 rounded-2xl border border-[#b78a2d]/35 bg-[#111315] p-6 text-stone-100 sm:p-8">
-      <h2 className="text-xl font-semibold text-white">Planning-oriented tent rentals in Connecticut</h2>
-      <p className="mt-3 text-sm leading-relaxed text-stone-300">
-        Our tent systems offer more flexibility than a single standard footprint. Many structures, especially frame tents and compatible expansion inventory, can be connected using gutters to create larger covered event spaces. That lets us build custom tent layouts around your guest count, venue, and flow. Layer in sidewalls, lighting, flooring, dance floors, and coordinated{" "}
-        <Link href="/table-chair-rentals" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
-          tables and chairs
+          Packages
         </Link>
-        , and we help you assemble a complete, comfortable setup, not just a tent in a field.
+        {" · "}
+        <Link href="/rental-inventory#category-lighting" className="font-medium text-stone-800 underline underline-offset-2">
+          Lighting &amp; dance floor
+        </Link>
       </p>
     </div>
   );
@@ -144,26 +132,29 @@ export function TentPagePlanningSummary() {
 
 export function TentPageCtaStrip() {
   return (
-    <div className="mt-10 flex flex-col gap-3 border-y border-stone-200 py-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
-      <div className="flex flex-wrap gap-2">
-        <Link href="/contact#quote" className={bookNowSectionClass}>
-          Book Now
-        </Link>
-        <Link href="/contact#quote" className="rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 transition hover:bg-stone-50">
-          Plan your tent setup
-        </Link>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        <Link href="/faq#faq-tent-size" className="rounded-full border border-stone-200 px-4 py-2 text-sm font-medium text-stone-700 transition hover:bg-stone-50">
-          Need help with tent size?
-        </Link>
-        <Link href="/rental-inventory#tent-structures" className="rounded-full border border-stone-200 px-4 py-2 text-sm font-medium text-stone-700 transition hover:bg-stone-50">
-          View tent inventory overview
-        </Link>
-        <Link href="#tent-add-ons" className="rounded-full border border-[#b78a2d]/50 bg-amber-50/80 px-4 py-2 text-sm font-medium text-stone-800 transition hover:bg-amber-100/80">
-          Tent add-ons
-        </Link>
-      </div>
+    <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-stone-200/80 pt-5 text-sm">
+      <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">Quick</span>
+      <Link href="/faq#faq-tent-size" className="font-medium text-stone-800 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-600">
+        Tent sizing FAQ
+      </Link>
+      <span className="text-stone-300" aria-hidden>
+        ·
+      </span>
+      <Link href="/planning" className="font-medium text-stone-800 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-600">
+        Planning hub
+      </Link>
+      <span className="text-stone-300" aria-hidden>
+        ·
+      </span>
+      <Link href="#tent-add-ons" className="font-medium text-stone-800 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-600">
+        Add-ons
+      </Link>
+      <span className="text-stone-300" aria-hidden>
+        ·
+      </span>
+      <Link href="#tent-resource-tabs" className="font-medium text-stone-800 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-600">
+        Guide tabs
+      </Link>
     </div>
   );
 }

@@ -34,7 +34,7 @@ export function TentMarqueePage() {
             </ul>
           </div>
           <Link href="/contact#quote" className={`${bookNowSectionClass} mt-6 inline-flex justify-center text-center`}>
-            Plan walkway flow
+            Book Now
           </Link>
         </div>
       </section>

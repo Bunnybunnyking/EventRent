@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@/features/wedding-checklist/*": [
+        "./src/features/wedding-checklist-generator/*"
       ]
     }
   },

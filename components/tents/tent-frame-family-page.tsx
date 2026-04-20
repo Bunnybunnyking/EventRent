@@ -45,7 +45,7 @@ export function TentFrameFamilyPage() {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center text-center`}>
-              Get a quote
+              Book Now
             </Link>
             <Link
               href="/tent-rentals"

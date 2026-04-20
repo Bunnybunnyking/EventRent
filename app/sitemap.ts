@@ -3,8 +3,13 @@ import { siteBaseUrl } from "@/lib/metadata";
 import { eventLandingSlugs } from "@/lib/event-landing-data";
 import { frameTentSlugs, largeEventTentSlugs } from "@/lib/tent-section-data";
 import { partyGuideSlugs } from "@/lib/party-guides-data";
+import { guideSlugs } from "@/lib/marketing-pages-data";
 import { townList } from "@/lib/site-data";
 
+/**
+ * Public indexable URLs only. Intentionally omitted (see `app/robots.ts`):
+ * `/wedding-checklist-dev`, `/goodshuffle-test`.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const tentGuideRoutes = [
     "/tents/frame-tents",
@@ -23,6 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tents",
     ...tentGuideRoutes,
     "/tents/gallery",
+    "/events",
+    "/av-games",
     "/yard-games",
     "/bounce-houses",
     "/table-chair-rentals",
@@ -30,13 +37,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/corporate-event-rentals",
     "/rental-inventory",
     "/party-packages",
-    "/wishlist",
     "/about",
     "/contact",
     "/faq",
     "/planning",
+    "/quick-event-planner",
+    "/backyard-party-checklist",
+    "/wishlist",
     "/party-guides",
     ...partyGuideSlugs.map((slug) => `/party-guides/${slug}`),
+    "/guides",
+    ...guideSlugs.map((slug) => `/guides/${slug}`),
+    "/packages/most-booked-event-setups",
+    "/how-it-works",
+    "/reviews-and-real-events",
+    "/case-studies",
     "/service-areas",
     ...eventLandingSlugs.map((slug) => `/events/${slug}`),
   ];
