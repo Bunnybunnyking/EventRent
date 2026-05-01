@@ -1,24 +1,25 @@
 import Script from "next/script";
+import { googleAdsAwId } from "@/lib/google-ads-id";
 
-/** Google Ads conversion tag (gtag.js) — matches Google tag snippet; ID from Google Ads. */
-const GOOGLE_ADS_AW_ID = "AW-18131224378";
+/**
+ * Google tag (gtag.js) for Google Ads — same behavior as Google’s snippet:
+ * load library, define stub, push config. Uses `afterInteractive` so it always runs
+ * from the root layout (avoid `beforeInteractive` in nested modules; diagnostics flake).
+ */
+export function GoogleAdsGtag() {
+  const awId = googleAdsAwId();
 
-const gtagInitHtml = `
+  const inlineInit = `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GOOGLE_ADS_AW_ID}');
+gtag('config', '${awId}');
 `.trim();
 
-export function GoogleAdsGtag() {
   return (
     <>
-      <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_AW_ID}`} strategy="afterInteractive" />
-      <Script
-        id="google-ads-gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: gtagInitHtml }}
-      />
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${awId}`} strategy="afterInteractive" />
+      <Script id="google-ads-gtag-init" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: inlineInit }} />
     </>
   );
 }
