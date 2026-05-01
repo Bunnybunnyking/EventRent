@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import { GoogleAdsGtag } from "@/components/google-ads-gtag";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${inter.variable} ${cormorant.variable} font-sans`}>
+        <GoogleAdsGtag />
         <LocalBusinessSchema />
         <WebSiteSchema />
         <ScrollToTop />
