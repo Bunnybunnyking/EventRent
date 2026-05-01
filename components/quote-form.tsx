@@ -36,32 +36,10 @@ const eventElementOptions = [
   { id: "ev-photo", value: "Photo or video team space", label: "Photo / video" },
 ] as const;
 
-function mailtoFallbackEmail(): string {
-  const fromEnv = process.env.NEXT_PUBLIC_QUOTE_EMAIL?.trim();
-  if (fromEnv) return fromEnv;
-  if (business.email.includes("[INSERT")) return "";
-  return business.email.trim();
-}
-
-function encodeMailtoBody(fd: FormData): string {
-  const lines: string[] = [];
-  const grouped = new Map<string, string[]>();
-  fd.forEach((value, key) => {
-    if (typeof value !== "string" || !value.trim()) return;
-    const list = grouped.get(key) ?? [];
-    list.push(value.trim());
-    grouped.set(key, list);
-  });
-  grouped.forEach((vals, key) => {
-    if (vals.length === 1) lines.push(`${key}: ${vals[0]}`);
-    else lines.push(`${key}: ${vals.join(", ")}`);
-  });
-  return encodeURIComponent(lines.join("\n"));
-}
-
 export function QuoteForm() {
   const searchParams = useSearchParams();
   const [bookingHint, setBookingHint] = useState<string | null>(null);
+  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const defaultEventType = searchParams.get("etype") ?? "";
 
@@ -81,21 +59,29 @@ export function QuoteForm() {
     sessionStorage.removeItem("ctpr_planner_summary");
   }, []);
 
-  function onSubmitQuote(e: FormEvent<HTMLFormElement>) {
+  async function onSubmitQuote(e: FormEvent<HTMLFormElement>) {
     if (quoteFormAction) return;
     e.preventDefault();
     setBookingHint(null);
-    const mail = mailtoFallbackEmail();
-    if (mail) {
-      const fd = new FormData(e.currentTarget);
-      const body = encodeMailtoBody(fd);
-      const subject = encodeURIComponent("Event rental quote request");
-      window.location.href = `mailto:${mail}?subject=${subject}&body=${body}`;
-      return;
+    setSubmitState("submitting");
+    const form = e.currentTarget;
+    try {
+      const fd = new FormData(form);
+      const res = await fetch("/api/quote", { method: "POST", body: fd });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        setSubmitState("error");
+        setBookingHint(data.error ?? "Something went wrong. Please call us or try again.");
+        return;
+      }
+      setSubmitState("success");
+      setBookingHint("Thanks — we received your request. Our team will follow up soon.");
+      form.reset();
+      setGuestApprox(0);
+    } catch {
+      setSubmitState("error");
+      setBookingHint("Could not send right now. Please call us or try again in a moment.");
     }
-    setBookingHint(
-      "Quote delivery is not configured yet. Set NEXT_PUBLIC_QUOTE_FORM_ACTION to your form POST URL (for example from GoDaddy Website Builder HTML embed, Formspree, or FormSubmit), or set NEXT_PUBLIC_QUOTE_EMAIL for a mailto handoff. You can still call the number in the header to book.",
-    );
   }
 
   return (
@@ -106,6 +92,15 @@ export function QuoteForm() {
       method={quoteFormAction ? "post" : undefined}
       onSubmit={onSubmitQuote}
     >
+      {/* Honeypot: hidden from users; if filled, server discards as spam */}
+      <input
+        type="text"
+        name="_honeypot"
+        tabIndex={-1}
+        autoComplete="off"
+        className="pointer-events-none absolute -left-[9999px] h-0 w-0 opacity-0"
+        aria-hidden
+      />
       <header className="border-b border-stone-100 pb-2">
         <h1 className="text-lg font-semibold tracking-tight text-stone-900 font-[family-name:var(--font-display)] sm:text-xl">
           Reserve Party Rentals Online
@@ -275,8 +270,12 @@ export function QuoteForm() {
       ) : null}
 
       <div className="mt-2 space-y-1.5 border-t border-stone-100 pt-2">
-        <button type="submit" className={`${bookNowQuoteFooterClass} justify-center`}>
-          <span className="relative z-10">Book consultation</span>
+        <button
+          type="submit"
+          disabled={submitState === "submitting"}
+          className={`${bookNowQuoteFooterClass} justify-center disabled:pointer-events-none disabled:opacity-60`}
+        >
+          <span className="relative z-10">{submitState === "submitting" ? "Sending…" : "Book consultation"}</span>
         </button>
         <Link
           href="/wishlist"
@@ -286,7 +285,15 @@ export function QuoteForm() {
           <span className="relative z-10">Book Online</span>
         </Link>
         {bookingHint ? (
-          <p className="rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-1.5 text-center text-[11px] text-amber-950">{bookingHint}</p>
+          <p
+            className={`rounded-lg border px-2.5 py-1.5 text-center text-[11px] ${
+              submitState === "success"
+                ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+                : "border-amber-200 bg-amber-50 text-amber-950"
+            }`}
+          >
+            {bookingHint}
+          </p>
         ) : null}
       </div>
     </form>

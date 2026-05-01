@@ -15,13 +15,26 @@ export const business = {
   address: "79 Old Windsor Rd",
   /** Shown in copy where a one-line “what we are” helps (Bloomfield home base). */
   locationTagline: "Party equipment rental in Bloomfield, CT",
-  /** Shown in copy site-wide; celebration line in header + trust strip. */
-  establishedYear: "1946", /** Trust line (header strip + footer); credibility, not the hero brand tagline */
-  celebrationTagline: "Celebrating 50+ years in business.", /** Header gold line under the site name */
+  /** Tent lending began as a hobby for friends, family, and neighbors. */
+  heritageOriginYear: "1946",
+  /** Year the full-service rental business was founded (use with heritage + incorporation for the full arc). */
+  businessFoundedYear: "1974",
+  /** Year the company incorporated as a closely held family business. */
+  incorporatedYear: "1994",
+  /**
+   * “Est.” footer, “family owned since…”, and most on-site “years in business” trust lines.
+   * Points to the full business founding (1974), not the informal 1946 start.
+   */
+  establishedYear: "1974",
+  /** Header gold line under the site name */
+  celebrationTagline: "Celebrating 50+ years in business.",
+  /** Party Packages / home intro — full three-era story in one line */
   heroBrandTagline:
-    "Connecticut's oldest party rental company, trusted since 1946, still family run.", /** Party Packages / tent bundle sales page */
-  partyPackagesTagline: "We set the stage. You steal the show.", /** FAQ page, line under the celebration / trust line */
-  faqPageTagline: "Still hot in tent years", ownership: "Family owned and operated", tentSizeRange: "10x10 to 100x250",
+    "Tent rentals started as a family hobby in 1946; we opened as a full business in 1974 and incorporated as a closely held family company in 1994.",
+  /** Short paragraph for About and metadata where space allows */
+  familyHistoryShort:
+    "The family began renting tents as a hobby in 1946 for friends and neighbors, founded a full rental business in 1974, and incorporated as a closely held family company in 1994.",
+  partyPackagesTagline: "We set the stage. You steal the show.", ownership: "Family owned and operated", tentSizeRange: "10x10 to 100x250",
 };
 
 /** Primary header navigation (internal routes). The Event Guest Count Planner lives under `/events` (My event strip), not here. */
@@ -35,7 +48,7 @@ export const trustPoints = [
 
 export const services = [
   {
-    title: "Tent Rentals", description: "Frame tents, pole tents, and sailcloth for outdoor events from backyards to full receptions.", href: "/tents", }, {
+    title: "Tent Rentals", description: "Frame tents, pole tents, and professional event structures for outdoor gatherings from backyards to full receptions.", href: "/tents", }, {
     title: "Table & Chair Rentals", description: "Round, banquet, and cocktail tables with ceremony, dining, and lounge chair options.", href: "/table-chair-rentals", }, {
     title: "Wedding Tent Rentals", description: "Tent layouts, lighting, and sidewalls planned so your wedding day runs smoothly outside.", href: "/wedding-tent-rentals", }, {
     title: "Events & occasions", description:
@@ -60,43 +73,6 @@ export const testimonials = [
       "Communication was fast, clear, and professional. Our corporate summer event looked polished and stayed on timeline.", event: "Corporate picnic in Farmington", }, {
     name: "Priya S.", quote:
       "We needed a weather backup plan and they handled every detail. Sidewalls, lighting, and layout were all dialed in.", event: "Graduation party in Glastonbury", },
-];
-
-export type FaqItem = {
-  id: string;
-  question: string;
-  answer: string;
-};
-
-/** FAQ page content + FAQPage JSON-LD; questions mirror what planners ask. */
-export const faqItems: FaqItem[] = [
-  {
-    id: "tent-size", question: "What size tent do I need for my event?", answer:
-      "It depends how you use the space, not just a chart on a wall. We look at seated versus standing, dance floor, buffet or bar lines, head table, DJ or band, and how wide the aisles need to be so people and servers are not bumping chairs all night. We walk through your Connecticut venue with you, then pick tent size and style (frame, pole, or sailcloth) that fits. If your count moves before the event, we tweak the plan with you.", }, {
-    id: "tent-capacity", question: "How many guests fit under a tent?", answer:
-      "Rough rule of thumb: about one guest per ten to twelve square feet under the tent when people sit at tables (tighter if it is ceremony rows, more if it is lounge or mixed seating). Dance floors, bars, stages, and paths for staff eat space fast, so do not forget to add that in. We turn your headcount and how you run the event into a real footprint, not just a number on paper.", }, {
-    id: "rain-plan", question: "What happens if it rains?", answer:
-      "We plan for weather before the week of your event. That can mean sidewalls, strategic wall placement, anchoring that suits wind exposure, and layout tweaks so critical areas stay dry. For weddings and timed programs, we talk through a sensible rain backup so you are not making last-minute calls in a panic. Clear window walls and solid walls can be combined so you keep light and views where you want them and block wind where you need it.", }, {
-    id: "delivery-setup", question: "Do you deliver and set up, and when will you arrive?", answer:
-      "Yes. Our crew delivers, installs, and returns for takedown so you are not coordinating rentals on event day. We schedule arrival within an agreed window and confirm timing ahead of your date so vendors and venues know what to expect. Access paths, parking, and surface type all affect schedule; we bake that into the plan when you book.", }, {
-    id: "pricing", question: "How does pricing work?", answer:
-      "Your quote lists what you are paying for: date and place, tent size and style, add-ons like sidewalls and lights, tables and chairs, labor to set up and take down, and anything odd about the site (stairs, long carries, anchoring on pavement). You see line items, not one blob of a price, so you can compare and ask questions. We would rather hear them now than on the morning of your event.", }, {
-    id: "reserve-ahead", question: "How far in advance should I reserve?", answer:
-      "Prime spring and summer weekends, holiday periods, and popular wedding dates fill first across Connecticut. Once your date and venue are firm, reach out for a quote; we will tell you honestly if inventory is tight. Last-minute requests sometimes work, but early booking keeps your first choice of tent style and size.", }, {
-    id: "booking-process", question: "How do I book a tent rental?", answer:
-      "Start with a quote: share your date, town or venue, guest count, and event type. We respond with recommendations, options, and pricing. When you are ready to move forward, we confirm equipment, schedule delivery and installation, and walk through surface conditions and weather considerations. You always know the next step, no mystery process.", }, {
-    id: "hard-surface-anchoring", question: "Can you set up a tent on a driveway, tennis court, or pavement?", answer:
-      "Often yes. When stakes cannot go into the ground, we use weighted ballasts or other approved anchoring so the tent stays secure without damaging the surface. Tennis courts, parking areas, and patios are common for corporate and private events; we assess access, slope, and load-in distance during quoting. See our Tent Rentals page for a visual of window sidewalls and ballast setup on a hard surface.", }, {
-    id: "lawn-utilities", question: "What should I know about lawn staking and underground utilities?", answer:
-      "For grass installs we typically stake for stability. Clear the area of furniture, hoses, and debris before we arrive; freshly mowed, level lawn helps with a clean setup. If you have irrigation, septic, or buried electric, tell us early so we can position stakes safely, when in doubt, locate utility lines before event day. Steep slopes or soft ground may change anchoring; we address that in planning.", }, {
-    id: "tables-without-tent", question: "Can I rent tables and chairs without a tent?", answer:
-      "Yes. Many hosts order tables, chairs, or both for indoor venues, uncovered patios, or events where a tent is not needed. Delivery and pickup scheduling follow the same professional process as tent jobs across Hartford County and Connecticut service towns.", }, {
-    id: "backyard-party", question: "Do you rent tents for backyard parties in Connecticut?", answer:
-      "Yes. We review access for our truck and crew, staking vs. ballasting, neighbor-friendly timing, and how guests will move from house to tent. Backyard parties are a staple for us, whether it is a birthday, anniversary, or casual celebration, so the setup feels intentional, not improvised.", }, {
-    id: "graduation-events", question: "Can you help with graduation tent rentals and guest flow?", answer:
-      "We map graduation parties around arrival, food lines, seating, speeches, and weather backup. From Farmington to Glastonbury and across CT, we align tent size and inventory with your headcount and schedule so the day stays organized when emotions (and guest counts) run high.", }, {
-    id: "corporate-school", question: "Do you support corporate events, schools, and community programs?", answer:
-      "Yes. We align with load-in windows, run-of-show constraints, and presentation standards for company events, school functions, nonprofits, and municipal programs. Repeatable layouts, clear communication with your facilities contact, and dependable teardown timing are built into how we work.", },
 ];
 
 /** Only includes files present under `public/images/` (avoids broken gallery thumbnails). */

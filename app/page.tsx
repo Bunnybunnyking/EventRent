@@ -5,7 +5,7 @@ import {
 
 export const metadata = createPageMetadata({
   title: "Tent & party rentals, Wethersfield, Hartford & statewide", description:
-    "Marquee and frame tents, tables, chairs, lighting, and dance floors with delivery and professional setup. Family-owned since 1946; weddings, backyards, graduations, and corporate events across Connecticut.", path: "/", ogImage: homePageHeroImagePath,
+    "Marquee and frame tents, tables, chairs, lighting, and dance floors with delivery and professional setup. Family business since 1974, roots in tent lending since 1946; weddings, backyards, graduations, and corporate events across Connecticut.", path: "/", ogImage: homePageHeroImagePath,
 });
 
 export default function HomePage() {

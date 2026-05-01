@@ -7,7 +7,7 @@ import { planningFaqItems } from "@/lib/planning-faq";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Connecticut Tent & Event Planning Guide | Sizing, Weather, Layout", description:
-    "Connecticut tent planning: square-footage calculator, Quick Event Planner, capacity chart, tent types, site and weather checks, and FAQs. Family-owned team since 1946.", path: "/planning", ogImage: defaultOgImagePath,
+    "Connecticut tent planning: square-footage calculator, Quick Event Planner, capacity chart, tent types, site and weather checks, and FAQs. Family team since 1974, heritage since 1946.", path: "/planning", ogImage: defaultOgImagePath,
 });
 
 export default function PlanningPage() {

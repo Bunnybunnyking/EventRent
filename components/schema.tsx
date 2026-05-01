@@ -1,4 +1,6 @@
-import { business, faqItems, type FaqItem } from "@/lib/site-data";
+import { getFaqPageSchemaItems } from "@/lib/faq-data";
+import type { FaqItem } from "@/lib/faq-data";
+import { business } from "@/lib/site-data";
 import { defaultOgImagePath, siteBaseUrl } from "@/lib/metadata";
 
 const businessId = `${siteBaseUrl}/#localbusiness`;
@@ -50,14 +52,14 @@ export function LocalBusinessSchema() {
     /* Approx. geocoordinates for Bloomfield, CT (79 Old Windsor Rd area). */
     geo: { "@type": "GeoCoordinates", latitude: 41.8507, longitude: -72.7031 },
     areaServed: [
-      { "@type": "State", name: "Connecticut" }, { "@type": "AdministrativeArea", name: "Hartford County" }, ], description: `Family owned and operated since ${business.establishedYear}. ${business.celebrationTagline} ${business.name} provides tent rentals, table and chair rentals, and full setup service for weddings, private parties, and corporate events across Connecticut and Southern MA.`, priceRange: "$$", contactPoint: {
+      { "@type": "State", name: "Connecticut" }, { "@type": "AdministrativeArea", name: "Hartford County" }, ], description: `${business.familyHistoryShort} ${business.celebrationTagline} ${business.name} provides tent rentals, table and chair rentals, and full setup service for weddings, private parties, and corporate events across Connecticut and Southern MA.`, priceRange: "$$", contactPoint: {
       "@type": "ContactPoint", contactType: "customer service", telephone: business.phone, email: business.email, areaServed: "US", availableLanguage: ["English"], }, };
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }
 
 export function FAQSchema() {
-  return <FAQSchemaItems items={faqItems} />;
+  return <FAQSchemaItems items={getFaqPageSchemaItems()} />;
 }
 
 export function FAQSchemaItems({ items }: { items: Pick<FaqItem, "question" | "answer">[] }) {
