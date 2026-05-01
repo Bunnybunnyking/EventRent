@@ -27,9 +27,15 @@ yarn-error.log*
 .env
 .env*.local
 
+# exiftool / tagging backups (do not ship)
+*_original
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local RSVP planner data (V1 JSON store; do not commit customer PII)
+/data/rsvp-events.json

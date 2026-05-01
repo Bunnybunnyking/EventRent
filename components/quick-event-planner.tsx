@@ -3,13 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
-  computeQuickPlannerResult,
-  defaultQuickPlannerInput,
-  formatQuickPlannerSummary,
-  type EventStyleId,
-  type EventTypeId,
-  type QuickPlannerInput,
-} from "@/lib/quick-event-planner-logic";
+  computeQuickPlannerResult, defaultQuickPlannerInput, formatQuickPlannerSummary, type EventStyleId, type EventTypeId, type QuickPlannerInput, } from "@/lib/quick-event-planner-logic";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 
@@ -23,26 +17,10 @@ function canNavigateToTab(target: 1 | 2 | 3, current: 1 | 2 | 3, furthest: 1 | 2
 }
 
 const eventTypes: { id: EventTypeId; label: string }[] = [
-  { id: "wedding", label: "Wedding" },
-  { id: "graduation", label: "Graduation" },
-  { id: "backyard", label: "Backyard party" },
-  { id: "sweet16", label: "Sweet 16" },
-  { id: "quince", label: "Quinceañera" },
-  { id: "corporate", label: "Corporate event" },
-  { id: "fundraiser", label: "Fundraiser" },
-  { id: "festival", label: "Festival / fair" },
-  { id: "community", label: "Community / town event" },
-  { id: "tailgate", label: "Tailgate" },
-  { id: "birthday", label: "Birthday party" },
-  { id: "other", label: "Other" },
-];
+  { id: "wedding", label: "Wedding" }, { id: "graduation", label: "Graduation" }, { id: "backyard", label: "Backyard party" }, { id: "sweet16", label: "Sweet 16" }, { id: "quince", label: "Quinceañera" }, { id: "corporate", label: "Corporate event" }, { id: "fundraiser", label: "Fundraiser" }, { id: "festival", label: "Festival / fair" }, { id: "community", label: "Community / town event" }, { id: "tailgate", label: "Tailgate" }, { id: "birthday", label: "Birthday party" }, { id: "other", label: "Other" }, ];
 
 function Segmented<T extends string>({
-  options,
-  value,
-  onChange,
-  columns = "grid-cols-2 sm:grid-cols-3",
-}: {
+  options, value, onChange, columns = "grid-cols-2 sm:grid-cols-3", }: {
   options: { id: T; label: string }[];
   value: T;
   onChange: (v: T) => void;
@@ -69,11 +47,7 @@ function Segmented<T extends string>({
 }
 
 function ToggleRow({
-  label,
-  helper,
-  checked,
-  onChange,
-}: {
+  label, helper, checked, onChange, }: {
   label: string;
   helper?: string;
   checked: boolean;
@@ -254,11 +228,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <div className="mt-2">
                 <Segmented
                   options={[
-                    { id: "morning", label: "Morning" },
-                    { id: "afternoon", label: "Afternoon" },
-                    { id: "evening", label: "Evening" },
-                    { id: "night", label: "Night" },
-                  ]}
+                    { id: "morning", label: "Morning" }, { id: "afternoon", label: "Afternoon" }, { id: "evening", label: "Evening" }, { id: "night", label: "Night" }, ]}
                   value={inp.eventTime}
                   onChange={(v) => patch({ eventTime: v })}
                   columns="grid-cols-2 sm:grid-cols-4"
@@ -270,13 +240,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <div className="mt-2">
                 <Segmented<EventStyleId>
                   options={[
-                    { id: "seated", label: "Seated meal" },
-                    { id: "cocktail", label: "Cocktail / mingling" },
-                    { id: "ceremony", label: "Ceremony" },
-                    { id: "buffet_casual", label: "Buffet / casual" },
-                    { id: "dance", label: "Dance-focused" },
-                    { id: "mixed", label: "Mixed / not sure" },
-                  ]}
+                    { id: "seated", label: "Seated meal" }, { id: "cocktail", label: "Cocktail / mingling" }, { id: "ceremony", label: "Ceremony" }, { id: "buffet_casual", label: "Buffet / casual" }, { id: "dance", label: "Dance-focused" }, { id: "mixed", label: "Mixed / not sure" }, ]}
                   value={inp.eventStyle}
                   onChange={(v) => patch({ eventStyle: v })}
                   columns="grid-cols-2 sm:grid-cols-3"
@@ -293,11 +257,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <div className="mt-2">
                 <Segmented
                   options={[
-                    { id: "rounds", label: "Round tables" },
-                    { id: "banquet", label: "Banquet tables" },
-                    { id: "mixed", label: "Mixed" },
-                    { id: "standing", label: "Mostly standing" },
-                  ]}
+                    { id: "rounds", label: "Round tables" }, { id: "banquet", label: "Banquet tables" }, { id: "mixed", label: "Mixed" }, { id: "standing", label: "Mostly standing" }, ]}
                   value={inp.seatingStyle}
                   onChange={(v) => patch({ seatingStyle: v })}
                   columns="grid-cols-2 sm:grid-cols-4"
@@ -309,12 +269,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <div className="mt-2">
                 <Segmented
                   options={[
-                    { id: "none", label: "No food" },
-                    { id: "dessert_only", label: "Dessert / cake only" },
-                    { id: "buffet", label: "Buffet" },
-                    { id: "plated", label: "Plated / catered meal" },
-                    { id: "stations", label: "Food station / catering area" },
-                  ]}
+                    { id: "none", label: "No food" }, { id: "dessert_only", label: "Dessert / cake only" }, { id: "buffet", label: "Buffet" }, { id: "plated", label: "Plated / catered meal" }, { id: "stations", label: "Food station / catering area" }, ]}
                   value={inp.food}
                   onChange={(v) => patch({ food: v })}
                   columns="grid-cols-2 sm:grid-cols-3"
@@ -326,10 +281,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <div className="mt-2">
                 <Segmented
                   options={[
-                    { id: "none", label: "None" },
-                    { id: "self", label: "Self-serve" },
-                    { id: "bar", label: "Bar area" },
-                  ]}
+                    { id: "none", label: "None" }, { id: "self", label: "Self-serve" }, { id: "bar", label: "Bar area" }, ]}
                   value={inp.drinks}
                   onChange={(v) => patch({ drinks: v })}
                   columns="grid-cols-3"
@@ -341,12 +293,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <div className="mt-2">
                 <Segmented
                   options={[
-                    { id: "none", label: "None" },
-                    { id: "background", label: "Background music" },
-                    { id: "mic", label: "Microphone / announcements" },
-                    { id: "dj", label: "DJ / dance music" },
-                    { id: "live", label: "Live music" },
-                  ]}
+                    { id: "none", label: "None" }, { id: "background", label: "Background music" }, { id: "mic", label: "Microphone / announcements" }, { id: "dj", label: "DJ / dance music" }, { id: "live", label: "Live music" }, ]}
                   value={inp.music}
                   onChange={(v) => patch({ music: v })}
                   columns="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
@@ -358,10 +305,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <div className="mt-2">
                 <Segmented
                   options={[
-                    { id: "yes", label: "Yes" },
-                    { id: "no", label: "No" },
-                    { id: "maybe", label: "Maybe" },
-                  ]}
+                    { id: "yes", label: "Yes" }, { id: "no", label: "No" }, { id: "maybe", label: "Maybe" }, ]}
                   value={inp.danceFloor}
                   onChange={(v) => patch({ danceFloor: v })}
                   columns="grid-cols-3 max-w-md"
@@ -462,7 +406,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
                   Call Now
                 </a>
                 <Link href={quoteHref} onClick={sendToQuote} className={`${bookNowSectionClass} justify-center text-center`} prefetch={true}>
-                  Book Now
+                  Book Consultation
                 </Link>
                 <Link
                   href="/contact#quote"
@@ -493,7 +437,7 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
                   className="rounded-full border border-stone-200 bg-white px-4 py-2.5 text-sm font-semibold text-stone-800 hover:bg-stone-50"
                   prefetch={true}
                 >
-                  Book Now
+                  Book Consultation
                 </Link>
               </div>
               <p className="mt-4 text-xs leading-relaxed text-stone-500">{result.disclaimer}</p>

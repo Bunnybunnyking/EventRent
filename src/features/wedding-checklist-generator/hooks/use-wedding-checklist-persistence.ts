@@ -4,44 +4,24 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { defaultWeddingChecklistForm } from "@/features/wedding-checklist/lib/default-input";
 import { mergeFormState, type WeddingChecklistFormPatch } from "@/features/wedding-checklist/lib/merge-form";
 import {
-  PERSIST_DEBOUNCE_MS,
-  WC_URL_PARAM,
-  clearDraftStorage,
-  resolveInitialState,
-  saveDraftToStorage,
-} from "@/features/wedding-checklist/lib/persistence";
+  PERSIST_DEBOUNCE_MS, WC_URL_PARAM, clearDraftStorage, resolveInitialState, saveDraftToStorage, } from "@/features/wedding-checklist/lib/persistence";
 import { parseShareFromSearch } from "@/features/wedding-checklist/lib/share/wedding-share-payload";
 import { stripWeddingChecklistShareParam } from "@/features/wedding-checklist/lib/url-state/strip-wc-query";
 import {
-  buildSharePayload,
-  encodeSharePayload,
-  type WeddingChecklistSharePayload,
-} from "@/features/wedding-checklist/lib/share/wedding-share-payload";
+  buildSharePayload, encodeSharePayload, type WeddingChecklistSharePayload, } from "@/features/wedding-checklist/lib/share/wedding-share-payload";
 import { buildWeddingChecklistShareUrl } from "@/features/wedding-checklist/lib/export/wedding-checklist-export";
 import type { WeddingChecklistFormState, WeddingMode } from "@/features/wedding-checklist/types";
 import type {
-  WeddingChecklistHydrationConflict,
-  WeddingChecklistSessionState,
-} from "@/features/wedding-checklist/types/persistence";
+  WeddingChecklistHydrationConflict, WeddingChecklistSessionState, } from "@/features/wedding-checklist/types/persistence";
 
 function clamp(n: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, n));
 }
 
 function sessionFromHookState(
-  form: WeddingChecklistFormState,
-  mode: WeddingMode | null,
-  stepIndex: number,
-  furthestStep: number,
-  checkedLineIds: string[],
-): WeddingChecklistSessionState {
+  form: WeddingChecklistFormState, mode: WeddingMode | null, stepIndex: number, furthestStep: number, checkedLineIds: string[], ): WeddingChecklistSessionState {
   return {
-    form,
-    mode,
-    stepIndex,
-    furthestStep,
-    checkedLineIds,
-  };
+    form, mode, stepIndex, furthestStep, checkedLineIds, };
 }
 
 export interface WeddingChecklistPersistenceMeta {
@@ -67,13 +47,7 @@ export function useWeddingChecklistPersistence() {
 
   const [ready, setReady] = useState(false);
   const [persistenceMeta, setPersistenceMeta] = useState<WeddingChecklistPersistenceMeta>({
-    source: "default",
-    conflict: null,
-    invalidShareParam: false,
-    notes: [],
-    lastSavedAt: null,
-    ready: false,
-  });
+    source: "default", conflict: null, invalidShareParam: false, notes: [], lastSavedAt: null, ready: false, });
 
   /** One-time: URL > localStorage > defaults; then optional strip ?wc= and sync URL state into local draft */
   useEffect(() => {
@@ -93,13 +67,7 @@ export function useWeddingChecklistPersistence() {
       setCheckedLineIds(s.checkedLineIds);
 
       setPersistenceMeta({
-        source: resolved.source,
-        conflict: resolved.conflict,
-        invalidShareParam: resolved.invalidShareParam,
-        notes: resolved.notes,
-        lastSavedAt: resolved.lastSavedAt,
-        ready: true,
-      });
+        source: resolved.source, conflict: resolved.conflict, invalidShareParam: resolved.invalidShareParam, notes: resolved.notes, lastSavedAt: resolved.lastSavedAt, ready: true, });
       setReady(true);
 
       if (resolved.source === "url") {
@@ -111,19 +79,13 @@ export function useWeddingChecklistPersistence() {
 
       if (process.env.NODE_ENV === "development") {
         console.debug("[wedding-checklist:persistence]", {
-          source: resolved.source,
-          conflict: resolved.conflict,
-          invalidShareParam: resolved.invalidShareParam,
-          notes: resolved.notes,
-        });
+          source: resolved.source, conflict: resolved.conflict, invalidShareParam: resolved.invalidShareParam, notes: resolved.notes, });
       }
     });
   }, []);
 
   const session = useMemo(
-    () => sessionFromHookState(form, mode, stepIndex, furthestStep, checkedLineIds),
-    [form, mode, stepIndex, furthestStep, checkedLineIds],
-  );
+    () => sessionFromHookState(form, mode, stepIndex, furthestStep, checkedLineIds), [form, mode, stepIndex, furthestStep, checkedLineIds], );
 
   const persistTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -174,13 +136,7 @@ export function useWeddingChecklistPersistence() {
     setCheckedLineIds([]);
     clearDraftStorage();
     setPersistenceMeta((prev) => ({
-      ...prev,
-      source: "default",
-      conflict: null,
-      invalidShareParam: false,
-      notes: ["user_reset"],
-      lastSavedAt: null,
-    }));
+      ...prev, source: "default", conflict: null, invalidShareParam: false, notes: ["user_reset"], lastSavedAt: null, }));
   }, []);
 
   const sharePayload = useMemo((): WeddingChecklistSharePayload | null => {
@@ -224,24 +180,5 @@ export function useWeddingChecklistPersistence() {
   }, []);
 
   return {
-    form,
-    mode,
-    stepIndex,
-    furthestStep,
-    checkedLineIds,
-    updateForm,
-    selectMode,
-    goStep,
-    setStepIndex,
-    setFurthestStep,
-    resetDraft,
-    backToModeSelect,
-    copyShareLink,
-    sharePayload,
-    toggleCheckedLine,
-    setCheckedLineIds,
-    persistenceMeta,
-    dismissConflictNotice,
-    dismissInvalidShareNotice,
-  };
+    form, mode, stepIndex, furthestStep, checkedLineIds, updateForm, selectMode, goStep, setStepIndex, setFurthestStep, resetDraft, backToModeSelect, copyShareLink, sharePayload, toggleCheckedLine, setCheckedLineIds, persistenceMeta, dismissConflictNotice, dismissInvalidShareNotice, };
 }

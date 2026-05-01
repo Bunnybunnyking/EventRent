@@ -12,10 +12,7 @@ type Patch = {
 };
 
 export function StepBasics({
-  form,
-  updateForm,
-  mode,
-}: {
+  form, updateForm, mode, }: {
   form: WeddingChecklistFormState;
   updateForm: (p: Patch) => void;
   mode: WeddingMode;
@@ -24,13 +21,10 @@ export function StepBasics({
   return (
     <div className="space-y-8">
       <div>
-        <FieldLabel hint="Rough timing is fine—this helps us phrase milestones.">When is the wedding?</FieldLabel>
+        <FieldLabel hint="Rough timing is fine, this helps us phrase milestones.">When is the wedding?</FieldLabel>
         <Segmented
           options={[
-            { id: "date_set", label: "I have a date" },
-            { id: "season_month", label: "Season / month" },
-            { id: "unsure", label: "Still deciding" },
-          ]}
+            { id: "date_set", label: "I have a date" }, { id: "season_month", label: "Season / month" }, { id: "unsure", label: "Still deciding" }, ]}
           value={b.timeframeKind}
           onChange={(timeframeKind) => updateForm({ basics: { timeframeKind } })}
         />
@@ -69,10 +63,7 @@ export function StepBasics({
         <FieldLabel>What are you planning?</FieldLabel>
         <Segmented
           options={[
-            { id: "both", label: "Ceremony & reception" },
-            { id: "ceremony_only", label: "Ceremony only" },
-            { id: "reception_only", label: "Reception only" },
-          ]}
+            { id: "both", label: "Ceremony & reception" }, { id: "ceremony_only", label: "Ceremony only" }, { id: "reception_only", label: "Reception only" }, ]}
           value={b.ceremonyScope}
           onChange={(ceremonyScope) => updateForm({ basics: { ceremonyScope } })}
         />
@@ -82,10 +73,7 @@ export function StepBasics({
         <FieldLabel>Guest count (approximate)</FieldLabel>
         <Segmented
           options={[
-            { id: "under_75", label: "Under ~75" },
-            { id: "75_150", label: "~75–150" },
-            { id: "150_plus", label: "150+" },
-          ]}
+            { id: "under_75", label: "Under ~75" }, { id: "75_150", label: "~75 to 150" }, { id: "150_plus", label: "150+" }, ]}
           value={b.guestRange}
           onChange={(guestRange) => updateForm({ basics: { guestRange } })}
         />
@@ -96,12 +84,7 @@ export function StepBasics({
         <Segmented
           columns="grid-cols-1 sm:grid-cols-2"
           options={[
-            { id: "backyard", label: "Backyard" },
-            { id: "private_estate", label: "Private estate" },
-            { id: "outdoor_venue", label: "Outdoor venue" },
-            { id: "mixed_indoor_outdoor", label: "Mixed indoor / outdoor" },
-            { id: "tented_reception_only", label: "Primarily tented reception" },
-          ]}
+            { id: "backyard", label: "Backyard" }, { id: "private_estate", label: "Private estate" }, { id: "outdoor_venue", label: "Outdoor venue" }, { id: "mixed_indoor_outdoor", label: "Mixed indoor / outdoor" }, { id: "tented_reception_only", label: "Primarily tented reception" }, ]}
           value={b.venueType}
           onChange={(venueType) => updateForm({ basics: { venueType } })}
         />
@@ -112,9 +95,7 @@ export function StepBasics({
           <FieldLabel>Day or evening focus</FieldLabel>
           <Segmented
             options={[
-              { id: "day", label: "Daytime" },
-              { id: "evening", label: "Evening" },
-            ]}
+              { id: "day", label: "Daytime" }, { id: "evening", label: "Evening" }, ]}
             value={b.dayPart}
             onChange={(dayPart) => updateForm({ basics: { dayPart } })}
           />
@@ -123,10 +104,7 @@ export function StepBasics({
           <FieldLabel>Formality</FieldLabel>
           <Segmented
             options={[
-              { id: "casual", label: "Casual" },
-              { id: "classic", label: "Classic" },
-              { id: "formal", label: "Formal" },
-            ]}
+              { id: "casual", label: "Casual" }, { id: "classic", label: "Classic" }, { id: "formal", label: "Formal" }, ]}
             value={b.formality}
             onChange={(formality) => updateForm({ basics: { formality } })}
           />
@@ -137,7 +115,7 @@ export function StepBasics({
         label="Planner or coordinator involved"
         helper={
           mode === "quick"
-            ? "Optional—copy stays practical either way."
+            ? "Optional, copy stays practical either way."
             : "We’ll add coordinator-friendly checkpoints in your detailed checklist."
         }
         checked={b.plannerInvolved}
@@ -145,13 +123,10 @@ export function StepBasics({
       />
 
       <div>
-        <FieldLabel hint="No judgment—just helps us surface the right weather and tent prompts.">Weather on your mind?</FieldLabel>
+        <FieldLabel hint="No judgment, just helps us surface the right weather and tent prompts.">Weather on your mind?</FieldLabel>
         <Segmented
           options={[
-            { id: "low", label: "Low concern" },
-            { id: "medium", label: "Moderate" },
-            { id: "high", label: "High concern" },
-          ]}
+            { id: "low", label: "Low concern" }, { id: "medium", label: "Moderate" }, { id: "high", label: "High concern" }, ]}
           value={b.weatherConcern}
           onChange={(weatherConcern) => updateForm({ basics: { weatherConcern } })}
         />
@@ -161,32 +136,17 @@ export function StepBasics({
 }
 
 const setupFields: { key: keyof WeddingChecklistFormState["setup"]; label: string; helper?: string }[] = [
-  { key: "ceremonySeating", label: "Ceremony seating" },
-  { key: "cocktailArea", label: "Cocktail hour area" },
-  { key: "tentedReception", label: "Tented reception" },
-  { key: "danceFloor", label: "Dance floor" },
-  { key: "bar", label: "Bar" },
-  { key: "cateringPrepArea", label: "Catering / prep area" },
-  { key: "music", label: "Music / DJ / band" },
-  { key: "lighting", label: "Lighting (beyond daylight)" },
-  { key: "sidewalls", label: "Sidewalls / weather panels" },
-  { key: "flooring", label: "Flooring under tent or key paths" },
-  { key: "restrooms", label: "Restrooms for guest count" },
-  { key: "generatorPower", label: "Generator / power plan" },
-  { key: "parkingShuttle", label: "Parking / shuttle" },
-];
+  { key: "ceremonySeating", label: "Ceremony seating" }, { key: "cocktailArea", label: "Cocktail hour area" }, { key: "tentedReception", label: "Tented reception" }, { key: "danceFloor", label: "Dance floor" }, { key: "bar", label: "Bar" }, { key: "cateringPrepArea", label: "Catering / prep area" }, { key: "music", label: "Music / DJ / band" }, { key: "lighting", label: "Lighting (beyond daylight)" }, { key: "sidewalls", label: "Sidewalls / weather panels" }, { key: "flooring", label: "Flooring under tent or key paths" }, { key: "restrooms", label: "Restrooms for guest count" }, { key: "generatorPower", label: "Generator / power plan" }, { key: "parkingShuttle", label: "Parking / shuttle" }, ];
 
 export function StepSetup({
-  form,
-  updateForm,
-}: {
+  form, updateForm, }: {
   form: WeddingChecklistFormState;
   updateForm: (p: Patch) => void;
 }) {
   return (
     <div className="space-y-3">
       <p className="text-sm leading-relaxed text-stone-600">
-        Toggle what you’re planning to include. This isn’t a rental list—it’s a snapshot so we don’t miss outdoor and tent logistics.
+        Toggle what you’re planning to include. This isn’t a rental list, it’s a snapshot so we don’t miss outdoor and tent logistics.
       </p>
       <div className="space-y-2 pt-2">
         {setupFields.map((f) => (
@@ -204,9 +164,7 @@ export function StepSetup({
 }
 
 export function StepVenue({
-  form,
-  updateForm,
-}: {
+  form, updateForm, }: {
   form: WeddingChecklistFormState;
   updateForm: (p: Patch) => void;
 }) {
@@ -217,10 +175,7 @@ export function StepVenue({
         <FieldLabel>Ground surface</FieldLabel>
         <Segmented
           options={[
-            { id: "grass", label: "Grass / lawn" },
-            { id: "hard", label: "Hard surface" },
-            { id: "mixed", label: "Mixed" },
-          ]}
+            { id: "grass", label: "Grass / lawn" }, { id: "hard", label: "Hard surface" }, { id: "mixed", label: "Mixed" }, ]}
           value={v.surface}
           onChange={(surface) => updateForm({ venue: { surface } })}
         />
@@ -229,16 +184,14 @@ export function StepVenue({
         <FieldLabel>Terrain</FieldLabel>
         <Segmented
           options={[
-            { id: "flat", label: "Mostly flat" },
-            { id: "uneven", label: "Uneven or sloped" },
-          ]}
+            { id: "flat", label: "Mostly flat" }, { id: "uneven", label: "Uneven or sloped" }, ]}
           value={v.terrain}
           onChange={(terrain) => updateForm({ venue: { terrain } })}
         />
       </div>
 
       <div className="space-y-2">
-        <FieldLabel hint="We’ll turn concerns into clear checklist lines—no drama, just readiness.">Site & logistics</FieldLabel>
+        <FieldLabel hint="We’ll turn concerns into clear checklist lines, no drama, just readiness.">Site & logistics</FieldLabel>
         <ToggleRow label="Access or load-in limitations" checked={v.accessLimitations} onChange={(x) => updateForm({ venue: { accessLimitations: x } })} />
         <ToggleRow label="Power is nearby / straightforward" checked={v.powerNearby} onChange={(x) => updateForm({ venue: { powerNearby: x } })} />
         <ToggleRow label="Parking limitations or neighbor constraints" checked={v.parkingLimitations} onChange={(x) => updateForm({ venue: { parkingLimitations: x } })} />
@@ -253,9 +206,7 @@ export function StepVenue({
 }
 
 export function StepPriorities({
-  form,
-  updateForm,
-}: {
+  form, updateForm, }: {
   form: WeddingChecklistFormState;
   updateForm: (p: Patch) => void;
 }) {
@@ -268,7 +219,7 @@ export function StepPriorities({
 
   return (
     <div className="space-y-4">
-      <p className="text-sm leading-relaxed text-stone-600">Choose a few priorities—we’ll echo them in enhancements and next steps.</p>
+      <p className="text-sm leading-relaxed text-stone-600">Choose a few priorities, we’ll echo them in enhancements and next steps.</p>
       <div className="flex flex-wrap gap-2">
         {PLANNING_PRIORITY_OPTIONS.map((o) => {
           const on = selected.has(o.id);
@@ -288,22 +239,20 @@ export function StepPriorities({
           );
         })}
       </div>
-      <p className="text-xs text-stone-500">Most people pick 3–5. Keep at least one selected—tap another to switch.</p>
+      <p className="text-xs text-stone-500">Most people pick 3 to 5. Keep at least one selected, tap another to switch.</p>
     </div>
   );
 }
 
 export function QuickOutdoorCombined({
-  form,
-  updateForm,
-}: {
+  form, updateForm, }: {
   form: WeddingChecklistFormState;
   updateForm: (p: Patch) => void;
 }) {
   return (
     <div className="space-y-2">
       <p className="mb-4 text-sm leading-relaxed text-stone-600">
-        Tent, weather, power, and how guests move—streamlined so you’re not buried in generic wedding noise.
+        Tent, weather, power, and how guests move, streamlined so you’re not buried in generic wedding noise.
       </p>
       <SectionDivider title="Planned elements" />
       <StepSetup form={form} updateForm={updateForm} />
@@ -314,11 +263,7 @@ export function QuickOutdoorCombined({
 }
 
 export function IntakeStepRouter({
-  mode,
-  stepIndex,
-  form,
-  updateForm,
-}: {
+  mode, stepIndex, form, updateForm, }: {
   mode: "full" | "quick";
   stepIndex: number;
   form: WeddingChecklistFormState;

@@ -1,5 +1,5 @@
 /**
- * Wedding checklist generator — shared types (local feature).
+ * Wedding checklist generator, shared types (local feature).
  */
 
 export type WeddingMode = "quick" | "full";
@@ -37,7 +37,7 @@ export interface WeddingBasics {
   weatherConcern: WeatherConcern;
 }
 
-/** Step 2 — high-level element confirmations */
+/** Step 2, high-level element confirmations */
 export interface SetupSnapshot {
   ceremonySeating: boolean;
   cocktailArea: boolean;
@@ -54,7 +54,7 @@ export interface SetupSnapshot {
   parkingShuttle: boolean;
 }
 
-/** Step 3 — site realities */
+/** Step 3, site realities */
 export interface VenueSiteReadiness {
   surface: "grass" | "hard" | "mixed";
   terrain: "flat" | "uneven";

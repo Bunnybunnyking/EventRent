@@ -5,11 +5,8 @@ import { QuickEventPlanner } from "@/components/quick-event-planner";
 import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Quick Event Planner",
-  description:
-    "Three steps—event basics, setup and style, then a starter plan with packages and add-ons. Use with the square-footage calculator on the Planning page for tent sizing.",
-  path: "/quick-event-planner",
-  ogImage: defaultOgImagePath,
+  title: "Quick Event Planner", description:
+    "Three steps, event basics, setup and style, then a starter plan with packages and add-ons. Use with the square-footage calculator on the Planning page for tent sizing.", path: "/quick-event-planner", ogImage: defaultOgImagePath,
 });
 
 export default function QuickEventPlannerPage() {
@@ -18,10 +15,7 @@ export default function QuickEventPlannerPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
-            { label: "Home", href: "/" },
-            { label: "Planning", href: "/planning" },
-            { label: "Quick Event Planner" },
-          ]}
+            { label: "Home", href: "/" }, { label: "Planning", href: "/planning" }, { label: "Quick Event Planner" }, ]}
         />
         <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Interactive tool</p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">Quick Event Planner</h1>
@@ -41,7 +35,7 @@ export default function QuickEventPlannerPage() {
           </Link>{" "}
           ·{" "}
           <Link href="/contact#quote" className="font-semibold text-stone-900 underline underline-offset-2" prefetch={true}>
-            Book Now
+            Book Consultation
           </Link>
         </p>
       </div>

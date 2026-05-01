@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { FrameTentSizeWishlistAffordance } from "@/components/tents/frame-tent-size-wishlist-inline";
 import { SectionHeading } from "@/components/sections";
 import { bookNowSectionClass } from "@/lib/cta-styles";
+import { frameTentGoodshuffleBySlug } from "@/lib/goodshuffle-catalog-ids";
 import { frameTentPages } from "@/lib/tent-frame-pages";
 import { TentImagePlaceholder } from "./tent-image-placeholder";
 import { TentPlannerCallout } from "./tent-planner-callout";
 
-export function TentFrameFamilyPage() {
+type TentFrameFamilyPageProps = {
+  goodshuffleEnabled?: boolean;
+};
+
+export function TentFrameFamilyPage({ goodshuffleEnabled = false }: TentFrameFamilyPageProps) {
   const sizes = Object.values(frameTentPages).sort((a, b) => a.sqft - b.sqft);
 
   return (
@@ -45,7 +51,7 @@ export function TentFrameFamilyPage() {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center text-center`}>
-              Book Now
+              Book Consultation
             </Link>
             <Link
               href="/tent-rentals"
@@ -62,18 +68,45 @@ export function TentFrameFamilyPage() {
           <h2 className="text-2xl font-semibold text-stone-900">Frame sizes</h2>
           <p className="mt-2 text-sm text-stone-600">Guest ranges are estimates, layout always wins.</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {sizes.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/tents/frame-tents/${s.slug}`}
-                className="flex flex-col rounded-xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#b78a2d]/45"
-              >
-                <p className="font-[family-name:var(--font-display)] text-2xl font-semibold text-stone-900">{s.sizeLabel}</p>
-                <p className="text-xs text-stone-500">{s.sqft.toLocaleString()} sq ft</p>
-                <p className="mt-2 flex-1 text-sm text-stone-600 line-clamp-3">{s.heroSubhead}</p>
-                <span className="mt-3 text-sm font-semibold text-[#8a6d3a]">View details →</span>
-              </Link>
-            ))}
+            {sizes.map((s) => {
+              const href = `/tents/frame-tents/${s.slug}`;
+              const wiredItemId = frameTentGoodshuffleBySlug[s.slug]?.itemId ?? s.goodshuffleItemId;
+              return (
+                <div
+                  key={s.slug}
+                  className="flex flex-col rounded-xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-[#b78a2d]/45"
+                >
+                  <div className="flex min-h-[2.25rem] flex-nowrap items-center gap-2.5">
+                    <Link
+                      href={href}
+                      className="min-w-0 shrink font-[family-name:var(--font-display)] text-2xl font-semibold leading-none text-stone-900 decoration-transparent transition hover:text-stone-950 hover:underline"
+                    >
+                      {s.sizeLabel}
+                    </Link>
+                    {goodshuffleEnabled && wiredItemId ? (
+                      <span className="flex shrink-0 items-center self-center">
+                        <FrameTentSizeWishlistAffordance itemId={wiredItemId} sizeLabel={s.sizeLabel} />
+                      </span>
+                    ) : null}
+                  </div>
+                  <Link href={href} className="mt-0.5 text-xs text-stone-500 decoration-transparent hover:underline">
+                    {s.sqft.toLocaleString()} sq ft
+                  </Link>
+                  <Link
+                    href={href}
+                    className="mt-2 flex-1 text-sm leading-relaxed text-stone-600 decoration-transparent line-clamp-3 hover:text-stone-800 hover:underline"
+                  >
+                    {s.heroSubhead}
+                  </Link>
+                  <Link
+                    href={href}
+                    className="mt-3 text-sm font-semibold text-[#8a6d3a] decoration-transparent transition hover:underline"
+                  >
+                    View details →
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

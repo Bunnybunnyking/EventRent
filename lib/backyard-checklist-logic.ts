@@ -42,21 +42,7 @@ export interface SetupConfirm {
 }
 
 export const setupFieldOrder: (keyof SetupConfirm)[] = [
-  "tentOrCover",
-  "tables",
-  "chairs",
-  "buffetServing",
-  "dessertCakeTable",
-  "barDrinkStation",
-  "musicSpeakerZone",
-  "danceFloor",
-  "lighting",
-  "sidewalls",
-  "generatorPower",
-  "restroomPlan",
-  "parkingPlan",
-  "trashCleanup",
-];
+  "tentOrCover", "tables", "chairs", "buffetServing", "dessertCakeTable", "barDrinkStation", "musicSpeakerZone", "danceFloor", "lighting", "sidewalls", "generatorPower", "restroomPlan", "parkingPlan", "trashCleanup", ];
 
 /** Step 2: site & crowd */
 export interface SiteGuestQuick {
@@ -104,24 +90,10 @@ export type ChecklistCategoryId =
   | "final_confirmation";
 
 export const checklistCategoryLabels: Record<ChecklistCategoryId, string> = {
-  planning_timeline: "Planning, schedule & timeline",
-  site_readiness: "Site readiness",
-  guest_comfort: "Guest comfort",
-  food_drink: "Food, drinks, coolers & supplies",
-  weather_lighting_power: "Weather, lighting & power",
-  day_of_setup: "Day-of timing & setup",
-  final_confirmation: "Final checks (week of)",
-};
+  planning_timeline: "Planning, schedule & timeline", site_readiness: "Site readiness", guest_comfort: "Guest comfort", food_drink: "Food, drinks, coolers & supplies", weather_lighting_power: "Weather, lighting & power", day_of_setup: "Day-of timing & setup", final_confirmation: "Final checks (week of)", };
 
 export const checklistCategoryOrder: ChecklistCategoryId[] = [
-  "planning_timeline",
-  "site_readiness",
-  "guest_comfort",
-  "food_drink",
-  "weather_lighting_power",
-  "day_of_setup",
-  "final_confirmation",
-];
+  "planning_timeline", "site_readiness", "guest_comfort", "food_drink", "weather_lighting_power", "day_of_setup", "final_confirmation", ];
 
 export interface ChecklistLineItem {
   id: string;
@@ -157,42 +129,10 @@ const uid = (prefix: string, i: number) => `${prefix}-${i}`;
 
 export function defaultBackyardChecklistInput(): BackyardChecklistInput {
   return {
-    eventType: "backyard_social",
-    guestRange: "25_50",
-    dayPart: "evening",
-    venue: "backyard_home",
-    food: "light",
-    weatherConcern: "medium",
-    timeframe: "next_3_months",
-    music: "speakers",
-    kids: "some",
-    setup: {
-      tentOrCover: true,
-      tables: true,
-      chairs: true,
-      buffetServing: false,
-      dessertCakeTable: true,
-      barDrinkStation: true,
-      musicSpeakerZone: true,
-      danceFloor: false,
-      lighting: false,
-      sidewalls: false,
-      generatorPower: false,
-      restroomPlan: false,
-      parkingPlan: true,
-      trashCleanup: true,
-    },
-    site: {
-      spaceTightOrTricky: false,
-      powerFarOrUnsure: true,
-      expectLotsOfMingling: true,
-    },
-    prefs: {
-      wantEnhancementIdeas: true,
-      wantFunIdeas: true,
-      vibe: "balanced",
-    },
-  };
+    eventType: "backyard_social", guestRange: "25_50", dayPart: "evening", venue: "backyard_home", food: "light", weatherConcern: "medium", timeframe: "next_3_months", music: "speakers", kids: "some", setup: {
+      tentOrCover: true, tables: true, chairs: true, buffetServing: false, dessertCakeTable: true, barDrinkStation: true, musicSpeakerZone: true, danceFloor: false, lighting: false, sidewalls: false, generatorPower: false, restroomPlan: false, parkingPlan: true, trashCleanup: true, }, site: {
+      spaceTightOrTricky: false, powerFarOrUnsure: true, expectLotsOfMingling: true, }, prefs: {
+      wantEnhancementIdeas: true, wantFunIdeas: true, vibe: "balanced", }, };
 }
 
 function guestLabel(g: GuestRange): string {
@@ -212,16 +152,7 @@ function guestLabel(g: GuestRange): string {
 
 function eventTypeLabel(t: PrivateEventType): string {
   const map: Record<PrivateEventType, string> = {
-    birthday: "a birthday",
-    graduation: "a graduation",
-    anniversary: "an anniversary",
-    family_gathering: "a family gathering",
-    shower: "a shower",
-    retirement: "a retirement party",
-    religious_family: "a family or religious celebration",
-    backyard_social: "a backyard party",
-    other_private: "a private celebration",
-  };
+    birthday: "a birthday", graduation: "a graduation", anniversary: "an anniversary", family_gathering: "a family gathering", shower: "a shower", retirement: "a retirement party", religious_family: "a family or religious celebration", backyard_social: "a backyard party", other_private: "a private celebration", };
   return map[t];
 }
 
@@ -244,14 +175,7 @@ export function computeBackyardChecklistResult(inp: BackyardChecklistInput): Bac
   const subhead = `Built for ${eventTypeLabel(eventType)} · ${guestLabel(guestRange)}. Each line is something concrete to do or buy. Use our other tools when you need tent sizes or counts.`;
 
   const checklistByCategory: Record<ChecklistCategoryId, ChecklistLineItem[]> = {
-    planning_timeline: [],
-    site_readiness: [],
-    guest_comfort: [],
-    food_drink: [],
-    weather_lighting_power: [],
-    day_of_setup: [],
-    final_confirmation: [],
-  };
+    planning_timeline: [], site_readiness: [], guest_comfort: [], food_drink: [], weather_lighting_power: [], day_of_setup: [], final_confirmation: [], };
 
   let n = 0;
   const add = (cat: ChecklistCategoryId, text: string) => {
@@ -259,35 +183,25 @@ export function computeBackyardChecklistResult(inp: BackyardChecklistInput): Bac
   };
 
   add(
-    "planning_timeline",
-    "Write a simple run-of-show with times: guest arrival, food or apps out, speeches or cake, music/DJ, planned end. One page is enough.",
-  );
+    "planning_timeline", "Write a simple run-of-show with times: guest arrival, food or apps out, speeches or cake, music/DJ, planned end. One page is enough.", );
   add("planning_timeline", "Put an RSVP or headcount date on the invite so you can finalize food, ice, and seating before the last minute.");
   add("planning_timeline", "Send address, where to park, and start time (invite, email, or group text). Repeat it in a week-of reminder.");
   add("planning_timeline", "Give helpers gate codes, Wi‑Fi password, and one day-of phone number that will actually be answered.");
   if (timeframe === "this_month") {
     add(
-      "planning_timeline",
-      "Short runway: confirm rental delivery or pickup windows in writing, plus morning vs afternoon arrival for tents or tables.",
-    );
+      "planning_timeline", "Short runway: confirm rental delivery or pickup windows in writing, plus morning vs afternoon arrival for tents or tables.", );
   } else {
     add(
-      "planning_timeline",
-      "2 to 3 weeks out: lock rentals, delivery or pickup, and who signs for what. Put it on the same calendar as your run-of-show.",
-    );
+      "planning_timeline", "2 to 3 weeks out: lock rentals, delivery or pickup, and who signs for what. Put it on the same calendar as your run-of-show.", );
   }
   if (venue === "private_venue") {
     add(
-      "planning_timeline",
-      "Get venue rules in writing: stakes, noise cutoff, hard end time, load-in door, and where trucks stage without blocking exits.",
-    );
+      "planning_timeline", "Get venue rules in writing: stakes, noise cutoff, hard end time, load-in door, and where trucks stage without blocking exits.", );
   }
 
   add("site_readiness", "Walk the yard or room at the same time of day as the party; note sun, shade, and mud.");
   add(
-    "site_readiness",
-    "Power washing: house exterior, driveway, and venue or party space (walks, patio, parking guests use). Schedule or DIY well before the event so surfaces dry; most hosts forget this until the last minute.",
-  );
+    "site_readiness", "Power washing: house exterior, driveway, and venue or party space (walks, patio, parking guests use). Schedule or DIY well before the event so surfaces dry; most hosts forget this until the last minute.", );
   if (backyard) {
     add("site_readiness", "Mark sprinklers, septic, and soft spots before stakes or heavy traffic.");
   }
@@ -307,9 +221,7 @@ export function computeBackyardChecklistResult(inp: BackyardChecklistInput): Bac
   }
   if (largerParty) {
     add(
-      "guest_comfort",
-      "Before doors open: extra toilet paper, hand soap, and a small lined trash bin in each bathroom. Restock once mid-party if it’s long.",
-    );
+      "guest_comfort", "Before doors open: extra toilet paper, hand soap, and a small lined trash bin in each bathroom. Restock once mid-party if it’s long.", );
   }
   if (largerParty || backyard) {
     add("guest_comfort", "Parking: overflow, neighbor courtesy, and a visible path to the party.");
@@ -317,129 +229,79 @@ export function computeBackyardChecklistResult(inp: BackyardChecklistInput): Bac
 
   if (foodServed) {
     add(
-      "food_drink",
-      "Assign one person (not only the host) to refresh chafers, refill water, and reset the food table during the party.",
-    );
+      "food_drink", "Assign one person (not only the host) to refresh chafers, refill water, and reset the food table during the party.", );
     if (food === "full") {
       add(
-        "food_drink",
-        "Full meal: confirm final headcount 3 to 5 days ahead; plan serving utensils, dinner plates, forks, napkins, and a labeled allergy-safe option if needed.",
-      );
+        "food_drink", "Full meal: confirm final headcount 3 to 5 days ahead; plan serving utensils, dinner plates, forks, napkins, and a labeled allergy-safe option if needed.", );
       add("food_drink", "Leftovers: foil, containers, or bags ready before dinner so food moves off tables safely when you wind down.");
     } else {
       add(
-        "food_drink",
-        "Light bites: small plates, napkins, toothpicks or forks, and trays so food isn’t balanced on knees. Pack extra napkins for saucy items.",
-      );
+        "food_drink", "Light bites: small plates, napkins, toothpicks or forks, and trays so food isn’t balanced on knees. Pack extra napkins for saucy items.", );
     }
     add(
-      "food_drink",
-      "Coolers or drink tubs: use at least one with a drain plug; keep drinks in one zone so guests aren’t hunting through the house.",
-    );
+      "food_drink", "Coolers or drink tubs: use at least one with a drain plug; keep drinks in one zone so guests aren’t hunting through the house.", );
     add(
-      "food_drink",
-      "Ice: buy or order more than you think. Use separate bags for drink coolers vs. keeping cold food cold until service.",
-    );
+      "food_drink", "Ice: buy or order more than you think. Use separate bags for drink coolers vs. keeping cold food cold until service.", );
     add("food_drink", "Water station: large dispenser or bottled water, refills planned if it’s hot or the party runs long.");
   } else {
     add(
-      "food_drink",
-      "Drinks-focused: ice, coolers or tubs, bottle/wine opener, cups, and a salty snack or cheese-fruit tray so people aren’t drinking on empty stomachs.",
-    );
+      "food_drink", "Drinks-focused: ice, coolers or tubs, bottle/wine opener, cups, and a salty snack or cheese-fruit tray so people aren’t drinking on empty stomachs.", );
     add("food_drink", "Water and kid-friendly drinks in the same spot as beer and wine, not in a different room.");
   }
   if (foodServed || setup.barDrinkStation) {
     add(
-      "food_drink",
-      "Bar zone: mixers, garnishes, ice scoop, and non-alcoholic options visibly beside alcohol: same table, same cooler row.",
-    );
+      "food_drink", "Bar zone: mixers, garnishes, ice scoop, and non-alcoholic options visibly beside alcohol: same table, same cooler row.", );
   }
   if (setup.buffetServing && foodServed) {
     add(
-      "food_drink",
-      "Buffet line: flow so guests don’t back into a door; hot food stays hot and cold salads on ice. Use serving spoons for every dish.",
-    );
+      "food_drink", "Buffet line: flow so guests don’t back into a door; hot food stays hot and cold salads on ice. Use serving spoons for every dish.", );
   }
   if (setup.dessertCakeTable) {
     add(
-      "food_drink",
-      "Cake or dessert table: knife, server, small plates, and a stable surface out of direct sun and away from bump zones.",
-    );
+      "food_drink", "Cake or dessert table: knife, server, small plates, and a stable surface out of direct sun and away from bump zones.", );
   }
   add(
-    "food_drink",
-    "Trash and recycling: lined bins next to food and drink with extras bags nearby before the first guest arrives.",
-  );
+    "food_drink", "Trash and recycling: lined bins next to food and drink with extras bags nearby before the first guest arrives.", );
 
   if (rainWorried) {
     add(
-      "weather_lighting_power",
-      "Rain plan: one sentence you can text guests (where to go, whether time moved). Draft it before the morning of.",
-    );
+      "weather_lighting_power", "Rain plan: one sentence you can text guests (where to go, whether time moved). Draft it before the morning of.", );
   }
   if (evening) {
     add(
-      "weather_lighting_power",
-      "Path lighting: stake lights, lanterns, or string from parking to the tent. Guests should never step into black grass.",
-    );
+      "weather_lighting_power", "Path lighting: stake lights, lanterns, or string from parking to the tent. Guests should never step into black grass.", );
   }
   if (evening || foodServed || musicLikely) {
     add(
-      "weather_lighting_power",
-      "Extension cords: outdoor-rated, GFCI where required, taped flat across walks. Label which cord powers food vs. sound.",
-    );
+      "weather_lighting_power", "Extension cords: outdoor-rated, GFCI where required, taped flat across walks. Label which cord powers food vs. sound.", );
   }
   if (site.powerFarOrUnsure || (!setup.generatorPower && (evening || musicOn))) {
     add(
-      "weather_lighting_power",
-      "Power math: list what draws amps (chafers, fridge, speakers) and which outlet or generator leg each uses. No guessing on the day.",
-    );
+      "weather_lighting_power", "Power math: list what draws amps (chafers, fridge, speakers) and which outlet or generator leg each uses. No guessing on the day.", );
   }
   if (!setup.lighting && evening) {
     add(
-      "weather_lighting_power",
-      "Add temporary lights for food tables and the bar. Overhead patio floods alone often leave plates in shadow.",
-    );
+      "weather_lighting_power", "Add temporary lights for food tables and the bar. Overhead patio floods alone often leave plates in shadow.", );
   }
 
   add("day_of_setup", "Name one day-of point person for vendors and deliveries. The host shouldn’t be the only contact on a dead battery.");
   add(
-    "day_of_setup",
-    "2 to 3 hours before guests: coolers in place, first ice in, water station filled, trash bags in bins, food holding plan ready.",
-  );
+    "day_of_setup", "2 to 3 hours before guests: coolers in place, first ice in, water station filled, trash bags in bins, food holding plan ready.", );
   add("day_of_setup", "About 45 to 60 minutes before: sound check if you have music, quick photo spot check, trip-hazard sweep on paths.");
   if (musicLikely || setup.danceFloor) {
     add("day_of_setup", "Angle speakers away from neighbors; put dance floor or DJ between food and exits so lines don’t block escape routes.");
   }
   add(
-    "day_of_setup",
-    "Day-of kit in one tote: tape, scissors, stain pen, phone chargers, paper towels, and a printed copy of your run-of-show.",
-  );
+    "day_of_setup", "Day-of kit in one tote: tape, scissors, stain pen, phone chargers, paper towels, and a printed copy of your run-of-show.", );
 
   add(
-    "final_confirmation",
-    "72 hours out: text or email vendors and key helpers with address, arrival window, and your cell. Confirm they reply once.",
-  );
+    "final_confirmation", "72 hours out: text or email vendors and key helpers with address, arrival window, and your cell. Confirm they reply once.", );
   add("final_confirmation", "Reconfirm headcount, surprise moments, and who introduces speeches or cuts the cake.");
   add("final_confirmation", "If weather or parking changed the plan, send one short group text the night before so no one shows to the wrong spot.");
   add("final_confirmation", "After the party: thank anyone who helped and jot one note on what to fix next time while it’s fresh.");
 
   const confirmedLabels: [keyof SetupConfirm, string][] = [
-    ["tentOrCover", "Tent or covered area"],
-    ["tables", "Tables"],
-    ["chairs", "Chairs / seating"],
-    ["buffetServing", "Buffet or serving tables"],
-    ["dessertCakeTable", "Dessert or cake table"],
-    ["barDrinkStation", "Bar or drink station"],
-    ["musicSpeakerZone", "Music / speaker zone"],
-    ["danceFloor", "Dance floor or dance space"],
-    ["lighting", "Lighting beyond porch floods"],
-    ["sidewalls", "Sidewalls or weather panels"],
-    ["generatorPower", "Generator or power plan"],
-    ["restroomPlan", "Restroom plan for crowd size"],
-    ["parkingPlan", "Parking plan"],
-    ["trashCleanup", "Trash & cleanup plan"],
-  ];
+    ["tentOrCover", "Tent or covered area"], ["tables", "Tables"], ["chairs", "Chairs / seating"], ["buffetServing", "Buffet or serving tables"], ["dessertCakeTable", "Dessert or cake table"], ["barDrinkStation", "Bar or drink station"], ["musicSpeakerZone", "Music / speaker zone"], ["danceFloor", "Dance floor or dance space"], ["lighting", "Lighting beyond porch floods"], ["sidewalls", "Sidewalls or weather panels"], ["generatorPower", "Generator or power plan"], ["restroomPlan", "Restroom plan for crowd size"], ["parkingPlan", "Parking plan"], ["trashCleanup", "Trash & cleanup plan"], ];
   const confirmedItems: string[] = [];
   for (const [key, label] of confirmedLabels) {
     if (setup[key]) confirmedItems.push(label);
@@ -462,18 +324,7 @@ export function computeBackyardChecklistResult(inp: BackyardChecklistInput): Bac
   }
 
   const forget: { text: string; w: number }[] = [
-    { text: "Power washing house, driveway, and venue or yard space before guests arrive", w: 3 },
-    { text: "Extra ice, backup cooler, and ice scoop (separate drink ice from food ice)", w: foodServed || setup.barDrinkStation ? 3 : 2 },
-    { text: "Heavy trash bags and spare bin liners next to food and bar", w: foodServed ? 3 : 2 },
-    { text: "Bathroom paper, soap, and a small trash bin in each bath", w: largerParty ? 3 : 2 },
-    { text: "Parking overflow + quick neighbor heads-up", w: largerParty || backyard ? 3 : 1 },
-    { text: "Weather backup text for guests (group text or short link)", w: rainWorried ? 3 : 1 },
-    { text: "Pathway lighting after sunset", w: evening ? 3 : 1 },
-    { text: "Bug relief for dusk near lawn or trees", w: backyard ? 2 : 1 },
-    { text: "Vendor arrival window written down + who opens the gate", w: 3 },
-    { text: "Day-of phone that actually gets answered", w: 3 },
-    { text: "Outdoor-rated extension cords and cord covers", w: evening || musicLikely ? 3 : 2 },
-  ];
+    { text: "Power washing house, driveway, and venue or yard space before guests arrive", w: 3 }, { text: "Extra ice, backup cooler, and ice scoop (separate drink ice from food ice)", w: foodServed || setup.barDrinkStation ? 3 : 2 }, { text: "Heavy trash bags and spare bin liners next to food and bar", w: foodServed ? 3 : 2 }, { text: "Bathroom paper, soap, and a small trash bin in each bath", w: largerParty ? 3 : 2 }, { text: "Parking overflow + quick neighbor heads-up", w: largerParty || backyard ? 3 : 1 }, { text: "Weather backup text for guests (group text or short link)", w: rainWorried ? 3 : 1 }, { text: "Pathway lighting after sunset", w: evening ? 3 : 1 }, { text: "Bug relief for dusk near lawn or trees", w: backyard ? 2 : 1 }, { text: "Vendor arrival window written down + who opens the gate", w: 3 }, { text: "Day-of phone that actually gets answered", w: 3 }, { text: "Outdoor-rated extension cords and cord covers", w: evening || musicLikely ? 3 : 2 }, ];
   if (kidsLikely(inp)) {
     forget.push({ text: "Kid-friendly drinks and a simple activity or safe corner", w: 3 });
   }
@@ -530,22 +381,10 @@ export function computeBackyardChecklistResult(inp: BackyardChecklistInput): Bac
   }
 
   const nextStepHints = [
-    "Share this list with a co-host: split who owns timeline, food run-of-show, and bar/cooler refills.",
-    "For tent size and counts, use the tent calculator and Quick Event Planner. This checklist is the week-of execution list.",
-    "Ready to talk rentals or delivery windows? Call or request a quote when you’re ready.",
-  ];
+    "Share this list with a co-host: split who owns timeline, food run-of-show, and bar/cooler refills.", "For tent size and counts, use the tent calculator and Quick Event Planner. This checklist is the week-of execution list.", "Ready to talk rentals or delivery windows? Call or request a quote when you’re ready.", ];
 
   return {
-    headline,
-    subhead,
-    checklistByCategory,
-    confirmedItems,
-    stillToConfirm,
-    thingsPeopleForget,
-    popularEnhancements: popularEnhancements.slice(0, 8),
-    funIdeas: funIdeas.slice(0, 8),
-    nextStepHints,
-  };
+    headline, subhead, checklistByCategory, confirmedItems, stillToConfirm, thingsPeopleForget, popularEnhancements: popularEnhancements.slice(0, 8), funIdeas: funIdeas.slice(0, 8), nextStepHints, };
 }
 
 export function formatBackyardChecklistPlainText(_inp: BackyardChecklistInput, result: BackyardChecklistResult): string {
@@ -600,21 +439,7 @@ function bitStringToSetup(bits: string): Partial<SetupConfirm> | null {
 function legacyPuToSetup(pu: string): Partial<SetupConfirm> {
   if (pu.length !== 5) return {};
   return {
-    tentOrCover: pu[0] === "1",
-    tables: pu[1] === "1",
-    chairs: pu[1] === "1",
-    buffetServing: pu[2] === "1",
-    dessertCakeTable: pu[2] === "1",
-    barDrinkStation: pu[3] === "1",
-    musicSpeakerZone: pu[3] === "1",
-    danceFloor: false,
-    lighting: pu[4] === "1",
-    sidewalls: pu[4] === "1",
-    generatorPower: pu[4] === "1",
-    restroomPlan: false,
-    parkingPlan: true,
-    trashCleanup: true,
-  };
+    tentOrCover: pu[0] === "1", tables: pu[1] === "1", chairs: pu[1] === "1", buffetServing: pu[2] === "1", dessertCakeTable: pu[2] === "1", barDrinkStation: pu[3] === "1", musicSpeakerZone: pu[3] === "1", danceFloor: false, lighting: pu[4] === "1", sidewalls: pu[4] === "1", generatorPower: pu[4] === "1", restroomPlan: false, parkingPlan: true, trashCleanup: true, };
 }
 
 export function serializeChecklistInput(inp: BackyardChecklistInput): string {
@@ -630,9 +455,7 @@ export function serializeChecklistInput(inp: BackyardChecklistInput): string {
   p.set("kd", inp.kids);
   p.set("st", setupToBitString(inp.setup));
   p.set(
-    "sg",
-    [inp.site.spaceTightOrTricky, inp.site.powerFarOrUnsure, inp.site.expectLotsOfMingling].map((x) => (x ? "1" : "0")).join(""),
-  );
+    "sg", [inp.site.spaceTightOrTricky, inp.site.powerFarOrUnsure, inp.site.expectLotsOfMingling].map((x) => (x ? "1" : "0")).join(""), );
   const vibeCode = inp.prefs.vibe === "keep_simple" ? "0" : inp.prefs.vibe === "balanced" ? "1" : "2";
   p.set("pr", `${inp.prefs.wantEnhancementIdeas ? "1" : "0"}${inp.prefs.wantFunIdeas ? "1" : "0"}${vibeCode}`);
   p.set("v", "2");
@@ -658,27 +481,9 @@ export function parseChecklistSearchParams(search: string): BackyardChecklistInp
     }
 
     return {
-      eventType: p.get("et") as PrivateEventType,
-      guestRange: p.get("gr") as GuestRange,
-      dayPart: p.get("dp") as DayPart,
-      venue: p.get("vn") as VenueKind,
-      food: p.get("fd") as FoodLevel,
-      weatherConcern: p.get("wx") as WeatherConcernLevel,
-      timeframe: (p.get("tf") as Timeframe) ?? undefined,
-      music: (p.get("mu") as MusicPlan) ?? undefined,
-      kids: (p.get("kd") as KidsLevel) ?? undefined,
-      setup: setupPartial,
-      site: {
-        spaceTightOrTricky: sg[0] === "1",
-        powerFarOrUnsure: sg[1] === "1",
-        expectLotsOfMingling: sg[2] === "1",
-      },
-      prefs: {
-        wantEnhancementIdeas: prStr[0] === "1",
-        wantFunIdeas: prStr[1] === "1",
-        vibe,
-      },
-    };
+      eventType: p.get("et") as PrivateEventType, guestRange: p.get("gr") as GuestRange, dayPart: p.get("dp") as DayPart, venue: p.get("vn") as VenueKind, food: p.get("fd") as FoodLevel, weatherConcern: p.get("wx") as WeatherConcernLevel, timeframe: (p.get("tf") as Timeframe) ?? undefined, music: (p.get("mu") as MusicPlan) ?? undefined, kids: (p.get("kd") as KidsLevel) ?? undefined, setup: setupPartial, site: {
+        spaceTightOrTricky: sg[0] === "1", powerFarOrUnsure: sg[1] === "1", expectLotsOfMingling: sg[2] === "1", }, prefs: {
+        wantEnhancementIdeas: prStr[0] === "1", wantFunIdeas: prStr[1] === "1", vibe, }, };
   } catch {
     return null;
   }
@@ -687,10 +492,5 @@ export function parseChecklistSearchParams(search: string): BackyardChecklistInp
 export function mergeParsedIntoDefault(parsed: BackyardChecklistInputPatch): BackyardChecklistInput {
   const d = defaultBackyardChecklistInput();
   return {
-    ...d,
-    ...parsed,
-    setup: { ...d.setup, ...parsed.setup },
-    site: { ...d.site, ...parsed.site },
-    prefs: { ...d.prefs, ...parsed.prefs, wantEnhancementIdeas: true },
-  };
+    ...d, ...parsed, setup: { ...d.setup, ...parsed.setup }, site: { ...d.site, ...parsed.site }, prefs: { ...d.prefs, ...parsed.prefs, wantEnhancementIdeas: true }, };
 }

@@ -51,8 +51,15 @@ export type TentSizePageData = {
   layoutExamples: TentLayoutExample[];
   whenToSizeUp: string[];
   bestAddOns: string[];
-  /** Paired inventory families — Goodshuffle fields optional until wired. */
+  /** Paired inventory families, Goodshuffle fields optional until wired. */
   pairedRentals: TentPairedRental[];
+  /** When set, a compact Goodshuffle add-to-wishlist control can be wired for this size (Website Integration UUID). */
+  goodshuffleItemId?: string;
+  /**
+   * Override keyword search for `gspro-item-list` when no `goodshuffleItemId` is set (tune per slug in
+   * `lib/goodshuffle-catalog-ids.ts` first).
+   */
+  goodshuffleCatalogSearch?: string;
   faqs: TentSizeFaq[];
 };
 

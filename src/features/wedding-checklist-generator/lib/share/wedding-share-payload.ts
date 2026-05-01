@@ -1,15 +1,7 @@
 import { mergeIntoDefaultForm } from "@/features/wedding-checklist/lib/merge-form";
 import { outputStepIndex } from "@/features/wedding-checklist/lib/flow-meta";
 import {
-  clampFurthestStep,
-  clampStepIndex,
-  validateBasics,
-  validateCheckedLineIds,
-  validatePriorities,
-  validateSetup,
-  validateVenue,
-  validateWeddingMode,
-} from "@/features/wedding-checklist/lib/persistence/validate-state";
+  clampFurthestStep, clampStepIndex, validateBasics, validateCheckedLineIds, validatePriorities, validateSetup, validateVenue, validateWeddingMode, } from "@/features/wedding-checklist/lib/persistence/validate-state";
 import { WC_URL_PARAM } from "@/features/wedding-checklist/lib/persistence/constants";
 import type { WeddingChecklistFormState, WeddingMode } from "@/features/wedding-checklist/types";
 import type { WeddingChecklistValidationIssue } from "@/features/wedding-checklist/types/persistence";
@@ -59,12 +51,7 @@ export function validateSharePayload(o: unknown): { ok: true; payload: WeddingCh
     return { ok: false, issues };
   }
   const payload: WeddingChecklistSharePayload = {
-    m: r.m as WeddingChecklistSharePayload["m"],
-    b: r.b as WeddingChecklistSharePayload["b"],
-    s: r.s as WeddingChecklistSharePayload["s"],
-    v: r.v as WeddingChecklistSharePayload["v"],
-    p: r.p as WeddingChecklistSharePayload["p"],
-  };
+    m: r.m as WeddingChecklistSharePayload["m"], b: r.b as WeddingChecklistSharePayload["b"], s: r.s as WeddingChecklistSharePayload["s"], v: r.v as WeddingChecklistSharePayload["v"], p: r.p as WeddingChecklistSharePayload["p"], };
   if (r.si !== undefined) {
     if (typeof r.si !== "number" || Number.isNaN(r.si)) issues.push({ path: "si", message: "invalid" });
     else payload.si = Math.floor(r.si);
@@ -83,27 +70,15 @@ export function validateSharePayload(o: unknown): { ok: true; payload: WeddingCh
 export function sharePayloadToForm(payload: WeddingChecklistSharePayload): WeddingChecklistFormState {
   const base = mergeIntoDefaultForm({});
   return {
-    mode: payload.m,
-    basics: { ...base.basics, ...payload.b },
-    setup: { ...base.setup, ...payload.s },
-    venue: { ...base.venue, ...payload.v },
-    priorities: payload.p?.length ? payload.p : base.priorities,
-  };
+    mode: payload.m, basics: { ...base.basics, ...payload.b }, setup: { ...base.setup, ...payload.s }, venue: { ...base.venue, ...payload.v }, priorities: payload.p?.length ? payload.p : base.priorities, };
 }
 
 /** Build share payload including optional step + checked state for meaningful restore. */
 export function buildSharePayload(
-  form: WeddingChecklistFormState,
-  session?: Pick<WeddingChecklistSessionState, "stepIndex" | "furthestStep" | "checkedLineIds" | "mode">,
-): WeddingChecklistSharePayload {
+  form: WeddingChecklistFormState, session?: Pick<WeddingChecklistSessionState, "stepIndex" | "furthestStep" | "checkedLineIds" | "mode">, ): WeddingChecklistSharePayload {
   const mode = session?.mode ?? form.mode;
   const out: WeddingChecklistSharePayload = {
-    m: mode,
-    b: form.basics,
-    s: form.setup,
-    v: form.venue,
-    p: form.priorities,
-  };
+    m: mode, b: form.basics, s: form.setup, v: form.venue, p: form.priorities, };
   if (mode && session) {
     out.si = session.stepIndex;
     out.fs = session.furthestStep;
@@ -119,12 +94,7 @@ export function sharePayloadToSession(payload: WeddingChecklistSharePayload): We
   const furthest = mode ? clampFurthestStep(mode, payload.fs ?? stepIndex, stepIndex) : -1;
   const checked = validateCheckedLineIds(payload.ch);
   return {
-    form: { ...form, mode },
-    mode,
-    stepIndex,
-    furthestStep: furthest,
-    checkedLineIds: checked,
-  };
+    form: { ...form, mode }, mode, stepIndex, furthestStep: furthest, checkedLineIds: checked, };
 }
 
 export function encodeSharePayload(payload: WeddingChecklistSharePayload): string {

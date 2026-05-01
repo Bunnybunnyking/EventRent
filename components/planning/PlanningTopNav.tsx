@@ -9,15 +9,12 @@ const secondaryToolClass =
   "inline-flex min-h-[2.5rem] shrink-0 items-center justify-center rounded-full border border-stone-300 bg-white px-4 py-2 text-xs font-semibold text-stone-800 shadow-sm transition hover:border-stone-400 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2 sm:min-h-[2.625rem] sm:px-5 sm:text-sm";
 
 const primaryPills = [
-  { href: "#party-guides", label: "Party guides" },
-  { href: "/guides", label: "Guides hub" },
-  { href: "#tent-types", label: "Tent types" },
-  { href: "#easy-to-forget", label: "Easy to forget" },
+  { href: "#party-guides", label: "Party guides" }, { href: "#tent-types", label: "Tent types" }, { href: "#easy-to-forget", label: "Easy to forget" },
 ] as const;
 
 export function PlanningTopNav() {
   return (
-    <nav aria-label="Planning page topics and tools" className="w-full border-b border-stone-100 pb-5 sm:pb-6">
+    <nav aria-label="Planning page topics and tools" className="w-full border-b border-stone-100 pb-4 sm:pb-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-4 sm:gap-y-2">
         <div className="flex flex-wrap items-center gap-2">
           {primaryPills.map((item) => (

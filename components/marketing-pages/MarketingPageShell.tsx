@@ -7,9 +7,7 @@ export type MarketingBreadcrumbSchemaItem = { name: string; path: string };
 export type MarketingBreadcrumbViewItem = { label: string; href?: string };
 
 export function MarketingPageShell({
-  page,
-  breadcrumbSchema,
-  breadcrumbView,
+  page, breadcrumbSchema, breadcrumbView,
 }: {
   page: MarketingPageDefinition;
   breadcrumbSchema: MarketingBreadcrumbSchemaItem[];

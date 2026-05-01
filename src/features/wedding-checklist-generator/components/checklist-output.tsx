@@ -7,11 +7,7 @@ import { computeWeddingChecklistResult } from "@/features/wedding-checklist/lib/
 import type { WeddingChecklistFormState } from "@/features/wedding-checklist/types";
 
 function CheckRow({
-  id,
-  text,
-  checked,
-  onToggle,
-}: {
+  id, text, checked, onToggle, }: {
   id: string;
   text: string;
   checked: boolean;
@@ -41,14 +37,7 @@ function CheckRow({
 }
 
 export function ChecklistOutput({
-  form,
-  mode,
-  checkedLineIds,
-  onToggleLine,
-  onCopyLink,
-  onBackToStart,
-  setCheckedLineIds,
-}: {
+  form, mode, checkedLineIds, onToggleLine, onCopyLink, onBackToStart, setCheckedLineIds, }: {
   form: WeddingChecklistFormState;
   mode: NonNullable<WeddingChecklistFormState["mode"]>;
   checkedLineIds: string[];
@@ -64,14 +53,11 @@ export function ChecklistOutput({
   /** Stable key whenever the generated checklist line IDs change (new answers / mode). */
   const checklistContentKey = useMemo(
     () =>
-      result.checklistSections.map((s) => s.items.map((i) => i.id).join(",")).join("|"),
-    [result.checklistSections],
-  );
+      result.checklistSections.map((s) => s.items.map((i) => i.id).join(",")).join("|"), [result.checklistSections], );
 
   /**
    * Checkboxes mean “done”: only IDs in checkedLineIds render checked.
-   * New checklist → start with nothing checked. When line IDs change (edits / new plan),
-   * drop stale IDs and keep any that still exist (e.g. restored session or share link).
+   * New checklist → start with nothing checked. When line IDs change (edits / new plan), * drop stale IDs and keep any that still exist (e.g. restored session or share link).
    */
   useLayoutEffect(() => {
     const allIds = result.checklistSections.flatMap((s) => s.items.map((it) => it.id));
@@ -113,7 +99,7 @@ export function ChecklistOutput({
           <p className="text-base font-bold text-stone-900 [font-family:var(--font-display)]">How this checklist works</p>
           <p className="mt-2 text-stone-800">
             <span className="font-semibold text-stone-900">Unchecked</span> = still to do.{" "}
-            <span className="font-semibold text-stone-900">Checked</span> = handled or not applicable—you’re marking it complete. Tap any row to update; progress saves on
+            <span className="font-semibold text-stone-900">Checked</span> = handled or not applicable, you’re marking it complete. Tap any row to update; progress saves on
             this device.
           </p>
         </div>
@@ -197,7 +183,7 @@ export function ChecklistOutput({
         {result.copyLeads?.enhancements ? (
           <p className="text-[0.9375rem] italic leading-relaxed text-stone-700">{result.copyLeads.enhancements}</p>
         ) : (
-          <p className="text-sm text-stone-600">Optional upgrades—none required for a beautiful day.</p>
+          <p className="text-sm text-stone-600">Optional upgrades, none required for a beautiful day.</p>
         )}
         <ul className="mt-5 space-y-5">
           {result.recommendedEnhancements.map((e) => (
@@ -224,7 +210,7 @@ export function ChecklistOutput({
           {result.optionalGuestIdeas.map((g) => (
             <li key={g.id} className="text-[0.9375rem] text-stone-800">
               <span className="font-bold text-stone-900">{g.title}</span>
-              {g.note ? <span className="text-stone-700"> — {g.note}</span> : null}
+              {g.note ? <span className="text-stone-700">, {g.note}</span> : null}
             </li>
           ))}
         </ul>
@@ -247,7 +233,7 @@ export function ChecklistOutput({
         <div className="bg-stone-900 px-5 py-5 sm:px-8 sm:py-6">
           <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-[#e4c96e] sm:text-sm">Save &amp; share</p>
           <p className="mx-auto mt-2 max-w-lg text-center text-sm leading-relaxed text-white/90">
-            Keep a copy for yourself and anyone helping you plan—link, email, or print.
+            Keep a copy for yourself and anyone helping you plan, link, email, or print.
           </p>
         </div>
         <div className="bg-gradient-to-b from-white to-[#fffdf8] px-4 py-6 sm:px-8 sm:py-8">
@@ -309,11 +295,7 @@ export function ChecklistOutput({
 }
 
 function OutputCard({
-  title,
-  children,
-  className = "",
-  tone,
-}: {
+  title, children, className = "", tone, }: {
   title: string;
   children: React.ReactNode;
   className?: string;

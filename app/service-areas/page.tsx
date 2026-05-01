@@ -5,10 +5,8 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business, townList } from "@/lib/site-data";
 
 export const metadata = createPageMetadata({
-  title: `Connecticut Tent Rental Service Areas | Hartford County & Nearby Towns`,
-  description:
-    "Tent rentals near you: Hartford, West Hartford, Farmington, Glastonbury, and towns across Connecticut. Delivery and professional setup.",
-  path: "/service-areas",
+  title: `Connecticut Tent Rental Service Areas | Hartford County & Nearby Towns`, description:
+    "Tent rentals near you: Hartford, West Hartford, Farmington, Glastonbury, and towns across Connecticut. Delivery and professional setup.", path: "/service-areas",
 });
 
 export default function ServiceAreasPage() {

@@ -3,28 +3,23 @@
 import Link from "next/link";
 import { useId, useState } from "react";
 import { cardRowHintClass, interactiveCardClass, interactiveTileClass } from "@/lib/interactive-styles";
+import { TentFamilyCanopyGallery } from "@/components/tents/tent-family-canopy-gallery";
 import {
-  tentComparisonRows,
-  tentFamilies,
-  tentHubPopularSizes,
+  tentComparisonRows, tentFamilies, tentHubPopularSizes,
 } from "@/lib/tent-section-data";
 import { quickGuestTableCounts, tentInventoryCopy } from "@/lib/tent-inventory";
 
 type TabId = "guide" | "jobsite" | "inventory";
 
 const tabs: { id: TabId; label: string }[] = [
-  { id: "guide", label: "Planning guide" },
-  { id: "jobsite", label: "Jobsite tents" },
-  { id: "inventory", label: "Inventory" },
+  { id: "guide", label: "Planning guide" }, { id: "jobsite", label: "Jobsite tents" }, { id: "inventory", label: "Inventory" },
 ];
 
 const jobsiteHighlights = [
-  "Shade, hydration, and heat-relief station packages for outdoor crews",
-  "14-day construction tent rates sized for roofing, paving, and landscaping sites",
-  "Delivery, setup, and pickup coordinated for active job schedules",
+  "Shade, hydration, and heat-relief station packages for outdoor crews", "14-day construction tent rates sized for roofing, paving, and landscaping sites", "Delivery, setup, and pickup coordinated for active job schedules",
 ] as const;
 
-export function TentRentalsResourceTabs() {
+export function TentRentalsResourceTabs({ goodshuffleEmbedGallery = false }: { goodshuffleEmbedGallery?: boolean } = {}) {
   const uid = useId();
   const [active, setActive] = useState<TabId>("guide");
 
@@ -75,9 +70,9 @@ export function TentRentalsResourceTabs() {
         >
           <h3 className="text-lg font-semibold text-stone-900">Tent families</h3>
           <p className="mt-1 max-w-3xl text-sm text-stone-600">
-            Start from how your event moves—cocktail, seated dinner, dance floor—then pick a family that matches your surface and style.
+            Start from how your event moves, cocktail, seated dinner, dance floor, then pick a family that matches your surface and style.
           </p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {tentFamilies.map((f) => (
               <Link key={f.slug} href={f.path} className={`${interactiveCardClass} group flex flex-col p-4`}>
                 <p className="font-[family-name:var(--font-display)] text-lg font-semibold text-stone-900 group-hover:text-stone-950">{f.shortTitle}</p>
@@ -89,8 +84,10 @@ export function TentRentalsResourceTabs() {
             ))}
           </div>
 
+          <TentFamilyCanopyGallery embedOnly={goodshuffleEmbedGallery} />
+
           <h3 className="mt-6 text-base font-semibold text-stone-900 sm:text-lg">Which tent type fits?</h3>
-          <p className="mt-1 text-sm text-stone-600">Quick comparison—your quote is still layout-specific.</p>
+          <p className="mt-1 text-sm text-stone-600">Quick comparison, your quote is still layout-specific.</p>
           <div className="mt-4 overflow-x-auto rounded-xl border border-stone-200">
             <table className="min-w-full text-left text-sm">
               <thead className="border-b border-stone-200 bg-stone-50 text-xs font-semibold uppercase tracking-wider text-stone-500">
@@ -138,7 +135,7 @@ export function TentRentalsResourceTabs() {
           </div>
 
           <h3 className="mt-6 text-base font-semibold text-stone-900 sm:text-lg">What fits? (preview)</h3>
-          <p className="mt-1 text-sm text-stone-600">Round and banquet estimates—add aisles, dance floor, and service in your real plan.</p>
+          <p className="mt-1 text-sm text-stone-600">Round and banquet estimates, add aisles, dance floor, and service in your real plan.</p>
           <div className="mt-4 overflow-x-auto rounded-xl border border-stone-200">
             <table className="min-w-full text-left text-sm">
               <thead className="border-b border-stone-200 bg-[#faf8f5] text-xs font-semibold uppercase tracking-wider text-stone-500">
@@ -193,7 +190,7 @@ export function TentRentalsResourceTabs() {
         >
           <h3 className="text-lg font-semibold text-stone-900">Jobsite tent coverage</h3>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-600">
-            Yes—we rent tents for active Connecticut jobsites, not only parties. Stations give crews dependable shade, organized hydration, and heat-relief staging when schedules run hot.
+            Yes, we rent tents for active Connecticut jobsites, not only parties. Stations give crews dependable shade, organized hydration, and heat-relief staging when schedules run hot.
           </p>
           <ul className="mt-4 space-y-2 text-sm text-stone-700">
             {jobsiteHighlights.map((line) => (
@@ -240,7 +237,7 @@ export function TentRentalsResourceTabs() {
           </ul>
           <p className="mt-6">
             <Link
-              href="/rental-inventory#tent-structures"
+              href="/rental-inventory#inv-tents"
               className="inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-sm transition hover:border-stone-400 hover:bg-stone-50"
             >
               Full inventory list

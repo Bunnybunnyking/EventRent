@@ -12,9 +12,11 @@
     "start": "next start",
     "start:3010": "next start -p 3010",
     "clean": "node -e \"try{require('fs').rmSync('.next',{recursive:true,force:true})}catch(e){}\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "tag:service-area-photos": "tsx scripts/tag-service-area-photos.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.104.1",
     "next": "^16.2.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
@@ -26,8 +28,10 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9.21.0",
     "eslint-config-next": "^16.2.3",
+    "exiftool-vendored": "^35.19.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.2"
   }
 }

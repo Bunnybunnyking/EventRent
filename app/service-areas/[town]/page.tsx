@@ -30,16 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const townName = unslug(town);
   if (!townList.includes(townName)) {
     return createPageMetadata({
-      title: "Service area",
-      description: "Connecticut party and tent rentals.",
-      path: "/service-areas",
-    });
+      title: "Service area", description: "Connecticut party and tent rentals.", path: "/service-areas", });
   }
   const content = getServiceAreaTownContent(townName);
   return createPageMetadata({
     title: content.metaTitle,
     description: content.metaDescription,
     path: `/service-areas/${town}`,
+    ogImage: content.hero?.src,
   });
 }
 
@@ -57,10 +55,7 @@ export default async function TownPage({ params }: Props) {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Service Areas", path: "/service-areas" },
-          { name: townName, path: `/service-areas/${townSlug}` },
-        ]}
+          { name: "Home", path: "/" }, { name: "Service Areas", path: "/service-areas" }, { name: townName, path: `/service-areas/${townSlug}` }, ]}
       />
       <ServiceSchema
         name={serviceName}

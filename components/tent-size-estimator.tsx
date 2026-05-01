@@ -8,29 +8,13 @@ type ProgramScope = "full" | "ceremony";
 type TableStyle = "rounds" | "banquet";
 
 function computeFootprint(
-  guests: number,
-  eventType: EventKind,
-  seating: SeatingKind,
-  danceFloor: boolean,
-  buffetOrBar: boolean,
-  programScope: ProgramScope,
-  tableStyle: TableStyle,
-  djBand: boolean,
-  weatherBackup: boolean,
-): { low: number; high: number; comfortableLow: number; comfortableHigh: number; rationale: string } {
+  guests: number, eventType: EventKind, seating: SeatingKind, danceFloor: boolean, buffetOrBar: boolean, programScope: ProgramScope, tableStyle: TableStyle, djBand: boolean, weatherBackup: boolean, ): { low: number; high: number; comfortableLow: number; comfortableHigh: number; rationale: string } {
   const perGuest: Record<SeatingKind, number> = {
-    cocktail: 9,
-    mixed: 11,
-    seated: 14,
-  };
+    cocktail: 9, mixed: 11, seated: 14, };
   let base = guests * perGuest[seating];
 
   const eventMult: Record<EventKind, number> = {
-    wedding: 1.1,
-    party: 1.0,
-    corporate: 1.06,
-    festival: 1.18,
-  };
+    wedding: 1.1, party: 1.0, corporate: 1.06, festival: 1.18, };
   base *= eventMult[eventType];
 
   if (programScope === "ceremony") {
@@ -70,10 +54,7 @@ function computeFootprint(
 }
 
 function sqFtToExampleTents(
-  low: number,
-  high: number,
-  ctx: { planningGuests: number; largePlus: boolean; eventType: EventKind },
-): string {
+  low: number, high: number, ctx: { planningGuests: number; largePlus: boolean; eventType: EventKind }, ): string {
   const mid = (low + high) / 2;
   const largeFestivalStory =
     ctx.largePlus ||
@@ -118,23 +99,10 @@ export function TentSizeEstimator() {
   const result = useMemo(
     () =>
       computeFootprint(
-        planningGuests,
-        eventType,
-        seating,
-        danceFloor,
-        buffetBar,
-        programScope,
-        tableStyle,
-        djBand,
-        weatherBackup,
-      ),
-    [planningGuests, eventType, seating, danceFloor, buffetBar, programScope, tableStyle, djBand, weatherBackup],
-  );
+        planningGuests, eventType, seating, danceFloor, buffetBar, programScope, tableStyle, djBand, weatherBackup, ), [planningGuests, eventType, seating, danceFloor, buffetBar, programScope, tableStyle, djBand, weatherBackup], );
 
   const example = useMemo(
-    () => sqFtToExampleTents(result.low, result.high, { planningGuests, largePlus: largeGuestPlus, eventType }),
-    [result.low, result.high, planningGuests, largeGuestPlus, eventType],
-  );
+    () => sqFtToExampleTents(result.low, result.high, { planningGuests, largePlus: largeGuestPlus, eventType }), [result.low, result.high, planningGuests, largeGuestPlus, eventType], );
 
   return (
     <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
@@ -185,11 +153,7 @@ export function TentSizeEstimator() {
             <div className="mt-2 flex flex-wrap gap-2">
               {(
                 [
-                  ["wedding", "Wedding"],
-                  ["party", "Private party"],
-                  ["corporate", "Corporate / gala"],
-                  ["festival", "Festival / fair"],
-                ] as const
+                  ["wedding", "Wedding"], ["party", "Private party"], ["corporate", "Corporate / gala"], ["festival", "Festival / fair"], ] as const
               ).map(([v, label]) => (
                 <button
                   key={v}
@@ -212,9 +176,7 @@ export function TentSizeEstimator() {
             <div className="mt-2 flex flex-wrap gap-2">
               {(
                 [
-                  ["full", "Full event (reception / full program)"],
-                  ["ceremony", "Ceremony-focused (lighter footprint)"],
-                ] as const
+                  ["full", "Full event (reception / full program)"], ["ceremony", "Ceremony-focused (lighter footprint)"], ] as const
               ).map(([v, label]) => (
                 <button
                   key={v}
@@ -237,10 +199,7 @@ export function TentSizeEstimator() {
             <div className="mt-2 flex flex-wrap gap-2">
               {(
                 [
-                  ["cocktail", "Mostly standing"],
-                  ["mixed", "Mixed"],
-                  ["seated", "Seated dinner"],
-                ] as const
+                  ["cocktail", "Mostly standing"], ["mixed", "Mixed"], ["seated", "Seated dinner"], ] as const
               ).map(([v, label]) => (
                 <button
                   key={v}
@@ -264,9 +223,7 @@ export function TentSizeEstimator() {
               <div className="mt-2 flex flex-wrap gap-2">
                 {(
                   [
-                    ["rounds", "Mostly rounds"],
-                    ["banquet", "Mostly banquet"],
-                  ] as const
+                    ["rounds", "Mostly rounds"], ["banquet", "Mostly banquet"], ] as const
                 ).map(([v, label]) => (
                   <button
                     key={v}
@@ -326,14 +283,14 @@ export function TentSizeEstimator() {
             <div className="rounded-xl bg-white/60 px-3 py-2.5 ring-1 ring-stone-200/80">
               <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-stone-500">Good fit</p>
               <p className="mt-0.5 text-xl font-semibold tabular-nums tracking-tight text-stone-900 sm:text-2xl">
-                {result.low.toLocaleString()}–{result.high.toLocaleString()}{" "}
+                {result.low.toLocaleString()} to {result.high.toLocaleString()}{" "}
                 <span className="text-sm font-medium text-stone-600">sq ft</span>
               </p>
             </div>
             <div className="rounded-xl border border-[#c9a24a]/40 bg-white/90 px-3 py-2.5">
               <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-[#6b5220]">More comfortable</p>
               <p className="mt-0.5 text-lg font-semibold tabular-nums text-stone-900 sm:text-xl">
-                {result.comfortableLow.toLocaleString()}–{result.comfortableHigh.toLocaleString()}{" "}
+                {result.comfortableLow.toLocaleString()} to {result.comfortableHigh.toLocaleString()}{" "}
                 <span className="text-sm font-medium text-stone-600">sq ft</span>
               </p>
             </div>

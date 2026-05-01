@@ -6,11 +6,8 @@ import { business } from "@/lib/site-data";
 import { planningFaqItems } from "@/lib/planning-faq";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Connecticut Tent & Event Planning Guide | Sizing, Weather, Layout",
-  description:
-    "Connecticut tent planning: square-footage calculator, Quick Event Planner, capacity chart, tent types, site and weather checks, and FAQs. Family-owned team since 1946.",
-  path: "/planning",
-  ogImage: defaultOgImagePath,
+  title: "Connecticut Tent & Event Planning Guide | Sizing, Weather, Layout", description:
+    "Connecticut tent planning: square-footage calculator, Quick Event Planner, capacity chart, tent types, site and weather checks, and FAQs. Family-owned team since 1946.", path: "/planning", ogImage: defaultOgImagePath,
 });
 
 export default function PlanningPage() {
@@ -24,9 +21,7 @@ export default function PlanningPage() {
       <FAQSchemaItems items={planningFaqItems} />
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Planning", path: "/planning" },
-        ]}
+          { name: "Home", path: "/" }, { name: "Planning", path: "/planning" }, ]}
       />
       <PlanningHub />
     </>

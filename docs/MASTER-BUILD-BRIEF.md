@@ -1,4 +1,4 @@
-# Master build brief — Connecticut Party Rentals site
+# Master build brief, Connecticut Party Rentals site
 
 **Purpose:** Single source of truth for landing pages, info pages, and future Goodshuffle/wishlist integration. Improve existing pages; do not replace wholesale unless necessary.
 
@@ -27,7 +27,7 @@ Each page should:
 
 1. Every section must do **one of three things:** build **trust**, help the customer **decide**, or move them toward **action**.  
 2. Write for **customers first**, search engines second.  
-3. Copy: **clean, specific, natural** — no generic sales padding.  
+3. Copy: **clean, specific, natural**, no generic sales padding.  
 4. **Design system:** keep it; **tighten** spacing, **improve** hierarchy, **scan** easier.  
 5. Where product cards or featured rentals appear: leave clean hooks for:
    - `goodshuffleItemId`  
@@ -40,7 +40,7 @@ Each page should:
 
 ### Phase 1: Tent rentals page
 
-**Goal:** Main money page — clearest starting point for anyone searching for tents.
+**Goal:** Main money page, clearest starting point for anyone searching for tents.
 
 **Improve:** Hero, trust strip, quick-answer block, tent type explanations, sizing help, common use cases, surfaces/setup notes, weather planning, strong quote CTA. Add **compact featured rental cards** with placeholders for Goodshuffle integration.
 
@@ -72,11 +72,11 @@ Each page should:
 
 **Do not** ship thin city-swap templates.
 
-**Improve priority towns first** — genuinely local: setup considerations, common event types, access/logistics, local trust cues, relevant internal links. Same style; copy **unique** per area.
+**Improve priority towns first**, genuinely local: setup considerations, common event types, access/logistics, local trust cues, relevant internal links. Same style; copy **unique** per area.
 
 ### Phase 7: Info pages and guides
 
-**Goal:** Trust, SEO, AI readability — **not** blog filler.
+**Goal:** Trust, SEO, AI readability, **not** blog filler.
 
 **Topics (examples):** Tent sizing, driveway/patio setups, rain backup, sidewalls, lighting, planning checklists, table/chair counts, what to know before booking. Educate clearly; **link** into landing pages; build confidence to contact.
 
@@ -100,7 +100,7 @@ Helpful and human; not machine filler.
 
 ## Build standard
 
-- Do **not** rewrite from scratch unless necessary — **upgrade** what exists.  
+- Do **not** rewrite from scratch unless necessary, **upgrade** what exists.  
 - Keep the **current visual direction** unless trust, readability, or spacing clearly need change.  
 - Outcome: every page **more useful, more specific, more unique**, and **ready** for Goodshuffle-connected rental selection later.
 

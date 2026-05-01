@@ -6,13 +6,10 @@ import { getPartyGuide, partyGuideSlugs } from "@/lib/party-guides-data";
 import { business } from "@/lib/site-data";
 
 const partyGuidesHubDescription =
-  "Premium planning guides for Connecticut events: tent sizing context, backyard checklists, wedding rain plans, corporate flow, and links to our planners and quotes.";
+  "The canonical Connecticut tent and party planning library: sizing, layouts, rain and surface prep, backyard and venue logistics, quotes, and links to planners, wishlists, and rental inventory.";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Party Guides | Tent Sizing, Layout, and Outdoor Event Planning",
-  description: partyGuidesHubDescription,
-  path: "/party-guides",
-  ogImage: defaultOgImagePath,
+  title: "Party Guides & Tent Planning Library | Sizing, Layout, Weather & Quotes", description: partyGuidesHubDescription, path: "/party-guides", ogImage: defaultOgImagePath,
 });
 
 export default function PartyGuidesPage() {
@@ -27,17 +24,15 @@ export default function PartyGuidesPage() {
     <>
       <ServiceSchema
         name="Party planning guides and tent layout resources"
-        description={`Practical guides for tent sizing, backyard hosting, weather backup, and event flow across ${business.state}, with clear paths to planning tools and quotes.`}
+        description={`Curated tent rental and event planning guides for ${business.state}: sizing, layouts, weather and surfaces, quotes, and clear paths to planners, inventory, and wishlists.`}
         path="/party-guides"
       />
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Party guides", path: "/party-guides" },
-        ]}
+          { name: "Home", path: "/" }, { name: "Party guides", path: "/party-guides" }, ]}
       />
       <CollectionItemListSchema
-        name="Party planning guides"
+        name="Party guides and tent planning library"
         description={partyGuidesHubDescription}
         path="/party-guides"
         items={listItems}

@@ -5,11 +5,7 @@ import { intakeStepCount, outputStepIndex, stepHint, stepTitle } from "@/feature
 import type { WeddingMode } from "@/features/wedding-checklist/types";
 
 export function StepShell({
-  mode,
-  stepIndex,
-  children,
-  footer,
-}: {
+  mode, stepIndex, children, footer, }: {
   mode: WeddingMode;
   stepIndex: number;
   children: ReactNode;

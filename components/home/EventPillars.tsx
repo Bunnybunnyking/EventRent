@@ -3,30 +3,14 @@ import { interactiveCardClass, cardRowHintClass } from "@/lib/interactive-styles
 
 const pillars = [
   {
-    title: "Weddings",
-    line: "Tented receptions, ceremony seating, lighting, sidewalls, and clean layouts that flow.",
-    href: "/wedding-tent-rentals",
-  },
-  {
-    title: "Corporate events",
-    line: "Company picnics, campus events, and large installs—planned, safe, and on schedule.",
-    href: "/corporate-event-rentals",
-  },
-  {
-    title: "Festivals & fairs",
-    line: "Vendor rows, large structures, entrances, and repeatable logistics for town events.",
-    href: "/events/festivals-fairs",
-  },
-  {
-    title: "Backyard parties",
-    line: "Graduations, cookouts, birthdays—right-sized tents, tables, chairs, and the essentials.",
-    href: "/planning#backyard-parties",
-  },
-] as const;
+    title: "Weddings", line: "Tented receptions, ceremony seating, lighting, sidewalls, and clean layouts that flow.", href: "/wedding-tent-rentals", }, {
+    title: "Corporate events", line: "Company picnics, campus events, and large installs, planned, safe, and on schedule.", href: "/corporate-event-rentals", }, {
+    title: "Festivals & fairs", line: "Vendor rows, large structures, entrances, and repeatable logistics for town events.", href: "/events/festivals-fairs", }, {
+    title: "Backyard parties", line: "Graduations, cookouts, birthdays, right-sized tents, tables, chairs, and the essentials.", href: "/planning#backyard-parties", }, ] as const;
 
 export function EventPillars() {
   return (
-    <section className="bg-white py-12 sm:py-14 lg:py-16" aria-labelledby="home-pillars-heading">
+    <section className="bg-white py-10 sm:py-12 lg:py-14" aria-labelledby="home-pillars-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <h2 id="home-pillars-heading" className="text-center text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">
           One team for events across Connecticut.

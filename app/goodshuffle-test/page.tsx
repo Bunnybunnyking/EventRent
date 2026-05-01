@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { GoodshuffleTestEmbed } from "@/components/goodshuffle-test-embed";
+import { goodshufflePublicWebsiteKey } from "@/lib/goodshuffle-env";
 
 export const metadata: Metadata = {
-  title: "Goodshuffle integration test",
-  description: "Verify Goodshuffle Pro website integration (wishlist config + item gallery).",
-  robots: { index: false, follow: false },
-};
+  title: "Goodshuffle integration test", description: "Verify Goodshuffle Pro website integration (wishlist config + item gallery).", robots: { index: false, follow: false }, };
+
+export const dynamic = "force-dynamic";
 
 export default function GoodshuffleTestPage() {
-  const publicWebsiteKey = process.env.NEXT_PUBLIC_GOODSHUFFLE_PUBLIC_WEBSITE_KEY;
+  const publicWebsiteKey = goodshufflePublicWebsiteKey();
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">

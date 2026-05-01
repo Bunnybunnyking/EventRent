@@ -6,11 +6,5 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/wedding-checklist-dev", "/goodshuffle-test"],
-      },
-    ],
-    sitemap: `${siteBaseUrl}/sitemap.xml`,
-  };
+        userAgent: "*", allow: "/", disallow: ["/wedding-checklist-dev", "/goodshuffle-test", "/admin"], }, ], sitemap: `${siteBaseUrl}/sitemap.xml`, };
 }

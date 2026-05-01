@@ -7,22 +7,30 @@ const cardClass =
 export function TentTypesSection() {
   const types = [
     {
-      title: "Frame & clear-span",
-      body: "Open interiors without center poles—ideal for rounds, dance floors, and sidewalls. Works across many Connecticut sites when anchoring is planned.",
-      footprint: "~100–2,400+ sq ft per single unit (e.g. 10×10 through ~40×60 class); many dinners land ~800–1,400 sq ft before dance and service.",
-      guests: "Often ~40–150 seated in mid-size footprints; every layout changes the math.",
+      title: "Frame & quick-peak tents",
+      body: "Clear-span frame interiors without center poles, ideal for rounds, dance floors, and sidewalls. Quick-peak and compact footprints suit tight timelines and smaller yards when anchoring is planned.",
+      footprint:
+        "~100 to 2,400+ sq ft per single unit (e.g. 10×10 through ~40×60 class); many dinners land ~800 to 1,400 sq ft before dance and service.",
+      guests: "Often ~40 to 150 seated in mid-size footprints; every layout changes the math.",
     },
     {
-      title: "Large event structures",
-      body: "High-footprint clear-span for galas, festivals, and big receptions. Anchoring, access, and staging are planned with your venue.",
-      footprint: "~3,600–9,000+ sq ft common spans (e.g. 60×60 through 60×150 class); multi-bay totals go higher.",
-      guests: "Roughly ~150–500+ guests possible depending on program, staging, and clear height—site survey drives the plan.",
+      title: "Pole tents",
+      body: "Classic peaks and elegant lines, often on grass with staking. Plan seating and sight lines around center poles.",
+      footprint: "Varies by span and manufacturer; we match pole layout to your program.",
+      guests: "Guest counts follow table plan, pole locations, and dance or buffet zones.",
     },
     {
-      title: "Expandable & modular",
-      body: "Connected bays with gutters for dining, dance, bars, and walkways—one continuous covered plan instead of scattered small tents.",
-      footprint: "Typical connected bays ~400–1,800 sq ft each; total sq ft is the sum of linked sections plus gutters.",
-      guests: "Common connected layouts ~60–200+ seated; scales up as bays and headcount grow.",
+      title: "Marquee tents",
+      body: "Covered walkways and connectors for arrivals, queues, and tent-to-building transitions, great paired with frame or modular mains.",
+      footprint: "Linear runs and connectors sized to path and weather plan.",
+      guests: "Flow and queue capacity more than seated dinner counts.",
+    },
+    {
+      title: "Large structures & expandable systems",
+      body: "Gutter-linked expandable bays build one roofline for dining, dance, bars, and walkways. Sixty-foot-class clear-span covers galas and festivals with anchoring, access, and staging planned to your site survey.",
+      footprint:
+        "Connected bays ~400 to 1,800+ sq ft each (totals add with gutters); 60′ class often ~3,600 to 9,000+ sq ft before multi-bay totals.",
+      guests: "Roughly ~60 to 200+ on modular runs; ~150 to 500+ on large clear-span, program and site drive the plan.",
     },
   ];
 
@@ -30,13 +38,13 @@ export function TentTypesSection() {
     <div id="tent-types" className="scroll-mt-24">
       <h2 className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">What we rent</h2>
       <p className="mt-2 max-w-3xl text-sm leading-snug text-stone-600">
-        Your quote ties real inventory to date and layout. Square footage is the geometry; guest counts depend on tables, dance floor, aisles, and service—see the{" "}
+        Your quote ties real inventory to date and layout. Square footage is the geometry; guest counts depend on tables, dance floor, aisles, and service, see the{" "}
         <a href="#tent-resource-tabs" className="font-semibold text-stone-900 underline underline-offset-2">
           guide tab
         </a>{" "}
         for popular footprints and a seating preview table.
       </p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {types.map((t) => (
           <div key={t.title} className={`${cardClass} !p-4`}>
             <h3 className="text-sm font-semibold text-stone-900">{t.title}</h3>
@@ -59,15 +67,11 @@ export function ModularTentSystemsSection() {
     <div id="modular-tent-systems" className="scroll-mt-24 mt-8 rounded-xl border border-stone-200 bg-[#faf8f5] p-5 sm:p-6">
       <h2 className="text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">Modular layouts &amp; gutters</h2>
       <p className="mt-2 max-w-3xl text-sm leading-snug text-stone-700">
-        Compatible frame and expansion bays often connect with <strong className="font-semibold text-stone-900">gutters</strong> so seating, dance, bar, and walkways sit under one coordinated roof—better weather continuity and cleaner sight lines than separate tents.
+        Compatible frame and expansion bays often connect with <strong className="font-semibold text-stone-900">gutters</strong> so seating, dance, bar, and walkways sit under one coordinated roof, better weather continuity and cleaner sight lines than separate tents.
       </p>
       <ul className="mt-4 grid gap-2 sm:grid-cols-2">
         {[
-          "Sized to guest count and run of show",
-          "Dining, dance, and mingling zones in one plan",
-          "Works on split or irregular sites when surveyed",
-          "Sidewalls & lighting across the linked footprint",
-        ].map((line) => (
+          "Sized to guest count and run of show", "Dining, dance, and mingling zones in one plan", "Works on split or irregular sites when surveyed", "Sidewalls & lighting across the linked footprint", ].map((line) => (
           <li key={line} className="flex gap-2 text-xs leading-snug text-stone-700 sm:text-sm">
             <span className="text-[#b78a2d]" aria-hidden>
               ✓
@@ -91,19 +95,13 @@ export function ModularTentSystemsSection() {
 
 export function TentAddOnsSection() {
   const addOns = [
-    { label: "Sidewalls & siding", note: "Solid, window, mixed—wind, rain, sun control" },
-    { label: "Lighting", note: "String, uplight, packages matched to timeline" },
-    { label: "Gutters & links", note: "Modular connected layouts" },
-    { label: "Floors & dance", note: "Defined dance areas, leveling" },
-    { label: "Tables & chairs", note: "Scaled to service style" },
-    { label: "Staging & climate", note: "Elevation, heat/cool as quoted" },
-  ];
+    { label: "Sidewalls & siding", note: "Solid, window, mixed, wind, rain, sun control" }, { label: "Lighting", note: "String, uplight, packages matched to timeline" }, { label: "Gutters & links", note: "Modular connected layouts" }, { label: "Floors & dance", note: "Defined dance areas, leveling" }, { label: "Tables & chairs", note: "Scaled to service style" }, { label: "Staging & climate", note: "Elevation, heat/cool as quoted" }, ];
 
   return (
     <div id="tent-add-ons" className="scroll-mt-24 mt-8">
       <h2 className="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">Add-ons that finish the tent</h2>
       <p className="mt-2 max-w-3xl text-sm leading-snug text-stone-600">
-        Most events need more than a roof—sidewalls, light, and floor define how the space feels at night and in weather.
+        Most events need more than a roof, sidewalls, light, and floor define how the space feels at night and in weather.
       </p>
       <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {addOns.map((a) => (

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { bookNowSectionClass } from "@/lib/cta-styles";
+import { mobileTextLinkClass } from "@/lib/mobile-booking";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { CTASection, SectionHeading } from "@/components/sections";
 import { BreadcrumbListSchema, ServiceSchema } from "@/components/schema";
@@ -7,102 +8,47 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
 export const metadata = createPageMetadata({
-  title: `Bounce House & Inflatable Rentals Connecticut | Clean, Safe Fun | ${business.primaryCity}`,
-  description:
-    "Bounce house and inflatable rentals in Connecticut: inspected, sanitized equipment for birthdays, schools, and community events. Ask about yard sizing, power, and bundle options with yard games and tents.",
-  path: "/bounce-houses",
-});
+  title: `Bounce House & Inflatable Rentals Connecticut | Clean, Safe Fun | ${business.primaryCity}`, description:
+    "Bounce house and inflatable rentals in Connecticut: inspected, sanitized equipment for birthdays, schools, and community events. Ask about yard sizing, power, and bundle options with yard games and tents.", path: "/bounce-houses", });
 
 const popularInflatables = [
-  { name: "Classic bounce house", blurb: "Iconic castle-style jumper sized for younger guests and birthday parties." },
-  { name: "Combo slide unit", blurb: "Bounce plus slide for higher energy, great when you have room to run." },
-  { name: "Obstacle course", blurb: "Team-friendly lanes for school fields and larger flat setups." },
-  { name: "Toddler inflatable", blurb: "Lower walls and gentler play for the smallest guests." },
-] as const;
+  { name: "Classic bounce house", blurb: "Iconic castle-style jumper sized for younger guests and birthday parties." }, { name: "Combo slide unit", blurb: "Bounce plus slide for higher energy, great when you have room to run." }, { name: "Obstacle course", blurb: "Team-friendly lanes for school fields and larger flat setups." }, { name: "Toddler inflatable", blurb: "Lower walls and gentler play for the smallest guests." }, ] as const;
 
 const safetyPoints = [
   {
-    title: "Inspection between events",
-    body: "We check seams, anchors, blower connections, and landing zones before your rental goes out, if it is not fit for guests, it does not ship.",
-  },
-  {
-    title: "Sanitizing & cleanliness",
-    body: "High-touch surfaces are cleaned per our prep checklist so families feel confident about where kids play.",
-  },
-  {
-    title: "Setup discipline",
-    body: "Anchoring matches surface type, stakes on grass, ballasts where stakes are not an option, and we review wind thresholds with you before event day.",
-  },
-] as const;
+    title: "Inspection between events", body: "We check seams, anchors, blower connections, and landing zones before your rental goes out, if it is not fit for guests, it does not ship.", }, {
+    title: "Sanitizing & cleanliness", body: "High-touch surfaces are cleaned per our prep checklist so families feel confident about where kids play.", }, {
+    title: "Setup discipline", body: "Anchoring matches surface type, stakes on grass, ballasts where stakes are not an option, and we review wind thresholds with you before event day.", }, ] as const;
 
 const packages = [
   {
-    title: "Bounce + Games bundle",
-    body: "Pair an inflatable with cornhole, giant Jenga, or ladder toss so teens and adults have something to do while kids bounce in shifts.",
-  },
-  {
-    title: "Birthday bundle",
-    body: "Structured for residential yards: bounce unit, game or two, and optional tent or table add-ons for cake and gifts.",
-  },
-  {
-    title: "School / event bundle",
-    body: "Higher throughput layouts for field days and community events, multiple units, staggered timing, and clear load-in paths.",
-  },
-] as const;
+    title: "Bounce + Games bundle", body: "Pair an inflatable with cornhole, giant Jenga, or ladder toss so teens and adults have something to do while kids bounce in shifts.", }, {
+    title: "Birthday bundle", body: "Structured for residential yards: bounce unit, game or two, and optional tent or table add-ons for cake and gifts.", }, {
+    title: "School / event bundle", body: "Higher throughput layouts for field days and community events, multiple units, staggered timing, and clear load-in paths.", }, ] as const;
 
 const steps = [
   {
-    title: "Share yard details",
-    body: "Measurements, slope, gate widths, and surface type (grass vs. pavement) determine which units fit and how we anchor.",
-  },
-  {
-    title: "Power & placement plan",
-    body: "Most units need a dedicated outlet or generator plan within specified cord lengths, we confirm amp needs and safe routing.",
-  },
-  {
-    title: "Delivery, setup, supervision reminders",
-    body: "We install and review rules-of-play with your on-site contact; responsible adult supervision stays with you during the rental.",
-  },
-] as const;
+    title: "Share yard details", body: "Measurements, slope, gate widths, and surface type (grass vs. pavement) determine which units fit and how we anchor.", }, {
+    title: "Power & placement plan", body: "Most units need a dedicated outlet or generator plan within specified cord lengths, we confirm amp needs and safe routing.", }, {
+    title: "Delivery, setup, supervision reminders", body: "We install and review rules-of-play with your on-site contact; responsible adult supervision stays with you during the rental.", }, ] as const;
 
 const bounceFaq = [
   {
-    question: "What power do inflatables need?",
-    answer:
-      "Most bounce units require a standard 110V outlet on a dedicated circuit within the manufacturer’s cord length. If power is far from the setup zone, we discuss generator options during quoting.",
-  },
-  {
-    question: "What surfaces work for setup?",
-    answer:
-      "Grass is ideal for staking. Driveways and pavement can work with ballast systems where allowed, surface slope, underground utilities, and HOA rules all factor into the plan.",
-  },
-  {
-    question: "What happens if rain or wind is forecast?",
-    answer:
-      "Inflatable safety depends on wind speed and lightning. We align with manufacturer limits and may reschedule or pause setup if conditions are unsafe, your contract spells out the weather process.",
-  },
-  {
-    question: "Is supervision included?",
-    answer:
-      "A trained attendant can sometimes be added by request, but hosts are responsible for supervising play and following capacity rules during the rental window.",
-  },
-  {
-    question: "Do you require a deposit?",
-    answer:
-      "Many dates require a deposit to hold inventory, amounts vary by order size and season. Your quote lists payment milestones clearly.",
-  },
-];
+    question: "What power do inflatables need?", answer:
+      "Most bounce units require a standard 110V outlet on a dedicated circuit within the manufacturer’s cord length. If power is far from the setup zone, we discuss generator options during quoting.", }, {
+    question: "What surfaces work for setup?", answer:
+      "Grass is ideal for staking. Driveways and pavement can work with ballast systems where allowed, surface slope, underground utilities, and HOA rules all factor into the plan.", }, {
+    question: "What happens if rain or wind is forecast?", answer:
+      "Inflatable safety depends on wind speed and lightning. We align with manufacturer limits and may reschedule or pause setup if conditions are unsafe, your contract spells out the weather process.", }, {
+    question: "Is supervision included?", answer:
+      "A trained attendant can sometimes be added by request, but hosts are responsible for supervising play and following capacity rules during the rental window.", }, {
+    question: "Do you require a deposit?", answer:
+      "Many dates require a deposit to hold inventory, amounts vary by order size and season. Your quote lists payment milestones clearly.", }, ];
 
 const testimonials = [
   {
-    quote: "The unit looked spotless on delivery. Setup was quick and the team walked us through wind and capacity rules clearly.",
-    name: "Host placeholder, West Hartford area",
-  },
-  {
-    quote: "We combined a bounce house with yard games for a school field day, logistics were easier with one vendor.",
-    name: "Coordinator placeholder, Glastonbury area",
-  },
-] as const;
+    quote: "The unit looked spotless on delivery. Setup was quick and the team walked us through wind and capacity rules clearly.", name: "Host placeholder, West Hartford area", }, {
+    quote: "We combined a bounce house with yard games for a school field day, logistics were easier with one vendor.", name: "Coordinator placeholder, Glastonbury area", }, ] as const;
 
 export default function BounceHousesPage() {
   return (
@@ -114,9 +60,7 @@ export default function BounceHousesPage() {
       />
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Bounce houses", path: "/bounce-houses" },
-        ]}
+          { name: "Home", path: "/" }, { name: "Bounce houses", path: "/bounce-houses" }, ]}
       />
 
       <section className="border-b border-stone-200/80 bg-[#f7f5f1] py-10 sm:py-14">
@@ -128,15 +72,19 @@ export default function BounceHousesPage() {
           <p className="mt-4 max-w-2xl text-lg text-stone-600">
             Parents and planners trust us for equipment that looks sharp, smells clean, and is installed with safety-first anchoring, so kids can play hard and you can breathe easier.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact#quote" className={bookNowSectionClass}>
-              Book Now
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center sm:inline-flex`}>
+              <span className="md:hidden">Get a Fast Quote</span>
+              <span className="hidden md:inline">Book Consultation</span>
             </Link>
             <a
               href="#popular-inflatables"
-              className="rounded-full border border-stone-400 bg-white px-6 py-3 text-sm font-semibold text-stone-800 transition hover:bg-stone-50"
+              className="hidden rounded-full border border-stone-400 bg-white px-6 py-3 text-sm font-semibold text-stone-800 transition hover:bg-stone-50 sm:inline-flex"
             >
               Browse options
+            </a>
+            <a href="#popular-inflatables" className={`${mobileTextLinkClass} sm:hidden`}>
+              Browse popular options →
             </a>
           </div>
           <p className="mt-6 text-sm text-stone-600">

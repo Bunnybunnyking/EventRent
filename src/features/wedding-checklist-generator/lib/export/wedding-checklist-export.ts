@@ -1,9 +1,6 @@
 import { computeWeddingChecklistResult, formatWeddingChecklistPlainText } from "@/features/wedding-checklist/lib/generate-output";
 import {
-  buildSharePayload,
-  buildShareSearchFromPayload,
-  encodeSharePayload,
-} from "@/features/wedding-checklist/lib/share/wedding-share-payload";
+  buildSharePayload, buildShareSearchFromPayload, encodeSharePayload, } from "@/features/wedding-checklist/lib/share/wedding-share-payload";
 import type { WeddingChecklistFormState, WeddingMode } from "@/features/wedding-checklist/types";
 import type { WeddingChecklistSessionState } from "@/features/wedding-checklist/types/persistence";
 
@@ -14,10 +11,7 @@ export function getWeddingChecklistPlainTextExport(form: WeddingChecklistFormSta
 
 /** `mailto:` href with body = plain checklist (user still sends from their client). */
 export function buildWeddingChecklistMailtoHref(
-  form: WeddingChecklistFormState,
-  mode: WeddingMode,
-  subject = "My wedding checklist",
-): string {
+  form: WeddingChecklistFormState, mode: WeddingMode, subject = "My wedding checklist", ): string {
   const body = getWeddingChecklistPlainTextExport(form, mode);
   return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
@@ -38,7 +32,4 @@ export function buildWeddingChecklistShareUrl(session: WeddingChecklistSessionSt
  * For now, re-exports are stable extension points.
  */
 export const weddingChecklistExportApi = {
-  getPlainText: getWeddingChecklistPlainTextExport,
-  buildMailto: buildWeddingChecklistMailtoHref,
-  buildShareUrl: buildWeddingChecklistShareUrl,
-};
+  getPlainText: getWeddingChecklistPlainTextExport, buildMailto: buildWeddingChecklistMailtoHref, buildShareUrl: buildWeddingChecklistShareUrl, };

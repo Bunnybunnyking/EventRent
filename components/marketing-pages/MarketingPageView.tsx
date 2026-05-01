@@ -63,8 +63,7 @@ function OnThisPageNav({ sections }: { sections: MarketingPageDefinition["sectio
 }
 
 export function MarketingPageView({
-  page,
-  breadcrumbTrail,
+  page, breadcrumbTrail,
 }: {
   page: MarketingPageDefinition;
   breadcrumbTrail: BreadcrumbItem[];
@@ -74,7 +73,7 @@ export function MarketingPageView({
 
   return (
     <article>
-      <header className="border-b border-stone-200 bg-gradient-to-b from-[#f7f5f1] to-[#faf8f5] py-10 sm:py-14">
+      <header className="border-b border-stone-200 bg-gradient-to-b from-[#f7f5f1] to-[#faf8f5] py-8 sm:py-11">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb
             className="mb-8"
@@ -156,7 +155,7 @@ export function MarketingPageView({
                     className="flex min-h-[128px] items-center justify-center rounded-xl border border-stone-200 bg-white px-3 text-center text-xs font-medium text-stone-400"
                   >
                     {label}
-                    <span className="sr-only">— connect Goodshuffle IDs, images, and wishlist when ready.</span>
+                    <span className="sr-only">, connect Goodshuffle IDs, images, and wishlist when ready.</span>
                   </li>
                 ))}
               </ul>
@@ -205,17 +204,25 @@ export function MarketingPageView({
               {page.finalCta.title}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-stone-700">{page.finalCta.body}</p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link href={page.finalCta.primaryHref} className={bookNowHeaderClass}>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Link href={page.finalCta.primaryHref} className={`${bookNowHeaderClass} justify-center sm:inline-flex`}>
                 {page.finalCta.primaryLabel}
               </Link>
               {page.finalCta.secondaryHref && page.finalCta.secondaryLabel ? (
-                <Link
-                  href={page.finalCta.secondaryHref}
-                  className="inline-flex min-h-[42px] items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2 text-sm font-semibold text-stone-800 transition hover:border-stone-400 hover:bg-white"
-                >
-                  {page.finalCta.secondaryLabel}
-                </Link>
+                <>
+                  <Link
+                    href={page.finalCta.secondaryHref}
+                    className="hidden min-h-[42px] items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2 text-sm font-semibold text-stone-800 transition hover:border-stone-400 hover:bg-white sm:inline-flex"
+                  >
+                    {page.finalCta.secondaryLabel}
+                  </Link>
+                  <Link
+                    href={page.finalCta.secondaryHref}
+                    className="text-sm font-semibold text-[#7a5a18] underline decoration-[#d4bc88] underline-offset-[3px] hover:text-stone-900 sm:hidden"
+                  >
+                    {page.finalCta.secondaryLabel}
+                  </Link>
+                </>
               ) : null}
             </div>
           </section>

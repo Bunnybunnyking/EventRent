@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Breadcrumb } from "@/components/breadcrumb";
+import { FrameTentSizeWishlistAffordance } from "@/components/tents/frame-tent-size-wishlist-inline";
+import { GoodshuffleItemListEmbed } from "@/components/goodshuffle-item-list-embed";
+import { GoodshuffleRuntime } from "@/components/goodshuffle-runtime";
+import {
+  goodshuffleFallbackCatalogSearchForTentSizePage,
+  rentalInventoryTentCardHrefForTentSizeSlug,
+} from "@/lib/goodshuffle-catalog-ids";
+import { goodshufflePublicWebsiteKey } from "@/lib/goodshuffle-env";
+import { goodshuffleVendorDataUrl } from "@/lib/goodshuffle";
 import { FAQSchemaItems, ServiceSchema } from "@/components/schema";
 import { bookNowSectionClass } from "@/lib/cta-styles";
 import { textLinkNeutralClass } from "@/lib/interactive-styles";
@@ -16,6 +24,8 @@ type Props = {
   schemaDescription: string;
   familyLinks?: { href: string; label: string }[];
   variant: "frame" | "large";
+  /** When false, a wired `goodshuffleItemId` shows a short notice instead of the live card. */
+  goodshuffleEnabled?: boolean;
 };
 
 function hasGoodshuffleHooks(p: TentPairedRental) {
@@ -28,6 +38,36 @@ function hasGoodshuffleHooks(p: TentPairedRental) {
   );
 }
 
+function TentHeroPath({ items }: { items: { label: string; href?: string }[] }) {
+  return (
+    <nav aria-label="Breadcrumb" className="text-[13px] leading-relaxed tracking-tight text-stone-500 sm:text-sm">
+      <ol className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
+        {items.map((item, index) => (
+          <li key={`${item.label}-${index}`} className="flex min-w-0 items-baseline gap-x-1.5">
+            {index > 0 ? (
+              <span className="shrink-0 select-none text-stone-300 [font-family:ui-serif,Georgia,serif]" aria-hidden>
+                /
+              </span>
+            ) : null}
+            {item.href ? (
+              <Link href={item.href} className="shrink-0 transition hover:text-stone-900">
+                {item.label}
+              </Link>
+            ) : (
+              <span
+                className="min-w-0 font-medium text-stone-900 [font-family:var(--font-display)]"
+                aria-current="page"
+              >
+                {item.label}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
 export function TentSizePageTemplate({
   data,
   breadcrumb,
@@ -36,60 +76,144 @@ export function TentSizePageTemplate({
   schemaDescription,
   familyLinks,
   variant,
+  goodshuffleEnabled = false,
 }: Props) {
-  const eyebrow = variant === "frame" ? `Frame tent · ${data.sizeLabel}` : `Large structure · ${data.sizeLabel}`;
-  const h1 =
+  /** Short display title; breadcrumb carries “Home / Tents / …”. Override with `heroHeadline` when needed. */
+  const displayTitle =
     data.heroHeadline ??
-    (variant === "frame"
-      ? `${data.sizeLabel} frame tent rentals in ${business.state}`
-      : `${data.sizeLabel} large event tent rental in ${business.state}`);
+    (variant === "frame" ? `${data.sizeLabel} frame tent` : `${data.sizeLabel} large event structure`);
   const trustStrip = data.trustStrip ?? trustPoints.slice(0, 4);
   const faqForSchema = data.faqs.map((f) => ({ question: f.question, answer: f.answer }));
+  const rentalInventoryDeepHref = rentalInventoryTentCardHrefForTentSizeSlug(data.slug);
+  const rentalInventoryHref = rentalInventoryDeepHref ?? "/rental-inventory";
+  const catalogListSearch =
+    data.goodshuffleCatalogSearch ??
+    goodshuffleFallbackCatalogSearchForTentSizePage(data.slug, data.sizeLabel, variant);
 
-  return (
+  const gsKey = goodshufflePublicWebsiteKey()?.trim();
+  const wrapGoodshuffleRuntime = Boolean(goodshuffleEnabled && gsKey);
+  const gsDataUrl = gsKey ? goodshuffleVendorDataUrl(gsKey) : "";
+
+  const page = (
     <>
       <ServiceSchema name={schemaName} description={schemaDescription} path={schemaPath} />
       <FAQSchemaItems items={faqForSchema} />
 
-      <header className="border-b border-stone-200/90 bg-gradient-to-b from-[#f7f5f1] to-[#faf8f5] py-9 sm:py-11">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumb className="mb-6" items={breadcrumb} />
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8a6d3a]">{eyebrow}</p>
-              <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-900 sm:text-[2.125rem] sm:leading-tight [font-family:var(--font-display)]">
-                {h1}
+      <header className="border-b border-stone-200/70 bg-[linear-gradient(165deg,#faf8f4_0%,#fffdf9_38%,#ffffff_100%)] pb-10 pt-6 sm:pb-12 sm:pt-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-10 xl:gap-x-12">
+            <div className="lg:col-span-5">
+              <TentHeroPath items={breadcrumb} />
+              <h1 className="mt-3 text-[1.65rem] font-semibold leading-[1.12] tracking-tight text-stone-900 sm:mt-3.5 sm:text-4xl sm:leading-[1.1] [font-family:var(--font-display)]">
+                {displayTitle}
               </h1>
-              <p className="mt-4 text-base leading-relaxed text-stone-700 sm:text-lg">{data.heroSubhead}</p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center text-center`}>
-                  Get a fast quote
-                </Link>
-                <Link
-                  href="/wishlist"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full border-2 border-stone-800 bg-white px-6 py-3 text-center text-sm font-semibold text-stone-900 shadow-sm transition hover:bg-stone-50"
-                >
-                  Start a wishlist
-                </Link>
-                <Link href="/contact" className={`inline-flex min-h-[48px] items-center justify-center text-sm font-semibold ${textLinkNeutralClass}`}>
-                  Ask about this tent
-                </Link>
-              </div>
-              {familyLinks && familyLinks.length > 0 ? (
-                <p className="mt-5 text-sm text-stone-500">
-                  {familyLinks.map((l, i) => (
-                    <span key={l.href}>
-                      {i > 0 ? " · " : ""}
-                      <Link href={l.href} className="font-medium text-stone-800 underline underline-offset-2">
-                        {l.label}
-                      </Link>
-                    </span>
-                  ))}
-                </p>
-              ) : null}
+              <p className="mt-3 max-w-xl text-[0.9375rem] leading-relaxed text-stone-600 sm:text-base">
+                {data.heroSubhead}
+              </p>
+              <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-stone-400">
+                {business.state} tent rentals
+              </p>
             </div>
-            <TentImagePlaceholder label={`${data.sizeLabel} tent, hero image`} />
+
+            <div className="mt-7 min-w-0 lg:col-span-7 lg:mt-0">
+              {goodshuffleEnabled && data.goodshuffleItemId ? (
+                <div
+                  className="ctp-tent-hero-wishlist-slot flex min-h-[12rem] flex-col items-center justify-center gap-3 rounded-2xl border border-stone-200/80 bg-[linear-gradient(180deg,#fffdf9_0%,#faf8f4_100%)] px-6 py-10 shadow-[0_18px_48px_-28px_rgba(15,23,42,0.1)] ring-1 ring-stone-900/[0.03] sm:min-h-[14rem]"
+                  aria-labelledby="hero-wishlist-heading"
+                >
+                  <h2
+                    id="hero-wishlist-heading"
+                    className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7a6635]"
+                  >
+                    Add to wishlist
+                  </h2>
+                  <FrameTentSizeWishlistAffordance itemId={data.goodshuffleItemId} sizeLabel={data.sizeLabel} />
+                  <p className="max-w-sm text-center text-xs leading-relaxed text-stone-600">
+                    Tap the heart to add this <strong className="font-semibold text-stone-800">{data.sizeLabel}</strong>{" "}
+                    package to your list. Same item as in Goodshuffle Pro.
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold">
+                    <Link
+                      href="/wishlist"
+                      className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition hover:text-stone-950"
+                    >
+                      Full catalog
+                    </Link>
+                    {rentalInventoryDeepHref ? (
+                      <Link
+                        href={rentalInventoryDeepHref}
+                        className="text-[#6b5420] underline decoration-amber-300/80 underline-offset-4 transition hover:text-stone-950"
+                      >
+                        On inventory
+                      </Link>
+                    ) : null}
+                  </div>
+                </div>
+              ) : goodshuffleEnabled && !data.goodshuffleItemId ? (
+                <section
+                  aria-labelledby="catalog-list-heading"
+                  className="overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-[0_18px_48px_-28px_rgba(15,23,42,0.14)] ring-1 ring-stone-900/[0.03]"
+                >
+                  <div className="flex flex-col gap-2 border-b border-stone-100/90 bg-stone-50/50 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-3.5">
+                    <div>
+                      <h2
+                        id="catalog-list-heading"
+                        className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7a6635]"
+                      >
+                        Live catalog
+                      </h2>
+                      <p className="mt-1 text-xs text-stone-500">
+                        Matches for <span className="font-mono text-[11px] text-stone-700">{catalogListSearch}</span>
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                      <Link
+                        href="/wishlist"
+                        className="text-xs font-semibold text-stone-700 underline decoration-stone-300 underline-offset-4 transition hover:text-stone-950"
+                      >
+                        Wishlist
+                      </Link>
+                      {rentalInventoryDeepHref ? (
+                        <Link
+                          href={rentalInventoryDeepHref}
+                          className="text-xs font-semibold text-[#6b5420] underline decoration-amber-300/80 underline-offset-4 transition hover:text-stone-950"
+                        >
+                          On inventory
+                        </Link>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div className="px-2.5 pb-4 pt-2 sm:px-4 sm:pb-5 sm:pt-3">
+                    <GoodshuffleItemListEmbed search={catalogListSearch} listSize={6} className="border border-stone-100 bg-white" />
+                  </div>
+                </section>
+              ) : data.goodshuffleItemId && !goodshuffleEnabled ? (
+                <div className="rounded-2xl border border-amber-200/90 bg-amber-50/90 px-4 py-3.5 text-sm text-amber-950 sm:px-5">
+                  <p className="font-semibold text-amber-950">Wishlist integration is not loaded</p>
+                  <p className="mt-1 text-xs leading-relaxed text-amber-900/90">
+                    Add your Goodshuffle public website key to the site environment to enable the wishlist heart in the hero.
+                  </p>
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-stone-200/80 bg-stone-50/40 p-1">
+                  <TentImagePlaceholder label={`${data.sizeLabel} tent, overview`} />
+                </div>
+              )}
+            </div>
           </div>
+
+          {familyLinks && familyLinks.length > 0 ? (
+            <p className="mt-6 border-t border-stone-200/60 pt-5 text-center text-xs leading-relaxed text-stone-500 sm:text-left lg:mt-7">
+              {familyLinks.map((l, i) => (
+                <span key={l.href}>
+                  {i > 0 ? <span className="text-stone-300"> · </span> : null}
+                  <Link href={l.href} className="font-medium text-stone-600 underline-offset-2 hover:text-stone-900 hover:underline">
+                    {l.label}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          ) : null}
         </div>
       </header>
 
@@ -236,7 +360,7 @@ export function TentSizePageTemplate({
           <h2 id="layouts-heading" className="text-lg font-semibold tracking-tight text-stone-900">
             Common layout ideas
           </h2>
-          <p className="mt-2 text-sm text-stone-600">Examples only—we confirm with your guest count, furniture list, and site photos.</p>
+          <p className="mt-2 text-sm text-stone-600">Examples only, we confirm with your guest count, furniture list, and site photos.</p>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {data.layoutExamples.map((ex) => (
               <div key={ex.title} className="flex flex-col rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
@@ -257,7 +381,7 @@ export function TentSizePageTemplate({
             Common add-ons & paired rentals
           </h2>
           <p className="mt-2 text-sm text-stone-600">
-            Popular companions on real Connecticut programs. Goodshuffle IDs are optional—cards stay clean when fields are empty.
+            Popular companions on real Connecticut programs. We bundle these when we quote so flow and service lanes stay realistic.
           </p>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {data.pairedRentals.map((p, idx) => (
@@ -271,22 +395,22 @@ export function TentSizePageTemplate({
                   <p className="mt-2 text-xs text-stone-500">{p.tags.join(" · ")}</p>
                 ) : null}
                 {hasGoodshuffleHooks(p) ? (
-                  <p className="mt-3 text-[11px] leading-relaxed text-stone-500">
-                    Goodshuffle: item {p.goodshuffleItemId ?? "—"} · image {p.goodshuffleImageId ?? "—"} · slug{" "}
-                    {p.goodshuffleProductSlug ?? "—"}
+                  <p className="mt-3 text-xs leading-relaxed text-[#7a5a18]">
+                    On the live catalog, matching items can be saved with your wishlist alongside this tent.
                   </p>
                 ) : (
-                  <p className="mt-3 text-[11px] text-stone-400">Goodshuffle hooks: connect when catalog sync is ready.</p>
+                  <p className="mt-3 text-xs leading-relaxed text-stone-500">Tell us what you need; we align chairs, tables, and weather add-ons in the quote.</p>
                 )}
               </li>
             ))}
           </ul>
           <p className="mt-6 text-sm text-stone-600">
             Also consider: {data.bestAddOns.join(" · ")}. See{" "}
-            <Link href="/rental-inventory" className={`font-medium ${textLinkNeutralClass}`}>
+            <Link href={rentalInventoryHref} className={`font-medium ${textLinkNeutralClass}`}>
               rental inventory
+              {rentalInventoryDeepHref ? " (this size)" : ""}
             </Link>{" "}
-            for live categories.
+            for live categories and Goodshuffle packages where wired.
           </p>
         </div>
       </section>
@@ -314,7 +438,7 @@ export function TentSizePageTemplate({
           <h2 id="gallery-heading" className="text-lg font-semibold tracking-tight text-stone-900">
             Event photography
           </h2>
-          <p className="mt-2 text-sm text-stone-600">Placeholders for real installs—browse the gallery for proof today.</p>
+          <p className="mt-2 text-sm text-stone-600">Placeholders for real installs, browse the gallery for proof today.</p>
           <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
             <TentImagePlaceholder label="Wide shot" aspect="[4/3]" />
             <TentImagePlaceholder label="Interior lighting" aspect="[4/3]" />
@@ -357,7 +481,7 @@ export function TentSizePageTemplate({
           <div className="mt-10 rounded-2xl border border-stone-200 border-l-[3px] border-l-[#b8934a] bg-stone-50 px-6 py-7 sm:px-8">
             <h2 className="text-lg font-semibold tracking-tight text-stone-900">Next step</h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-stone-700">
-              Send your date, town, guest count, surface type, and how you want the day to flow. We will tell you honestly if this footprint fits—or which size is safer.
+              Send your date, town, guest count, surface type, and how you want the day to flow. We will tell you honestly if this footprint fits, or which size is safer.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center`}>
@@ -378,4 +502,13 @@ export function TentSizePageTemplate({
       </section>
     </>
   );
+
+  if (wrapGoodshuffleRuntime && gsDataUrl) {
+    return (
+      <GoodshuffleRuntime dataUrl={gsDataUrl}>
+        <div className="ctp-tent-goodshuffle-page">{page}</div>
+      </GoodshuffleRuntime>
+    );
+  }
+  return page;
 }

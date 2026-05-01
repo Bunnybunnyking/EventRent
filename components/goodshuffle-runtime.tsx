@@ -9,7 +9,14 @@ type RuntimeProps = {
   children?: ReactNode;
 };
 
-/** Scripts + `gspro-wishlist-config` — required once per page that uses Goodshuffle (see https://docs.goodshuffle.dev/docs/setup/custom-setup/). */
+/**
+ * Scripts + `gspro-wishlist-config` — required once per page that uses Goodshuffle
+ * (see https://docs.goodshuffle.dev/docs/setup/custom-setup/).
+ *
+ * App Router: `beforeInteractive` is only allowed in `app/layout.tsx`, not in nested
+ * components, so we use `afterInteractive`. Wishlist / item cards register shortly after load;
+ * inline hearts already wait on the shadow root.
+ */
 export function GoodshuffleRuntime({ dataUrl, children }: RuntimeProps) {
   return (
     <>

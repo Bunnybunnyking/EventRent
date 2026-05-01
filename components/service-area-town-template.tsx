@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { GraduationPartyLocalSection } from "@/components/graduation-party-local-section";
 import { FAQSchemaItems } from "@/components/schema";
 import { bookNowHeaderClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
@@ -22,7 +23,7 @@ export function ServiceAreaTownTemplate({ townName, townSlug, content }: Props) 
   const primaryCta = content.primaryCtaLabel ?? "Get a quote";
   const wishlistCta = content.wishlistCtaLabel ?? "Build a wishlist";
   const finalTitle = content.finalCtaTitle ?? `Plan rentals in ${townName}`;
-  const quickTitle = content.quickAnswerTitle ?? "Quick answer";
+  const quickTitle = content.quickAnswerTitle ?? "At a glance";
   const faqSubline =
     content.faqSubline ?? "Straight answers first, then a little context if it helps.";
 
@@ -292,6 +293,8 @@ export function ServiceAreaTownTemplate({ townName, townSlug, content }: Props) 
             </div>
           </div>
 
+          <GraduationPartyLocalSection townSlug={townSlug} townName={townName} />
+
           <div className="mt-7">
             <h2 className="text-lg font-semibold text-stone-900 sm:text-xl">{content.faqTitle}</h2>
             <p className="mt-1 text-xs text-stone-500 sm:text-sm">{faqSubline}</p>
@@ -342,9 +345,7 @@ export function ServiceAreaTownTemplate({ townName, townSlug, content }: Props) 
 
       <FAQSchemaItems
         items={content.faqs.map((f) => ({
-          question: f.question,
-          answer: f.answer,
-        }))}
+          question: f.question, answer: f.answer, }))}
       />
     </>
   );

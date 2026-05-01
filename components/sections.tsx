@@ -4,13 +4,7 @@ import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { business, galleryItems, townList } from "@/lib/site-data";
 
 export function SectionHeading({
-  eyebrow,
-  title,
-  intro,
-  titleAs = "h2",
-  align = "center",
-  variant = "light",
-  compact = false,
+  eyebrow, title, intro, titleAs = "h2", align = "center", variant = "light", compact = false,
 }: {
   eyebrow: string;
   title: string;
@@ -44,7 +38,7 @@ export function SectionHeading({
 
 export function ServiceAreaBlock() {
   return (
-    <section className="bg-[#111315] py-16 text-stone-100">
+    <section className="bg-[#111315] py-12 text-stone-100 sm:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Service Area"
@@ -68,7 +62,7 @@ export function ServiceAreaBlock() {
           </Link>{" "}
           · Need a date held?{" "}
           <Link href="/contact#quote" className="font-medium text-stone-200 underline underline-offset-2 hover:text-white">
-            Book now
+            Book Consultation
           </Link>
           .
         </p>
@@ -101,12 +95,12 @@ export function GalleryGrid({ preview = false }: { preview?: boolean }) {
 }
 
 /**
- * Bottom quote CTA band. Set `showPrimaryCta={false}` on pages where the large Book Now
- * control is omitted; concierge copy stays visible with call + contact link.
+ * Bottom quote CTA band. Set `showPrimaryCta={false}` on pages where the primary Book Consultation
+ * CTA is omitted; concierge copy stays visible with call + contact link.
  */
 export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean }) {
   return (
-    <section className="py-16" aria-labelledby="cta-quote-heading">
+    <section className="py-12 sm:py-14" aria-labelledby="cta-quote-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] p-8 text-stone-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)] md:p-12">
           <h2 id="cta-quote-heading" className="text-3xl font-semibold tracking-tight sm:text-[2rem]">
@@ -120,7 +114,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
                 <Link href="/contact#quote" className={`${bookNowSectionClass} w-full justify-center sm:w-auto`}>
-                  Book Now
+                  Book Consultation
                 </Link>
                 <a href={business.phoneHref} className={`${callNowSectionClass} w-full shrink-0 sm:w-auto`}>
                   Call {business.phone}
@@ -147,7 +141,7 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
                   href="/contact#quote"
                   className={`${bookNowSectionClass} w-full justify-center text-center sm:w-auto`}
                 >
-                  Book Now
+                  Book Consultation
                 </Link>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-stone-400">

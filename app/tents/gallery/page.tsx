@@ -8,21 +8,15 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business, galleryItems } from "@/lib/site-data";
 
 export const metadata = createPageMetadata({
-  title: `Tent Photo Gallery | Connecticut Party & Wedding Setups | ${business.primaryCity}`,
-  description:
-    "Connecticut tent rental photo gallery: wedding, backyard, corporate, and community setups, layouts, lighting, and presentation ideas. Click any image to view full size.",
-  path: "/tents/gallery",
-});
+  title: `Tent Photo Gallery | Connecticut Party & Wedding Setups | ${business.primaryCity}`, description:
+    "Connecticut tent rental photo gallery: wedding, backyard, corporate, and community setups, layouts, lighting, and presentation ideas. Click any image to view full size.", path: "/tents/gallery", });
 
 export default function TentsGalleryPage() {
   return (
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Tents", path: "/tents" },
-          { name: "Tent gallery", path: "/tents/gallery" },
-        ]}
+          { name: "Home", path: "/" }, { name: "Tents", path: "/tents" }, { name: "Tent gallery", path: "/tents/gallery" }, ]}
       />
       <section className="border-b border-stone-200/80 bg-[#f7f5f1] py-8 sm:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -30,14 +24,11 @@ export default function TentsGalleryPage() {
             <Breadcrumb
               className="mb-0"
               items={[
-                { label: "Home", href: "/" },
-                { label: "Tents", href: "/tents" },
-                { label: "Tent gallery" },
-              ]}
+                { label: "Home", href: "/" }, { label: "Tents", href: "/tents" }, { label: "Tent gallery" }, ]}
             />
             <div className="flex flex-wrap gap-2">
               <Link href="/contact#quote" className={`${bookNowSectionClass} !min-h-[44px] !px-5 !py-2.5 !text-sm sm:!text-base`}>
-                Book Now
+                Book Consultation
               </Link>
               <Link
                 href="/tents"
@@ -62,7 +53,7 @@ export default function TentsGalleryPage() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 border-t border-stone-200/90 pt-10 sm:flex-row">
             <p className="text-center text-sm text-stone-600">Planning an outdoor event? Lock in tents, tables, and timing with one quote.</p>
             <Link href="/contact#quote" className={`${bookNowSectionClass} inline-flex`}>
-              Book Now
+              Book Consultation
             </Link>
           </div>
         </div>

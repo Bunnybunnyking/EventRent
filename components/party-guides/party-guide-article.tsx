@@ -17,7 +17,17 @@ function contextualResourceLinks(slug: string): { href: string; label: string }[
       return [
         { href: "/tents/frame-tents", label: "Frame tent family" },
         { href: "/tents/pole-tents", label: "Pole tent family" },
+        { href: "/tents/cheap-canopy-vs-professional-event-tent", label: "Cheap canopy vs. professional tent" },
       ];
+    case "what-size-tent-do-i-need":
+      return [
+        { href: "/planning", label: "Planning hub" }, { href: "/tents", label: "Tent families hub" }, ];
+    case "tent-rental-pricing":
+      return [
+        { href: "/wishlist", label: "Wishlist builder" }, { href: "/party-packages", label: "Party packages" }, ];
+    case "tents-on-driveways-and-pavement":
+      return [
+        { href: "/tent-rentals", label: "Tent rentals overview" }, { href: "/rental-inventory#inv-tents", label: "Tent inventory" }, ];
     default:
       return [];
   }
@@ -61,10 +71,7 @@ export function PartyGuideArticleView({ guide }: { guide: PartyGuideArticle }) {
             <Breadcrumb
               className="mb-6"
               items={[
-                { label: "Home", href: "/" },
-                { label: "Party guides", href: "/party-guides" },
-                { label: guide.title },
-              ]}
+                { label: "Home", href: "/" }, { label: "Party guides", href: "/party-guides" }, { label: guide.title }, ]}
             />
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8a6d3a]">{guide.categoryLabel}</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl [font-family:var(--font-display)]">
@@ -80,10 +87,7 @@ export function PartyGuideArticleView({ guide }: { guide: PartyGuideArticle }) {
                 <span className="text-stone-500">Updated </span>
                 <time dateTime={guide.updatedAt}>
                   {new Date(guide.updatedAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                    year: "numeric", month: "long", day: "numeric", })}
                 </time>
               </span>
             </div>

@@ -1,9 +1,5 @@
 import type {
-  PlanningPriorityId,
-  WeddingBasics,
-  WeddingChecklistFormState,
-  WeddingMode,
-} from "@/features/wedding-checklist/types";
+  PlanningPriorityId, WeddingBasics, WeddingChecklistFormState, WeddingMode, } from "@/features/wedding-checklist/types";
 
 /**
  * Derived flags for checklist / copy / rules. Single source of truth for conditionals.
@@ -41,7 +37,7 @@ export interface ContentContext {
   tentHeavy: boolean;
   /** Count of setup toggles still off */
   openSetupKeys: number;
-  /** Rough 0–100: higher = more gaps / site risk */
+  /** Rough 0 to 100: higher = more gaps / site risk */
   readinessRisk: number;
   /** Stable string for tone variant selection */
   variantSeed: string;
@@ -52,10 +48,7 @@ function countOpenSetup(setup: WeddingChecklistFormState["setup"]): number {
 }
 
 function computeRisk(
-  setup: WeddingChecklistFormState["setup"],
-  venue: WeddingChecklistFormState["venue"],
-  wx: WeddingBasics["weatherConcern"],
-): number {
+  setup: WeddingChecklistFormState["setup"], venue: WeddingChecklistFormState["venue"], wx: WeddingBasics["weatherConcern"], ): number {
   let r = 0;
   (Object.keys(setup) as (keyof typeof setup)[]).forEach((k) => {
     if (!setup[k]) r += 4;
@@ -82,42 +75,9 @@ export function buildContentContext(inp: WeddingChecklistFormState, mode: Weddin
   const variantSeed = `${mode}|${basics.venueType}|${cs}|${gr}|${basics.dayPart}|${basics.formality}|${basics.weatherConcern}`;
 
   return {
-    mode,
-    basics,
-    evening,
-    day: !evening,
-    ceremonyOnly: cs === "ceremony_only",
-    receptionOnly: cs === "reception_only",
-    bothCeremonyReception: cs === "both",
-    guestRange: gr,
-    guestsUnder75: gr === "under_75",
-    guestsMid: gr === "75_150",
-    guestsLarge: gr === "150_plus",
-    venueType: basics.venueType,
-    backyard: basics.venueType === "backyard",
-    privateEstate: basics.venueType === "private_estate",
-    outdoorVenue: basics.venueType === "outdoor_venue",
-    mixedIndoorOutdoor: basics.venueType === "mixed_indoor_outdoor",
-    tentedReceptionOnly: basics.venueType === "tented_reception_only",
-    formality: basics.formality,
-    casual: basics.formality === "casual",
-    classic: basics.formality === "classic",
-    formal: basics.formality === "formal",
-    plannerInvolved: basics.plannerInvolved,
-    weatherConcern: basics.weatherConcern,
-    wxLow: basics.weatherConcern === "low",
-    wxMedium: basics.weatherConcern === "medium",
-    wxHigh: basics.weatherConcern === "high",
-    setup,
-    venue,
-    priorities,
-    tentHeavy:
+    mode, basics, evening, day: !evening, ceremonyOnly: cs === "ceremony_only", receptionOnly: cs === "reception_only", bothCeremonyReception: cs === "both", guestRange: gr, guestsUnder75: gr === "under_75", guestsMid: gr === "75_150", guestsLarge: gr === "150_plus", venueType: basics.venueType, backyard: basics.venueType === "backyard", privateEstate: basics.venueType === "private_estate", outdoorVenue: basics.venueType === "outdoor_venue", mixedIndoorOutdoor: basics.venueType === "mixed_indoor_outdoor", tentedReceptionOnly: basics.venueType === "tented_reception_only", formality: basics.formality, casual: basics.formality === "casual", classic: basics.formality === "classic", formal: basics.formality === "formal", plannerInvolved: basics.plannerInvolved, weatherConcern: basics.weatherConcern, wxLow: basics.weatherConcern === "low", wxMedium: basics.weatherConcern === "medium", wxHigh: basics.weatherConcern === "high", setup, venue, priorities, tentHeavy:
       setup.tentedReception ||
       basics.venueType === "tented_reception_only" ||
       basics.venueType === "backyard" ||
-      basics.venueType === "private_estate",
-    openSetupKeys: countOpenSetup(setup),
-    readinessRisk: computeRisk(setup, venue, basics.weatherConcern),
-    variantSeed,
-  };
+      basics.venueType === "private_estate", openSetupKeys: countOpenSetup(setup), readinessRisk: computeRisk(setup, venue, basics.weatherConcern), variantSeed, };
 }

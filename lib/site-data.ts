@@ -1,166 +1,65 @@
 export const business = {
-  name: "Connecticut Party Rentals",
-  phone: "[INSERT PHONE]",
-  phoneHref: "tel:[INSERT PHONE]",
-  email: "[INSERT EMAIL]",
-  primaryCity: "Hartford",
+  /** Legal / registered name; used in footer, copyright, and structured data. */
+  name: "Connecticut Party Rentals LLC",
+  phone: "203-893-7078",
+  phoneHref: "tel:+12038937078",
+  email: "info@eventrentct.com",
+  /** Public website (matches NEXT_PUBLIC_SITE_URL in production). */
+  websiteUrl: "https://www.ct-partyrentals.com",
+  primaryCity: "Bloomfield",
   state: "Connecticut",
+  /** USPS ZIP (06002) for display + schema.org postalCode. */
+  postalCode: "06002",
   serviceArea: "All of Connecticut and Southern Massachusetts",
-  address: "[INSERT BUSINESS ADDRESS]",
-  /** Shown in copy site-wide; aligns with 80+ year celebration from founding era. */
-  establishedYear: "1946",
-  /** Trust line (header strip + footer); credibility, not the hero brand tagline */
-  celebrationTagline: "Celebrating 80+ years in business",
-  /** Polished hero tagline, oldest in CT + quality / service (see homepage hero) */
+  /** Street line only; paired with primaryCity, state, postalCode in UI and JSON-LD. */
+  address: "79 Old Windsor Rd",
+  /** Shown in copy where a one-line “what we are” helps (Bloomfield home base). */
+  locationTagline: "Party equipment rental in Bloomfield, CT",
+  /** Shown in copy site-wide; celebration line in header + trust strip. */
+  establishedYear: "1946", /** Trust line (header strip + footer); credibility, not the hero brand tagline */
+  celebrationTagline: "Celebrating 50+ years in business.", /** Header gold line under the site name */
   heroBrandTagline:
-    "Connecticut's oldest party rental company. Trusted service since 1946, still family run.",
-  /** Party Packages / tent bundle sales page */
-  partyPackagesTagline: "We set the stage. You steal the show.",
-  /** FAQ page, line under the celebration / trust line */
-  faqPageTagline: "Still hot in tent years",
-  ownership: "Family owned and operated",
-  tentSizeRange: "10x10 to 100x250",
+    "Connecticut's oldest party rental company, trusted since 1946, still family run.", /** Party Packages / tent bundle sales page */
+  partyPackagesTagline: "We set the stage. You steal the show.", /** FAQ page, line under the celebration / trust line */
+  faqPageTagline: "Still hot in tent years", ownership: "Family owned and operated", tentSizeRange: "10x10 to 100x250",
 };
 
-/** Primary header navigation (internal routes). Party guides and FAQ live under Planning, footer, and in-content links—not here. */
+/** Primary header navigation (internal routes). The Event Guest Count Planner lives under `/events` (My event strip), not here. */
 export const headerNavLinks = [
-  { href: "/tents", label: "Tents" },
-  { href: "/planning", label: "Planning" },
-  { href: "/party-packages", label: "Packages" },
-  { href: "/table-chair-rentals", label: "Tables & Chairs" },
-  { href: "/wedding-tent-rentals", label: "Weddings" },
-  { href: "/events", label: "Events" },
-  { href: "/av-games", label: "AV/Games" },
-];
-
-/** Footer “Services” column, includes deep links not shown in the main nav. */
-export const footerServiceLinks = [
-  { href: "/tents", label: "Tent guide" },
-  { href: "/rental-inventory", label: "Browse inventory" },
-  { href: "/tent-rentals", label: "Tent rentals" },
-  { href: "/tent-rentals/jobsite-coverage", label: "Jobsite coverage" },
-  { href: "/table-chair-rentals", label: "Tables & chairs" },
-  { href: "/party-packages", label: "Party packages" },
-  { href: "/wedding-tent-rentals", label: "Weddings" },
-  { href: "/events", label: "Events" },
-  { href: "/corporate-event-rentals", label: "Corporate events" },
-  { href: "/av-games", label: "AV/Games" },
-  { href: "/yard-games", label: "Yard games" },
-  { href: "/bounce-houses", label: "Bounce houses" },
-  { href: "/party-guides", label: "Party guides" },
-  { href: "/guides", label: "Tent & event guides" },
-  { href: "/how-it-works", label: "How delivery & setup works" },
-];
+  { href: "/tents", label: "Tents" }, { href: "/planning", label: "Planning" }, { href: "/party-packages", label: "Packages" }, { href: "/table-chair-rentals", label: "Tables & Chairs" }, { href: "/wedding-tent-rentals", label: "Weddings" }, { href: "/events", label: "Events" }, { href: "/av-games", label: "AV/Games" },
+] as const;
 
 export const trustPoints = [
-  "Celebrating 80+ years in business, family owned and operated",
-  "Fast quote turnaround",
-  "Clean equipment prepared for every event",
-  "Delivery, setup, and breakdown handled by our team",
-  "Serving Connecticut and Southern MA",
+  "Celebrating 50+ years in business, family owned and operated", "Fast quote turnaround", "Clean equipment prepared for every event", "Delivery, setup, and breakdown handled by our team", "Serving Connecticut and Southern MA",
 ];
 
 export const services = [
   {
-    title: "Tent Rentals",
-    description: "Frame tents, pole tents, and sailcloth for outdoor events from backyards to full receptions.",
-    href: "/tents",
-  },
-  {
-    title: "Table & Chair Rentals",
-    description: "Round, banquet, and cocktail tables with ceremony, dining, and lounge chair options.",
-    href: "/table-chair-rentals",
-  },
-  {
-    title: "Wedding Tent Rentals",
-    description: "Tent layouts, lighting, and sidewalls planned so your wedding day runs smoothly outside.",
-    href: "/wedding-tent-rentals",
-  },
-  {
-    title: "Events & occasions",
-    description:
-      "Corporate picnics, schools, graduations, festivals, and community programs. Start with the events hub, then open occasion guides or corporate rentals.",
-    href: "/events",
-  },
-  {
-    title: "Games & inflatables",
-    description: "Yard games and bounce houses coordinated with tents, tables, and your run of show.",
-    href: "/av-games",
-  },
+    title: "Tent Rentals", description: "Frame tents, pole tents, and sailcloth for outdoor events from backyards to full receptions.", href: "/tents", }, {
+    title: "Table & Chair Rentals", description: "Round, banquet, and cocktail tables with ceremony, dining, and lounge chair options.", href: "/table-chair-rentals", }, {
+    title: "Wedding Tent Rentals", description: "Tent layouts, lighting, and sidewalls planned so your wedding day runs smoothly outside.", href: "/wedding-tent-rentals", }, {
+    title: "Events & occasions", description:
+      "Corporate picnics, schools, graduations, festivals, and community programs. Start with the events hub, then open occasion guides or corporate rentals.", href: "/events", }, {
+    title: "Games & inflatables", description: "Yard games and bounce houses coordinated with tents, tables, and your run of show.", href: "/av-games", },
 ];
 
 /** Homepage “event types” row, each item links to a relevant service, occasion guide, or FAQ for internal linking. */
 export const eventTypeLinks: { label: string; href: string }[] = [
-  { label: "Weddings", href: "/wedding-tent-rentals" },
-  { label: "Graduation parties", href: "/events/graduation-parties" },
-  { label: "Festivals & fairs", href: "/events/festivals-fairs" },
-  { label: "Fundraisers & galas", href: "/events/fundraisers-galas" },
-  { label: "Community & school events", href: "/events/community-school-town" },
-  { label: "Sweet 16 parties", href: "/events/sweet-16-parties" },
-  { label: "Quinceañeras", href: "/events/quinceaneras" },
-  { label: "Tailgates", href: "/events/tailgating" },
-  { label: "Corporate & events", href: "/events" },
-  { label: "Backyard parties", href: "/planning#backyard-parties" },
-];
-
-/** Footer and cross-page links to occasion landing pages (not shown in main header nav). */
-export const eventOccasionGuideLinks: { label: string; href: string }[] = [
-  { label: "Backyard parties", href: "/planning#backyard-parties" },
-  { label: "Community & school", href: "/events/community-school-town" },
-  { label: "Festivals & fairs", href: "/events/festivals-fairs" },
-  { label: "Graduation parties", href: "/events/graduation-parties" },
-  { label: "Sweet 16", href: "/events/sweet-16-parties" },
-  { label: "Quinceañeras", href: "/events/quinceaneras" },
-  { label: "Tailgating", href: "/events/tailgating" },
-  { label: "Fundraisers & galas", href: "/events/fundraisers-galas" },
+  { label: "Weddings", href: "/wedding-tent-rentals" }, { label: "Graduation parties", href: "/events/graduation-parties" }, { label: "Festivals & fairs", href: "/events/festivals-fairs" }, { label: "Fundraisers & galas", href: "/events/fundraisers-galas" }, { label: "Community & school events", href: "/events/community-school-town" }, { label: "Sweet 16 parties", href: "/events/sweet-16-parties" }, { label: "Quinceañeras", href: "/events/quinceaneras" }, { label: "Tailgates", href: "/events/tailgating" }, { label: "Corporate & events", href: "/events" }, { label: "Backyard parties", href: "/planning#backyard-parties" },
 ];
 
 export const townList = [
-  "Hartford",
-  "West Hartford",
-  "Farmington",
-  "Avon",
-  "Simsbury",
-  "Glastonbury",
-  "Wethersfield",
-  "Rocky Hill",
-  "Newington",
-  "Berlin",
-  "Southington",
-  "Plainville",
-  "Bristol",
-  "Manchester",
-  "South Windsor",
-  "East Hartford",
-  "Bloomfield",
-  "Windsor",
-  "Cheshire",
-  "Middletown",
-  "Cromwell",
-  "Meriden",
-  "Wallingford",
-  "New Britain",
+  "Hartford", "West Hartford", "Farmington", "Avon", "Simsbury", "Glastonbury", "Wethersfield", "Rocky Hill", "Newington", "Berlin", "Southington", "Plainville", "Bristol", "Manchester", "South Windsor", "East Hartford", "Bloomfield", "Windsor", "Cheshire", "Middletown", "Cromwell", "Meriden", "Wallingford", "New Britain",
 ];
 
 export const testimonials = [
   {
-    name: "Alyssa R.",
-    quote:
-      "The team delivered exactly on schedule, the tent and chairs looked immaculate, and setup was stress-free from start to finish.",
-    event: "Wedding reception in West Hartford",
-  },
-  {
-    name: "Daniel M.",
-    quote:
-      "Communication was fast, clear, and professional. Our corporate summer event looked polished and stayed on timeline.",
-    event: "Corporate picnic in Farmington",
-  },
-  {
-    name: "Priya S.",
-    quote:
-      "We needed a weather backup plan and they handled every detail. Sidewalls, lighting, and layout were all dialed in.",
-    event: "Graduation party in Glastonbury",
-  },
+    name: "Alyssa R.", quote:
+      "The team delivered exactly on schedule, the tent and chairs looked immaculate, and setup was stress-free from start to finish.", event: "Wedding reception in West Hartford", }, {
+    name: "Daniel M.", quote:
+      "Communication was fast, clear, and professional. Our corporate summer event looked polished and stayed on timeline.", event: "Corporate picnic in Farmington", }, {
+    name: "Priya S.", quote:
+      "We needed a weather backup plan and they handled every detail. Sidewalls, lighting, and layout were all dialed in.", event: "Graduation party in Glastonbury", },
 ];
 
 export type FaqItem = {
@@ -172,98 +71,50 @@ export type FaqItem = {
 /** FAQ page content + FAQPage JSON-LD; questions mirror what planners ask. */
 export const faqItems: FaqItem[] = [
   {
-    id: "tent-size",
-    question: "What size tent do I need for my event?",
-    answer:
-      "It depends how you use the space, not just a chart on a wall. We look at seated versus standing, dance floor, buffet or bar lines, head table, DJ or band, and how wide the aisles need to be so people and servers are not bumping chairs all night. We walk through your Connecticut venue with you, then pick tent size and style (frame, pole, or sailcloth) that fits. If your count moves before the event, we tweak the plan with you.",
-  },
-  {
-    id: "tent-capacity",
-    question: "How many guests fit under a tent?",
-    answer:
-      "Rough rule of thumb: about one guest per ten to twelve square feet under the tent when people sit at tables (tighter if it is ceremony rows, more if it is lounge or mixed seating). Dance floors, bars, stages, and paths for staff eat space fast, so do not forget to add that in. We turn your headcount and how you run the event into a real footprint, not just a number on paper.",
-  },
-  {
-    id: "rain-plan",
-    question: "What happens if it rains?",
-    answer:
-      "We plan for weather before the week of your event. That can mean sidewalls, strategic wall placement, anchoring that suits wind exposure, and layout tweaks so critical areas stay dry. For weddings and timed programs, we talk through a sensible rain backup so you are not making last-minute calls in a panic. Clear window walls and solid walls can be combined so you keep light and views where you want them and block wind where you need it.",
-  },
-  {
-    id: "delivery-setup",
-    question: "Do you deliver and set up, and when will you arrive?",
-    answer:
-      "Yes. Our crew delivers, installs, and returns for takedown so you are not coordinating rentals on event day. We schedule arrival within an agreed window and confirm timing ahead of your date so vendors and venues know what to expect. Access paths, parking, and surface type all affect schedule; we bake that into the plan when you book.",
-  },
-  {
-    id: "pricing",
-    question: "How does pricing work?",
-    answer:
-      "Your quote lists what you are paying for: date and place, tent size and style, add-ons like sidewalls and lights, tables and chairs, labor to set up and take down, and anything odd about the site (stairs, long carries, anchoring on pavement). You see line items, not one blob of a price, so you can compare and ask questions. We would rather hear them now than on the morning of your event.",
-  },
-  {
-    id: "reserve-ahead",
-    question: "How far in advance should I reserve?",
-    answer:
-      "Prime spring and summer weekends, holiday periods, and popular wedding dates fill first across Connecticut. Once your date and venue are firm, reach out for a quote; we will tell you honestly if inventory is tight. Last-minute requests sometimes work, but early booking keeps your first choice of tent style and size.",
-  },
-  {
-    id: "booking-process",
-    question: "How do I book a tent rental?",
-    answer:
-      "Start with a quote: share your date, town or venue, guest count, and event type. We respond with recommendations, options, and pricing. When you are ready to move forward, we confirm equipment, schedule delivery and installation, and walk through surface conditions and weather considerations. You always know the next step, no mystery process.",
-  },
-  {
-    id: "hard-surface-anchoring",
-    question: "Can you set up a tent on a driveway, tennis court, or pavement?",
-    answer:
-      "Often yes. When stakes cannot go into the ground, we use weighted ballasts or other approved anchoring so the tent stays secure without damaging the surface. Tennis courts, parking areas, and patios are common for corporate and private events; we assess access, slope, and load-in distance during quoting. See our Tent Rentals page for a visual of window sidewalls and ballast setup on a hard surface.",
-  },
-  {
-    id: "lawn-utilities",
-    question: "What should I know about lawn staking and underground utilities?",
-    answer:
-      "For grass installs we typically stake for stability. Clear the area of furniture, hoses, and debris before we arrive; freshly mowed, level lawn helps with a clean setup. If you have irrigation, septic, or buried electric, tell us early so we can position stakes safely, when in doubt, locate utility lines before event day. Steep slopes or soft ground may change anchoring; we address that in planning.",
-  },
-  {
-    id: "tables-without-tent",
-    question: "Can I rent tables and chairs without a tent?",
-    answer:
-      "Yes. Many hosts order tables, chairs, or both for indoor venues, uncovered patios, or events where a tent is not needed. Delivery and pickup scheduling follow the same professional process as tent jobs across Hartford County and Connecticut service towns.",
-  },
-  {
-    id: "backyard-party",
-    question: "Do you rent tents for backyard parties in Connecticut?",
-    answer:
-      "Yes. We review access for our truck and crew, staking vs. ballasting, neighbor-friendly timing, and how guests will move from house to tent. Backyard parties are a staple for us, whether it is a birthday, anniversary, or casual celebration, so the setup feels intentional, not improvised.",
-  },
-  {
-    id: "graduation-events",
-    question: "Can you help with graduation tent rentals and guest flow?",
-    answer:
-      "We map graduation parties around arrival, food lines, seating, speeches, and weather backup. From Farmington to Glastonbury and across CT, we align tent size and inventory with your headcount and schedule so the day stays organized when emotions (and guest counts) run high.",
-  },
-  {
-    id: "corporate-school",
-    question: "Do you support corporate events, schools, and community programs?",
-    answer:
-      "Yes. We align with load-in windows, run-of-show constraints, and presentation standards for company events, school functions, nonprofits, and municipal programs. Repeatable layouts, clear communication with your facilities contact, and dependable teardown timing are built into how we work.",
-  },
+    id: "tent-size", question: "What size tent do I need for my event?", answer:
+      "It depends how you use the space, not just a chart on a wall. We look at seated versus standing, dance floor, buffet or bar lines, head table, DJ or band, and how wide the aisles need to be so people and servers are not bumping chairs all night. We walk through your Connecticut venue with you, then pick tent size and style (frame, pole, or sailcloth) that fits. If your count moves before the event, we tweak the plan with you.", }, {
+    id: "tent-capacity", question: "How many guests fit under a tent?", answer:
+      "Rough rule of thumb: about one guest per ten to twelve square feet under the tent when people sit at tables (tighter if it is ceremony rows, more if it is lounge or mixed seating). Dance floors, bars, stages, and paths for staff eat space fast, so do not forget to add that in. We turn your headcount and how you run the event into a real footprint, not just a number on paper.", }, {
+    id: "rain-plan", question: "What happens if it rains?", answer:
+      "We plan for weather before the week of your event. That can mean sidewalls, strategic wall placement, anchoring that suits wind exposure, and layout tweaks so critical areas stay dry. For weddings and timed programs, we talk through a sensible rain backup so you are not making last-minute calls in a panic. Clear window walls and solid walls can be combined so you keep light and views where you want them and block wind where you need it.", }, {
+    id: "delivery-setup", question: "Do you deliver and set up, and when will you arrive?", answer:
+      "Yes. Our crew delivers, installs, and returns for takedown so you are not coordinating rentals on event day. We schedule arrival within an agreed window and confirm timing ahead of your date so vendors and venues know what to expect. Access paths, parking, and surface type all affect schedule; we bake that into the plan when you book.", }, {
+    id: "pricing", question: "How does pricing work?", answer:
+      "Your quote lists what you are paying for: date and place, tent size and style, add-ons like sidewalls and lights, tables and chairs, labor to set up and take down, and anything odd about the site (stairs, long carries, anchoring on pavement). You see line items, not one blob of a price, so you can compare and ask questions. We would rather hear them now than on the morning of your event.", }, {
+    id: "reserve-ahead", question: "How far in advance should I reserve?", answer:
+      "Prime spring and summer weekends, holiday periods, and popular wedding dates fill first across Connecticut. Once your date and venue are firm, reach out for a quote; we will tell you honestly if inventory is tight. Last-minute requests sometimes work, but early booking keeps your first choice of tent style and size.", }, {
+    id: "booking-process", question: "How do I book a tent rental?", answer:
+      "Start with a quote: share your date, town or venue, guest count, and event type. We respond with recommendations, options, and pricing. When you are ready to move forward, we confirm equipment, schedule delivery and installation, and walk through surface conditions and weather considerations. You always know the next step, no mystery process.", }, {
+    id: "hard-surface-anchoring", question: "Can you set up a tent on a driveway, tennis court, or pavement?", answer:
+      "Often yes. When stakes cannot go into the ground, we use weighted ballasts or other approved anchoring so the tent stays secure without damaging the surface. Tennis courts, parking areas, and patios are common for corporate and private events; we assess access, slope, and load-in distance during quoting. See our Tent Rentals page for a visual of window sidewalls and ballast setup on a hard surface.", }, {
+    id: "lawn-utilities", question: "What should I know about lawn staking and underground utilities?", answer:
+      "For grass installs we typically stake for stability. Clear the area of furniture, hoses, and debris before we arrive; freshly mowed, level lawn helps with a clean setup. If you have irrigation, septic, or buried electric, tell us early so we can position stakes safely, when in doubt, locate utility lines before event day. Steep slopes or soft ground may change anchoring; we address that in planning.", }, {
+    id: "tables-without-tent", question: "Can I rent tables and chairs without a tent?", answer:
+      "Yes. Many hosts order tables, chairs, or both for indoor venues, uncovered patios, or events where a tent is not needed. Delivery and pickup scheduling follow the same professional process as tent jobs across Hartford County and Connecticut service towns.", }, {
+    id: "backyard-party", question: "Do you rent tents for backyard parties in Connecticut?", answer:
+      "Yes. We review access for our truck and crew, staking vs. ballasting, neighbor-friendly timing, and how guests will move from house to tent. Backyard parties are a staple for us, whether it is a birthday, anniversary, or casual celebration, so the setup feels intentional, not improvised.", }, {
+    id: "graduation-events", question: "Can you help with graduation tent rentals and guest flow?", answer:
+      "We map graduation parties around arrival, food lines, seating, speeches, and weather backup. From Farmington to Glastonbury and across CT, we align tent size and inventory with your headcount and schedule so the day stays organized when emotions (and guest counts) run high.", }, {
+    id: "corporate-school", question: "Do you support corporate events, schools, and community programs?", answer:
+      "Yes. We align with load-in windows, run-of-show constraints, and presentation standards for company events, school functions, nonprofits, and municipal programs. Repeatable layouts, clear communication with your facilities contact, and dependable teardown timing are built into how we work.", },
 ];
 
 /** Only includes files present under `public/images/` (avoids broken gallery thumbnails). */
 export const galleryItems = [
-  { src: "/images/wedding-tent-hero.png", alt: "Outdoor wedding reception under a white frame tent with round tables and elegant table settings" },
-  {
-    src: "/images/tent-sidewalls-window-walls-tennis-court.png",
-    alt: "Large white event tent with clear window sidewalls and weighted ballasts installed on a green tennis court in Farmington, CT",
-  },
-  {
-    src: "/images/farmington-tent-rental-lakeside-event-tent.png",
-    alt: "Farmington, CT lakeside event tent setup with open sides and scenic waterfront views",
-  },
-  {
-    src: "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
-    alt: "Elegant outdoor wedding tent rental in Wethersfield, CT with paper lantern lighting and marquee reception setup on the lawn",
-  },
+  { src: "/images/wedding-tent-hero.png", alt: "Outdoor wedding reception under a white frame tent with round tables and elegant table settings" }, {
+    src: "/images/home-hero-panoramic-tent.jpg", alt: "Wide white Connecticut event tent on grass with guest tables, string lights, and open sides for backyard or community gatherings", }, {
+    src: "/images/tent-sidewalls-window-walls-tennis-court.png", alt: "Large white event tent with clear window sidewalls and weighted ballasts installed on a green tennis court in Farmington, CT", }, {
+    src: "/images/farmington-tent-rental-lakeside-event-tent.png", alt: "Farmington, CT lakeside event tent setup with open sides and scenic waterfront views", }, {
+    src: "/images/wethersfield-ct-party-tent-rental-wedding-reception.png", alt: "Elegant outdoor wedding tent rental in Wethersfield, CT with paper lantern lighting and marquee reception setup on the lawn", }, {
+    src: "/images/service-areas/glastonbury-ct-frame-tent-30x60.png", alt: "Large white frame tent on grass for an outdoor event in the Glastonbury, Connecticut area", }, {
+    src: "/images/service-areas/glastonbury-ct-navitrac-tent-30x30.png", alt: "Navitrac style frame tent on grass for an outdoor gathering in the Glastonbury, Connecticut area", }, {
+    src: "/images/service-areas/middletown-ct-frame-tent-20x40.png", alt: "White frame tent on a lawn for an outdoor event in the Middletown, Connecticut area", }, {
+    src: "/images/service-areas/cheshire-ct-frame-tent-20x40.png", alt: "White frame tent on a residential lawn in the Cheshire, Connecticut area", },
+  { src: "/images/gallery/ct-frame-tent-16x16.png", alt: "Compact 16x16 white frame tent setup for a Connecticut outdoor event footprint", }, {
+    src: "/images/gallery/ct-fiesta-frame-tent-20x20.png", alt: "20x20 fiesta-style frame tent setup for a Connecticut backyard or neighborhood gathering", }, {
+    src: "/images/gallery/ct-fiesta-frame-tent-20x40.png", alt: "20x40 fiesta-style frame tent layout for dining and service flow at a Connecticut outdoor event", }, {
+    src: "/images/gallery/ct-fiesta-frame-tent-30x30.png", alt: "30x30 fiesta-style frame tent setup suitable for Connecticut receptions and private outdoor events", }, {
+    src: "/images/white-folding-chair-outdoor-event-ct.jpg", alt: "White folding chair on a lawn at an outdoor Connecticut reception with round tables and string lights in the background", }, {
+    src: "/images/60-inch-round-wood-table-outdoor-event-ct.jpg", alt: "60-inch wood-grain round folding table on a lawn with centerpiece and string lights for a Connecticut outdoor event", }, {
+    src: "/images/gallery/ct-event-tent-professional-setup.png", alt: "Professional white frame event tent exterior on grass for a Connecticut outdoor gathering", },
 ];

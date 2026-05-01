@@ -10,7 +10,7 @@ export function ModeSelection({ onSelect }: { onSelect: (mode: WeddingMode) => v
         How would you like to plan your wedding?
       </h2>
       <p className="mx-auto mt-3 max-w-xl text-center text-base leading-relaxed text-stone-600">
-        Built for lawns, estates, and tented receptions—not a generic mega-list. Pick a depth; your answers save on this device.
+        Built for lawns, estates, and tented receptions, not a generic mega-list. Pick a depth; your answers save on this device.
       </p>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
@@ -35,7 +35,7 @@ export function ModeSelection({ onSelect }: { onSelect: (mode: WeddingMode) => v
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-900/75">Full planner-style</span>
           <span className="mt-2 text-xl font-semibold text-stone-900 [font-family:var(--font-display)]">Detailed path</span>
           <span className="mt-2 text-sm leading-relaxed text-stone-600">
-            Four steps and a fuller checklist: timeline, vendors, rentals, and site logistics—still grounded in outdoor and tent reality.
+            Four steps and a fuller checklist: timeline, vendors, rentals, and site logistics, still grounded in outdoor and tent reality.
           </span>
           <span className="mt-6 text-sm font-semibold text-emerald-900/85 group-hover:underline">Start detailed →</span>
         </button>

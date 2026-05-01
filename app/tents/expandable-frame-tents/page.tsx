@@ -5,10 +5,8 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
 export const metadata: Metadata = createPageMetadata({
-  title: `Expandable Modular Frame Tents | Connecticut | ${business.name}`,
-  description:
-    "Expandable modular frame tent systems in Connecticut, scalable footprints, gutters, and connectors for growing layouts. Inventory-aware positioning with Connecticut Party Rentals.",
-  path: "/tents/expandable-frame-tents",
+  title: `Expandable Modular Frame Tents | Connecticut | ${business.name}`, description:
+    "Expandable modular frame tent systems in Connecticut, scalable footprints, gutters, and connectors for growing layouts. Inventory-aware positioning with Connecticut Party Rentals.", path: "/tents/expandable-frame-tents",
 });
 
 export default function ExpandableFrameTentsPage() {
@@ -16,10 +14,7 @@ export default function ExpandableFrameTentsPage() {
     <>
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Tents", path: "/tents" },
-          { name: "Expandable frame tents", path: "/tents/expandable-frame-tents" },
-        ]}
+          { name: "Home", path: "/" }, { name: "Tents", path: "/tents" }, { name: "Expandable frame tents", path: "/tents/expandable-frame-tents" }, ]}
       />
       <TentExpandablePage />
     </>

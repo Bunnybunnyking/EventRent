@@ -1,4 +1,4 @@
-/** Deterministic “A/B” style picks from inputs—no Math.random. */
+/** Deterministic “A/B” style picks from inputs, no Math.random. */
 export function stableHash(input: string): number {
   let h = 2166136261;
   for (let i = 0; i < input.length; i++) {

@@ -1,7 +1,5 @@
 import {
-  WEDDING_CHECKLIST_STORAGE_KEY,
-  WEDDING_CHECKLIST_STORAGE_KEY_LEGACY,
-} from "@/features/wedding-checklist/lib/persistence/constants";
+  WEDDING_CHECKLIST_STORAGE_KEY, WEDDING_CHECKLIST_STORAGE_KEY_LEGACY, } from "@/features/wedding-checklist/lib/persistence/constants";
 import { migrateRawDraftToV2, sessionToDraftV2 } from "@/features/wedding-checklist/lib/persistence/migrate-draft";
 import type { WeddingChecklistDraftV2 } from "@/features/wedding-checklist/types/persistence";
 import type { WeddingChecklistSessionState } from "@/features/wedding-checklist/types/persistence";
@@ -45,12 +43,7 @@ export function loadDraftFromStorage(): WeddingChecklistDraftV2 | null {
 
 function sessionFromDraft(d: WeddingChecklistDraftV2): WeddingChecklistSessionState {
   return {
-    form: d.form,
-    mode: d.mode,
-    stepIndex: d.stepIndex,
-    furthestStep: d.furthestStep,
-    checkedLineIds: d.checkedLineIds,
-  };
+    form: d.form, mode: d.mode, stepIndex: d.stepIndex, furthestStep: d.furthestStep, checkedLineIds: d.checkedLineIds, };
 }
 
 /** Persist current session; overwrites previous draft. */

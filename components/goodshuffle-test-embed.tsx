@@ -22,8 +22,8 @@ export function GoodshuffleTestEmbed({ publicWebsiteKey, variant = "test" }: Pro
   }
 
   return (
-    <div className={variant === "inline" ? "space-y-4" : "space-y-6"}>
-      <GoodshuffleRuntime dataUrl={dataUrl}>
+    <GoodshuffleRuntime dataUrl={dataUrl}>
+      <div className={variant === "inline" ? "space-y-4" : "space-y-6"}>
         <div
           className={
             variant === "inline"
@@ -33,12 +33,13 @@ export function GoodshuffleTestEmbed({ publicWebsiteKey, variant = "test" }: Pro
         >
           {variant === "test" ? (
             <p className="mb-3 text-sm text-neutral-600">
-              Test embed from Goodshuffle docs — Step 2 (<code className="rounded bg-neutral-100 px-1">gspro-item-gallery</code>).
+              Test embed from Goodshuffle docs, Step 2 (<code className="rounded bg-neutral-100 px-1">gspro-item-gallery</code>).
+              Scripts load from this wrapper when <code className="rounded bg-neutral-100 px-1">NEXT_PUBLIC_GOODSHUFFLE_PUBLIC_WEBSITE_KEY</code> is set.
             </p>
           ) : null}
           <gspro-item-gallery />
         </div>
-      </GoodshuffleRuntime>
-    </div>
+      </div>
+    </GoodshuffleRuntime>
   );
 }

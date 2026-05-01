@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { bookNowSectionClass } from "@/lib/cta-styles";
+import { mobileTextLinkClass } from "@/lib/mobile-booking";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { CTASection, SectionHeading } from "@/components/sections";
 import { BreadcrumbListSchema, ServiceSchema } from "@/components/schema";
@@ -7,91 +8,41 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
 export const metadata = createPageMetadata({
-  title: `Yard Game Rentals Connecticut | Cornhole, Giant Jenga & More | ${business.primaryCity}`,
-  description:
-    "Rent yard games for Connecticut backyard parties, graduations, and corporate events: cornhole, giant Jenga, Connect 4, KanJam, and more. Delivery and setup available. Bundle with tents and party packages.",
-  path: "/yard-games",
-});
+  title: `Yard Game Rentals Connecticut | Cornhole, Giant Jenga & More | ${business.primaryCity}`, description:
+    "Rent yard games for Connecticut backyard parties, graduations, and corporate events: cornhole, giant Jenga, Connect 4, KanJam, and more. Delivery and setup available. Bundle with tents and party packages.", path: "/yard-games", });
 
 const popularGames = [
-  { name: "Cornhole", blurb: "Classic tailgate favorite, easy to learn, fun for all ages." },
-  { name: "Giant Jenga", blurb: "Stack-and-pull tension that draws a crowd at any backyard." },
-  { name: "Connect 4", blurb: "Supersized strategy, great for kids and adults side by side." },
-  { name: "KanJam", blurb: "Fast-paced disc game for teams that want a little competition." },
-  { name: "Ladder Toss", blurb: "Lightweight setup, perfect for grass or pavement." },
-  { name: "Bocce", blurb: "Lawn game elegance for mingling and casual tournaments." },
-  { name: "Spikeball", blurb: "High-energy roundnet for active groups with space to move." },
-  { name: "Giant Tic-Tac-Toe", blurb: "Quick rounds, photo-friendly, works for mixed age groups." },
-] as const;
+  { name: "Cornhole", blurb: "Classic tailgate favorite, easy to learn, fun for all ages." }, { name: "Giant Jenga", blurb: "Stack-and-pull tension that draws a crowd at any backyard." }, { name: "Connect 4", blurb: "Supersized strategy, great for kids and adults side by side." }, { name: "KanJam", blurb: "Fast-paced disc game for teams that want a little competition." }, { name: "Ladder Toss", blurb: "Lightweight setup, perfect for grass or pavement." }, { name: "Bocce", blurb: "Lawn game elegance for mingling and casual tournaments." }, { name: "Spikeball", blurb: "High-energy roundnet for active groups with space to move." }, { name: "Giant Tic-Tac-Toe", blurb: "Quick rounds, photo-friendly, works for mixed age groups." }, ] as const;
 
 const packages = [
   {
-    title: "Backyard Party Bundle",
-    body: "Curated mix of crowd-pleasers sized for typical residential yards, great for birthdays, anniversaries, and casual cookouts.",
-  },
-  {
-    title: "Graduation Bundle",
-    body: "Games that keep guests rotating while speeches and food run on a schedule, paired layouts we can align with tent and table plans.",
-  },
-  {
-    title: "Corporate Team Games",
-    body: "Low-friction icebreakers and light competition for company picnics and outdoor all-hands, delivery and pickup windows that respect your campus or park rules.",
-  },
-] as const;
+    title: "Backyard Party Bundle", body: "Curated mix of crowd-pleasers sized for typical residential yards, great for birthdays, anniversaries, and casual cookouts.", }, {
+    title: "Graduation Bundle", body: "Games that keep guests rotating while speeches and food run on a schedule, paired layouts we can align with tent and table plans.", }, {
+    title: "Corporate Team Games", body: "Low-friction icebreakers and light competition for company picnics and outdoor all-hands, delivery and pickup windows that respect your campus or park rules.", }, ] as const;
 
 const steps = [
   {
-    title: "Tell us your date & space",
-    body: "Share town, guest count, surface type (grass, patio, parking), and whether you already booked tents or tables.",
-  },
-  {
-    title: "We build a game lineup",
-    body: "We recommend titles that fit your footprint, age mix, and weather backup, no guesswork on what travels well in Connecticut.",
-  },
-  {
-    title: "Delivery, setup & pickup",
-    body: "Our team stages games for flow and safety, then returns on the agreed window so you are not wrestling inventory after the event.",
-  },
-] as const;
+    title: "Tell us your date & space", body: "Share town, guest count, surface type (grass, patio, parking), and whether you already booked tents or tables.", }, {
+    title: "We build a game lineup", body: "We recommend titles that fit your footprint, age mix, and weather backup, no guesswork on what travels well in Connecticut.", }, {
+    title: "Delivery, setup & pickup", body: "Our team stages games for flow and safety, then returns on the agreed window so you are not wrestling inventory after the event.", }, ] as const;
 
 const yardGamesFaq = [
   {
-    question: "What towns do you deliver yard games to?",
-    answer:
-      "We serve hosts across Connecticut and into Southern Massachusetts on many dates. Share your venue or home address during quoting so we can confirm routing and timing.",
-  },
-  {
-    question: "Do you set up the games for us?",
-    answer:
-      "Yes. We place and level games for safe play, adjust for surface conditions when possible, and strike them on pickup, so you are not assembling giant sets during your party.",
-  },
-  {
-    question: "What if the weather turns?",
-    answer:
-      "Outdoor games need dry surfaces and safe wind conditions. We help you plan a sensible rain backup, often paired with a tent rental, and adjust timing if a short weather window is forecast.",
-  },
-  {
-    question: "How is pricing structured?",
-    answer:
-      "Quotes reflect game mix, quantity, delivery distance, labor for setup and pickup, and add-ons like tents, tables, or inflatables. You get clear line items before you commit.",
-  },
-  {
-    question: "What about damage or missing pieces?",
-    answer:
-      "Normal wear is expected; lost or damaged components may be billed per our rental agreement. We inspect sets between events so you start with complete, working games.",
-  },
-];
+    question: "What towns do you deliver yard games to?", answer:
+      "We serve hosts across Connecticut and into Southern Massachusetts on many dates. Share your venue or home address during quoting so we can confirm routing and timing.", }, {
+    question: "Do you set up the games for us?", answer:
+      "Yes. We place and level games for safe play, adjust for surface conditions when possible, and strike them on pickup, so you are not assembling giant sets during your party.", }, {
+    question: "What if the weather turns?", answer:
+      "Outdoor games need dry surfaces and safe wind conditions. We help you plan a sensible rain backup, often paired with a tent rental, and adjust timing if a short weather window is forecast.", }, {
+    question: "How is pricing structured?", answer:
+      "Quotes reflect game mix, quantity, delivery distance, labor for setup and pickup, and add-ons like tents, tables, or inflatables. You get clear line items before you commit.", }, {
+    question: "What about damage or missing pieces?", answer:
+      "Normal wear is expected; lost or damaged components may be billed per our rental agreement. We inspect sets between events so you start with complete, working games.", }, ];
 
 const testimonials = [
   {
-    quote: "Cornhole and giant Jenga were the hit of our block party, setup was fast and the crew was professional.",
-    name: "Host placeholder, Hartford area",
-  },
-  {
-    quote: "We bundled games with a tent for a graduation cookout. One quote, one schedule, zero stress.",
-    name: "Host placeholder, Farmington area",
-  },
-] as const;
+    quote: "Cornhole and giant Jenga were the hit of our block party, setup was fast and the crew was professional.", name: "Host placeholder, Hartford area", }, {
+    quote: "We bundled games with a tent for a graduation cookout. One quote, one schedule, zero stress.", name: "Host placeholder, Farmington area", }, ] as const;
 
 export default function YardGamesPage() {
   return (
@@ -103,9 +54,7 @@ export default function YardGamesPage() {
       />
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Yard games", path: "/yard-games" },
-        ]}
+          { name: "Home", path: "/" }, { name: "Yard games", path: "/yard-games" }, ]}
       />
 
       <section className="border-b border-stone-200/80 bg-[#f7f5f1] py-10 sm:py-14">
@@ -117,16 +66,20 @@ export default function YardGamesPage() {
           <p className="mt-4 max-w-2xl text-lg text-stone-600">
             Elevate backyard parties, graduations, and team events with professional-grade yard games, delivered and staged so your guests spend time playing, not waiting.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center sm:inline-flex`}>
+              <span className="md:hidden">Get a Fast Quote</span>
+              <span className="hidden md:inline">Book Consultation</span>
+            </Link>
             <a
               href="#popular-yard-games"
-              className="rounded-full bg-[#1d2124] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#131517]"
+              className="hidden rounded-full bg-[#1d2124] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#131517] sm:inline-flex"
             >
               Browse Games
             </a>
-            <Link href="/contact#quote" className={bookNowSectionClass}>
-              Book Now
-            </Link>
+            <a href="#popular-yard-games" className={`${mobileTextLinkClass} sm:hidden`}>
+              Browse popular games →
+            </a>
           </div>
           <p className="mt-6 text-sm text-stone-600">
             Need shade or seating too? Explore{" "}

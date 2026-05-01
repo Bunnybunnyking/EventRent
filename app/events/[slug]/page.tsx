@@ -18,11 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = getEventLanding(slug);
   if (!content) return {};
   return createPageMetadata({
-    title: content.seoTitle,
-    description: content.metaDescription,
-    path: `/events/${slug}`,
-    ogImage: content.heroImage,
-  });
+    title: content.seoTitle, description: content.metaDescription, path: `/events/${slug}`, ogImage: content.heroImage, });
 }
 
 export default async function EventLandingPage({ params }: Props) {
@@ -40,9 +36,7 @@ export default async function EventLandingPage({ params }: Props) {
       <FAQSchemaItems items={content.faq} />
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: content.h1, path: `/events/${slug}` },
-        ]}
+          { name: "Home", path: "/" }, { name: content.h1, path: `/events/${slug}` }, ]}
       />
       <EventLandingTemplate content={content} />
     </>

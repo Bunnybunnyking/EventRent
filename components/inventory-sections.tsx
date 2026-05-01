@@ -2,10 +2,7 @@ import Link from "next/link";
 import { bookNowSectionClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 import {
-  inventoryDisclaimer,
-  inventoryOverviewGroups,
-  popularRentalCategories,
-  type InventoryCategory,
+  inventoryDisclaimer, inventoryOverviewGroups, popularRentalCategories, type InventoryCategory,
 } from "@/lib/inventory-data";
 import { SectionHeading } from "@/components/sections";
 
@@ -43,22 +40,10 @@ function InventoryCategoryCard({ category }: { category: InventoryCategory }) {
 export function WhatWeOfferSection() {
   const pillars = [
     {
-      title: "Tent rentals & large structures",
-      body: "Frame tents and larger builds for weddings, company events, festivals, and big guest lists. We plan anchoring for grass or pavement so you are not guessing on install day.",
-    },
-    {
-      title: "Tables & chairs at scale",
-      body: "Round, banquet, and high-top tables with plastic and padded chairs for ceremonies, dinner, and buffet lines that actually flow.",
-    },
-    {
-      title: "Dance floors, lighting & siding",
-      body: "Dance floor, lights, and sidewalls so the tent feels like a room, not a last-minute tarp.",
-    },
-    {
-      title: "Yard games, bounce houses & add-ons",
-      body: "Games and bounce houses for backyards, schools, and town events. Bundle with a tent when you want one order and one crew to think about.",
-    },
-  ];
+      title: "Tent rentals & large structures", body: "Frame tents and larger builds for weddings, company events, festivals, and big guest lists. We plan anchoring for grass or pavement so you are not guessing on install day.", }, {
+      title: "Tables & chairs at scale", body: "Round, banquet, and high-top tables with plastic and padded chairs for ceremonies, dinner, and buffet lines that actually flow.", }, {
+      title: "Dance floors, lighting & siding", body: "Dance floor, lights, and sidewalls so the tent feels like a room, not a last-minute tarp.", }, {
+      title: "Yard games, bounce houses & add-ons", body: "Games and bounce houses for backyards, schools, and town events. Bundle with a tent when you want one order and one crew to think about.", }, ];
 
   return (
     <section className="border-y border-stone-200 bg-[#faf8f5] py-16">
@@ -119,7 +104,7 @@ export function InventoryOverviewSection({ compact = false }: { compact?: boolea
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-3 border-t border-stone-100 pt-10">
           <Link href="/contact#quote" className={bookNowSectionClass}>
-            Book Now
+            Book Consultation
           </Link>
           <Link
             href="/wishlist"
@@ -170,11 +155,7 @@ export function PopularRentalCategoriesSection() {
 
 export function QuoteWorkflowSection() {
   const steps = [
-    { title: "Your date & town", text: "Lock the when and where so we can check schedule and routing." },
-    { title: "Guest count & event type", text: "Wedding, company, school, backyard, or festival: each one changes layout and what you rent." },
-    { title: "What you need", text: "Tent size, tables, chairs, lighting, siding, dance floor, games. Tell us what matters most and we help with the rest." },
-    { title: "Custom quote", text: "You receive a clear line-item plan you can adjust before we reserve gear for your day." },
-  ];
+    { title: "Your date & town", text: "Lock the when and where so we can check schedule and routing." }, { title: "Guest count & event type", text: "Wedding, company, school, backyard, or festival: each one changes layout and what you rent." }, { title: "What you need", text: "Tent size, tables, chairs, lighting, siding, dance floor, games. Tell us what matters most and we help with the rest." }, { title: "Custom quote", text: "You receive a clear line-item plan you can adjust before we reserve gear for your day." }, ];
 
   return (
     <section className="bg-white py-16">
@@ -202,7 +183,7 @@ export function QuoteWorkflowSection() {
         </ol>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Link href="/contact#quote" className={bookNowSectionClass}>
-            Book Now
+            Book Consultation
           </Link>
           <Link href="/rental-inventory" className="rounded-full border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-800 transition hover:bg-stone-50">
             View full inventory overview

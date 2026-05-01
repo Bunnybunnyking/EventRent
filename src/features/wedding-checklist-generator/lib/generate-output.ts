@@ -18,18 +18,7 @@ export function computeWeddingChecklistResult(inp: WeddingChecklistFormState, mo
     mode === "full" ? buildFullChecklistSections(ctx) : buildQuickChecklistSections(ctx);
 
   return {
-    headline: buildHeadline(ctx),
-    subhead: buildSubhead(ctx),
-    mode,
-    checklistSections,
-    confirmedItems: confirmed,
-    stillToConfirm: still,
-    thingsCouplesForget: selectThingsForget(ctx, mode),
-    recommendedEnhancements: selectEnhancements(ctx, mode),
-    optionalGuestIdeas: selectGuestIdeas(ctx, mode),
-    nextSteps: buildNextSteps(ctx, mode),
-    copyLeads: buildCopyLeads(ctx),
-  };
+    headline: buildHeadline(ctx), subhead: buildSubhead(ctx), mode, checklistSections, confirmedItems: confirmed, stillToConfirm: still, thingsCouplesForget: selectThingsForget(ctx, mode), recommendedEnhancements: selectEnhancements(ctx, mode), optionalGuestIdeas: selectGuestIdeas(ctx, mode), nextSteps: buildNextSteps(ctx, mode), copyLeads: buildCopyLeads(ctx), };
 }
 
 export function formatWeddingChecklistPlainText(result: WeddingChecklistResult): string {
@@ -73,7 +62,7 @@ export function formatWeddingChecklistPlainText(result: WeddingChecklistResult):
     lines.push(result.copyLeads.guestIdeas);
     lines.push("");
   }
-  result.optionalGuestIdeas.forEach((g) => lines.push(`• ${g.title}${g.note ? ` — ${g.note}` : ""}`));
+  result.optionalGuestIdeas.forEach((g) => lines.push(`• ${g.title}${g.note ? `, ${g.note}` : ""}`));
   lines.push("");
   lines.push("=== NEXT STEPS ===");
   result.nextSteps.forEach((n) => lines.push(`• ${n}`));

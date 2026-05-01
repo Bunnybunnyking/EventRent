@@ -4,10 +4,7 @@ import { loadDraftFromStorage } from "@/features/wedding-checklist/lib/persisten
 import { draftToSession } from "@/features/wedding-checklist/lib/persistence/migrate-draft";
 import { parseShareFromSearch, sharePayloadToSession } from "@/features/wedding-checklist/lib/share/wedding-share-payload";
 import type {
-  WeddingChecklistHydrationConflict,
-  WeddingChecklistResolveResult,
-  WeddingChecklistSessionState,
-} from "@/features/wedding-checklist/types/persistence";
+  WeddingChecklistHydrationConflict, WeddingChecklistResolveResult, WeddingChecklistSessionState, } from "@/features/wedding-checklist/types/persistence";
 
 function devLog(...args: unknown[]) {
   if (process.env.NODE_ENV === "development") {
@@ -17,15 +14,7 @@ function devLog(...args: unknown[]) {
 
 function sessionSignature(s: WeddingChecklistSessionState): string {
   return JSON.stringify({
-    m: s.mode,
-    si: s.stepIndex,
-    fs: s.furthestStep,
-    basics: s.form.basics,
-    setup: s.form.setup,
-    venue: s.form.venue,
-    priorities: s.form.priorities,
-    ch: [...s.checkedLineIds].sort(),
-  });
+    m: s.mode, si: s.stepIndex, fs: s.furthestStep, basics: s.form.basics, setup: s.form.setup, venue: s.form.venue, priorities: s.form.priorities, ch: [...s.checkedLineIds].sort(), });
 }
 
 /**
@@ -54,51 +43,26 @@ export function resolveInitialState(search: string): WeddingChecklistResolveResu
       const localSession = draftToSession(localDraft);
       if (sessionSignature(localSession) !== sessionSignature(sessionFromUrl)) {
         conflict = {
-          type: "url_over_local_draft",
-          localDraftUpdatedAt: localDraft.updatedAt,
-        };
+          type: "url_over_local_draft", localDraftUpdatedAt: localDraft.updatedAt, };
         notes.push("conflict_url_replaces_local");
         devLog("URL share differs from local draft; applying URL", { localUpdatedAt: localDraft.updatedAt });
       }
     }
     notes.push("restore_from_url");
     return {
-      session: sessionFromUrl,
-      source: "url",
-      conflict,
-      invalidShareParam: false,
-      notes,
-      lastSavedAt: new Date().toISOString(),
-    };
+      session: sessionFromUrl, source: "url", conflict, invalidShareParam: false, notes, lastSavedAt: new Date().toISOString(), };
   }
 
   const localDraft = loadDraftFromStorage();
   if (localDraft) {
     notes.push("restore_from_local");
     return {
-      session: draftToSession(localDraft),
-      source: "local",
-      conflict: null,
-      invalidShareParam,
-      notes,
-      lastSavedAt: localDraft.updatedAt,
-    };
+      session: draftToSession(localDraft), source: "local", conflict: null, invalidShareParam, notes, lastSavedAt: localDraft.updatedAt, };
   }
 
   const empty: WeddingChecklistSessionState = {
-    form: defaultWeddingChecklistForm(),
-    mode: null,
-    stepIndex: -1,
-    furthestStep: -1,
-    checkedLineIds: [],
-  };
+    form: defaultWeddingChecklistForm(), mode: null, stepIndex: -1, furthestStep: -1, checkedLineIds: [], };
   notes.push("default_empty");
   return {
-    session: empty,
-    source: "default",
-    conflict: null,
-    invalidShareParam,
-    notes,
-    lastSavedAt: null,
-  };
+    session: empty, source: "default", conflict: null, invalidShareParam, notes, lastSavedAt: null, };
 }

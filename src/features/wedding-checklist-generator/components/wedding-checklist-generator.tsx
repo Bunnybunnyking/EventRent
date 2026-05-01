@@ -10,22 +10,7 @@ import type { WeddingMode } from "@/features/wedding-checklist/types";
 
 export function WeddingChecklistGenerator() {
   const {
-    form,
-    mode,
-    stepIndex,
-    updateForm,
-    selectMode,
-    goStep,
-    resetDraft,
-    backToModeSelect,
-    copyShareLink,
-    checkedLineIds,
-    toggleCheckedLine,
-    setCheckedLineIds,
-    persistenceMeta,
-    dismissConflictNotice,
-    dismissInvalidShareNotice,
-  } = useWeddingChecklistPersistence();
+    form, mode, stepIndex, updateForm, selectMode, goStep, resetDraft, backToModeSelect, copyShareLink, checkedLineIds, toggleCheckedLine, setCheckedLineIds, persistenceMeta, dismissConflictNotice, dismissInvalidShareNotice, } = useWeddingChecklistPersistence();
 
   const showMode = stepIndex < 0 || mode == null;
   const outIdx = mode ? outputStepIndex(mode) : -1;
@@ -50,7 +35,7 @@ export function WeddingChecklistGenerator() {
   return (
     <div className="space-y-10">
       <div className="rounded-2xl border border-amber-200/60 bg-[#fffbf0] px-4 py-3 text-center text-sm text-stone-700">
-        <span className="font-semibold text-stone-900">Local preview</span> — this route is for development and testing. Not linked from the main site navigation yet.
+        <span className="font-semibold text-stone-900">Local preview</span>, this route is for development and testing. Not linked from the main site navigation yet.
       </div>
 
       {!persistenceMeta.ready ? (

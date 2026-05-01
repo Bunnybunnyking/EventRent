@@ -1,34 +1,18 @@
 import { outputStepIndex } from "@/features/wedding-checklist/lib/flow-meta";
 import type {
-  WeddingBasics,
-  WeddingChecklistFormState,
-  WeddingMode,
-  PlanningPriorityId,
-} from "@/features/wedding-checklist/types";
+  WeddingBasics, WeddingChecklistFormState, WeddingMode, PlanningPriorityId, } from "@/features/wedding-checklist/types";
 import type { WeddingChecklistValidationIssue } from "@/features/wedding-checklist/types/persistence";
 
 const CEREMONY: WeddingBasics["ceremonyScope"][] = ["ceremony_only", "reception_only", "both"];
 const GUEST: WeddingBasics["guestRange"][] = ["under_75", "75_150", "150_plus"];
 const VENUE: WeddingBasics["venueType"][] = [
-  "backyard",
-  "private_estate",
-  "outdoor_venue",
-  "mixed_indoor_outdoor",
-  "tented_reception_only",
-];
+  "backyard", "private_estate", "outdoor_venue", "mixed_indoor_outdoor", "tented_reception_only", ];
 const DAY: WeddingBasics["dayPart"][] = ["day", "evening"];
 const FORM: WeddingBasics["formality"][] = ["casual", "classic", "formal"];
 const TF: WeddingBasics["timeframeKind"][] = ["date_set", "season_month", "unsure"];
 const WX: WeddingBasics["weatherConcern"][] = ["low", "medium", "high"];
 const PRI: PlanningPriorityId[] = [
-  "keep_simple",
-  "stay_organized",
-  "reduce_stress",
-  "guest_comfort",
-  "prepare_weather",
-  "polished_tent",
-  "avoid_last_minute",
-];
+  "keep_simple", "stay_organized", "reduce_stress", "guest_comfort", "prepare_weather", "polished_tent", "avoid_last_minute", ];
 
 const SURFACE: WeddingChecklistFormState["venue"]["surface"][] = ["grass", "hard", "mixed"];
 const TERRAIN: WeddingChecklistFormState["venue"]["terrain"][] = ["flat", "uneven"];
@@ -88,20 +72,7 @@ export function validateSetup(s: unknown, issues: WeddingChecklistValidationIssu
     return false;
   }
   const keys: (keyof WeddingChecklistFormState["setup"])[] = [
-    "ceremonySeating",
-    "cocktailArea",
-    "tentedReception",
-    "danceFloor",
-    "bar",
-    "cateringPrepArea",
-    "music",
-    "lighting",
-    "sidewalls",
-    "flooring",
-    "restrooms",
-    "generatorPower",
-    "parkingShuttle",
-  ];
+    "ceremonySeating", "cocktailArea", "tentedReception", "danceFloor", "bar", "cateringPrepArea", "music", "lighting", "sidewalls", "flooring", "restrooms", "generatorPower", "parkingShuttle", ];
   let ok = true;
   for (const k of keys) {
     if (typeof s[k] !== "boolean") {
@@ -127,15 +98,7 @@ export function validateVenue(v: unknown, issues: WeddingChecklistValidationIssu
     ok = false;
   }
   const bools = [
-    "accessLimitations",
-    "powerNearby",
-    "parkingLimitations",
-    "venueRestrictions",
-    "weatherBackupConcern",
-    "guestComfortConcern",
-    "loadInConcern",
-    "afterDark",
-  ] as const;
+    "accessLimitations", "powerNearby", "parkingLimitations", "venueRestrictions", "weatherBackupConcern", "guestComfortConcern", "loadInConcern", "afterDark", ] as const;
   for (const k of bools) {
     if (typeof v[k] !== "boolean") {
       issues.push({ path: `venue.${k}`, message: "expected boolean" });

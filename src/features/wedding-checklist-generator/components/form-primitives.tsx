@@ -12,11 +12,7 @@ export function FieldLabel({ children, hint }: { children: ReactNode; hint?: str
 }
 
 export function Segmented<T extends string>({
-  options,
-  value,
-  onChange,
-  columns = "grid-cols-1 sm:grid-cols-2",
-}: {
+  options, value, onChange, columns = "grid-cols-1 sm:grid-cols-2", }: {
   options: { id: T; label: string }[];
   value: T;
   onChange: (v: T) => void;
@@ -43,11 +39,7 @@ export function Segmented<T extends string>({
 }
 
 export function ToggleRow({
-  label,
-  helper,
-  checked,
-  onChange,
-}: {
+  label, helper, checked, onChange, }: {
   label: string;
   helper?: string;
   checked: boolean;

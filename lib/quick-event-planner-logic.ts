@@ -192,7 +192,7 @@ export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerR
     tentPick = TENT_PRESETS[tentIdx + 1];
   }
 
-  // ~5–12% buffer on chairs; bump for ceremony, fundraiser, community, or “mixed / not sure” layout
+  // ~5 to 12% buffer on chairs; bump for ceremony, fundraiser, community, or “mixed / not sure” layout
   let chairBuffer = 1.07;
   if (internal === "ceremony" || inp.eventType === "community" || inp.eventType === "festival") chairBuffer += 0.05;
   if (inp.eventStyle === "mixed") chairBuffer += 0.04;
@@ -264,7 +264,7 @@ export function computeQuickPlannerResult(inp: QuickPlannerInput): QuickPlannerR
 
   const recommendedSetup: string[] = [
     `Tent: ${tentPick.label}, a safer, more comfortable starting fit (~${tentPick.sqFt.toLocaleString()} sq ft covered)`,
-    `Chairs: ${chairs} (~8–10% buffer for real-world seating${inp.eventStyle === "mixed" ? "; extra flexibility because your program is mixed" : ""})`,
+    `Chairs: ${chairs} (~8 to 10% buffer for real-world seating${inp.eventStyle === "mixed" ? "; extra flexibility because your program is mixed" : ""})`,
   ];
   if (roundTables > 0) recommendedSetup.push(`Tables: ${roundTables} round tables (~8 guests each, rounded up)`);
   if (banquetTables > 0) recommendedSetup.push(`Tables: ${banquetTables} eight-foot banquet tables (~8 guests per table)`);

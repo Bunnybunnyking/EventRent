@@ -4,25 +4,17 @@ const btnOutline =
   "inline-flex min-h-[48px] items-center justify-center rounded-full border-2 border-stone-800 bg-white px-7 py-3 text-sm font-semibold text-stone-900 shadow-sm transition hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2 sm:px-8 sm:text-base";
 
 const core = [
-  "Tents & large structures",
-  "Tables & chairs",
-  "Sidewalls, lighting, climate options",
-  "Dance floors & staging",
-];
+  "Tents & large structures", "Tables & chairs", "Sidewalls, lighting, climate options", "Dance floors & staging", ];
 
 const extras = [
-  "Catering / service zones",
-  "Entry canopies & walkways",
-  "Lounge & kids zones",
-  "The details people forget—trash, power planning, parking, and more",
-];
+  "Catering / service zones", "Entry canopies & walkways", "Lounge & kids zones", "The details people forget, trash, power planning, parking, and more", ];
 
 export function WhatWeOffer() {
   return (
-    <section className="bg-white py-12 sm:py-14 lg:py-16" aria-labelledby="home-offer-heading">
+    <section className="bg-white py-10 sm:py-12 lg:py-14" aria-labelledby="home-offer-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <h2 id="home-offer-heading" className="text-center text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">
-          Full rental depth—without the chaos.
+          Full rental depth, without the chaos.
         </h2>
         <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12">
           <div>

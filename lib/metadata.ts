@@ -21,13 +21,13 @@ const baseUrl = resolveSiteBaseUrl();
 export const defaultOgImagePath = "/images/wethersfield-ct-party-tent-rental-wedding-reception.png";
 
 /**
- * Homepage hero — file: `public/images/home-hero-panoramic-tent.png`.
+ * Homepage hero: file `public/images/home-hero-panoramic-tent.jpg`.
  * (Do not add `?query` here: Next.js `next/image` rejects query strings on local paths unless
  * `images.localPatterns` is extended.) After replacing the file, hard-refresh the browser (Ctrl+F5).
  * If pixel dimensions change, update `homePageHeroImageSize` below.
  */
-export const homePageHeroImagePath = "/images/home-hero-panoramic-tent.png";
-/** Pixel size of `home-hero-panoramic-tent.png` — must match the file or Next/Image will distort. */
+export const homePageHeroImagePath = "/images/home-hero-panoramic-tent.jpg";
+/** Pixel size of `home-hero-panoramic-tent.jpg` must match the file or Next/Image will distort. */
 export const homePageHeroImageSize = { width: 1024, height: 681 } as const;
 
 const defaultOgDimensions = { width: 1200, height: 630 } as const;
@@ -47,7 +47,7 @@ function resolveOgImages(ogImage?: string):
         url,
         width: homePageHeroImageSize.width,
         height: homePageHeroImageSize.height,
-        alt: "Outdoor wedding reception under a white frame tent—champagne gold linens, white lanterns, string lights, dance floor, and lawn beyond.",
+        alt: "Outdoor wedding reception under a white frame tent, champagne gold linens, white lanterns, string lights, dance floor, and lawn beyond.",
       },
     ];
   }

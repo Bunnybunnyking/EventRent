@@ -3,30 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
-  checklistCategoryLabels,
-  checklistCategoryOrder,
-  computeBackyardChecklistResult,
-  defaultBackyardChecklistInput,
-  formatBackyardChecklistPlainText,
-  mergeParsedIntoDefault,
-  parseChecklistSearchParams,
-  serializeChecklistInput,
-  type BackyardChecklistInput,
-  type BackyardChecklistInputPatch,
-  type ChecklistLineItem,
-  type DayPart,
-  type FoodLevel,
-  type GuestRange,
-  type KidsLevel,
-  type MusicPlan,
-  type PrefQuick,
-  type PrivateEventType,
-  type SetupConfirm,
-  type SiteGuestQuick,
-  type Timeframe,
-  type VenueKind,
-  type WeatherConcernLevel,
-} from "@/lib/backyard-checklist-logic";
+  checklistCategoryLabels, checklistCategoryOrder, computeBackyardChecklistResult, defaultBackyardChecklistInput, formatBackyardChecklistPlainText, mergeParsedIntoDefault, parseChecklistSearchParams, serializeChecklistInput, type BackyardChecklistInput, type BackyardChecklistInputPatch, type ChecklistLineItem, type DayPart, type FoodLevel, type GuestRange, type KidsLevel, type MusicPlan, type PrefQuick, type PrivateEventType, type SetupConfirm, type SiteGuestQuick, type Timeframe, type VenueKind, type WeatherConcernLevel, } from "@/lib/backyard-checklist-logic";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 
@@ -74,49 +51,17 @@ function canGoToStep(target: Step, furthest: Step): boolean {
 }
 
 const eventTypes: { id: PrivateEventType; label: string }[] = [
-  { id: "birthday", label: "Birthday" },
-  { id: "graduation", label: "Graduation" },
-  { id: "anniversary", label: "Anniversary" },
-  { id: "family_gathering", label: "Family" },
-  { id: "shower", label: "Shower" },
-  { id: "retirement", label: "Retirement" },
-  { id: "religious_family", label: "Religious / family" },
-  { id: "backyard_social", label: "Backyard party" },
-  { id: "other_private", label: "Other" },
-];
+  { id: "birthday", label: "Birthday" }, { id: "graduation", label: "Graduation" }, { id: "anniversary", label: "Anniversary" }, { id: "family_gathering", label: "Family" }, { id: "shower", label: "Shower" }, { id: "retirement", label: "Retirement" }, { id: "religious_family", label: "Religious / family" }, { id: "backyard_social", label: "Backyard party" }, { id: "other_private", label: "Other" }, ];
 
 const stepMeta: { label: string; hint: string }[] = [
-  { label: "Event basics", hint: "Tell us a little about the event: when, where, food, sound, and kids." },
-  {
-    label: "Setup, site & style",
-    hint: "What you’re planning, how the space feels, fun ideas, and vibe. Trending enhancements go straight on your checklist.",
-  },
-  { label: "Your checklist", hint: "Check items off, share with family or co-hosts, and move on when you’re ready." },
-];
+  { label: "Event basics", hint: "Tell us a little about the event: when, where, food, sound, and kids." }, {
+    label: "Setup, site & style", hint: "What you’re planning, how the space feels, fun ideas, and vibe. Trending enhancements go straight on your checklist.", }, { label: "Your checklist", hint: "Check items off, share with family or co-hosts, and move on when you’re ready." }, ];
 
 const setupToggles: { key: keyof SetupConfirm; label: string; helper?: string }[] = [
-  { key: "tentOrCover", label: "Tent or covered area" },
-  { key: "tables", label: "Tables" },
-  { key: "chairs", label: "Chairs / seating" },
-  { key: "buffetServing", label: "Buffet or serving tables" },
-  { key: "dessertCakeTable", label: "Dessert or cake table" },
-  { key: "barDrinkStation", label: "Bar or drink station" },
-  { key: "musicSpeakerZone", label: "Music / speaker area" },
-  { key: "danceFloor", label: "Dance floor or dance space" },
-  { key: "lighting", label: "Lighting (beyond porch floods)" },
-  { key: "sidewalls", label: "Sidewalls or weather panels" },
-  { key: "generatorPower", label: "Generator or clear power plan" },
-  { key: "restroomPlan", label: "Restroom plan for guest count" },
-  { key: "parkingPlan", label: "Parking plan" },
-  { key: "trashCleanup", label: "Trash & cleanup plan" },
-];
+  { key: "tentOrCover", label: "Tent or covered area" }, { key: "tables", label: "Tables" }, { key: "chairs", label: "Chairs / seating" }, { key: "buffetServing", label: "Buffet or serving tables" }, { key: "dessertCakeTable", label: "Dessert or cake table" }, { key: "barDrinkStation", label: "Bar or drink station" }, { key: "musicSpeakerZone", label: "Music / speaker area" }, { key: "danceFloor", label: "Dance floor or dance space" }, { key: "lighting", label: "Lighting (beyond porch floods)" }, { key: "sidewalls", label: "Sidewalls or weather panels" }, { key: "generatorPower", label: "Generator or clear power plan" }, { key: "restroomPlan", label: "Restroom plan for guest count" }, { key: "parkingPlan", label: "Parking plan" }, { key: "trashCleanup", label: "Trash & cleanup plan" }, ];
 
 function Segmented<T extends string>({
-  options,
-  value,
-  onChange,
-  columns = "grid-cols-2 sm:grid-cols-3",
-}: {
+  options, value, onChange, columns = "grid-cols-2 sm:grid-cols-3", }: {
   options: { id: T; label: string }[];
   value: T;
   onChange: (v: T) => void;
@@ -143,10 +88,7 @@ function Segmented<T extends string>({
 }
 
 function ToggleQuiet({
-  label,
-  checked,
-  onChange,
-}: {
+  label, checked, onChange, }: {
   label: string;
   checked: boolean;
   onChange: (v: boolean) => void;
@@ -173,11 +115,7 @@ function ToggleQuiet({
 
 /** Gold switch style, matches Quick Event Planner affordance */
 function ToggleRow({
-  label,
-  helper,
-  checked,
-  onChange,
-}: {
+  label, helper, checked, onChange, }: {
   label: string;
   helper?: string;
   checked: boolean;
@@ -224,10 +162,7 @@ function StepProgressBar({ step }: { step: Step }) {
 }
 
 function ChecklistLine({
-  item,
-  checked,
-  onToggle,
-}: {
+  item, checked, onToggle, }: {
   item: ChecklistLineItem;
   checked: boolean;
   onToggle: () => void;
@@ -252,11 +187,7 @@ function ChecklistLine({
 }
 
 function SectionCard({
-  eyebrow,
-  title,
-  children,
-  variant = "default",
-}: {
+  eyebrow, title, children, variant = "default", }: {
   eyebrow?: string;
   title: string;
   children: ReactNode;
@@ -340,16 +271,8 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
     const id = window.setTimeout(() => {
       try {
         localStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify({
-            v: 2,
-            t: Date.now(),
-            inp,
-            step,
-            furthest,
-            checkedIds: [...checkedIds],
-          }),
-        );
+          STORAGE_KEY, JSON.stringify({
+            v: 2, t: Date.now(), inp, step, furthest, checkedIds: [...checkedIds], }), );
       } catch {
         /* quota / private mode */
       }
@@ -397,16 +320,8 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
   const saveLocal = () => {
     try {
       localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({
-          v: 2,
-          t: Date.now(),
-          inp,
-          step,
-          furthest,
-          checkedIds: [...checkedIds],
-        }),
-      );
+        STORAGE_KEY, JSON.stringify({
+          v: 2, t: Date.now(), inp, step, furthest, checkedIds: [...checkedIds], }), );
       setSaveMsg("Saved on this device");
       setTimeout(() => setSaveMsg(null), 2500);
     } catch {
@@ -555,11 +470,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                 <div className="mt-2">
                   <Segmented<GuestRange>
                     options={[
-                      { id: "under25", label: "Under ~25" },
-                      { id: "25_50", label: "25 to 50" },
-                      { id: "50_100", label: "50 to 100" },
-                      { id: "100_plus", label: "100+" },
-                    ]}
+                      { id: "under25", label: "Under ~25" }, { id: "25_50", label: "25 to 50" }, { id: "50_100", label: "50 to 100" }, { id: "100_plus", label: "100+" }, ]}
                     value={inp.guestRange}
                     onChange={(v) => patch({ guestRange: v })}
                     columns="grid-cols-2 sm:grid-cols-4"
@@ -572,9 +483,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                   <div className="mt-2">
                     <Segmented<VenueKind>
                       options={[
-                        { id: "backyard_home", label: "Backyard / home" },
-                        { id: "private_venue", label: "Private venue" },
-                      ]}
+                        { id: "backyard_home", label: "Backyard / home" }, { id: "private_venue", label: "Private venue" }, ]}
                       value={inp.venue}
                       onChange={(v) => patch({ venue: v })}
                       columns="grid-cols-1"
@@ -586,9 +495,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                   <div className="mt-2">
                     <Segmented<DayPart>
                       options={[
-                        { id: "day", label: "Daytime" },
-                        { id: "evening", label: "Evening" },
-                      ]}
+                        { id: "day", label: "Daytime" }, { id: "evening", label: "Evening" }, ]}
                       value={inp.dayPart}
                       onChange={(v) => patch({ dayPart: v })}
                       columns="grid-cols-2"
@@ -602,10 +509,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                   <div className="mt-2">
                     <Segmented<FoodLevel>
                       options={[
-                        { id: "full", label: "Full meal" },
-                        { id: "light", label: "Light / apps" },
-                        { id: "none", label: "Drinks / snacks" },
-                      ]}
+                        { id: "full", label: "Full meal" }, { id: "light", label: "Light / apps" }, { id: "none", label: "Drinks / snacks" }, ]}
                       value={inp.food}
                       onChange={(v) => patch({ food: v })}
                       columns="grid-cols-3"
@@ -617,10 +521,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                   <div className="mt-2">
                     <Segmented<WeatherConcernLevel>
                       options={[
-                        { id: "low", label: "Low" },
-                        { id: "medium", label: "Some" },
-                        { id: "high", label: "High" },
-                      ]}
+                        { id: "low", label: "Low" }, { id: "medium", label: "Some" }, { id: "high", label: "High" }, ]}
                       value={inp.weatherConcern}
                       onChange={(v) => patch({ weatherConcern: v })}
                       columns="grid-cols-3"
@@ -634,11 +535,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                   <div className="mt-2">
                     <Segmented<Timeframe>
                       options={[
-                        { id: "this_month", label: "This month" },
-                        { id: "next_3_months", label: "Next 3 months" },
-                        { id: "later", label: "Later" },
-                        { id: "not_sure", label: "Not sure yet" },
-                      ]}
+                        { id: "this_month", label: "This month" }, { id: "next_3_months", label: "Next 3 months" }, { id: "later", label: "Later" }, { id: "not_sure", label: "Not sure yet" }, ]}
                       value={inp.timeframe}
                       onChange={(v) => patch({ timeframe: v })}
                       columns="grid-cols-2 sm:grid-cols-4"
@@ -650,10 +547,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                   <div className="mt-2">
                     <Segmented<MusicPlan>
                       options={[
-                        { id: "none", label: "Quiet / none" },
-                        { id: "speakers", label: "Speakers" },
-                        { id: "dj_or_live", label: "DJ or live" },
-                      ]}
+                        { id: "none", label: "Quiet / none" }, { id: "speakers", label: "Speakers" }, { id: "dj_or_live", label: "DJ or live" }, ]}
                       value={inp.music}
                       onChange={(v) => patch({ music: v })}
                       columns="grid-cols-3"
@@ -666,10 +560,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                 <div className="mt-2">
                   <Segmented<KidsLevel>
                     options={[
-                      { id: "none", label: "Few / none" },
-                      { id: "some", label: "Some" },
-                      { id: "many", label: "Many" },
-                    ]}
+                      { id: "none", label: "Few / none" }, { id: "some", label: "Some" }, { id: "many", label: "Many" }, ]}
                     value={inp.kids}
                     onChange={(v) => patch({ kids: v })}
                     columns="grid-cols-3"
@@ -727,10 +618,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                 <div className="mt-2">
                   <Segmented
                     options={[
-                      { id: "keep_simple", label: "Keep it simple" },
-                      { id: "balanced", label: "Balanced" },
-                      { id: "make_special", label: "Make it special" },
-                    ]}
+                      { id: "keep_simple", label: "Keep it simple" }, { id: "balanced", label: "Balanced" }, { id: "make_special", label: "Make it special" }, ]}
                     value={inp.prefs.vibe}
                     onChange={(v) => patchPrefs({ vibe: v as PrefQuick["vibe"] })}
                     columns="grid-cols-3"

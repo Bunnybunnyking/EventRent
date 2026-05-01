@@ -6,14 +6,8 @@ import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: "Dev: Wedding Checklist Generator",
-    description:
-      "Local preview of the wedding checklist generator (full and outdoor/tent quick modes). Development route—not linked from main navigation.",
-    path: "/wedding-checklist-dev",
-    ogImage: defaultOgImagePath,
-  }),
-  robots: { index: false, follow: false },
-};
+    title: "Dev: Wedding Checklist Generator", description:
+      "Local preview of the wedding checklist generator (full and outdoor/tent quick modes). Development route, not linked from main navigation.", path: "/wedding-checklist-dev", ogImage: defaultOgImagePath, }), robots: { index: false, follow: false }, };
 
 export default function WeddingChecklistDevPage() {
   return (
@@ -21,10 +15,7 @@ export default function WeddingChecklistDevPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
-            { label: "Home", href: "/" },
-            { label: "Planning", href: "/planning" },
-            { label: "Dev: wedding checklist" },
-          ]}
+            { label: "Home", href: "/" }, { label: "Planning", href: "/planning" }, { label: "Dev: wedding checklist" }, ]}
         />
         <header className="mt-6 max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-900/85">Dev / sandbox</p>
@@ -32,7 +23,7 @@ export default function WeddingChecklistDevPage() {
             Wedding checklist generator
           </h1>
           <p className="mt-3 text-base leading-relaxed text-stone-600">
-            Full wedding checklist and outdoor/tent quick checklist—built for outdoor and tented celebrations. This page is a{" "}
+            Full wedding checklist and outdoor/tent quick checklist, built for outdoor and tented celebrations. This page is a{" "}
             <span className="font-semibold text-stone-800">local preview</span> for testing. For tent sizing and rental starter plans, use the{" "}
             <Link href="/planning#tent-size-estimator" className="font-semibold text-[#8a6218] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
               tent size tools

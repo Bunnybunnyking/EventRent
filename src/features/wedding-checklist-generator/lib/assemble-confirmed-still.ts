@@ -51,7 +51,5 @@ export function buildConfirmedAndStill(ctx: ContentContext): { confirmed: string
   }
 
   return {
-    confirmed: [...new Set(confirmed)].slice(0, 28),
-    still: [...new Set(still)].slice(0, 32),
-  };
+    confirmed: [...new Set(confirmed)].slice(0, 28), still: [...new Set(still)].slice(0, 32), };
 }

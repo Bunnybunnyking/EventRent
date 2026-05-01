@@ -30,9 +30,198 @@ html {
   --gspro-brand-color: #b8860b;
 }
 
+/**
+ * Tent pages: show only the Goodshuffle add-to-wishlist control from `gspro-item-card`
+ * (no product image, title, price, or card chrome). Structure matches @goodshuffle/gspro-wc item-card.
+ */
+.ctp-goodshuffle-inline-heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  margin-inline-start: 0.125rem;
+}
+
+/**
+ * Do not set `pointer-events: none` on the `gspro-item-card` host: the wishlist button lives
+ * inside Shadow DOM and must receive clicks once upgraded.
+ */
+.ctp-goodshuffle-inline-heart gspro-item-card.gspro-c-item-card {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: visible !important;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  min-width: 1.5rem !important;
+  min-height: 1.5rem !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__preview {
+  display: none !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__detail {
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  background: transparent !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__title,
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__price,
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__quantity,
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__wishlist-count {
+  display: none !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: auto !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add .gspro-o-button {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  min-width: 1.75rem !important;
+  min-height: 1.75rem !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0.125rem !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  filter: none !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add .gspro-o-button:hover,
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add .gspro-o-button:focus,
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add .gspro-o-button:active {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add .gspro-o-button:focus-visible {
+  outline: 2px solid #b8860b !important;
+  outline-offset: 2px !important;
+}
+
+.ctp-goodshuffle-inline-heart gspro-icon,
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add gspro-icon {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  background: none !important;
+}
+
+.ctp-goodshuffle-inline-heart .gspro-c-item-card__add gspro-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+}
+
+/** Tent size hero: larger touch target where the photo placeholder was */
+.ctp-tent-hero-wishlist-slot .ctp-goodshuffle-inline-heart gspro-icon,
+.ctp-tent-hero-wishlist-slot .ctp-goodshuffle-inline-heart .gspro-c-item-card__add gspro-icon {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.ctp-tent-hero-wishlist-slot .ctp-goodshuffle-inline-heart .gspro-c-item-card__add gspro-icon svg {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.ctp-tent-hero-wishlist-slot .ctp-goodshuffle-inline-heart .gspro-c-item-card__add .gspro-o-button {
+  min-width: 3rem !important;
+  min-height: 3rem !important;
+  padding: 0.35rem !important;
+}
+
+/**
+ * Tent routes using Goodshuffle: keep floating wishlist trigger minimal (native heart only).
+ * @see https://help.goodshuffle.com/en/articles/3528690-how-to-use-something-other-than-a-heart-icon-on-my-website
+ */
+.ctp-tent-goodshuffle-page gspro-wishlist .gspro-c-wishlist__trigger {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: auto !important;
+  width: auto !important;
+  height: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+}
+
+.ctp-tent-goodshuffle-page gspro-wishlist .gspro-c-wishlist__trigger:hover,
+.ctp-tent-goodshuffle-page gspro-wishlist .gspro-c-wishlist__trigger:focus:not(:focus-visible),
+.ctp-tent-goodshuffle-page gspro-wishlist .gspro-c-wishlist__trigger:active {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.ctp-tent-goodshuffle-page gspro-wishlist .gspro-c-wishlist__trigger:focus-visible {
+  outline: 2px solid #b8860b !important;
+  outline-offset: 2px !important;
+}
+
+.ctp-tent-goodshuffle-page gspro-wishlist .gspro-c-wishlist__trigger gspro-icon {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  background: none !important;
+}
+
+.ctp-tent-goodshuffle-page gspro-wishlist .gspro-c-wishlist__trigger gspro-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+}
+
 body {
   @apply bg-[#f8f6f2] text-stone-900 antialiased;
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes ctp-home-book-online-sheen {
+  0%,
+  10% {
+    transform: skewX(-15deg) translate3d(-130%, 0, 0);
+    opacity: 0;
+  }
+  16% {
+    opacity: 0.38;
+  }
+  40% {
+    transform: skewX(-15deg) translate3d(165%, 0, 0);
+    opacity: 0.32;
+  }
+  52%,
+  100% {
+    transform: skewX(-15deg) translate3d(165%, 0, 0);
+    opacity: 0;
+  }
 }
 
 /** Site title: Cormorant Garamond (display), matches nav, not script */
@@ -60,4 +249,38 @@ body {
     font-family: var(--font-display), ui-serif, Georgia, serif;
   }
 
+  /**
+   * Site header — stacked “Book Online” pill: very subtle moving sheen (low opacity, long interval).
+   * Markup: `<span class="ctp-home-book-online-sheen" aria-hidden><span class="ctp-home-book-online-sheen-bar" /></span>`
+   */
+  .ctp-home-book-online-sheen {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .ctp-home-book-online-sheen-bar {
+    position: absolute;
+    top: -28%;
+    bottom: -28%;
+    left: -50%;
+    width: 52%;
+    border-radius: 0.2rem;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 38%,
+      rgba(255, 252, 236, 0.55) 50%,
+      rgba(255, 255, 255, 0) 62%,
+      transparent 100%
+    );
+    transform: skewX(-15deg) translate3d(-130%, 0, 0);
+    opacity: 0;
+    animation: ctp-home-book-online-sheen 5.4s ease-in-out infinite;
+    filter: blur(0.28px);
+    will-change: transform, opacity;
+  }
 }

@@ -4,9 +4,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
 
 export const metadata = createPageMetadata({
-  title: `About Our Connecticut Tent Rental Team`,
-  description: "Learn about our local event rental team, equipment standards, communication process, and dependable Connecticut setup service.",
-  path: "/about",
+  title: `About Our Connecticut Tent Rental Team`, description: "Learn about our local event rental team, equipment standards, communication process, and dependable Connecticut setup service.", path: "/about",
 });
 
 export default function AboutPage() {
@@ -22,13 +20,7 @@ export default function AboutPage() {
           />
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {[
-              "Clean, maintained equipment prepared for every delivery",
-              "Professional crews trained for safe and organized setup",
-              "Clear communication from quote to pickup",
-              "Service-first planning support for layout and weather",
-              "Dependable scheduling that respects venue timing",
-              "Proudly serving Connecticut events with local experience",
-            ].map((item) => (
+              "Clean, maintained equipment prepared for every delivery", "Professional crews trained for safe and organized setup", "Clear communication from quote to pickup", "Service-first planning support for layout and weather", "Dependable scheduling that respects venue timing", "Proudly serving Connecticut events with local experience", ].map((item) => (
               <p key={item} className="rounded-2xl border border-stone-200 bg-white p-5 text-sm text-stone-700">
                 {item}
               </p>

@@ -60,8 +60,10 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
     heroIntro:
       "When the whole neighborhood is counting on you, the setup has to work the first time. We help Connecticut towns and schools plan coverage, flow, and backup so your event feels organized, not improvised.",
     heroImage: "/images/farmington-tent-rental-lakeside-event-tent.png",
-    heroImageAlt: "Large event tent on a Connecticut lawn for a community gathering",
-    trustLine: "Structured planning for public-facing events across Connecticut",
+    heroImageAlt:
+      "Large event tent on a Connecticut lawn for a community gathering",
+    trustLine:
+      "Structured planning for public-facing events across Connecticut",
     narrativeTitle: "Civic events need clarity, not chaos",
     narrativeBody:
       "Town meetings, field days, and community celebrations share one thing: lots of stakeholders and zero patience for last-minute surprises. A professional tent plan gives you defined spaces for registration, programming, food service, and shade, so guests know where to go and volunteers aren’t guessing.",
@@ -72,7 +74,8 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
     splitRightBody:
       "School calendars and permit windows don’t flex. We align delivery and strike with your access rules and help you stage setup so the day before isn’t a scramble.",
     splitImage: "/images/wedding-tent-hero.png",
-    splitImageAlt: "High-peak tent interior with open sides for airflow at an outdoor event",
+    splitImageAlt:
+      "High-peak tent interior with open sides for airflow at an outdoor event",
     caresTitle: "What makes these events run smoothly",
     caresCards: [
       {
@@ -139,11 +142,10 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
       },
     ],
     relatedLinks: [
-      { label: "Corporate & municipal events", href: "/corporate-event-rentals" },
+      { label: "Corporate event rentals", href: "/corporate-event-rentals" },
       ...baseRelated,
     ],
   },
-
   "festivals-fairs": {
     slug: "festivals-fairs",
     seoTitle: "Festival & Fair Tent Rentals in Connecticut",
@@ -165,7 +167,8 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
     splitRightTitle: "Weather that changes by the hour",
     splitRightBody:
       "Festivals don’t pause for passing cells. We plan sidewalls, weights, and sheltered zones so programming and sales continue when wind or rain arrives.",
-    splitImage: "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
+    splitImage:
+      "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
     splitImageAlt: "Spacious tent setup for an outdoor Connecticut celebration",
     caresTitle: "What festival producers care about most",
     caresCards: [
@@ -238,102 +241,124 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
       ...baseRelated,
     ],
   },
-
   "graduation-parties": {
     slug: "graduation-parties",
-    seoTitle: "Graduation Party Tent Rentals in Connecticut",
+    seoTitle:
+      "Connecticut Graduation Party Tent Rentals | Open House & Backyard Flow",
     metaDescription:
-      "Celebrate graduation at home or on family property with Connecticut tent rentals: shade, rain backup, seating, and easy flow for relatives, friends, and food service.",
-    h1: "Graduation parties that feel effortless for guests",
-    heroEyebrow: "Graduation · backyard · family",
+      "Plan a Connecticut graduation party at home: open house vs seated flow, tent shade and rain backup, buffet and gift zones, tables and chairs, lighting and sidewalls, and yard access. Call us if you are not sure what fits.",
+    h1: "Graduation party tents built around your weekend at home",
+    heroEyebrow: "Connecticut graduation season, family parties at home",
     heroIntro:
-      "Graduation weekend is a sprint: photos, relatives, food, and weather that won’t cooperate just because it’s special. We help Connecticut families create a comfortable base: shade for afternoon sun, backup for passing showers, and a layout that keeps the focus on your grad.",
+      "Graduation weekend is waves of guests, photos, and food on repeat. Most Connecticut families choose an open house with steady traffic, or a seated meal with speeches. Either way you need cover and seating that match how people move, plus backup for late spring sun, wind, or a quick shower. Not sure what your yard can hold? Call with rough headcount and a few photos. We will talk layout before tent SKUs.",
     heroImage: "/images/wedding-tent-hero.png",
-    heroImageAlt: "Elegant backyard tent setup for a Connecticut outdoor party",
-    trustLine: "Seasonal celebrations with sensible backup plans",
-    narrativeTitle: "Make space for the moment, not the stress",
+    heroImageAlt:
+      "Backyard graduation party tent with tables and seating in Connecticut",
+    trustLine:
+      "Family graduation parties across Connecticut, planned for real yards and real weather",
+    narrativeTitle: "Why tents help with graduation parties",
     narrativeBody:
-      "The best grad parties feel open and relaxed: room to mingle, a clear spot for food, and seating that doesn’t fight the lawn. A tent gives structure without feeling corporate, so your yard still feels like home, just more comfortable.",
-    splitLeftTitle: "What families usually want",
+      "At home, a tent is not decoration, it is the frame for the day. It gives shade for afternoon arrivals, a dry place for gifts and dessert when the sky turns, and a clear sense of where food and seating live so guests are not guessing. You still host in your own yard, but the flow feels intentional: a defined place for the buffet line, room for grandparents to sit out of the main traffic lane, and space for the grad to take photos without backing into a cooler.",
+    splitLeftTitle: "Typical graduation party setup needs",
     splitLeftBody:
-      "Enough seating for grandparents, overflow for friends, and a food zone that doesn’t bottleneck the whole party. We plan around how people actually move, not a perfect diagram.",
-    splitRightTitle: "Timing that fits May and June",
+      "Open house flow usually means a wider tent or modular layout, mixed standing and seated areas, a buffet line with depth so two families are not colliding, and a gift or card table out of the food choke point. A seated program needs real chair counts, aisles for service, and headroom if you want remarks or a slideshow under cover. Tell us which style you are leaning toward and your realistic peak headcount, not the whole Facebook invite list.",
+    splitRightTitle: "Backyard and private property planning",
     splitRightBody:
-      "Short setup windows and back-to-back weekends are normal. Tell us your date and access; we’ll align delivery so you’re not rushing the morning of.",
+      "Driveways, side gates, septic fields, pools, irrigation, low branches, and neighbor setbacks all show up on graduation weekend. We ask how trucks reach the lawn, where stakes or ballast can go on patio vs grass, and when setup and strike can happen without surprises. Photos from each corner of the yard and a quick sketch of where you want food save time before we quote.",
     splitImage: "/images/farmington-tent-rental-lakeside-event-tent.png",
-    splitImageAlt: "Outdoor tent by the water for a Connecticut celebration",
-    caresTitle: "Why a tent helps even on a “nice” day",
+    splitImageAlt:
+      "Outdoor tent setup for a Connecticut family celebration on private property",
+    caresTitle: "Comfort, weather, and guest flow",
     caresCards: [
       {
-        title: "Sun and shade balance",
-        text: "Afternoon heat can shorten a party fast. Covered space keeps guests comfortable through speeches and cake.",
+        title: "Shade and a cooler gathering spot",
+        text: "Late spring sun is stronger than people remember. Covered space keeps the open house from emptying out when the lawn is hot, and gives older guests a place to sit through the whole afternoon.",
       },
       {
-        title: "Rain that shows up mid-party",
-        text: "Quick-moving storms are common in late spring. A plan beats a scramble and keeps food and gifts dry.",
+        title: "Rain backup that keeps the schedule",
+        text: "Quick showers are common. Sidewalls or window panels, planned door locations, and gutters when you use more than one span keep food, gifts, and the grad dry without everyone squeezing into the kitchen.",
       },
       {
-        title: "A defined “home base”",
-        text: "Guests relax when they know where to put coats, gifts, and plates. Structure reduces awkward wandering.",
+        title: "Flow that matches how grad parties run",
+        text: "People arrive in clusters, hit food, drop gifts, and drift to talk to the grad. We plan entry, buffet depth, seating pockets, and standing room so the yard does not turn into a single bottleneck by the grill.",
       },
     ],
-    midCtaHeadline: "Plan the party your grad will actually enjoy",
+    midCtaHeadline: "Call and walk through your graduation setup",
     midCtaSub:
-      "Tell us your headcount range and whether you’re serving buffet or catering. We’ll recommend sizing and flow.",
-    planningTitle: "Quick planning wins",
+      "The fastest way to get useful is a short call: date, town, open house vs seated plan, rough headcount, and what worries you about the yard. We will suggest tent size direction, rental pairings, and what to photograph before we lock a quote.",
+    planningTitle: "Common graduation party layouts families start from",
     planningItems: [
-      "Decide early: dancing space vs. more seating: both need real square footage.",
-      "Plan a gift/dessert zone away from the main food line.",
-      "Grills and fryers stay out of the guest tent; tell us if you’re cooking on site so we plan a proper prep area.",
-      "Reserve a calm spot for family photos with decent light and fewer distractions.",
+      "Open house with buffet: plan line depth, plates and napkins at the start of the line, and overflow seating away from the door people use most.",
+      "Seated lunch or dinner under tent: count chairs for your real RSVP list plus a few flex seats for last minute plus ones.",
+      "Dance floor or lawn games: if you want both, say so early. They steal square footage from dining unless you add a satellite canopy or schedule them at different times.",
+      "Speeches or slideshow: simple AV needs sightlines, power, and often a darker tent ceiling or lighting plan so everyone can see without glare.",
+      "Cake and dessert: pull it slightly off the main buffet leg so two lines are not competing for the same corner of the tent.",
     ],
-    weatherTitle: "Spring weather in Connecticut",
+    weatherTitle: "Weather and comfort for late spring in Connecticut",
     weatherBody:
-      "It can be gorgeous, breezy, or suddenly wet. A tent isn’t pessimism: it’s how you keep the schedule you announced to relatives who drove in from out of town.",
-    upgradesTitle: "Popular upgrades for grad parties",
+      "May and June can be beautiful, breezy, humid, or wet in the same weekend. A tent gives you shade for the long afternoon block, a place to roll sidewalls if drizzle hits during cake, and lighting so teardown and late guests stay safe after dark. We build the plan around how your family actually uses the yard, not a generic fair weather guess.",
+    upgradesTitle: "Popular rental pairings for graduation parties",
     upgrades: [
       {
-        title: "Lighting for evening",
-        text: "Soft, practical lighting keeps the party going safely after sunset.",
+        title: "Tent, tables, and chairs sized to your flow",
+        text: "Frame or modular tents for clear spans, rounds or banquets for seated meals, or more high tops and perimeter seating for open house mingling. We match counts to service style so you are not short seats when cousins arrive in one wave.",
       },
       {
-        title: "Sidewalls for breeze or drizzle",
-        text: "Add comfort without closing the whole tent off, especially near food.",
+        title: "Lighting, linens, and finishing touches",
+        text: "Bistro or wash lighting for evening, simple linens when you want tables to feel more finished, and coordinated whites or neutrals that read well in photos with the grad.",
       },
       {
-        title: "Tables & chairs scaled to your crowd",
-        text: "We’ll match inventory to real attendance so you’re not short seats during speeches.",
+        title: "Sidewalls, fans, and heaters as needed",
+        text: "Cut wind near food, add airflow on humid days, or take the chill off if the party runs past sunset. We talk through options with your menu and guest mix in mind.",
       },
     ],
     faq: [
       {
-        question: "Our yard is small: can a tent still work?",
+        question:
+          "Open house or seated dinner: how does that change the tent plan?",
         answer:
-          "Often yes. Send a few photos and rough dimensions; we’ll recommend footprint options and what to prioritize if space is tight.",
+          "Open house usually needs more standing and circulation space, a deeper buffet lane, and flexible seating pockets. Seated dinner needs accurate chair counts, service aisles, and often a larger single span. Tell us which format you are planning and your peak headcount window.",
       },
       {
-        question: "What if we don’t know the final guest count?",
+        question: "Our yard is small. Can a tent still work for graduation?",
         answer:
-          "Give us a realistic range. We’ll plan seating and flow so you can flex slightly without redoing everything.",
+          "Often yes, with honest measurements and priorities. Sometimes the right answer is a modest main tent plus using a deck or garage for part of food or gifts, or a satellite canopy for drinks. Send photos and rough dimensions and we will be direct about what fits.",
       },
       {
-        question: "Do we need flooring?",
+        question: "What if we do not know the final guest count?",
         answer:
-          "Depends on ground softness and heel traffic. If recent rain is likely, flooring can save the lawn and improve stability.",
+          "Give us a realistic low to high range and whether guests arrive in waves. We plan seating and flow so you can flex within the range without rebuilding the whole layout the week of.",
       },
       {
-        question: "Can you coordinate with our caterer?",
+        question: "Do we need flooring for a backyard graduation?",
         answer:
-          "Yes. Share service style and equipment needs. We’ll align layout so lines stay short and staff have room to work.",
+          "It depends on recent rain, heel traffic, and how level the lawn is. Flooring can protect soft turf and steady chairs for buffet lines. We will say when it is worth it for your site.",
+      },
+      {
+        question: "Can you coordinate with our caterer or food setup?",
+        answer:
+          "Yes. Share buffet vs plated plans and equipment needs. We align table depth, service entrances, and tent openings so staff are not fighting guest traffic.",
+      },
+      {
+        question: "We are not sure what fits. What should we do first?",
+        answer:
+          "Call us. A quick conversation plus a few yard photos usually tells us whether we need a site visit, what to measure next, and which tent family makes sense for your date in Connecticut.",
       },
     ],
     relatedLinks: [
+      {
+        label: "Graduation tent flow (party guide)",
+        href: "/party-guides/graduation-party-tent-backyard-connecticut",
+      },
+      {
+        label: "Backyard party checklist tool",
+        href: "/backyard-party-checklist",
+      },
+      { label: "Planning hub (sizing tools)", href: "/planning" },
       { label: "Party packages", href: "/party-packages" },
-      { label: "Table & chair rentals", href: "/table-chair-rentals" },
       ...baseRelated.filter((l) => l.href !== "/party-packages"),
     ],
   },
-
   "sweet-16-parties": {
     slug: "sweet-16-parties",
     seoTitle: "Sweet 16 Party Tent Rentals in Connecticut",
@@ -343,7 +368,8 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
     heroEyebrow: "Sweet 16 · backyard · venue",
     heroIntro:
       "A Sweet 16 should feel intentional: a great playlist, space to dance, photos that look considered, and parents who can breathe because the basics are handled. We help Connecticut families design tent layouts that feel elevated, not improvised.",
-    heroImage: "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
+    heroImage:
+      "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
     heroImageAlt: "Elegant tent interior setup for a Connecticut special event",
     trustLine: "Polished layouts for milestone celebrations",
     narrativeTitle: "Style with structure",
@@ -428,7 +454,6 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
       ...baseRelated.filter((l) => l.href !== "/party-packages"),
     ],
   },
-
   quinceaneras: {
     slug: "quinceaneras",
     seoTitle: "Quinceañera Tent Rentals in Connecticut",
@@ -439,7 +464,8 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
     heroIntro:
       "A Quinceañera brings together generations: ceremony moments, family formals, music, and a reception that should feel gracious from the first greeting to the last dance. We help Connecticut families create tent layouts that honor tradition while keeping everyone comfortable.",
     heroImage: "/images/farmington-tent-rental-lakeside-event-tent.png",
-    heroImageAlt: "Elegant outdoor tent for a family celebration in Connecticut",
+    heroImageAlt:
+      "Elegant outdoor tent for a family celebration in Connecticut",
     trustLine: "Family-centered layouts with thoughtful flow",
     narrativeTitle: "Space that respects the occasion",
     narrativeBody:
@@ -523,7 +549,6 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
       ...baseRelated,
     ],
   },
-
   tailgating: {
     slug: "tailgating",
     seoTitle: "Tailgate Tent Rentals in Connecticut",
@@ -545,7 +570,8 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
     splitRightTitle: "Timing around lots and traffic",
     splitRightBody:
       "Early arrival windows and tight pack-in rules are normal. Tell us your access constraints. We’ll align setup so you’re not fighting the clock.",
-    splitImage: "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
+    splitImage:
+      "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
     splitImageAlt: "Outdoor covered space for entertaining",
     caresTitle: "Why tenting helps beyond rain",
     caresCards: [
@@ -618,99 +644,121 @@ export const eventLandings: Record<EventLandingSlug, EventLandingContent> = {
       ...baseRelated,
     ],
   },
-
   "fundraisers-galas": {
     slug: "fundraisers-galas",
-    seoTitle: "Fundraiser & Gala Tent Rentals in Connecticut",
+    seoTitle:
+      "Connecticut Nonprofit & Community Event Tent Rentals | Fundraisers & Gatherings",
     metaDescription:
-      "Donor-friendly tent rentals for Connecticut fundraisers and galas: seated dinners, programs, auctions, and weather backup that protects the guest experience and run-of-show.",
-    h1: "Fundraisers & galas with donor-grade polish",
-    heroEyebrow: "Fundraisers · galas · benefits",
+      "Tents and rentals for Connecticut nonprofit and community events: fundraisers, donor receptions, benefit dinners, awareness programs, and neighborhood gatherings. Layout, registration flow, weather backup, tables, chairs, lighting, and sidewalls.",
+    h1: "Tents for mission events, community gatherings, and fundraisers in Connecticut",
+    heroEyebrow: "Nonprofit and community organizers, Connecticut",
     heroIntro:
-      "Donors notice details: comfortable seating, intelligible sound, lighting that flatters, and a schedule that doesn’t unravel when weather shifts. We help Connecticut nonprofits and hosts create tent environments that feel intentional, so your mission stays center stage.",
-    heroImage: "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
-    heroImageAlt: "Upscale tent setting for a Connecticut fundraising event",
-    trustLine: "Guest experience first. Production-smart layouts.",
-    narrativeTitle: "The event should feel effortless to attend",
+      "Volunteer committees run on tight schedules and borrowed attention. A tent gives your outdoor program a clear front door: registration and check-in stay dry, donors can hear remarks, food service has a lane that does not cut through the pledge moment, and families stay longer when shade and backup match the forecast. This page is for mission-driven groups and neighborhood hosts, not company picnics or festival-scale crowds. If you are juggling donors, speakers, and weather on one lawn, call us with your date, rough headcount, and what happens under cover.",
+    heroImage:
+      "/images/wethersfield-ct-party-tent-rental-wedding-reception.png",
+    heroImageAlt:
+      "Tented community fundraising event with seating and lighting in Connecticut",
+    trustLine:
+      "Nonprofit and community events across Connecticut, planned for real volunteers and real weather",
+    narrativeTitle: "Why tents help nonprofit and community events",
     narrativeBody:
-      "Galas live or die on flow: registration, program seating, auction sightlines, and service timing. We plan tenting around your run-of-show so guests aren’t guessing where to go and staff aren’t improvising in the dark.",
-    splitLeftTitle: "What successful benefits prioritize",
+      "Coverage is only the start. A tent signals where the program lives: guests find registration, silent auction, or pledge tables without wandering the field. It keeps sun off afternoon awareness walks, steadies sound for short programs, and gives catering or faith community kitchens a defined service edge. When turnout matters for fundraising or visibility, comfort and clarity are part of the mission, not extras.",
+    splitLeftTitle: "Common event types this page serves",
     splitLeftBody:
-      "Clear stage sightlines, comfortable room at tables, and service paths that don’t cut across the donor experience. We think like a guest, and like a crew running cues.",
-    splitRightTitle: "Weather and wardrobe realities",
+      "Outdoor fundraisers and pledge events, donor receptions and stewardship nights, community picnics and neighborhood celebrations, benefit dinners with remarks or auctions, awareness walks and kickoff villages, faith community gatherings on parish or borrowed lawns, and small foundation events on private sites. If your program is town wide or school district procurement, our community and school hub may be a better first stop.",
+    splitRightTitle: "What to line up before we quote",
     splitRightBody:
-      "Evening temperature drops and unexpected rain shouldn’t derail speeches or dinner service. A professional tent plan keeps the room stable so your program stays on track.",
+      "Peak arrival window, registration depth, seated vs standing mix, whether food is buffet or plated, where speakers or portable sound live, and how volunteers move equipment without crossing guest lines. Photos of the site, gate width, and any septic, irrigation, or parking limits save rework. We translate that into tent family, footprint, and rental lines that match inventory we actually carry.",
     splitImage: "/images/farmington-tent-rental-lakeside-event-tent.png",
-    splitImageAlt: "Evening event tent overlooking water in Connecticut",
-    caresTitle: "Why tenting supports fundraising outcomes",
+    splitImageAlt:
+      "Community benefit tent setup on private property in Connecticut",
+    caresTitle: "Layout and event flow that protect your program",
     caresCards: [
       {
-        title: "Comfort lengthens attention",
-        text: "When guests are physically comfortable, programs land better, and generosity follows.",
+        title: "Registration and check-in",
+        text: "Tables, shade, and queue depth so the first twenty minutes do not clog the rest of the mission story. Wind panels help when lines form beside an open field.",
       },
       {
-        title: "Production-friendly structure",
-        text: "Sound, lighting, and staging need predictable anchor points and safe cable paths.",
+        title: "Dining, gathering, and service zones",
+        text: "Buffet legs, coffee, dessert, or plated service each need aisle width and a back path for volunteers. Silent auction or gift tables work best slightly off the main food leg.",
       },
       {
-        title: "Composed backup",
-        text: "Rain plans protect revenue nights: you don’t get a redo when the schedule is fixed.",
+        title: "Program and donor focus",
+        text: "Remarks, awards, or a short auction need sightlines and intelligible sound. We leave room for simple AV, not a surprise rig blocking exits.",
       },
     ],
-    midCtaHeadline: "Align the tent with your run-of-show",
+    midCtaHeadline: "Call and walk through your mission event",
     midCtaSub:
-      "Share your program format, seating style, and AV needs. We’ll map layout and timing with your team.",
-    planningTitle: "Planning points hosts miss",
+      "Committees move faster on the phone: date, town, event type, realistic headcount, and what has to happen under cover. We will ask about access and power, then suggest tent direction and rental pairings before you chase permits or print programs.",
+    planningTitle: "Comfort, weather, presentation, and turnout",
     planningItems: [
-      "Auction visibility and paddle flow: avoid blind corners.",
-      "Speaker and stage placement for intelligible sound in a tented space.",
-      "Temperature swing planning for long evenings, especially near water or open fields.",
-      "Vendor access that doesn’t interrupt the donor experience during key moments.",
+      "Late spring and early fall swings: plan shade for long outdoor blocks, not only rain backup for dinner.",
+      "Lighting for evening programs and safe teardown when volunteers stay past dusk.",
+      "Sidewalls or window panels for breeze and light drizzle near food or registration, without trapping heat.",
+      "Heaters or fans when your crowd includes seniors or young families who will leave early if the space is uncomfortable.",
+      "Simple stage or riser conversations when speakers need to be seen above seated guests on grass.",
     ],
-    weatherTitle: "Tents as climate control, not just umbrellas",
+    weatherTitle: "Weather and comfort affect mission nights too",
     weatherBody:
-      "Wind, drizzle, and dropping temps can all shorten a benefit night. A tent gives you moderated airflow, protected AV, and a consistent environment for dinner and program, so donors stay engaged.",
-    upgradesTitle: "High-impact gala add-ons",
+      "Connecticut evenings can cool fast after a warm afternoon. Quick showers still show up on benefit weekends. A tent keeps donors in place for the ask, protects printed materials and tech, and gives volunteers a predictable home base when the sky changes. Comfort is part of stewardship: people stay, listen, and give when the room feels cared for.",
+    upgradesTitle:
+      "Common rental combinations for nonprofit and community tents",
     upgrades: [
       {
-        title: "Flooring for heels and staging",
-        text: "Level, stable surfaces improve safety and keep chairs from sinking on turf.",
+        title: "Tent, tables, and chairs sized to service style",
+        text: "Frame or modular tents for clear spans, rounds or banquets for seated benefits, or more perimeter seating and high tops for mixed community receptions. We match counts to how food moves, not a generic package.",
       },
       {
-        title: "Sidewalls & heating strategy",
-        text: "Even partial enclosure can transform comfort on chilly Connecticut evenings, planned correctly.",
+        title: "Lighting, linens, and modest décor support",
+        text: "Warm string or wash lighting for evening credibility, simple linens when tables should read donor ready, and coordinated neutrals that photograph well for newsletters and social posts.",
       },
       {
-        title: "Lighting design support",
-        text: "Warm, even lighting improves ambiance and photography, without looking gimmicky.",
+        title: "Sidewalls, heaters, fans, and flooring as needed",
+        text: "Cut wind at registration, add heat for enclosed dinner tents on chilly nights, move air on humid days, and steady chairs on soft turf after rain.",
       },
     ],
     faq: [
       {
-        question: "We’re doing a seated dinner: how do you size tents?",
+        question: "Is this page for our school or town green event?",
         answer:
-          "We size from table counts, service style, stage footprint, and required aisles. Send your floor plan goals and we’ll translate that into a workable structure plan.",
+          "Sometimes. If procurement, permits, and public crowd control drive the plan, start with our community and school town hub. Stay here when a nonprofit board or neighborhood committee leads the contract and the feel is donor or mission focused rather than municipal operations.",
       },
       {
-        question: "Can you work with our AV team?",
+        question: "How is this different from a corporate picnic page?",
         answer:
-          "Yes. Early coordination prevents last-minute rigging surprises. Share load-in timing and equipment needs.",
+          "Corporate pages emphasize employer programs and client hospitality timelines. Here we emphasize volunteer labor, donor experience, pledge or auction flow, and community messaging. The rentals overlap, the run of show does not.",
       },
       {
-        question: "What if our donor count changes near the event?",
+        question:
+          "We are not sure how many people will come. Can you still plan?",
         answer:
-          "We’ll build reasonable flexibility into seating and service zones, without compromising safety or flow.",
+          "Yes. Give us a realistic range and whether guests arrive in waves. We plan registration and seating flex so you can adjust within the footprint without rebuilding the whole site the week of.",
       },
       {
-        question: "Do you support nonprofit timelines and approvals?",
+        question:
+          "Can you coordinate with catering or faith kitchen volunteers?",
         answer:
-          "We’re used to committee decisions and vendor coordination. Bring us in when you’re ready. We’ll help you sequence what to lock first.",
+          "Yes. Share buffet vs plated plans, power limits, and when volunteers can access the tent. We align openings and aisles so service does not fight guest traffic during key moments.",
+      },
+      {
+        question: "Do you support nonprofit approval timelines?",
+        answer:
+          "We are used to board votes and grant reporting windows. Bring us in when the date is likely and the site is narrowed. We help you sequence what to lock first so committee time is not wasted.",
+      },
+      {
+        question: "What should we do if we do not know what fits?",
+        answer:
+          "Call with a few site photos, gate width, and your program outline. We will say what usually works for similar Connecticut benefits, what needs a visit, and what to measure next.",
       },
     ],
     relatedLinks: [
-      { label: "Corporate event rentals", href: "/corporate-event-rentals" },
-      { label: "Wedding tent rentals", href: "/wedding-tent-rentals" },
-      ...baseRelated,
+      {
+        label: "Town and school outdoor programs",
+        href: "/events/community-school-town",
+      },
+      { label: "Planning hub (sizing and tools)", href: "/planning" },
+      { label: "Party packages", href: "/party-packages" },
+      ...baseRelated.filter((l) => l.href !== "/party-packages"),
     ],
   },
 };

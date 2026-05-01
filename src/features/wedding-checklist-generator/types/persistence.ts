@@ -24,7 +24,7 @@ export interface WeddingChecklistDraftV2 {
   checkedLineIds: string[];
 }
 
-/** v1 legacy — migrated to v2 on read */
+/** v1 legacy, migrated to v2 on read */
 export interface WeddingChecklistDraftV1 {
   v: 1;
   mode: WeddingMode | null;

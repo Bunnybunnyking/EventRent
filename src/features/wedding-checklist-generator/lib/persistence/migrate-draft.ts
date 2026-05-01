@@ -3,11 +3,7 @@ import { normalizeLoadedForm } from "@/features/wedding-checklist/lib/merge-form
 import type { WeddingChecklistDraftV2, WeddingChecklistStoredDraft } from "@/features/wedding-checklist/types/persistence";
 import type { WeddingChecklistFormState } from "@/features/wedding-checklist/types";
 import {
-  clampFurthestStep,
-  clampStepIndex,
-  validateCheckedLineIds,
-  validateFormShape,
-} from "@/features/wedding-checklist/lib/persistence/validate-state";
+  clampFurthestStep, clampStepIndex, validateCheckedLineIds, validateFormShape, } from "@/features/wedding-checklist/lib/persistence/validate-state";
 import type { WeddingChecklistValidationIssue } from "@/features/wedding-checklist/types/persistence";
 
 function emptyIssues(): WeddingChecklistValidationIssue[] {
@@ -37,14 +33,7 @@ function migrateV1ToV2(o: Record<string, unknown>): WeddingChecklistDraftV2 | nu
   const furthestStep = clampFurthestStep(mode, o.furthestStep, stepIndex);
 
   return {
-    v: 2,
-    updatedAt: new Date().toISOString(),
-    mode,
-    stepIndex,
-    furthestStep,
-    form: { ...form, mode },
-    checkedLineIds: validateCheckedLineIds(o.checkedLineIds),
-  };
+    v: 2, updatedAt: new Date().toISOString(), mode, stepIndex, furthestStep, form: { ...form, mode }, checkedLineIds: validateCheckedLineIds(o.checkedLineIds), };
 }
 
 function normalizeV2Record(o: Record<string, unknown>): WeddingChecklistDraftV2 | null {
@@ -60,34 +49,15 @@ function normalizeV2Record(o: Record<string, unknown>): WeddingChecklistDraftV2 
   const updatedAt = typeof o.updatedAt === "string" ? o.updatedAt : new Date().toISOString();
 
   return {
-    v: 2,
-    updatedAt,
-    mode,
-    stepIndex,
-    furthestStep,
-    form: { ...form, mode },
-    checkedLineIds: validateCheckedLineIds(o.checkedLineIds),
-  };
+    v: 2, updatedAt, mode, stepIndex, furthestStep, form: { ...form, mode }, checkedLineIds: validateCheckedLineIds(o.checkedLineIds), };
 }
 
 export function draftToSession(draft: WeddingChecklistDraftV2): import("@/features/wedding-checklist/types/persistence").WeddingChecklistSessionState {
   return {
-    form: draft.form,
-    mode: draft.mode,
-    stepIndex: draft.stepIndex,
-    furthestStep: draft.furthestStep,
-    checkedLineIds: draft.checkedLineIds,
-  };
+    form: draft.form, mode: draft.mode, stepIndex: draft.stepIndex, furthestStep: draft.furthestStep, checkedLineIds: draft.checkedLineIds, };
 }
 
 export function sessionToDraftV2(session: import("@/features/wedding-checklist/types/persistence").WeddingChecklistSessionState): WeddingChecklistDraftV2 {
   return {
-    v: 2,
-    updatedAt: new Date().toISOString(),
-    mode: session.mode,
-    stepIndex: session.stepIndex,
-    furthestStep: session.furthestStep,
-    form: session.form,
-    checkedLineIds: session.checkedLineIds,
-  };
+    v: 2, updatedAt: new Date().toISOString(), mode: session.mode, stepIndex: session.stepIndex, furthestStep: session.furthestStep, form: session.form, checkedLineIds: session.checkedLineIds, };
 }

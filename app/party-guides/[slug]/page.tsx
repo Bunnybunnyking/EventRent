@@ -16,11 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const guide = getPartyGuide(slug);
   if (!guide) return {};
   return createPageMetadata({
-    title: guide.title,
-    description: guide.metaDescription,
-    path: `/party-guides/${slug}`,
-    ogImage: defaultOgImagePath,
-  });
+    title: guide.title, description: guide.metaDescription, path: `/party-guides/${slug}`, ogImage: defaultOgImagePath, });
 }
 
 export default async function PartyGuideArticlePage({ params }: Props) {
@@ -42,10 +38,7 @@ export default async function PartyGuideArticlePage({ params }: Props) {
       <FAQSchemaItems items={faqForSchema} />
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" },
-          { name: "Party guides", path: "/party-guides" },
-          { name: guide.title, path: `/party-guides/${slug}` },
-        ]}
+          { name: "Home", path: "/" }, { name: "Party guides", path: "/party-guides" }, { name: guide.title, path: `/party-guides/${slug}` }, ]}
       />
       <PartyGuideArticleView guide={guide} />
     </>
