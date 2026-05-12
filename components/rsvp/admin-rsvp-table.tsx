@@ -139,10 +139,10 @@ export function AdminRsvpTable({ rows, staffKey }: { rows: AdminRsvpRow[]; staff
         <button
           type="button"
           disabled
-          title="Wire CSV export to your reporting pipeline (Supabase query or edge function)."
+          title="CSV export is not available yet."
           className="inline-flex min-h-[40px] cursor-not-allowed items-center rounded-full border border-stone-300 bg-white px-4 text-sm font-semibold text-stone-400"
         >
-          Export CSV (placeholder)
+          Export CSV
         </button>
       </div>
     </div>

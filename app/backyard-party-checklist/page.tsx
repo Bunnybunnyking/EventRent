@@ -4,6 +4,7 @@ import { BackyardPartyChecklistGenerator } from "@/components/backyard-party-che
 import { Breadcrumb } from "@/components/breadcrumb";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { BreadcrumbListSchema, FAQSchemaItems, ServiceSchema } from "@/components/schema";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
@@ -66,14 +67,20 @@ export default function BackyardPartyChecklistPage() {
       <FAQSchemaItems items={faqSchemaItems} />
       <BreadcrumbListSchema
         items={[
-          { name: "Home", path: "/" }, { name: "Planning", path: "/planning" }, { name: "Backyard party checklist", path: "/backyard-party-checklist" }, ]}
+          { name: "Home", path: "/" },
+          { name: "Party games & tools", path: "/party-games-tools" },
+          { name: "Backyard party checklist", path: "/backyard-party-checklist" },
+        ]}
       />
 
       <section className="border-b border-stone-200 bg-gradient-to-b from-[#faf9f7] to-white py-8 sm:py-10">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <Breadcrumb
             items={[
-              { label: "Home", href: "/" }, { label: "Planning", href: "/planning" }, { label: "Backyard party checklist" }, ]}
+              { label: "Home", href: "/" },
+              { label: "Party games & tools", href: "/games" },
+              { label: "Backyard party checklist" },
+            ]}
           />
           <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Connecticut, private property and backyard events</p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl [font-family:var(--font-display)]">
@@ -272,9 +279,7 @@ export default function BackyardPartyChecklistPage() {
             Tell us town, rough guest count, seated vs mingling, and what you are worried about (slope, gate, pool, septic). We will say what usually fits, what needs photos or a quick look, and what to measure before we quote.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-            <a href={business.phoneHref} className={`${callNowSectionClass} justify-center px-8`}>
-              Call {business.phone}
-            </a>
+            <CallAndTextCta variant="section" linkClassName={`${callNowSectionClass} justify-center px-8`} />
             <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center px-8`} prefetch={true}>
               Email photos and layout notes
             </Link>

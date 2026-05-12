@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { business } from "@/lib/site-data";
 import { bookNowHeaderClass } from "@/lib/cta-styles";
 
@@ -17,20 +18,19 @@ export function HomeFooterCTA() {
         </p>
 
         {/* Desktop: paired buttons */}
-        <div className="mt-8 hidden flex-col items-center justify-center gap-3 md:flex md:flex-row md:gap-4">
-          <a
-            href={business.phoneHref}
-            className={`${bookNowHeaderClass} min-h-[44px] px-7 sm:min-h-[46px]`}
-            aria-label="Call Event Concierge"
-          >
-            Call Event Concierge
-          </a>
+        <div className="mt-8 hidden flex-col items-center justify-center gap-3 md:flex md:flex-row md:items-end md:justify-center md:gap-4">
+          <CallAndTextCta
+            variant="header"
+            labelClassName="text-stone-200"
+            captionClassName="text-stone-400"
+            linkClassName={`${bookNowHeaderClass} !flex min-h-[44px] flex-col justify-center px-7 py-1.5 sm:min-h-[46px]`}
+          />
           <Link href="/rental-inventory" className={secondaryOutline} prefetch={true}>
             See what we offer
           </Link>
         </div>
 
-        {/* Mobile: text-first — sticky bar holds Call + Build Event List */}
+        {/* Mobile: text-first — fixed bar holds full phone + Build My Event List (wishlist) */}
         <div className="mt-8 space-y-3 text-sm leading-relaxed text-stone-400 md:hidden">
           <p>
             <a href={business.phoneHref} className="font-semibold text-[#edc16c] underline underline-offset-2 hover:text-white">

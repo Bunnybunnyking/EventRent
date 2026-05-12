@@ -95,7 +95,7 @@ export function PartyGuideArticleView({ guide }: { guide: PartyGuideArticle }) {
         </header>
 
         <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-          <PartyGuideImagePlaceholder caption={`Photography or diagram for: ${guide.title}`} />
+          <PartyGuideImagePlaceholder caption={`Illustration or photo: ${guide.title}`} />
 
           <details className="lg:hidden mt-8 rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
             <summary className="cursor-pointer text-sm font-semibold text-stone-900 [list-style:none] [&::-webkit-details-marker]:hidden">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   checklistCategoryLabels, checklistCategoryOrder, computeBackyardChecklistResult, defaultBackyardChecklistInput, formatBackyardChecklistPlainText, mergeParsedIntoDefault, parseChecklistSearchParams, serializeChecklistInput, type BackyardChecklistInput, type BackyardChecklistInputPatch, type ChecklistLineItem, type DayPart, type FoodLevel, type GuestRange, type KidsLevel, type MusicPlan, type PrefQuick, type PrivateEventType, type SetupConfirm, type SiteGuestQuick, type Timeframe, type VenueKind, type WeatherConcernLevel, } from "@/lib/backyard-checklist-logic";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 
@@ -242,24 +243,26 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const parsed = parseChecklistSearchParams(window.location.search);
-    if (parsed?.eventType) {
-      setInp(mergeParsedIntoDefault(parsed));
-      setStorageReady(true);
-      return;
-    }
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const restored = readStoredChecklist(raw);
-      if (restored) {
-        setInp(restored.inp);
-        setStep(restored.step);
-        setFurthest(restored.furthest);
-        setCheckedIds(new Set(restored.checkedIds));
-        setResumeBanner(true);
+    queueMicrotask(() => {
+      const parsed = parseChecklistSearchParams(window.location.search);
+      if (parsed?.eventType) {
+        setInp(mergeParsedIntoDefault(parsed));
+        setStorageReady(true);
+        return;
       }
-    }
-    setStorageReady(true);
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const restored = readStoredChecklist(raw);
+        if (restored) {
+          setInp(restored.inp);
+          setStep(restored.step);
+          setFurthest(restored.furthest);
+          setCheckedIds(new Set(restored.checkedIds));
+          setResumeBanner(true);
+        }
+      }
+      setStorageReady(true);
+    });
   }, []);
 
   useEffect(() => {
@@ -849,9 +852,7 @@ export function BackyardPartyChecklistGenerator({ embedded = false }: { embedded
                   >
                     Get a quote
                   </Link>
-                  <a href={business.phoneHref} className={`${callNowSectionClass} justify-center text-sm`}>
-                    Call us
-                  </a>
+                  <CallAndTextCta variant="section" linkClassName={`${callNowSectionClass} justify-center text-sm`} />
                 </div>
               </SectionCard>
             </div>

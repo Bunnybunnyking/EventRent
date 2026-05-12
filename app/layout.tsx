@@ -2,11 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { GoogleAdsGtag } from "@/components/google-ads-gtag";
+import { GoogleTagManager } from "@/components/google-tag-manager";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { StickyMobileCTA } from "@/components/sticky-mobile-cta";
-import { LocalBusinessSchema, WebSiteSchema } from "@/components/schema";
+import { SiteWideGraphSchema } from "@/components/schema";
 import { business } from "@/lib/site-data";
 import { defaultOgImagePath, siteBaseUrl } from "@/lib/metadata";
 
@@ -27,6 +28,8 @@ const cormorant = Cormorant_Garamond({
 
 const defaultOgUrl = `${siteBaseUrl}${defaultOgImagePath}`;
 
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteBaseUrl),
   title: {
@@ -35,6 +38,7 @@ export const metadata: Metadata = {
   },
   description:
     "Connecticut tent rentals and event rentals: weddings, backyard parties, graduations, corporate events. Table and chair rentals, delivery, and professional setup statewide.",
+  ...(googleSiteVerification ? { verification: { google: googleSiteVerification } } : {}),
   robots: {
     index: true,
     follow: true,
@@ -76,14 +80,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className={`${inter.variable} ${cormorant.variable} font-sans`}>
         <GoogleAdsGtag />
-        <LocalBusinessSchema />
-        <WebSiteSchema />
+        <GoogleTagManager />
+        <SiteWideGraphSchema />
         <ScrollToTop />
         <Header />
-        <main className="pb-28 md:pb-0">{children}</main>
+        <main className="pb-24 md:pb-0">{children}</main>
         <Footer />
         <StickyMobileCTA />
       </body>

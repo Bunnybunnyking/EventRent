@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { WeddingOutdoorFaqAccordion } from "@/components/wedding-outdoor-faq-accordion";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowHeroClass, catalogReserveGlassHeroClass } from "@/lib/cta-styles";
 import { business, galleryItems } from "@/lib/site-data";
 
@@ -520,14 +521,12 @@ export function WeddingTentRentalsLanding() {
               </li>
             ))}
           </ul>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap items-end gap-4">
             <Link href="/contact#quote" className={bookNowSectionClass}>
               Book Consultation
             </Link>
             {phoneOk ? (
-              <a href={business.phoneHref} className={callNowHeroClass}>
-                Call {business.phone}
-              </a>
+              <CallAndTextCta variant="hero" linkClassName={callNowHeroClass} wrapperClassName="items-start sm:items-center" />
             ) : null}
           </div>
         </div>

@@ -3,9 +3,42 @@ import { interactiveCardClass, cardRowHintClass } from "@/lib/interactive-styles
 
 const tools = [
   {
-    title: "Quick Event Planner", sub: "About 60 seconds", href: "/quick-event-planner", hint: "Explore", }, {
-    title: "Sq. ft. calculator", sub: "Rough tent ranges from headcount and layout", href: "/planning#tent-size-estimator", hint: "Explore", }, {
-    title: "Easy-to-forget checklist", sub: "Power, access, weather, before the truck rolls", href: "/planning#easy-to-forget", hint: "Explore", }, ] as const;
+    title: "Quick Event Planner",
+    sub: "About 60 seconds",
+    href: "/quick-event-planner",
+    hint: "Explore",
+  },
+  {
+    title: "Party games & tools",
+    sub: "Quizzes, Party Spark, checklists, planners in one hub",
+    href: "/games",
+    hint: "Open",
+  },
+  {
+    title: "Party Spark Generator",
+    sub: "Party names, invites, shareable ideas",
+    href: "/party-spark-generator",
+    hint: "Play",
+  },
+  {
+    title: "Party quizzes",
+    sub: "Personality quiz, QUIZAST, and more",
+    href: "/quiz",
+    hint: "Play",
+  },
+  {
+    title: "Sq. ft. calculator",
+    sub: "Rough tent ranges from headcount and layout",
+    href: "/planning#tent-size-estimator",
+    hint: "Explore",
+  },
+  {
+    title: "Easy-to-forget checklist",
+    sub: "Power, access, weather, before the truck rolls",
+    href: "/planning#easy-to-forget",
+    hint: "Explore",
+  },
+] as const;
 
 export function PlanningTools() {
   return (
@@ -32,7 +65,7 @@ export function PlanningTools() {
           ))}
         </ul>
 
-        <div className="mt-5 hidden gap-4 md:grid md:grid-cols-3">
+        <div className="mt-5 hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-3">
           {tools.map((t) => (
             <Link key={t.title} href={t.href} className={`${interactiveCardClass} flex flex-col p-5`} prefetch={true}>
               <h3 className="text-lg font-semibold text-stone-900 [font-family:var(--font-display)]">{t.title}</h3>
@@ -45,6 +78,18 @@ export function PlanningTools() {
         </div>
 
         <p className="mt-8 text-center text-sm text-stone-600 md:mt-5">
+          <Link href="/games" className="font-semibold text-[#7a5a18] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
+            Games &amp; tools hub
+          </Link>
+          <span className="mx-2 text-stone-400" aria-hidden>
+            ·
+          </span>
+          <Link href="/quiz" className="font-semibold text-[#7a5a18] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
+            Quizzes
+          </Link>
+          <span className="mx-2 text-stone-400" aria-hidden>
+            ·
+          </span>
           <Link href="/planning" className="font-semibold text-[#7a5a18] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
             Planning hub
           </Link>

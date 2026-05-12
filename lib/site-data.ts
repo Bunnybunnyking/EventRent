@@ -1,11 +1,13 @@
 export const business = {
-  /** Legal / registered name; used in footer, copyright, and structured data. */
-  name: "Connecticut Party Rentals LLC",
+  /** Public brand name: header, footer, titles, copy, and structured data. */
+  name: "Connecticut Party Rentals",
   phone: "203-893-7078",
   phoneHref: "tel:+12038937078",
+  /** Opens the default SMS app on mobile and many desktops */
+  smsHref: "sms:+12038937078",
   email: "info@eventrentct.com",
-  /** Public website (matches NEXT_PUBLIC_SITE_URL in production). */
-  websiteUrl: "https://www.ct-partyrentals.com",
+  /** Public canonical origin (sitemap, robots, OG, JSON-LD). Update if the primary domain changes. */
+  websiteUrl: "https://www.eventrentct.com",
   primaryCity: "Bloomfield",
   state: "Connecticut",
   /** USPS ZIP (06002) for display + schema.org postalCode. */
@@ -39,7 +41,13 @@ export const business = {
 
 /** Primary header navigation (internal routes). The Event Guest Count Planner lives under `/events` (My event strip), not here. */
 export const headerNavLinks = [
-  { href: "/tents", label: "Tents" }, { href: "/planning", label: "Planning" }, { href: "/party-packages", label: "Packages" }, { href: "/table-chair-rentals", label: "Tables & Chairs" }, { href: "/wedding-tent-rentals", label: "Weddings" }, { href: "/events", label: "Events" }, { href: "/av-games", label: "AV/Games" },
+  { href: "/tents", label: "Tents" },
+  { href: "/planning", label: "Planning" },
+  { href: "/party-packages", label: "Packages" },
+  { href: "/table-chair-rentals", label: "Tables & Chairs" },
+  { href: "/wedding-tent-rentals", label: "Weddings" },
+  { href: "/events", label: "Events" },
+  { href: "/av-games", label: "AV/Games" },
 ] as const;
 
 export const trustPoints = [

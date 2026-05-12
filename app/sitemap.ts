@@ -10,6 +10,11 @@ import { buildIndexablePaths } from "@/lib/indexable-sitemap";
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = buildIndexablePaths();
+  const lastModified = new Date();
   return paths.map((path) => ({
-    url: `${siteBaseUrl}${path}`, changeFrequency: path === "/" ? "weekly" : "monthly", priority: path === "/" ? 1 : path === "/sitemap" ? 0.65 : 0.7, }));
+    url: `${siteBaseUrl}${path}`,
+    lastModified,
+    changeFrequency: path === "/" ? "weekly" : "monthly",
+    priority: path === "/" ? 1 : path === "/sitemap" ? 0.65 : 0.7,
+  }));
 }

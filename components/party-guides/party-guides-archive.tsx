@@ -127,7 +127,7 @@ export function PartyGuidesArchive() {
             </nav>
           ) : null}
           <div className="mt-10 max-w-2xl">
-            <PartyGuideImagePlaceholder caption="Hero photography or editorial art for this hub (optional)" />
+            <PartyGuideImagePlaceholder caption="Featured image for the party guides hub" />
           </div>
         </div>
       </section>

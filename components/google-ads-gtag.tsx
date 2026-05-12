@@ -8,6 +8,7 @@ import { googleAdsAwId } from "@/lib/google-ads-id";
  */
 export function GoogleAdsGtag() {
   const awId = googleAdsAwId();
+  if (!awId) return null;
 
   const inlineInit = `
 window.dataLayer = window.dataLayer || [];

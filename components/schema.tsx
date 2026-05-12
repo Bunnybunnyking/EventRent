@@ -1,13 +1,19 @@
 import { getFaqPageSchemaItems } from "@/lib/faq-data";
 import type { FaqItem } from "@/lib/faq-data";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { business } from "@/lib/site-data";
 import { defaultOgImagePath, siteBaseUrl } from "@/lib/metadata";
 
 const businessId = `${siteBaseUrl}/#localbusiness`;
-/** Stable @id for WebSite so Article / CollectionPage can reference the same graph node. */
 const websiteId = `${siteBaseUrl}/#website`;
 
-function absolutePageUrl(path: string) {
+const defaultOgAbsolute = `${siteBaseUrl}${defaultOgImagePath}`;
+
+/** Short site pitch for WebSite + consistency with root `metadata.description`. */
+const siteWideDescription =
+  "Connecticut tent rentals and event rentals: weddings, backyard parties, graduations, corporate events. Table and chair rentals, delivery, and professional setup statewide.";
+
+function absolutePageUrl(path: string): string {
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${siteBaseUrl}${p}`;
 }
@@ -15,19 +21,21 @@ function absolutePageUrl(path: string) {
 const hasPublishableStreetAddress =
   Boolean(business.address?.trim()) && !/\[INSERT|PLACEHOLDER|TBD\b/i.test(business.address);
 
-export function LocalBusinessSchema() {
-  const heroImage = `${siteBaseUrl}${defaultOgImagePath}`;
-
-  const schema = {
-    "@context": "https://schema.org",
+/**
+ * Single JSON-LD `@graph` for sitewide entities (recommended pattern for linking WebSite ↔ business).
+ * Replaces separate LocalBusiness + WebSite scripts to avoid duplicate @context blocks.
+ */
+export function SiteWideGraphSchema() {
+  const localBusiness: Record<string, unknown> = {
     "@type": "LocalBusiness",
     "@id": businessId,
     name: business.name,
-    image: [heroImage],
+    url: siteBaseUrl,
+    logo: { "@type": "ImageObject", url: defaultOgAbsolute },
+    image: [defaultOgAbsolute],
     telephone: business.phone,
     email: business.email,
-    url: siteBaseUrl,
-    ...(business.websiteUrl?.trim() && business.websiteUrl !== siteBaseUrl
+    ...(business.websiteUrl?.trim() && business.websiteUrl.replace(/\/$/, "") !== siteBaseUrl
       ? { sameAs: [business.websiteUrl.replace(/\/$/, "")] }
       : {}),
     ...(hasPublishableStreetAddress
@@ -49,13 +57,46 @@ export function LocalBusinessSchema() {
             addressCountry: "US",
           },
         }),
-    /* Approx. geocoordinates for Bloomfield, CT (79 Old Windsor Rd area). */
     geo: { "@type": "GeoCoordinates", latitude: 41.8507, longitude: -72.7031 },
     areaServed: [
-      { "@type": "State", name: "Connecticut" }, { "@type": "AdministrativeArea", name: "Hartford County" }, ], description: `${business.familyHistoryShort} ${business.celebrationTagline} ${business.name} provides tent rentals, table and chair rentals, and full setup service for weddings, private parties, and corporate events across Connecticut and Southern MA.`, priceRange: "$$", contactPoint: {
-      "@type": "ContactPoint", contactType: "customer service", telephone: business.phone, email: business.email, areaServed: "US", availableLanguage: ["English"], }, };
+      { "@type": "State", name: "Connecticut" },
+      { "@type": "AdministrativeArea", name: "Hartford County" },
+      { "@type": "State", name: "Massachusetts" },
+    ],
+    description: `${business.familyHistoryShort} ${business.celebrationTagline} ${business.name} provides tent rentals, table and chair rentals, and full setup service for weddings, private parties, and corporate events across Connecticut and Southern Massachusetts.`,
+    priceRange: "$$",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        telephone: business.phone,
+        email: business.email,
+        url: absolutePageUrl("/contact"),
+        areaServed: ["US"],
+        availableLanguage: ["English"],
+      },
+    ],
+  };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+  const webSite: Record<string, unknown> = {
+    "@type": "WebSite",
+    "@id": websiteId,
+    name: business.name,
+    url: siteBaseUrl,
+    description: siteWideDescription,
+    inLanguage: "en-US",
+    publisher: { "@id": businessId },
+    copyrightHolder: { "@id": businessId },
+  };
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [localBusiness, webSite],
+  };
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(graph) }} />
+  );
 }
 
 export function FAQSchema() {
@@ -64,50 +105,73 @@ export function FAQSchema() {
 
 export function FAQSchemaItems({ items }: { items: Pick<FaqItem, "question" | "answer">[] }) {
   const schema = {
-    "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items.map((item) => ({
-      "@type": "Question", name: item.question, acceptedAnswer: {
-        "@type": "Answer", text: item.answer, }, })), };
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
-}
-
-export function WebSiteSchema() {
-  const schema = {
-    "@context": "https://schema.org", "@type": "WebSite", "@id": websiteId, name: business.name, url: siteBaseUrl, inLanguage: "en-US", publisher: { "@id": businessId }, };
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+  );
 }
 
 type ServiceSchemaProps = {
   name: string;
   description: string;
   path: string;
-  /** When set (e.g. town service pages), adds a City alongside Connecticut for clearer local relevance. */
   serviceAreaCity?: string;
 };
 
-/** Use on service pages; references LocalBusiness @id from layout */
 export function ServiceSchema({ name, description, path, serviceAreaCity }: ServiceSchemaProps) {
   const areaServed = serviceAreaCity
     ? [
-        { "@type": "State", name: "Connecticut" }, { "@type": "City", name: serviceAreaCity, containedInPlace: { "@type": "State", name: "Connecticut" } }, ]
+        { "@type": "State", name: "Connecticut" },
+        {
+          "@type": "City",
+          name: serviceAreaCity,
+          containedInPlace: { "@type": "State", name: "Connecticut" },
+        },
+      ]
     : { "@type": "State", name: "Connecticut" };
 
   const schema = {
-    "@context": "https://schema.org", "@type": "Service", name, description, serviceType: name, url: absolutePageUrl(path), provider: { "@id": businessId }, isPartOf: { "@id": websiteId }, areaServed, };
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    serviceType: name,
+    url: absolutePageUrl(path),
+    provider: { "@id": businessId },
+    isPartOf: { "@id": websiteId },
+    areaServed,
+  };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+  );
 }
 
 type BreadcrumbItem = { name: string; path: string };
 
-/** BreadcrumbList for service/landing pages; `path` is pathname including leading slash. */
 export function BreadcrumbListSchema({ items }: { items: BreadcrumbItem[] }) {
   const schema = {
-    "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items.map((item, index) => ({
-      "@type": "ListItem", position: index + 1, name: item.name, item: absolutePageUrl(item.path === "/" ? "/" : item.path).replace(/\/$/, "") || siteBaseUrl, })), };
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absolutePageUrl(item.path === "/" ? "/" : item.path).replace(/\/$/, "") || siteBaseUrl,
+    })),
+  };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+  );
 }
 
 type ArticleSchemaProps = {
@@ -116,27 +180,59 @@ type ArticleSchemaProps = {
   path: string;
   datePublished: string;
   dateModified: string;
-  /** https://schema.org/articleSection */
   articleSection?: string;
+  /** Absolute or site-root path for primary image (defaults to default OG image). */
+  imageUrl?: string;
 };
 
-/** Article / BlogPosting for guide and content pages */
 export function ArticleSchema({
-  headline, description, path, datePublished, dateModified, articleSection,
+  headline,
+  description,
+  path,
+  datePublished,
+  dateModified,
+  articleSection,
+  imageUrl,
 }: ArticleSchemaProps) {
   const pageUrl = absolutePageUrl(path);
-  const schema = {
-    "@context": "https://schema.org", "@type": "Article", headline, description, datePublished, dateModified, ...(articleSection ? { articleSection } : {}), author: { "@type": "Organization", name: business.name }, publisher: { "@id": businessId }, isPartOf: { "@id": websiteId }, mainEntityOfPage: {
-      "@type": "WebPage", "@id": pageUrl, url: pageUrl, isPartOf: { "@id": websiteId }, }, };
+  const primaryImage = (() => {
+    if (!imageUrl) return defaultOgAbsolute;
+    if (imageUrl.startsWith("http")) return imageUrl;
+    return `${siteBaseUrl}${imageUrl.startsWith("/") ? imageUrl : `/${imageUrl}`}`;
+  })();
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    datePublished,
+    dateModified,
+    image: [primaryImage],
+    ...(articleSection ? { articleSection } : {}),
+    author: { "@type": "Organization", name: business.name, "@id": businessId, url: siteBaseUrl },
+    publisher: { "@id": businessId },
+    isPartOf: { "@id": websiteId },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+      url: pageUrl,
+      isPartOf: { "@id": websiteId },
+    },
+  };
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+  );
 }
 
 type ItemListSchemaEntry = { name: string; path: string; description?: string };
 
-/** Collection + ItemList for hub pages (e.g. /party-guides). */
 export function CollectionItemListSchema({
-  name, description, path, items,
+  name,
+  description,
+  path,
+  items,
 }: {
   name: string;
   description: string;
@@ -145,10 +241,29 @@ export function CollectionItemListSchema({
 }) {
   const pageUrl = absolutePageUrl(path);
   const schema = {
-    "@context": "https://schema.org", "@type": "CollectionPage", name, description, url: pageUrl, isPartOf: { "@id": websiteId }, mainEntity: {
-      "@type": "ItemList", numberOfItems: items.length, itemListElement: items.map((item, index) => ({
-        "@type": "ListItem", position: index + 1, item: {
-          "@type": "WebPage", name: item.name, url: absolutePageUrl(item.path), ...(item.description ? { description: item.description } : {}), }, })), }, };
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: pageUrl,
+    isPartOf: { "@id": websiteId },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "WebPage",
+          name: item.name,
+          url: absolutePageUrl(item.path),
+          ...(item.description ? { description: item.description } : {}),
+        },
+      })),
+    },
+  };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+  );
 }

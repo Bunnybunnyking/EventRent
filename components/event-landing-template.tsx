@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CTASection } from "@/components/sections";
+import { SmsTentDetailsCta } from "@/components/sms-tent-details-cta";
 import { FAQAccordion } from "@/components/faq-accordion";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import type { EventLandingContent } from "@/lib/event-landing-data";
 import { business } from "@/lib/site-data";
@@ -33,7 +35,14 @@ function EventLandingStickyNav() {
   );
 }
 
-export function EventLandingTemplate({ content }: { content: EventLandingContent }) {
+export function EventLandingTemplate({
+  content,
+  graduationSms = false,
+}: {
+  content: EventLandingContent;
+  /** Graduation landing only: optional SMS block below hero CTAs */
+  graduationSms?: boolean;
+}) {
   return (
     <>
       <section className="border-b border-[#e3d3b0]/40 bg-gradient-to-br from-[#faf9f7] via-white to-[#f5f0e8]/90 py-7 sm:py-9 lg:py-10">
@@ -44,15 +53,22 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
               {content.h1}
             </h1>
             <p className="mt-4 text-base leading-relaxed text-stone-600 sm:text-[1.05rem] sm:leading-relaxed">{content.heroIntro}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-end gap-3">
               <Link href="/contact#quote" className={bookNowSectionClass}>
                 Book Consultation
               </Link>
-              <a href={business.phoneHref} className={`${callNowSectionClass} max-w-full`}>
-                Call {business.phone}
-              </a>
+              <CallAndTextCta variant="section" linkClassName={`${callNowSectionClass} max-w-full`} />
             </div>
             <p className="mt-3 text-sm text-stone-500">Event Concierge support · {business.state}</p>
+            {graduationSms ? (
+              <SmsTentDetailsCta
+                location="graduation-page"
+                buttonText="Text Graduation Details"
+                className="mt-5 max-w-lg"
+                helperText="Planning a graduation party? Text us the date, time, town or pin, guest count, and an optional yard photo."
+                helperClassName="mt-2 text-[11px] leading-snug text-stone-500 sm:text-xs"
+              />
+            ) : null}
           </div>
           <div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-[0_12px_36px_rgba(45,35,20,0.08)] ring-2 ring-[#e3d3b0]/90 ring-offset-2 ring-offset-[#faf9f7]">
@@ -142,13 +158,16 @@ export function EventLandingTemplate({ content }: { content: EventLandingContent
               <h2 className="mt-1.5 text-xl font-bold tracking-tight text-white sm:text-2xl [font-family:var(--font-display)]">{content.midCtaHeadline}</h2>
               <p className="mt-2 text-sm leading-relaxed text-stone-300 sm:text-base">{content.midCtaSub}</p>
             </div>
-            <div className="mt-5 flex shrink-0 flex-col gap-2.5 sm:flex-row md:mt-0">
+            <div className="mt-5 flex shrink-0 flex-col gap-2.5 sm:flex-row md:mt-0 md:items-end">
               <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center`}>
                 Book Consultation
               </Link>
-              <a href={business.phoneHref} className={`${callNowSectionClass} justify-center`}>
-                Call Now
-              </a>
+              <CallAndTextCta
+                variant="section"
+                labelClassName="text-stone-200"
+                captionClassName="text-stone-400"
+                linkClassName={`${callNowSectionClass} justify-center`}
+              />
             </div>
           </div>
         </div>

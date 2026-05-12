@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { business, galleryItems, townList } from "@/lib/site-data";
 
@@ -112,13 +113,16 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-300 sm:text-lg">
                 Tell us your date, town, and guest count. We will walk through setup with you, answer questions without the runaround, and help you get a layout that works for your people and your place.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:gap-5">
                 <Link href="/contact#quote" className={`${bookNowSectionClass} w-full justify-center sm:w-auto`}>
                   Book Consultation
                 </Link>
-                <a href={business.phoneHref} className={`${callNowSectionClass} w-full shrink-0 sm:w-auto`}>
-                  Call {business.phone}
-                </a>
+                <CallAndTextCta
+                  variant="section"
+                  labelClassName="text-stone-200"
+                  captionClassName="text-stone-400"
+                  linkClassName={`${callNowSectionClass} w-full shrink-0 sm:w-auto`}
+                />
               </div>
               <p className="mt-6 text-sm leading-relaxed text-stone-400">
                 No pressure, fast responses. The form takes a few minutes. Start on{" "}
@@ -133,10 +137,13 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-200 sm:text-lg">
                 Our Event Concierge walks you through venue limits, guest flow, timeline, and layout so nothing gets lost. Share your date, town, and guest count; we get back to you with clear options and a plan you can actually use.
               </p>
-              <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
-                <a href={business.phoneHref} className={`${callNowSectionClass} w-full justify-center sm:w-auto`}>
-                  Call {business.phone}
-                </a>
+              <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-end sm:gap-5">
+                <CallAndTextCta
+                  variant="section"
+                  labelClassName="text-stone-200"
+                  captionClassName="text-stone-400"
+                  linkClassName={`${callNowSectionClass} w-full justify-center sm:w-auto`}
+                />
                 <Link
                   href="/contact#quote"
                   className={`${bookNowSectionClass} w-full justify-center text-center sm:w-auto`}

@@ -7,7 +7,9 @@ export const EVENT_LIST_HREF = "/wishlist";
 export const FAST_QUOTE_HREF = "/contact#quote";
 
 export const LABEL_BUILD_EVENT_LIST = "Build My Event List";
-export const LABEL_GET_FAST_QUOTE = "Get a Fast Quote";
+/** Homepage mobile hero primary link — prefer “reserve” language over generic “quote.” */
+export const LABEL_GET_FAST_QUOTE = "Reserve a Tent";
+/** Shown inside the mobile sticky call pill instead of digits (`StickyMobileCTA`). Full number stays in `tel:` + `aria-label`. */
 export const LABEL_CALL_NOW = "Call Now";
 
 /** Subtle text-link classes for secondary actions on mobile */

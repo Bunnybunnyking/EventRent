@@ -188,7 +188,7 @@ export function TentHubPage({ goodshuffleEmbedGallery = false }: { goodshuffleEm
       <section className="py-4 sm:py-5">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-semibold text-stone-900 sm:text-2xl">Visual library</h2>
-          <p className="mt-1.5 text-sm text-stone-600">Room for family-level photography, placeholders for now.</p>
+          <p className="mt-1.5 text-sm text-stone-600">More family-level photography is on the way. Open any tent family page for current photos.</p>
           <div className="mt-3">
             <TentImagePlaceholder label="Tent family hero, frame, pole, marquee, large structure" />
           </div>

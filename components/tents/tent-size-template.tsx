@@ -129,7 +129,7 @@ export function TentSizePageTemplate({
                   </h2>
                   <FrameTentSizeWishlistAffordance itemId={data.goodshuffleItemId} sizeLabel={data.sizeLabel} />
                   <p className="max-w-sm text-center text-xs leading-relaxed text-stone-600">
-                    Tap the heart to add this <strong className="font-semibold text-stone-800">{data.sizeLabel}</strong>{" "}
+                    Tap the heart to save this <strong className="font-semibold text-stone-800">{data.sizeLabel}</strong>{" "}
                     package to your list. Same item as in Goodshuffle Pro.
                   </p>
                   <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold">
@@ -438,7 +438,7 @@ export function TentSizePageTemplate({
           <h2 id="gallery-heading" className="text-lg font-semibold tracking-tight text-stone-900">
             Event photography
           </h2>
-          <p className="mt-2 text-sm text-stone-600">Placeholders for real installs, browse the gallery for proof today.</p>
+          <p className="mt-2 text-sm text-stone-600">More install photography is rolling in. Browse the tent gallery for real events today.</p>
           <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
             <TentImagePlaceholder label="Wide shot" aspect="[4/3]" />
             <TentImagePlaceholder label="Interior lighting" aspect="[4/3]" />

@@ -24,7 +24,8 @@ export function FAQAccordion({ items, variant = "default" }: { items: FaqItem[];
 
   useEffect(() => {
     const idx = findIndexFromHash();
-    if (idx !== null) {
+    if (idx === null) return;
+    queueMicrotask(() => {
       setOpenIndex(idx);
       const id = items[idx]?.id;
       if (id) {
@@ -32,7 +33,7 @@ export function FAQAccordion({ items, variant = "default" }: { items: FaqItem[];
           document.getElementById(`faq-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       }
-    }
+    });
   }, [findIndexFromHash, items]);
 
   useEffect(() => {

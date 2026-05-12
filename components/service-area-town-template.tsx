@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { GraduationPartyLocalSection } from "@/components/graduation-party-local-section";
 import { FAQSchemaItems } from "@/components/schema";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowHeaderClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 import type { ServiceAreaTownPayload } from "@/lib/service-area-town-content";
@@ -321,9 +322,11 @@ export function ServiceAreaTownTemplate({ townName, townSlug, content }: Props) 
               >
                 {wishlistCta}
               </Link>
-              <a href={business.phoneHref} className={bookNowHeaderClass}>
-                Call {business.phone}
-              </a>
+              <CallAndTextCta
+                variant="header"
+                wrapperClassName="items-start sm:items-center"
+                linkClassName={`${bookNowHeaderClass} !flex flex-col justify-center gap-0.5 py-2`}
+              />
             </div>
             <p className="mt-3 text-xs leading-snug text-stone-600">
               <span className="font-semibold text-stone-800">{content.relatedLinksIntro ?? "Related"}</span>{" "}

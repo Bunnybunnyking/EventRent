@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:3010": "next dev -p 3010",
+    "dev:fresh": "npm run clean && next dev",
     "build": "next build",
     "start": "next start",
     "start:3010": "next start -p 3010",
@@ -17,6 +18,10 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",
+    "astronomy-engine": "^2.1.19",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "framer-motion": "^12.23.24",
     "next": "^16.2.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

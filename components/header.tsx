@@ -68,9 +68,6 @@ export function Header() {
                 className={bookNowHeaderHomeStackOnlineClass}
                 title="Browse catalog and book online"
               >
-                <span className="ctp-home-book-online-sheen" aria-hidden>
-                  <span className="ctp-home-book-online-sheen-bar" />
-                </span>
                 <span className="relative z-10">Book Online</span>
               </Link>
             </div>

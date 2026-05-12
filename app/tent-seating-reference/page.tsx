@@ -465,14 +465,13 @@ export default function TentSeatingReferencePage() {
         {/* Example layouts */}
         <section className="border-t border-stone-300/80 py-6 sm:py-8" aria-labelledby="tsr-examples-heading">
           <SectionTitleLight id="tsr-examples-heading">Example layouts</SectionTitleLight>
-          <p className="mt-1 text-xs text-stone-500">Floor plans or photos can go here when you have them.</p>
+          <p className="mt-1 text-xs text-stone-500">Floor plans and diagrams will be added here over time.</p>
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             {exampleLayouts.map((ex) => (
               <div
                 key={ex.title}
                 className="flex min-h-[7rem] flex-col rounded-xl border border-dashed border-[#9a7a45]/50 bg-[#faf8f5] p-3.5"
               >
-                {/* TODO: replace with floor-plan image or diagram when assets are ready */}
                 <h3 className="text-sm font-semibold text-stone-900 [font-family:var(--font-display)]">{ex.title}</h3>
                 <p className="mt-1.5 flex-1 text-sm text-stone-600">{ex.blurb}</p>
                 <span className="mt-2 text-[0.65rem] font-medium uppercase tracking-wider text-[#8a6d3a]">Coming soon</span>

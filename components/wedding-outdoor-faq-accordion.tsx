@@ -21,12 +21,13 @@ function useHashSyncedOpenId(items: readonly WeddingOutdoorFaqEntry[]) {
 
   useEffect(() => {
     const fromHash = findIdFromHash();
-    if (fromHash) {
+    if (!fromHash) return;
+    queueMicrotask(() => {
       setOpenId(fromHash);
       requestAnimationFrame(() => {
         document.getElementById(fromHash)?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
-    }
+    });
   }, [findIdFromHash, items]);
 
   useEffect(() => {

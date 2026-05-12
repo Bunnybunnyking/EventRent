@@ -15,7 +15,10 @@ export default function QuickEventPlannerPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumb
           items={[
-            { label: "Home", href: "/" }, { label: "Planning", href: "/planning" }, { label: "Quick Event Planner" }, ]}
+            { label: "Home", href: "/" },
+            { label: "Party games & tools", href: "/games" },
+            { label: "Quick Event Planner" },
+          ]}
         />
         <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#9a7328]">Interactive tool</p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">Quick Event Planner</h1>

@@ -65,7 +65,14 @@ export function GuestRsvpForm({ slug }: { slug: string }) {
         <label className={labelClass} htmlFor="g-name">
           Your name
         </label>
-        <input id="g-name" className={fieldClass} value={guestName} onChange={(e) => setGuestName(e.target.value)} required />
+        <input
+          id="g-name"
+          className={fieldClass}
+          value={guestName}
+          onChange={(e) => setGuestName(e.target.value)}
+          autoComplete="name"
+          required
+        />
       </div>
       <div>
         <label className={labelClass} htmlFor="g-email">

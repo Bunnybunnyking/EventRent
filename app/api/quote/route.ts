@@ -78,6 +78,10 @@ export async function POST(request: Request) {
   const eventElements = strAll(fd, "eventElements");
   const approxGuestCount = str(fd, "approxGuestCount");
   const venue = str(fd, "venue");
+  const addressLine1 = str(fd, "addressLine1");
+  const venueCity = str(fd, "venueCity");
+  const addressRegion = str(fd, "addressRegion");
+  const postalCode = str(fd, "postalCode");
   const budget = str(fd, "budget");
   const rentalPreferences = str(fd, "rentalPreferences");
   const eventDescription = str(fd, "eventDescription");
@@ -85,7 +89,7 @@ export async function POST(request: Request) {
   const otherDetails = str(fd, "otherDetails");
 
   const lines: string[] = [
-    "New quote request from ct-partyrentals.com contact form",
+    `New quote request from ${business.name} website contact form`,
     "",
     `Name: ${name}`,
     `Email: ${email}`,
@@ -96,7 +100,14 @@ export async function POST(request: Request) {
 
   if (eventElements.length) lines.push("", `Event elements: ${eventElements.join(", ")}`);
   if (approxGuestCount) lines.push(`Approx. guest count: ${approxGuestCount}`);
-  if (venue) lines.push(`Venue / town: ${venue}`);
+  const locationParts = [venue, addressLine1, venueCity, addressRegion, postalCode].filter(Boolean);
+  if (locationParts.length) {
+    lines.push("", "Event location (optional):");
+    if (venue) lines.push(`Venue / site: ${venue}`);
+    if (addressLine1) lines.push(`Street: ${addressLine1}`);
+    const cityLine = [venueCity, addressRegion, postalCode].filter(Boolean).join(", ");
+    if (cityLine) lines.push(`City / ST / ZIP: ${cityLine}`);
+  }
   if (budget) lines.push(`Budget: ${budget}`);
   if (rentalPreferences) lines.push("", `Rental / layout notes: ${rentalPreferences}`);
   if (eventDescription) lines.push("", `Event description: ${eventDescription}`);
@@ -116,7 +127,10 @@ export async function POST(request: Request) {
 
   if (eventElements.length) htmlRows.push(emailRow("Event elements", eventElements.join(", ")));
   if (approxGuestCount) htmlRows.push(emailRow("Approx. guest count", approxGuestCount));
-  if (venue) htmlRows.push(emailRow("Venue / town", venue));
+  if (venue) htmlRows.push(emailRow("Venue / site", venue));
+  if (addressLine1) htmlRows.push(emailRow("Street address", addressLine1));
+  const cityLine = [venueCity, addressRegion, postalCode].filter(Boolean).join(", ");
+  if (cityLine) htmlRows.push(emailRow("City, ST, ZIP", cityLine));
   if (budget) htmlRows.push(emailRow("Budget", budget));
   if (rentalPreferences) htmlRows.push(emailRow("Rental / layout notes", rentalPreferences));
   if (eventDescription) htmlRows.push(emailRow("Event description", eventDescription));

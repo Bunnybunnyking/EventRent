@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { callNowHeroClass } from "@/lib/cta-styles";
+import { SmsTentDetailsCta } from "@/components/sms-tent-details-cta";
 import { FAST_QUOTE_HREF, LABEL_GET_FAST_QUOTE, mobileTextLinkClass } from "@/lib/mobile-booking";
 import { homePageHeroImagePath, homePageHeroImageSize } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
@@ -29,20 +31,21 @@ export function HomeHeroFullBleed() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#15181b] via-[#15181b]/80 to-transparent sm:h-14"
           aria-hidden
         />
-        {/* Catalog + Call — visible on all sizes; compact padding on small screens */}
-        <div className="absolute left-2 top-2 z-10 sm:left-5 sm:top-5 md:left-6 md:top-6">
+        {/* Catalog + Call — hug the dark frame; gold pills share one horizontal line */}
+        <div className="pointer-events-none absolute inset-x-1 top-1 z-10 flex flex-row items-center justify-between gap-2 sm:inset-x-2 sm:top-2 md:inset-x-3 md:top-3">
           <Link
             href="/wishlist"
             title="Browse the full rental catalog and start a tent reservation"
-            className={`${callNowHeroClass} pointer-events-auto max-w-[min(calc(100vw-5.5rem),16rem)] text-balance px-3 py-2 text-center text-[0.625rem] font-bold leading-snug tracking-wide sm:max-w-none sm:px-5 sm:text-xs md:text-sm md:leading-tight`}
+            className={`${callNowHeroClass} pointer-events-auto max-w-[min(calc(100vw-6.5rem),16rem)] shrink text-balance px-3 py-2 text-center text-[0.625rem] font-bold leading-snug tracking-wide sm:max-w-none sm:px-5 sm:text-xs md:text-sm md:leading-tight`}
           >
             CATALOG & Reserve A Tent
           </Link>
-        </div>
-        <div className="absolute right-2 top-2 z-10 sm:right-5 sm:top-5 md:right-6 md:top-6">
-          <a href={business.phoneHref} className={`${callNowHeroClass} pointer-events-auto`} aria-label="Call now">
-            Call Now
-          </a>
+          <CallAndTextCta
+            variant="hero"
+            layout="inline"
+            wrapperClassName="pointer-events-auto min-w-0 shrink-0"
+            linkClassName={callNowHeroClass}
+          />
         </div>
       </div>
 
@@ -65,6 +68,12 @@ export function HomeHeroFullBleed() {
             {business.phone}
           </a>
         </p>
+        <SmsTentDetailsCta
+          location="homepage-hero"
+          className="mt-5"
+          helperText="Send date, time, town or pin, guest count, and an optional yard photo."
+          helperClassName="mt-2 max-w-md text-[11px] leading-snug text-stone-500"
+        />
       </div>
     </section>
   );

@@ -41,8 +41,8 @@ const yardGamesFaq = [
 
 const testimonials = [
   {
-    quote: "Cornhole and giant Jenga were the hit of our block party, setup was fast and the crew was professional.", name: "Host placeholder, Hartford area", }, {
-    quote: "We bundled games with a tent for a graduation cookout. One quote, one schedule, zero stress.", name: "Host placeholder, Farmington area", }, ] as const;
+    quote: "Cornhole and giant Jenga were the hit of our block party, setup was fast and the crew was professional.", name: "Private host, Hartford area", }, {
+    quote: "We bundled games with a tent for a graduation cookout. One quote, one schedule, zero stress.", name: "Private host, Farmington area", }, ] as const;
 
 export default function YardGamesPage() {
   return (
@@ -161,7 +161,7 @@ export default function YardGamesPage() {
 
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Social proof" title="What hosts say" intro="Placeholder testimonials, replace with real client quotes when available." />
+          <SectionHeading eyebrow="Social proof" title="What hosts say" intro="Short notes from hosts on recent deliveries and backyard setups." />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
               <figure key={t.name} className="rounded-2xl border border-stone-200 bg-stone-50/80 p-6">

@@ -16,6 +16,13 @@
   opacity: 0;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-home-fade-in {
+    opacity: 1;
+    animation: none;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -204,26 +211,6 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@keyframes ctp-home-book-online-sheen {
-  0%,
-  10% {
-    transform: skewX(-15deg) translate3d(-130%, 0, 0);
-    opacity: 0;
-  }
-  16% {
-    opacity: 0.38;
-  }
-  40% {
-    transform: skewX(-15deg) translate3d(165%, 0, 0);
-    opacity: 0.32;
-  }
-  52%,
-  100% {
-    transform: skewX(-15deg) translate3d(165%, 0, 0);
-    opacity: 0;
-  }
-}
-
 /** Site title: Cormorant Garamond (display), matches nav, not script */
 @layer components {
   .site-header-logo {
@@ -247,40 +234,5 @@ body {
   .brand-tagline {
     letter-spacing: 0.18em;
     font-family: var(--font-display), ui-serif, Georgia, serif;
-  }
-
-  /**
-   * Site header — stacked “Book Online” pill: very subtle moving sheen (low opacity, long interval).
-   * Markup: `<span class="ctp-home-book-online-sheen" aria-hidden><span class="ctp-home-book-online-sheen-bar" /></span>`
-   */
-  .ctp-home-book-online-sheen {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    border-radius: inherit;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .ctp-home-book-online-sheen-bar {
-    position: absolute;
-    top: -28%;
-    bottom: -28%;
-    left: -50%;
-    width: 52%;
-    border-radius: 0.2rem;
-    background: linear-gradient(
-      100deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0) 38%,
-      rgba(255, 252, 236, 0.55) 50%,
-      rgba(255, 255, 255, 0) 62%,
-      transparent 100%
-    );
-    transform: skewX(-15deg) translate3d(-130%, 0, 0);
-    opacity: 0;
-    animation: ctp-home-book-online-sheen 5.4s ease-in-out infinite;
-    filter: blur(0.28px);
-    will-change: transform, opacity;
   }
 }

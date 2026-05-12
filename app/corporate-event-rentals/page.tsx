@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { BreadcrumbListSchema, FAQSchemaItems, ServiceSchema } from "@/components/schema";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { createPageMetadata } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
@@ -306,10 +307,13 @@ export default function CorporatePage() {
           <p className="mt-3 text-sm leading-relaxed text-stone-300 sm:text-base">
             The fastest way to get useful is a short conversation: date, town, approximate headcount, seated vs standing mix, and whether you have remarks, buffet, or bar blocks. We will ask about access and timing, then suggest tent options and rental lines that match how your guests actually move, not a generic list.
           </p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-            <a href={business.phoneHref} className={`${callNowSectionClass} justify-center px-8`}>
-              Call {business.phone}
-            </a>
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:gap-4">
+            <CallAndTextCta
+              variant="section"
+              labelClassName="text-stone-200"
+              captionClassName="text-stone-400"
+              linkClassName={`${callNowSectionClass} justify-center px-8`}
+            />
             <Link href="/contact#quote" className={`${bookNowSectionClass} justify-center px-8`}>
               Email your run of show
             </Link>

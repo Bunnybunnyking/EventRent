@@ -77,7 +77,44 @@ export default function AvGamesHubPage() {
               </Fragment>
             ))}
           </div>
-          <p className="mt-10 text-center text-sm text-stone-600">
+        </div>
+      </section>
+
+      <section className="border-b border-stone-200 bg-[#f3f1ee] py-10 sm:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-stone-200/90 bg-white/95 p-6 shadow-sm sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-stone-500">
+              Different section of the site
+            </p>
+            <h2 className="mt-3 text-xl font-semibold tracking-tight text-stone-800 sm:text-2xl [font-family:var(--font-display)]">
+              Digital party games &amp; planning tools
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-stone-600 sm:text-base">
+              Quizzes, mini-games, online planners, and printable-style checklists live on their own hub. They are for
+              ideas and math—not for ordering tents, tables, or physical lawn games—so this rentals page can stay focused
+              on what we deliver and set up.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Link
+                href="/games"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm transition hover:border-stone-400 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2"
+              >
+                Open Games &amp; tools hub
+                <span aria-hidden className="ml-2">
+                  →
+                </span>
+              </Link>
+              <p className="text-xs leading-relaxed text-stone-500 sm:max-w-xs">
+                Quizzes, Party Spark, Quick Event Planner, and checklists—separate from tents, tables, and physical games.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-stone-200 bg-white py-8 sm:py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm text-stone-600">
             Planning tents and layout first?{" "}
             <Link href="/planning" className="font-semibold text-stone-900 underline underline-offset-2">
               Planning hub

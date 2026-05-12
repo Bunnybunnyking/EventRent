@@ -8,6 +8,16 @@ const linkClass =
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const pageStamp = new Date();
+  const pageStampIso = pageStamp.toISOString();
+  const pageStampLabel = pageStamp.toLocaleString("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
 
   return (
     <footer className="border-t border-stone-800/80 bg-[#0c0e10] text-stone-300">
@@ -28,7 +38,10 @@ export function Footer() {
             </p>
             <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-[13px]">
               <a href={business.phoneHref} className={linkClass}>
-                {business.phone}
+                Call {business.phone}
+              </a>
+              <a href={business.smsHref} className={linkClass}>
+                Text us
               </a>
               <a href={`mailto:${business.email}`} className={linkClass}>
                 {business.email}
@@ -68,39 +81,77 @@ export function Footer() {
       </div>
 
       <div className="border-t border-stone-800/90 bg-[#08090a]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p className="text-[11px] leading-snug text-stone-500">
-            © {year} {business.name}
-            <span className="hidden sm:inline"> · </span>
-            <span className="block sm:inline">{business.ownership}</span>
-          </p>
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-stone-600">
-            <Link href="/" className="font-medium text-stone-500 underline-offset-2 hover:text-stone-300 hover:underline">
-              Home
-            </Link>
-            <span className="text-stone-700" aria-hidden>
-              ·
-            </span>
-            <Link href="/sitemap" className="font-medium text-[#c9a24a] underline-offset-2 hover:text-stone-300 hover:underline">
-              Site map
-            </Link>
-            <span className="text-stone-700" aria-hidden>
-              ·
-            </span>
-            <span>
-              {business.address && business.address !== "[INSERT BUSINESS ADDRESS]" ? (
-                <>
-                  {business.address}, {business.primaryCity}, CT
-                  {business.postalCode ? ` ${business.postalCode}` : null}
-                </>
-              ) : (
-                <>
-                  {business.primaryCity}, {business.state}
-                </>
-              )}
-            </span>
-          </p>
+        <div className="mx-auto max-w-7xl space-y-3 px-4 py-3 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-2 border-b border-stone-800/60 pb-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-1">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-500">Contact</p>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px]">
+              <a
+                href={business.phoneHref}
+                className="font-medium text-stone-300 underline-offset-2 transition hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a24a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090a]"
+              >
+                {business.phone}
+              </a>
+              <span className="text-stone-700" aria-hidden>
+                ·
+              </span>
+              <a
+                href={business.smsHref}
+                className="font-medium text-[#c9a24a] underline-offset-2 transition hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a24a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090a]"
+              >
+                Text now
+              </a>
+              <span className="text-stone-700" aria-hidden>
+                ·
+              </span>
+              <a
+                href={`mailto:${business.email}`}
+                className="break-all font-medium text-stone-300 underline-offset-2 transition hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a24a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090a] sm:break-normal"
+              >
+                {business.email}
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-[11px] leading-snug text-stone-500">
+              © {year} {business.name}
+              <span className="hidden sm:inline"> · </span>
+              <span className="block sm:inline">{business.ownership}</span>
+            </p>
+            <p className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-stone-600">
+              <Link href="/" className="font-medium text-stone-500 underline-offset-2 hover:text-stone-300 hover:underline">
+                Home
+              </Link>
+              <span className="text-stone-700" aria-hidden>
+                ·
+              </span>
+              <Link href="/sitemap" className="font-medium text-[#c9a24a] underline-offset-2 hover:text-stone-300 hover:underline">
+                Site map
+              </Link>
+              <span className="text-stone-700" aria-hidden>
+                ·
+              </span>
+              <span>
+                {business.address && business.address !== "[INSERT BUSINESS ADDRESS]" ? (
+                  <>
+                    {business.address}, {business.primaryCity}, CT
+                    {business.postalCode ? ` ${business.postalCode}` : null}
+                  </>
+                ) : (
+                  <>
+                    {business.primaryCity}, {business.state}
+                  </>
+                )}
+              </span>
+            </p>
+          </div>
         </div>
+        <p className="mx-auto max-w-7xl border-t border-stone-800/50 px-4 pb-3 pt-2 text-center text-[10px] leading-snug text-stone-600 sm:px-6 sm:text-left lg:px-8">
+          Last updated{" "}
+          <time dateTime={pageStampIso} className="text-stone-500">
+            {pageStampLabel}
+          </time>{" "}
+          ET
+        </p>
       </div>
 
       <div className="h-16 md:hidden" aria-hidden />

@@ -177,7 +177,7 @@ export function TentRentalsResourceTabs({ goodshuffleEmbedGallery = false }: { g
             <Link href="/tents" className="font-semibold text-stone-900 underline decoration-[#b78a2d]/40 underline-offset-4">
               Tent guide hub (/tents)
             </Link>{" "}
-            mirrors this guide with gallery placeholders and cross-links.
+            mirrors this guide with gallery photos and cross-links.
           </p>
         </div>
 

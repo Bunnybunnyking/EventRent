@@ -2,17 +2,28 @@ import type { Metadata } from "next";
 import { business } from "./site-data";
 
 /**
- * Canonical URLs, OG tags, sitemap, and robots must match the public origin.
- * Prefer `NEXT_PUBLIC_SITE_URL` in production; on Vercel fall back to `VERCEL_URL` so previews are not stuck on localhost.
+ * Canonical origin for `metadataBase`, sitemap.xml, robots.txt `Sitemap:`, OG absolute URLs, and JSON-LD.
+ *
+ * - **Vercel preview** (`VERCEL_ENV=preview`): uses `VERCEL_URL` so links match the preview hostname.
+ * - **Production** (including Vercel prod): always `business.websiteUrl` so sitemap `<loc>` entries match the
+ *   live Search Console property. A mis-set `NEXT_PUBLIC_SITE_URL` (e.g. another domain) cannot break GSC.
+ * - **Local `next dev`**: `NEXT_PUBLIC_SITE_URL` if set, else `http://localhost:3000`.
  */
 function resolveSiteBaseUrl(): string {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (explicit) return explicit.replace(/\/$/, "");
-
+  const fromBrand = business.websiteUrl.replace(/\/$/, "");
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim()?.replace(/\/$/, "");
   const vercel = process.env.VERCEL_URL?.trim();
-  if (vercel) return `https://${vercel.replace(/^https?:\/\//, "").replace(/\/$/, "")}`;
 
-  return "http://localhost:3000";
+  if (process.env.NODE_ENV !== "production") {
+    if (explicit) return explicit;
+    return "http://localhost:3000";
+  }
+
+  if (process.env.VERCEL_ENV === "preview" && vercel) {
+    return `https://${vercel.replace(/^https?:\/\//, "").replace(/\/$/, "")}`;
+  }
+
+  return fromBrand;
 }
 
 const baseUrl = resolveSiteBaseUrl();
@@ -64,17 +75,32 @@ export function createPageMetadata({
   description,
   path = "/",
   ogImage,
+  openGraphType = "website",
+  articlePublishedTime,
+  articleModifiedTime,
 }: {
   title: string;
   description: string;
   path?: string;
-  /** Optional path under /public for Open Graph (e.g. `/images/wethersfield-ct-party-tent-rental-wedding-reception.png`) */
+  /** Path under site root in `/public` for Open Graph (e.g. `/images/...png`). */
   ogImage?: string;
+  openGraphType?: "website" | "article";
+  /** ISO date for `article:published_time` when `openGraphType` is `article`. */
+  articlePublishedTime?: string;
+  /** ISO date for `article:modified_time` when `openGraphType` is `article`. */
+  articleModifiedTime?: string;
 }): Metadata {
   const fullTitle = `${title} | ${business.name}`;
   const canonical = `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
   const ogImages = resolveOgImages(ogImage);
   const primaryOg = ogImages?.[0];
+
+  const articleOg: { publishedTime?: string; modifiedTime?: string } = {};
+  if (openGraphType === "article") {
+    if (articlePublishedTime) articleOg.publishedTime = articlePublishedTime;
+    const mod = articleModifiedTime ?? articlePublishedTime;
+    if (mod) articleOg.modifiedTime = mod;
+  }
 
   return {
     /** Absolute so root `title.template` does not append `| business.name` twice */
@@ -85,8 +111,9 @@ export function createPageMetadata({
       title: fullTitle,
       description,
       url: canonical,
-      type: "website",
+      type: openGraphType,
       siteName: business.name,
+      ...articleOg,
       ...(ogImages ? { images: ogImages } : {}),
     },
     twitter: {

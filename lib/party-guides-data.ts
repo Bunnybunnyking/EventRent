@@ -125,7 +125,7 @@ const guides: PartyGuideArticle[] = [
         id: "inventory", heading: "How this maps to our inventory", body:
           "We stock frame sizes including 20×20 and 20×40 class units and expandable 20′ and 30′ systems that can combine into longer runs (for example toward 30×45 style layouts). Your quote names the exact bays and connectors that match the site.", }, ], callouts: [
       {
-        title: "Size page", body: "See our 20×40 frame tent page for inventory-aware notes and photo placeholders you can pair with this guide.", }, ], faq: [
+        title: "Size page", body: "See our 20×40 frame tent page for inventory-aware notes and photos you can pair with this guide.", }, ], faq: [
       {
         question: "Is a 20×40 enough for eighty seated guests?", answer:
           "Sometimes, but only if the program matches. Eighty people in rounds with dance and buffet inside the same box is often tight. We confirm with a short layout conversation.", }, ], relatedSlugs: [

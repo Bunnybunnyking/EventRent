@@ -146,16 +146,16 @@ export function MarketingPageView({
 
           {page.goodshuffleSlot ? (
             <div className="not-prose mt-14 rounded-2xl border-2 border-dashed border-stone-300/90 bg-stone-50/90 p-6 sm:p-7">
-              <h2 className="text-lg font-semibold tracking-tight text-stone-900">Featured rentals (Goodshuffle-ready)</h2>
+              <h2 className="text-lg font-semibold tracking-tight text-stone-900">Featured rentals on your quote</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-600">{page.goodshuffleSlot}</p>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-3" aria-label="Placeholder slots for rental item cards">
-                {["Item card 1", "Item card 2", "Item card 3"].map((label) => (
+              <ul className="mt-5 grid gap-3 sm:grid-cols-3" aria-label="Example rental line items">
+                {["Sample line 1", "Sample line 2", "Sample line 3"].map((label) => (
                   <li
                     key={label}
                     className="flex min-h-[128px] items-center justify-center rounded-xl border border-stone-200 bg-white px-3 text-center text-xs font-medium text-stone-400"
                   >
                     {label}
-                    <span className="sr-only">, connect Goodshuffle IDs, images, and wishlist when ready.</span>
+                    <span className="sr-only">. Your wishlist replaces these examples when you send a quote.</span>
                   </li>
                 ))}
               </ul>

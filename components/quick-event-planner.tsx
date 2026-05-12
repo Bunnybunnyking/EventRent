@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   computeQuickPlannerResult, defaultQuickPlannerInput, formatQuickPlannerSummary, type EventStyleId, type EventTypeId, type QuickPlannerInput, } from "@/lib/quick-event-planner-logic";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { business } from "@/lib/site-data";
 
@@ -401,10 +402,8 @@ export function QuickEventPlanner({ embedded = false }: { embedded?: boolean }) 
               <p className="text-sm text-stone-700">
                 Share this plan when you call or book, we’ll align layout, power load-in, and weather with your site.
               </p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <a href={business.phoneHref} className={`${callNowSectionClass} justify-center`}>
-                  Call Now
-                </a>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
+                <CallAndTextCta variant="section" linkClassName={`${callNowSectionClass} justify-center`} />
                 <Link href={quoteHref} onClick={sendToQuote} className={`${bookNowSectionClass} justify-center text-center`} prefetch={true}>
                   Book Consultation
                 </Link>

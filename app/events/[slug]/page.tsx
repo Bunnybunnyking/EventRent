@@ -38,7 +38,7 @@ export default async function EventLandingPage({ params }: Props) {
         items={[
           { name: "Home", path: "/" }, { name: content.h1, path: `/events/${slug}` }, ]}
       />
-      <EventLandingTemplate content={content} />
+      <EventLandingTemplate content={content} graduationSms={slug === "graduation-parties"} />
     </>
   );
 }

@@ -67,7 +67,8 @@ export function HostDashboard({ data }: { data: HostDashboardPayload }) {
   const [localAddition, setLocalAddition] = useState<string>(data.optionalAddition ?? "");
 
   useEffect(() => {
-    setLocalAddition(data.optionalAddition ?? "");
+    const next = data.optionalAddition ?? "";
+    queueMicrotask(() => setLocalAddition(next));
   }, [data.optionalAddition]);
 
   const rollup = useMemo(() => rollupRsvps(data.rsvps), [data.rsvps]);
@@ -408,7 +409,7 @@ export function HostDashboard({ data }: { data: HostDashboardPayload }) {
           <Link href="/wishlist" className="font-semibold text-[#f5e0b3] underline underline-offset-2">
             Book Online / wishlist
           </Link>{" "}
-          for equipment picks — this dashboard only carries counts and notes into the conversation.
+          for equipment picks. This dashboard only carries counts and notes into the conversation.
         </p>
       </section>
     </div>

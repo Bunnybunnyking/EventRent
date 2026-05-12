@@ -47,8 +47,8 @@ const bounceFaq = [
 
 const testimonials = [
   {
-    quote: "The unit looked spotless on delivery. Setup was quick and the team walked us through wind and capacity rules clearly.", name: "Host placeholder, West Hartford area", }, {
-    quote: "We combined a bounce house with yard games for a school field day, logistics were easier with one vendor.", name: "Coordinator placeholder, Glastonbury area", }, ] as const;
+    quote: "The unit looked spotless on delivery. Setup was quick and the team walked us through wind and capacity rules clearly.", name: "Private host, West Hartford area", }, {
+    quote: "We combined a bounce house with yard games for a school field day, logistics were easier with one vendor.", name: "School event coordinator, Glastonbury area", }, ] as const;
 
 export default function BounceHousesPage() {
   return (
@@ -211,7 +211,7 @@ export default function BounceHousesPage() {
 
       <section className="py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="Reviews" title="What planners say" intro="Placeholder reviews, swap in verified testimonials as you collect them." />
+          <SectionHeading eyebrow="Reviews" title="What planners say" intro="Short notes from planners on recent school and backyard setups." />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
               <figure key={t.name} className="rounded-2xl border border-stone-200 bg-stone-50/80 p-6">

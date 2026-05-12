@@ -13,6 +13,7 @@ import { FAQAccordion } from "@/components/faq-accordion";
 import { BackyardPartyChecklistGenerator } from "@/components/backyard-party-checklist-generator";
 import { QuickEventPlanner } from "@/components/quick-event-planner";
 import { TentSizeEstimator } from "@/components/tent-size-estimator";
+import { CallAndTextCta } from "@/components/call-and-text-stack";
 import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
 import { cardRowHintClass, interactiveCardClass, interactiveTileClass } from "@/lib/interactive-styles";
 import { planningPopularInventoryLinks } from "@/lib/planning-popular-sizes";
@@ -737,10 +738,13 @@ export function PlanningHub() {
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-stone-300">
             Start with your guest count, event type, and date. We help you guide the rest: tent size, layout, site fit, and weather readiness. No jargon required.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href={business.phoneHref} className={callNowSectionClass}>
-              Call Now
-            </a>
+          <div className="mt-8 flex flex-wrap items-end justify-center gap-3">
+            <CallAndTextCta
+              variant="section"
+              labelClassName="text-stone-200"
+              captionClassName="text-stone-400"
+              linkClassName={callNowSectionClass}
+            />
             <Link href="/contact#quote" className={bookNowSectionClass} prefetch={true}>
               Book Consultation
             </Link>
