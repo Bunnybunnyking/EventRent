@@ -73,32 +73,13 @@ export function WeddingTentRentalsLanding() {
 
   return (
     <>
-      {/* 1. Hero, lux title overlays image; glass blurb bottom-left (dark glass, not white card) */}
-      <section className="relative isolate min-h-[42vh] overflow-hidden bg-[#0c0b09] md:min-h-[min(76vh,900px)]" aria-labelledby="wedding-page-h1">
-        <Image
-          src="/images/wedding-tent-hero.png"
-          alt="Elegant white frame tent wedding reception with round tables and garden chairs at a Connecticut outdoor wedding"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* Soft vignette, keeps eyes on the tent */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/20" aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" aria-hidden />
-
-        <div className="absolute right-3 top-3 z-30 hidden sm:right-5 sm:top-5 md:right-6 md:top-6 md:block">
-          <Link
-            href="/wishlist"
-            title="Browse the full rental catalog and reserve a tent"
-            className={`${catalogReserveGlassHeroClass} pointer-events-auto`}
-          >
-            CATALOG & Reserve A Tent
-          </Link>
-        </div>
-
-        {/* Compact lux header: gold/black gradient into the photo, no breadcrumbs */}
-        <div className="absolute inset-x-0 top-0 z-20 bg-gradient-to-b from-black via-black/88 to-transparent pb-7 pt-3 sm:pb-12 sm:pt-5 md:pt-6">
+      {/* 1. Hero: mobile = stacked (titles → image → glass card, no overlap); md+ = layered over full-bleed image */}
+      <section
+        className="relative isolate flex min-h-0 flex-col overflow-hidden bg-[#0c0b09] md:block md:min-h-[min(76vh,900px)]"
+        aria-labelledby="wedding-page-h1"
+      >
+        {/* Titles: solid bar on mobile (readable, no collision with glass card); gradient overlay on md+ */}
+        <div className="relative z-30 shrink-0 border-b border-white/10 bg-[#0c0b09] pb-5 pt-3 sm:pb-6 sm:pt-4 md:absolute md:inset-x-0 md:top-0 md:z-20 md:border-0 md:bg-gradient-to-b md:from-black md:via-black/88 md:to-transparent md:pb-12 md:pt-6">
           <div className={shell}>
             <p className="text-[0.58rem] font-semibold uppercase tracking-[0.38em] text-[#d4a84b] sm:text-[0.62rem]">Private celebrations · Connecticut</p>
             <h1 id="wedding-page-h1" className="mt-2 max-w-4xl">
@@ -116,11 +97,35 @@ export function WeddingTentRentalsLanding() {
           </div>
         </div>
 
-        {/* Bottom-left: dark glass blurb (same interactive links as before) */}
+        {/* Full-bleed image: fixed band on mobile, fills viewport height on md+ */}
+        <div className="relative z-0 min-h-[min(48vh,380px)] w-full shrink-0 overflow-hidden sm:min-h-[min(52vh,440px)] md:absolute md:inset-0 md:min-h-[min(76vh,900px)]">
+          <Image
+            src="/images/wedding-tent-hero.png"
+            alt="Elegant white frame tent wedding reception with round tables and garden chairs at a Connecticut outdoor wedding"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/20" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" aria-hidden />
+        </div>
+
+        <div className="absolute right-3 top-3 z-30 hidden sm:right-5 sm:top-5 md:right-6 md:top-6 md:block">
+          <Link
+            href="/wishlist"
+            title="Browse the full rental catalog and reserve a tent"
+            className={`${catalogReserveGlassHeroClass} pointer-events-auto`}
+          >
+            CATALOG & Reserve A Tent
+          </Link>
+        </div>
+
+        {/* Glass CTA: flows under the image on mobile; bottom-left over image on md+ */}
         <div
-          className={`relative z-10 flex min-h-[42vh] flex-col justify-end pb-5 pt-24 sm:min-h-[min(76vh,900px)] sm:pb-7 sm:pt-40 md:pt-44 ${shell}`}
+          className={`relative z-10 pb-6 pt-3 sm:pb-8 sm:pt-4 md:pointer-events-none md:absolute md:inset-0 md:flex md:min-h-0 md:flex-col md:justify-end md:bg-transparent md:pb-7 md:pt-44 ${shell}`}
         >
-          <div className="max-w-[20.5rem] rounded-2xl border border-white/30 bg-white/12 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:max-w-[22rem] sm:p-5 md:max-w-[23rem]">
+          <div className="mx-auto max-w-[20.5rem] rounded-2xl border border-white/30 bg-stone-950/75 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:mx-0 sm:max-w-[22rem] sm:bg-white/12 sm:p-5 md:pointer-events-auto md:max-w-[23rem]">
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[#f5e6bc] [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
               Plan with confidence
             </p>

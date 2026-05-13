@@ -87,7 +87,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteWideGraphSchema />
         <ScrollToTop />
         <Header />
-        <main className="pb-24 md:pb-0">{children}</main>
+        <main className="pb-20 md:pb-0">{children}</main>
         <Footer />
         <StickyMobileCTA />
       </body>

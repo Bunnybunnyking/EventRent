@@ -124,17 +124,29 @@ export const mobileStickyOutlineClass =
 export const stickyMobileGoldButtonClass =
   "inline-flex w-full select-none items-center justify-center rounded-full min-h-[40px] border-2 border-[#b78a2d] bg-white px-2 py-1 text-center text-[16px] font-extrabold leading-none tracking-[0.03em] text-[#1a140c] shadow-[inset_0_1px_0_rgba(255,255,255,1),0_2px_8px_rgba(107,84,32,0.12)] transition hover:bg-[#fffdf9] hover:border-[#9f7322] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2 focus-visible:ring-offset-white [font-family:var(--font-display)] touch-manipulation";
 
-/** Fixed bottom bar (md:hidden): paired champagne-gold pills — same metallic shine as header “Book Online” */
-const stickyBarTwinGlow =
-  "shadow-[0_3px_18px_rgba(42,28,8,0.28),0_0_30px_rgba(175,132,48,0.22),inset_0_1px_0_rgba(255,255,255,0.48),inset_0_-1px_0_rgba(0,0,0,0.06)] hover:shadow-[0_6px_26px_rgba(42,28,8,0.34),0_0_40px_rgba(200,165,70,0.28),inset_0_1px_0_rgba(255,255,255,0.52)]";
+/**
+ * Fixed bottom bar (md:hidden): pairs with warm bar on eventrentct.com —
+ * “Call now” = white + gold outline; wishlist = same champagne gold system as header CTAs.
+ */
 
-/** Wishlist pill — matches catalog gold (champagne→bronze + inset gloss); label uses solid black serif in the component. */
+/** “Build My Event List” — site `goldCtaCore` only (no second shadow stack). */
 export const stickyMobileBarGoldClass =
-  `relative isolate inline-flex h-full min-h-[48px] w-full min-w-0 select-none items-center justify-center overflow-hidden rounded-full px-0.5 py-1.5 text-center transition-[transform,box-shadow,filter] duration-150 ease-out active:scale-[0.99] touch-manipulation sm:min-h-[48px] sm:px-1 ${goldCtaCore} ${stickyBarTwinGlow}`;
+  `relative inline-flex h-full min-h-[44px] w-full min-w-0 items-center justify-center overflow-hidden rounded-full px-1.5 py-1 text-center touch-manipulation sm:px-2 ${goldCtaCore}`;
 
-/** Same bar height as gold pill: white fill + warm gold rim — phone number only (pair with larger tabular type inside). */
+/** “Call now” — white pill, antique gold border (matches live mobile bar intent). */
 export const stickyMobileBarCallOutlineClass =
-  "inline-flex h-full min-h-[48px] w-full min-w-0 select-none items-center justify-center rounded-full border-2 border-[#a67c1a] bg-gradient-to-b from-white to-[#fffdf9] px-1 py-1 text-center shadow-[inset_0_1px_0_rgba(255,255,255,1),inset_0_-1px_0_rgba(183,138,45,0.06),inset_0_0_0_1px_rgba(255,255,255,0.45),0_3px_14px_-4px_rgba(55,42,28,0.11)] transition-[transform,box-shadow,border-color] duration-150 ease-out hover:border-[#8e6a16] hover:bg-gradient-to-b hover:from-white hover:to-[#fffef8] hover:shadow-[inset_0_1px_0_rgba(255,255,255,1),0_5px_18px_-4px_rgba(95,72,28,0.13)] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f2] touch-manipulation";
+  [
+    "inline-flex h-full min-h-[44px] w-full min-w-0 items-center justify-center rounded-full",
+    "border-2 border-[#b78a2d]",
+    "bg-white",
+    "px-2.5 py-1 text-center",
+    "shadow-[inset_0_1px_0_rgba(255,255,255,1),0_1px_2px_rgba(55,44,28,0.06)]",
+    "transition-[transform,box-shadow,border-color,background-color] duration-150 ease-out",
+    "hover:border-[#9a7322] hover:bg-[#fffdf9]",
+    "active:scale-[0.99]",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f4]",
+    "touch-manipulation select-none",
+  ].join(" ");
 
 /** Inline “Text event details” on mobile — same antique gold as site CTAs; pair emerald “Text” in label */
 export const smsMobileGoldCtaClass =
