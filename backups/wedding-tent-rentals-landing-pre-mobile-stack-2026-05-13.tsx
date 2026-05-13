@@ -73,11 +73,8 @@ export function WeddingTentRentalsLanding() {
 
   return (
     <>
-      {/* 1. Hero, lux title overlays image; glass blurb bottom-left (dark glass, not white card). Below md only: extra CTA top padding, shorter bullet line. md+ unchanged from backup. */}
-      <section
-        className="relative isolate min-h-[42vh] overflow-hidden bg-[#0c0b09] md:min-h-[min(76vh,900px)]"
-        aria-labelledby="wedding-page-h1"
-      >
+      {/* 1. Hero, lux title overlays image; glass blurb bottom-left (dark glass, not white card) */}
+      <section className="relative isolate min-h-[42vh] overflow-hidden bg-[#0c0b09] md:min-h-[min(76vh,900px)]" aria-labelledby="wedding-page-h1">
         <Image
           src="/images/wedding-tent-hero.png"
           alt="Elegant white frame tent wedding reception with round tables and garden chairs at a Connecticut outdoor wedding"
@@ -121,7 +118,7 @@ export function WeddingTentRentalsLanding() {
 
         {/* Bottom-left: dark glass blurb (same interactive links as before) */}
         <div
-          className={`relative z-10 flex min-h-[42vh] flex-col justify-end pb-5 pt-24 max-md:pt-36 max-md:pb-7 sm:min-h-[min(76vh,900px)] sm:pb-7 sm:pt-40 md:pt-44 ${shell}`}
+          className={`relative z-10 flex min-h-[42vh] flex-col justify-end pb-5 pt-24 sm:min-h-[min(76vh,900px)] sm:pb-7 sm:pt-40 md:pt-44 ${shell}`}
         >
           <div className="max-w-[20.5rem] rounded-2xl border border-white/30 bg-white/12 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:max-w-[22rem] sm:p-5 md:max-w-[23rem]">
             <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[#f5e6bc] [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
@@ -136,7 +133,7 @@ export function WeddingTentRentalsLanding() {
             <p className="mt-2.5 text-[12.5px] leading-relaxed text-white/95 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:text-[13px]">
               Share your date, guest count, and vision. We will help with tent size, flow, and rentals that feel intentional.
             </p>
-            <ul className="mt-3 space-y-1.5 text-[11.5px] leading-snug text-white/95 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] max-md:hidden sm:text-[12.5px]">
+            <ul className="mt-3 space-y-1.5 text-[11.5px] leading-snug text-white/95 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] sm:text-[12.5px]">
               {[
                 "Tented receptions, estates & backyards", "Venue expansions & rain smart layouts", "Tables, chairs, lighting & coordination", ].map((line) => (
                 <li key={line} className="flex gap-2">
@@ -145,9 +142,6 @@ export function WeddingTentRentalsLanding() {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 hidden text-[12.5px] leading-snug text-white/90 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] max-md:block">
-              Tented receptions & estates, venue expansions, tables, chairs, lighting & coordination.
-            </p>
             <div className="mt-4 flex flex-col gap-2">
               <Link
                 href="/contact#quote"
