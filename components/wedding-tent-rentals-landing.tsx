@@ -112,7 +112,7 @@ export function WeddingTentRentalsLanding() {
                 Wedding Tent Rentals for Outdoor Weddings and Venue Expansions in Connecticut
               </span>
             </h1>
-            <p className="mt-2 max-w-xl text-[0.72rem] leading-relaxed text-stone-400 sm:text-xs md:text-sm">
+            <p className="mt-2 hidden max-w-xl text-[0.72rem] leading-relaxed text-stone-400 sm:text-xs md:block md:text-sm">
               For discerning couples and families who expect flawless outdoor receptions: tents, layout, and white-glove coordination.
             </p>
             <div className="mt-3 h-px w-14 bg-gradient-to-r from-[#c9a24a] to-transparent opacity-90" aria-hidden />

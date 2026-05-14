@@ -35,6 +35,10 @@ const navLinkClass =
 const mobileNavLinkClass =
   "block rounded-lg px-3 py-2.5 text-[0.98rem] font-medium leading-snug tracking-[0.02em] text-stone-200 transition active:bg-white/[0.06] [font-family:var(--font-display)]";
 
+/** Pill next to Menu on small screens only (parent row is `md:hidden`). */
+const mobileHeaderPillClass =
+  "inline-flex min-h-[40px] shrink-0 touch-manipulation items-center justify-center rounded-full border border-[#b78a2d]/70 bg-[#1a1d20]/90 px-4 py-2 text-sm font-semibold text-[#f5e0b3] [font-family:var(--font-display)] active:bg-[#252a2e]";
+
 export function Header() {
   const [open, setOpen] = useState(false);
 
@@ -96,16 +100,25 @@ export function Header() {
           >
             {business.name}
           </Link>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex min-h-[40px] shrink-0 touch-manipulation items-center justify-center rounded-full border border-[#b78a2d]/70 bg-[#1a1d20]/90 px-4 py-2 text-sm font-semibold text-[#f5e0b3] [font-family:var(--font-display)] active:bg-[#252a2e]"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label="Toggle navigation menu"
-          >
-            {open ? "Close" : "Menu"}
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            <Link
+              href="/contact#quote"
+              className={mobileHeaderPillClass}
+              title="Book a consultation or get a quote"
+            >
+              Book
+            </Link>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className={mobileHeaderPillClass}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              aria-label="Toggle navigation menu"
+            >
+              {open ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
 
         {open ? (
