@@ -2,6 +2,7 @@ import { getFaqPageSchemaItems } from "@/lib/faq-data";
 import type { FaqItem } from "@/lib/faq-data";
 import { serializeJsonLd } from "@/lib/json-ld";
 import type { CompanyLocation } from "@/lib/locations-data";
+import { locationsOverview } from "@/lib/locations-data";
 import { business } from "@/lib/site-data";
 import { defaultOgImagePath, siteBaseUrl } from "@/lib/metadata";
 
@@ -136,12 +137,20 @@ export function LocationLocalBusinessSchema({ location }: { location: CompanyLoc
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": locationId,
-    name: `${business.name} — ${location.cardTitle}`,
+    name: location.pageTitle.includes(business.name) ? location.pageTitle : `${business.name} — ${location.pageTitle}`,
     description: location.bodyCopy,
     url: pageUrl,
-    telephone: location.phone,
+    telephone: location.phones[0]?.phone ?? business.phone,
     email: business.email,
     parentOrganization: { "@id": businessId },
+    contactPoint: location.phones.map((p) => ({
+      "@type": "ContactPoint",
+      telephone: p.phone,
+      contactType: p.label,
+      email: business.email,
+      areaServed: "US",
+      availableLanguage: ["English"],
+    })),
     isPartOf: { "@id": websiteId },
     ...(location.address?.streetAddress
       ? {
@@ -174,9 +183,8 @@ export function LocationsOverviewSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Our Connecticut Party Rentals Locations",
-    description:
-      "Company locations for Connecticut Party Rentals: Bloomfield warehouse, Wethersfield bridal and event center, and Marlborough contact center.",
+    name: "Connecticut Party Rentals Locations",
+    description: locationsOverview.metaDescription,
     url: pageUrl,
     isPartOf: { "@id": websiteId },
     about: { "@id": businessId },

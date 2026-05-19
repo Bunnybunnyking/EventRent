@@ -62,7 +62,7 @@ export const footerSitemapGroups: FooterSitemapGroup[] = [
     id: "service-areas", title: "Service areas", links: [
       { href: "/service-areas", label: "All service areas" }, ...PRIORITY_SERVICE_TOWNS.map((town) => ({ href: townToPath(town), label: town })), ], }, {
     id: "company", title: "Company & help", links: [
-      { href: "/about", label: "About" }, { href: "/locations", label: "Locations" }, { href: "/reviews-and-real-events", label: "Reviews & real events" }, { href: "/case-studies", label: "Case studies" }, { href: "/how-it-works", label: "Delivery & setup" }, { href: "/faq", label: "FAQ" }, { href: "/contact#quote", label: "Contact & quote" }, { href: "/sitemap", label: "Site map (HTML)" }, ], },
+      { href: "/about", label: "About" }, { href: "/locations", label: "Locations" }, { href: "/locations/bloomfield", label: "Bloomfield" }, { href: "/locations/wethersfield", label: "Wethersfield" }, { href: "/locations/marlborough", label: "Marlborough" }, { href: "/reviews-and-real-events", label: "Reviews & real events" }, { href: "/case-studies", label: "Case studies" }, { href: "/how-it-works", label: "Delivery & setup" }, { href: "/faq", label: "FAQ" }, { href: "/contact#quote", label: "Contact & quote" }, { href: "/sitemap", label: "Site map (HTML)" }, ], },
 ];
 
 export function getPartyGuideSitemapLinks(): SitemapNavLink[] {
