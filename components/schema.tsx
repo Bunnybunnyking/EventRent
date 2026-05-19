@@ -1,6 +1,7 @@
 import { getFaqPageSchemaItems } from "@/lib/faq-data";
 import type { FaqItem } from "@/lib/faq-data";
 import { serializeJsonLd } from "@/lib/json-ld";
+import type { CompanyLocation } from "@/lib/locations-data";
 import { business } from "@/lib/site-data";
 import { defaultOgImagePath, siteBaseUrl } from "@/lib/metadata";
 
@@ -125,6 +126,74 @@ type ServiceSchemaProps = {
   path: string;
   serviceAreaCity?: string;
 };
+
+/** Branch / office page — linked to the main LocalBusiness in the sitewide @graph. */
+export function LocationLocalBusinessSchema({ location }: { location: CompanyLocation }) {
+  const pageUrl = absolutePageUrl(location.path);
+  const locationId = `${pageUrl}#location`;
+
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": locationId,
+    name: `${business.name} — ${location.cardTitle}`,
+    description: location.bodyCopy,
+    url: pageUrl,
+    telephone: location.phone,
+    email: business.email,
+    parentOrganization: { "@id": businessId },
+    isPartOf: { "@id": websiteId },
+    ...(location.address?.streetAddress
+      ? {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: location.address.streetAddress,
+            addressLocality: location.address.addressLocality,
+            addressRegion: location.address.addressRegion,
+            ...(location.address.postalCode ? { postalCode: location.address.postalCode } : {}),
+            addressCountry: "US",
+          },
+        }
+      : {
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: location.address?.addressLocality ?? location.city,
+            addressRegion: "CT",
+            addressCountry: "US",
+          },
+        }),
+  };
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+  );
+}
+
+export function LocationsOverviewSchema() {
+  const pageUrl = absolutePageUrl("/locations");
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Our Connecticut Party Rentals Locations",
+    description:
+      "Company locations for Connecticut Party Rentals: Bloomfield warehouse, Wethersfield bridal and event center, and Marlborough contact center.",
+    url: pageUrl,
+    isPartOf: { "@id": websiteId },
+    about: { "@id": businessId },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Bloomfield", url: absolutePageUrl("/locations/bloomfield") },
+        { "@type": "ListItem", position: 2, name: "Wethersfield", url: absolutePageUrl("/locations/wethersfield") },
+        { "@type": "ListItem", position: 3, name: "Marlborough", url: absolutePageUrl("/locations/marlborough") },
+      ],
+    },
+  };
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+  );
+}
 
 export function ServiceSchema({ name, description, path, serviceAreaCity }: ServiceSchemaProps) {
   const areaServed = serviceAreaCity

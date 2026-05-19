@@ -1,4 +1,5 @@
 import { eventLandingSlugs, eventLandings } from "@/lib/event-landing-data";
+import { locationPaths } from "@/lib/locations-data";
 import { frameTentSlugs, largeEventTentSlugs } from "@/lib/tent-section-data";
 import { partyGuideSlugs, getPartyGuide } from "@/lib/party-guides-data";
 import { townList } from "@/lib/site-data";
@@ -36,7 +37,7 @@ export function buildTentInventoryPaths(): string[] {
 export function buildIndexablePaths(): string[] {
   const tentPaths = buildTentInventoryPaths();
   const staticPaths = [
-    "/", "/sitemap", "/tent-rentals", "/tent-rentals/jobsite-coverage", "/tents", ...tentPaths, "/tents/gallery", "/events", "/events/birthdays", "/rsvp", "/rsvp/create", "/av-games", "/yard-games", "/bounce-houses", "/table-chair-rentals", "/wedding-tent-rentals", "/corporate-event-rentals", "/rental-inventory", "/party-packages", "/about", "/contact", "/faq", "/planning", "/party-games-tools", "/quiz", "/whats-your-party-personality", "/quiz/quizast", "/party-spark-generator", "/wedding-checklist", "/quick-event-planner", "/backyard-party-checklist", "/tent-seating-reference", "/wishlist", "/party-guides", ...partyGuideSlugs.map((slug) => `/party-guides/${slug}`), "/packages/most-booked-event-setups", "/how-it-works", "/reviews-and-real-events", "/case-studies", "/service-areas", ...eventLandingSlugs.map((slug) => `/events/${slug}`), ];
+    "/", "/sitemap", ...locationPaths(), "/tent-rentals", "/tent-rentals/jobsite-coverage", "/tents", ...tentPaths, "/tents/gallery", "/events", "/events/birthdays", "/rsvp", "/rsvp/create", "/av-games", "/yard-games", "/bounce-houses", "/table-chair-rentals", "/wedding-tent-rentals", "/corporate-event-rentals", "/rental-inventory", "/party-packages", "/about", "/contact", "/faq", "/planning", "/party-games-tools", "/quiz", "/whats-your-party-personality", "/quiz/quizast", "/party-spark-generator", "/wedding-checklist", "/quick-event-planner", "/backyard-party-checklist", "/tent-seating-reference", "/wishlist", "/party-guides", ...partyGuideSlugs.map((slug) => `/party-guides/${slug}`), "/packages/most-booked-event-setups", "/how-it-works", "/reviews-and-real-events", "/case-studies", "/service-areas", ...eventLandingSlugs.map((slug) => `/events/${slug}`), ];
   const townPaths = townList.map(townToPath);
   return [...new Set([...staticPaths, ...townPaths])];
 }
@@ -61,7 +62,7 @@ export const footerSitemapGroups: FooterSitemapGroup[] = [
     id: "service-areas", title: "Service areas", links: [
       { href: "/service-areas", label: "All service areas" }, ...PRIORITY_SERVICE_TOWNS.map((town) => ({ href: townToPath(town), label: town })), ], }, {
     id: "company", title: "Company & help", links: [
-      { href: "/about", label: "About" }, { href: "/reviews-and-real-events", label: "Reviews & real events" }, { href: "/case-studies", label: "Case studies" }, { href: "/how-it-works", label: "Delivery & setup" }, { href: "/faq", label: "FAQ" }, { href: "/contact#quote", label: "Contact & quote" }, { href: "/sitemap", label: "Site map (HTML)" }, ], },
+      { href: "/about", label: "About" }, { href: "/locations", label: "Locations" }, { href: "/reviews-and-real-events", label: "Reviews & real events" }, { href: "/case-studies", label: "Case studies" }, { href: "/how-it-works", label: "Delivery & setup" }, { href: "/faq", label: "FAQ" }, { href: "/contact#quote", label: "Contact & quote" }, { href: "/sitemap", label: "Site map (HTML)" }, ], },
 ];
 
 export function getPartyGuideSitemapLinks(): SitemapNavLink[] {

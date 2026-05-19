@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { BreadcrumbListSchema } from "@/components/schema";
 import { createPageMetadata, defaultOgImagePath } from "@/lib/metadata";
 import { business } from "@/lib/site-data";
+import { locationList } from "@/lib/locations-data";
 import {
   buildTentInventoryPaths, getEventOccasionSitemapLinks, getPartyGuideSitemapLinks, getServiceAreaSitemapLinks,
 } from "@/lib/indexable-sitemap";
@@ -101,7 +102,7 @@ export default function HtmlSitemapPage() {
             <p className={descClass}>Core entry points for quotes, trust, and high-level browsing.</p>
             <LinkList
               links={[
-                { href: "/", label: "Home" }, { href: "/tent-rentals", label: "Tent rentals" }, { href: "/contact#quote", label: "Reserve party rentals online" }, { href: "/about", label: "About" }, { href: "/faq", label: "FAQ" }, { href: "/rental-inventory", label: "Rental inventory browser" }, ]}
+                { href: "/", label: "Home" }, { href: "/tent-rentals", label: "Tent rentals" }, { href: "/contact#quote", label: "Reserve party rentals online" }, { href: "/about", label: "About" }, { href: "/locations", label: "Locations" }, ...locationList.map((loc) => ({ href: loc.path, label: loc.cardTitle })), { href: "/faq", label: "FAQ" }, { href: "/rental-inventory", label: "Rental inventory browser" }, ]}
             />
           </section>
 
