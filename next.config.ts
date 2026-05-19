@@ -10,7 +10,9 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       { source: "/gallery", destination: "/tents/gallery", permanent: true },
-      { source: "/event-planner", destination: "/quick-event-planner", permanent: false },
+      { source: "/event-planner", destination: "/quick-event-planner", permanent: true },
+      { source: "/planning-tools", destination: "/planning", permanent: true },
+      { source: "/games", destination: "/party-games-tools", permanent: true },
       { source: "/guides", destination: "/party-guides", permanent: true },
       {
         source: "/guides/what-size-tent-do-i-need",
@@ -43,9 +45,9 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       /** Hub aliases — common guesses when typing the URL */
-      { source: "/party-game-tools", destination: "/party-games-tools", permanent: false },
-      { source: "/party-games-and-tools", destination: "/party-games-tools", permanent: false },
-      { source: "/fun-party-tools", destination: "/party-games-tools", permanent: false },
+      { source: "/party-game-tools", destination: "/party-games-tools", permanent: true },
+      { source: "/party-games-and-tools", destination: "/party-games-tools", permanent: true },
+      { source: "/fun-party-tools", destination: "/party-games-tools", permanent: true },
     ];
   },
   images: {

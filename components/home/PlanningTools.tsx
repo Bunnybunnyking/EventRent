@@ -11,7 +11,7 @@ const tools = [
   {
     title: "Party games & tools",
     sub: "Quizzes, Party Spark, checklists, planners in one hub",
-    href: "/games",
+    href: "/party-games-tools",
     hint: "Open",
   },
   {
@@ -78,7 +78,7 @@ export function PlanningTools() {
         </div>
 
         <p className="mt-8 text-center text-sm text-stone-600 md:mt-5">
-          <Link href="/games" className="font-semibold text-[#7a5a18] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
+          <Link href="/party-games-tools" className="font-semibold text-[#7a5a18] underline decoration-[#d4b87a] underline-offset-2 hover:text-stone-900">
             Games &amp; tools hub
           </Link>
           <span className="mx-2 text-stone-400" aria-hidden>

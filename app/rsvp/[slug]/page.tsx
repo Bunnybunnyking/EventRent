@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: "RSVP for a Connecticut Party Rentals event.",
       path: `/rsvp/${slug}`,
       ogImage: defaultOgImagePath,
+      index: false,
     });
   }
   return createPageMetadata({
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `RSVP for ${ev.eventName}. Hosted with Connecticut Party Rentals event planning tools.`,
     path: `/rsvp/${slug}`,
     ogImage: defaultOgImagePath,
+    index: false,
   });
 }
 

@@ -78,6 +78,7 @@ export function createPageMetadata({
   openGraphType = "website",
   articlePublishedTime,
   articleModifiedTime,
+  index = true,
 }: {
   title: string;
   description: string;
@@ -89,6 +90,8 @@ export function createPageMetadata({
   articlePublishedTime?: string;
   /** ISO date for `article:modified_time` when `openGraphType` is `article`. */
   articleModifiedTime?: string;
+  /** When false, sets `robots: { index: false }` (private or utility pages). */
+  index?: boolean;
 }): Metadata {
   const fullTitle = `${title} | ${business.name}`;
   const canonical = `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
@@ -106,6 +109,7 @@ export function createPageMetadata({
     /** Absolute so root `title.template` does not append `| business.name` twice */
     title: { absolute: fullTitle },
     description,
+    ...(index === false ? { robots: { index: false, follow: false } } : {}),
     alternates: { canonical },
     openGraph: {
       title: fullTitle,

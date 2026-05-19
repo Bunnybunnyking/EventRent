@@ -224,7 +224,7 @@ export default function TentSeatingReferencePage() {
             Ballpark tents, tables, and linens from real Connecticut events—then open tools or your wishlist.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-2.5">
-            <Link href="/planning-tools" prefetch={true} className={compactGold}>
+            <Link href="/planning" prefetch={true} className={compactGold}>
               Planning tools
             </Link>
             <Link href="/wishlist" prefetch={true} className={compactOutline}>
@@ -490,7 +490,7 @@ export default function TentSeatingReferencePage() {
           </h2>
           <p className="mx-auto mt-1.5 max-w-md text-sm text-stone-400">Jump into tools or the wishlist, or reach out for your date.</p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-            <Link href="/planning-tools" prefetch={true} className={compactGold}>
+            <Link href="/planning" prefetch={true} className={compactGold}>
               Planning tools
             </Link>
             <Link href="/wishlist" prefetch={true} className={compactOutline}>
@@ -516,7 +516,7 @@ export default function TentSeatingReferencePage() {
             </li>
             <li>
               <Link
-                href="/planning-tools"
+                href="/planning"
                 className="font-medium text-[#6b5420] underline decoration-amber-200/90 underline-offset-4 hover:text-stone-900"
               >
                 Planning tools

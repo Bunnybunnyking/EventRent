@@ -29,7 +29,7 @@ export default function WeddingChecklistPage() {
           <Breadcrumb
             items={[
               { label: "Home", href: "/" },
-              { label: "Party games & tools", href: "/games" },
+              { label: "Party games & tools", href: "/party-games-tools" },
               { label: "Wedding checklist" },
             ]}
           />
@@ -62,7 +62,7 @@ export default function WeddingChecklistPage() {
           </div>
 
           <p className="mt-12 text-center text-sm text-stone-600">
-            <Link href="/games" className="font-semibold text-stone-900 underline underline-offset-2">
+            <Link href="/party-games-tools" className="font-semibold text-stone-900 underline underline-offset-2">
               Party games &amp; tools hub
             </Link>{" "}
             ·{" "}

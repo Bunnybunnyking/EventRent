@@ -1,7 +1,12 @@
 "use client";
 
 import { GoodshuffleMissingKeyNotice, GoodshuffleRuntime } from "@/components/goodshuffle-runtime";
-import { goodshufflePublicWebsiteKey, goodshuffleTentCanopyGalleryCategory, isGoodshuffleEnabled } from "@/lib/goodshuffle-env";
+import {
+  goodshufflePublicWebsiteKey,
+  goodshuffleTentCanopyGalleryCategory,
+  goodshuffleTentGalleryPageSize,
+  isGoodshuffleEnabled,
+} from "@/lib/goodshuffle-env";
 import { goodshuffleVendorDataUrl } from "@/lib/goodshuffle";
 
 type Props = {
@@ -33,7 +38,10 @@ export function TentFamilyCanopyGallery({ embedOnly = false }: Props) {
 
   const galleryFrame = (
     <div className="mt-4 min-h-[min(60vh,28rem)] rounded-2xl border border-stone-200/90 bg-white p-3 shadow-[0_20px_50px_-28px_rgba(15,23,42,0.12)] sm:p-5">
-      <gspro-item-gallery category={goodshuffleTentCanopyGalleryCategory()} />
+      <gspro-item-gallery
+        category={goodshuffleTentCanopyGalleryCategory()}
+        size={String(goodshuffleTentGalleryPageSize())}
+      />
     </div>
   );
 
@@ -41,7 +49,8 @@ export function TentFamilyCanopyGallery({ embedOnly = false }: Props) {
     <div className="mt-5">
       <h3 className="text-lg font-semibold text-stone-900 sm:text-xl">Tent &amp; canopy gallery</h3>
       <p className="mt-2 max-w-2xl text-sm text-stone-600">
-        Live catalog for tent and canopy rentals: browse packages, filters, and add favorites to your wishlist.
+        Live catalog for tent and canopy rentals: browse packages, filters, and add favorites to your wishlist. The full
+        tent fleet loads on this page—scroll to compare sizes; you do not need to click through gallery pages.
       </p>
       {embedOnly ? (
         galleryFrame

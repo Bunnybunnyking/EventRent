@@ -233,15 +233,16 @@ export function ServiceAreaTownTemplate({ townName, townSlug, content }: Props) 
 
           {setupsSection}
 
-          <div className="mt-6">
-            <h2 className="text-lg font-semibold text-stone-900 sm:text-xl">{content.featuredTitle}</h2>
-            {content.featuredIntro ? <p className="mt-2 text-sm text-stone-600">{content.featuredIntro}</p> : null}
-            <div className="mt-3 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 rounded-2xl border border-stone-200/90 bg-gradient-to-b from-[#faf8f5] to-white p-4 shadow-sm sm:mt-9 sm:p-5">
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#7a5f28]">Next steps</p>
+            <h2 className="mt-1.5 text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">{content.featuredTitle}</h2>
+            {content.featuredIntro ? <p className="mt-2 text-sm leading-relaxed text-stone-600">{content.featuredIntro}</p> : null}
+            <div className="mt-4 grid gap-4 sm:grid-cols-3 sm:gap-5">
               {content.featuredRentals.map((r) => (
                 <Link
                   key={r.href + r.title}
                   href={r.href}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-stone-200 bg-[#faf8f5] shadow-sm transition hover:border-[#c9a87a]/60 hover:shadow-md"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/95 bg-white shadow-sm ring-1 ring-black/[0.03] transition hover:-translate-y-0.5 hover:border-[#c9a87a]/55 hover:shadow-md"
                   data-goodshuffle-item-id={r.goodshuffleItemId || undefined}
                   data-goodshuffle-image-id={r.goodshuffleImageId || undefined}
                   data-goodshuffle-product-slug={r.goodshuffleProductSlug || undefined}
@@ -250,21 +251,23 @@ export function ServiceAreaTownTemplate({ townName, townSlug, content }: Props) 
                   data-waitlist-enabled={r.waitlistEnabled ? "true" : undefined}
                 >
                   {r.image ? (
-                    <div className="relative aspect-[4/3] w-full border-b border-stone-200 bg-stone-100">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-stone-200/90 bg-stone-100">
                       <Image
                         src={r.image.src}
                         alt={r.image.alt}
                         fill
-                        className="object-cover object-center transition group-hover:brightness-[1.02]"
+                        className="object-cover object-center transition duration-300 group-hover:scale-[1.03] group-hover:brightness-[1.02]"
                         sizes="(max-width: 640px) 100vw, 33vw"
                       />
                     </div>
                   ) : (
-                    <div className="border-b border-stone-200 bg-gradient-to-br from-stone-100 to-stone-200/60 px-3 py-4">
-                      <p className="text-center text-xs font-semibold uppercase tracking-wide text-stone-500">Curated link</p>
+                    <div className="relative flex aspect-[4/3] w-full items-center justify-center border-b border-stone-200/90 bg-gradient-to-br from-[#f4f1eb] via-stone-100 to-[#e8e0d4] px-3">
+                      <p className="text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">
+                        Guide & tools
+                      </p>
                     </div>
                   )}
-                  <div className="flex flex-1 flex-col p-3.5">
+                  <div className="flex flex-1 flex-col bg-white p-3.5 sm:p-4">
                     {r.eventTags?.length ? (
                       <div className="mb-1.5 flex flex-wrap gap-1">
                         {r.eventTags.map((tag) => (

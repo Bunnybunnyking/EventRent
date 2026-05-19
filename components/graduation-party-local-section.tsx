@@ -28,7 +28,7 @@ export function GraduationPartyLocalSection({ townSlug, townName }: Props) {
     >
       <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#7a5f28]">Graduation season</p>
       <h2 id={`graduation-local-${townSlug}`} className="mt-2 text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">
-        Graduations &amp; celebrations · {townName}, CT
+        Graduations & celebrations · {townName}, CT
       </h2>
 
       <div className="mt-3 space-y-3 text-sm leading-relaxed text-stone-700 sm:text-[0.9375rem]">

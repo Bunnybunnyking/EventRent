@@ -29,12 +29,14 @@ export function buildTentInventoryPaths(): string[] {
  * All URLs included in `sitemap.xml` (indexable, canonical). Keep in sync with `app/robots.ts` disallow rules.
  *
  * Intentionally omitted: `/contact/thank-you` (noindex), `/wedding-checklist-dev`, `/goodshuffle-test`, `/admin/*`,
- * dynamic guest RSVP URLs (`/rsvp/*` slug pages), and other private or non-indexable routes.
+ * `/planning-tools` → `/planning`, `/games` → `/party-games-tools` (legacy aliases; never in sitemap.xml),
+ * per-event RSVP URLs (`/rsvp/[slug]`, `/rsvp/[slug]/dashboard` — noindex + robots disallow `/rsvp/`),
+ * and other private or non-indexable routes.
  */
 export function buildIndexablePaths(): string[] {
   const tentPaths = buildTentInventoryPaths();
   const staticPaths = [
-    "/", "/sitemap", "/tent-rentals", "/tent-rentals/jobsite-coverage", "/tents", ...tentPaths, "/tents/gallery", "/events", "/events/birthdays", "/rsvp", "/rsvp/create", "/av-games", "/yard-games", "/bounce-houses", "/table-chair-rentals", "/wedding-tent-rentals", "/corporate-event-rentals", "/rental-inventory", "/party-packages", "/about", "/contact", "/faq", "/planning", "/planning-tools", "/games", "/party-games-tools", "/quiz", "/whats-your-party-personality", "/quiz/quizast", "/party-spark-generator", "/wedding-checklist", "/quick-event-planner", "/backyard-party-checklist", "/tent-seating-reference", "/wishlist", "/party-guides", ...partyGuideSlugs.map((slug) => `/party-guides/${slug}`), "/packages/most-booked-event-setups", "/how-it-works", "/reviews-and-real-events", "/case-studies", "/service-areas", ...eventLandingSlugs.map((slug) => `/events/${slug}`), ];
+    "/", "/sitemap", "/tent-rentals", "/tent-rentals/jobsite-coverage", "/tents", ...tentPaths, "/tents/gallery", "/events", "/events/birthdays", "/rsvp", "/rsvp/create", "/av-games", "/yard-games", "/bounce-houses", "/table-chair-rentals", "/wedding-tent-rentals", "/corporate-event-rentals", "/rental-inventory", "/party-packages", "/about", "/contact", "/faq", "/planning", "/party-games-tools", "/quiz", "/whats-your-party-personality", "/quiz/quizast", "/party-spark-generator", "/wedding-checklist", "/quick-event-planner", "/backyard-party-checklist", "/tent-seating-reference", "/wishlist", "/party-guides", ...partyGuideSlugs.map((slug) => `/party-guides/${slug}`), "/packages/most-booked-event-setups", "/how-it-works", "/reviews-and-real-events", "/case-studies", "/service-areas", ...eventLandingSlugs.map((slug) => `/events/${slug}`), ];
   const townPaths = townList.map(townToPath);
   return [...new Set([...staticPaths, ...townPaths])];
 }
@@ -51,7 +53,7 @@ export const footerSitemapGroups: FooterSitemapGroup[] = [
     id: "tent-rentals", title: "Tent rentals", links: [
       { href: "/tent-rentals", label: "Tent rentals hub" }, { href: "/tents", label: "Tent guide hub" }, { href: "/tents/frame-tents", label: "Frame tents" }, { href: "/tents/pole-tents", label: "Pole tents" }, { href: "/tents/expandable-frame-tents", label: "Expandable systems" }, { href: "/wedding-tent-rentals", label: "Wedding tent rentals" }, { href: "/tents/gallery", label: "Tent gallery" }, ], }, {
     id: "planning", title: "Planning & guides", links: [
-      { href: "/planning", label: "Planning hub" }, { href: "/games", label: "Party games & tools" }, { href: "/party-guides", label: "Party guides" }, { href: "/party-guides/what-size-tent-do-i-need", label: "Tent size help" }, { href: "/party-guides/outdoor-wedding-rain-plan-basics", label: "Weather & rain plan" }, { href: "/quick-event-planner", label: "Quick Event Planner" }, { href: "/backyard-party-checklist", label: "Party checklist" }, ], }, {
+      { href: "/planning", label: "Planning hub" }, { href: "/party-games-tools", label: "Party games & tools" }, { href: "/party-guides", label: "Party guides" }, { href: "/party-guides/what-size-tent-do-i-need", label: "Tent size help" }, { href: "/party-guides/outdoor-wedding-rain-plan-basics", label: "Weather & rain plan" }, { href: "/quick-event-planner", label: "Quick Event Planner" }, { href: "/backyard-party-checklist", label: "Party checklist" }, ], }, {
     id: "events", title: "Event types", links: [
       { href: "/events", label: "Events hub" }, { href: "/wedding-tent-rentals", label: "Weddings" }, { href: "/corporate-event-rentals", label: "Corporate events" }, { href: "/events/graduation-parties", label: "Graduation parties" }, { href: "/events/festivals-fairs", label: "Festivals & fairs" }, { href: "/events/community-school-town", label: "Community & school" }, ], }, {
     id: "tables", title: "Tables & more", links: [

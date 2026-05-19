@@ -1,2 +1,6 @@
-/** Short URL alias for the party tools hub — same module as `/party-games-tools` (shared metadata & canonical). */
-export { default, metadata } from "../party-games-tools/page";
+import { permanentRedirect } from "next/navigation";
+
+/** Legacy short URL; canonical hub is `/party-games-tools` (not listed in sitemap.xml). */
+export default function GamesRedirectPage() {
+  permanentRedirect("/party-games-tools");
+}

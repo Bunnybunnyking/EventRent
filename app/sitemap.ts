@@ -3,8 +3,7 @@ import { siteBaseUrl } from "@/lib/metadata";
 import { buildIndexablePaths } from "@/lib/indexable-sitemap";
 
 /**
- * Public indexable URLs only. Intentionally omitted (see `app/robots.ts`):
- * `/wedding-checklist-dev`, `/goodshuffle-test`.
+ * Public indexable URLs only. Omitted paths: see `lib/indexable-sitemap.ts` and `app/robots.ts`.
  *
  * Path list is built from `lib/indexable-sitemap.ts` so XML stays aligned with `/sitemap`.
  */

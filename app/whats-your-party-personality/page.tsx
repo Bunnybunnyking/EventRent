@@ -22,7 +22,7 @@ export default function PartyPersonalityQuizPage() {
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },
-            { label: "Party games & tools", href: "/games" },
+            { label: "Party games & tools", href: "/party-games-tools" },
             { label: "Quizzes", href: "/quiz" },
             { label: "Party Personality Quiz" },
           ]}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { GoodshuffleCatalogGallery } from "@/components/goodshuffle-catalog-gallery";
 import { GoodshuffleMissingKeyNotice } from "@/components/goodshuffle-runtime";
 import { GoodshuffleWishlistView } from "@/components/goodshuffle-wishlist-view";
-import { goodshuffleTentCanopyGalleryCategory } from "@/lib/goodshuffle-env";
+import { goodshuffleTentCanopyGalleryCategory, goodshuffleTentGalleryPageSize } from "@/lib/goodshuffle-env";
 import { business } from "@/lib/site-data";
 
 const tentFleetLinks = [
@@ -144,6 +144,7 @@ export function WishlistPageContent({ publicWebsiteKey }: Props) {
             <GoodshuffleCatalogGallery
               className="min-h-[min(38vh,17rem)] rounded-xl border border-stone-200/90 bg-white p-2 shadow-[0_12px_36px_-18px_rgba(15,23,42,0.1)] sm:min-h-[min(42vh,19rem)] sm:p-3"
               category={goodshuffleTentCanopyGalleryCategory()}
+              size={goodshuffleTentGalleryPageSize()}
             />
 
             <div id="wishlist" className="scroll-mt-24 border-t border-stone-200/90 pt-5">

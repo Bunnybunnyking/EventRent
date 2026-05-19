@@ -1,4 +1,10 @@
 import { townHeroFillWhenEmpty } from "@/lib/service-area-town-photo-assets";
+import { serviceAreaFeaturedImages } from "@/lib/service-area-featured-images";
+import {
+  buildClusterLocalEventPatterns,
+  getTownServiceAreaCluster,
+  seedMod,
+} from "@/lib/service-area-town-clusters";
 import { business, townList, trustPoints as defaultTrustPoints } from "@/lib/site-data";
 
 export type ServiceAreaFeaturedRental = {
@@ -108,8 +114,69 @@ export type ServiceAreaTownContentMatrix = {
 
 type Archetype = "capital" | "near_capital" | "family_suburb" | "town_corridor";
 
+type EmphasisKey = NonNullable<ServiceAreaTownPayload["emphasizedMidSection"]>;
+
 const ARCHETYPE_BY_TOWN: Record<string, Archetype> = {
-  Hartford: "capital", "East Hartford": "capital", Manchester: "capital", "New Britain": "capital", Middletown: "capital", Meriden: "town_corridor", Wallingford: "town_corridor", Southington: "town_corridor", Plainville: "town_corridor", Bristol: "town_corridor", Cheshire: "town_corridor", "West Hartford": "near_capital", Avon: "near_capital", Simsbury: "near_capital", Glastonbury: "near_capital", "South Windsor": "near_capital", Farmington: "family_suburb", Bloomfield: "family_suburb", Wethersfield: "family_suburb", "Rocky Hill": "family_suburb", Newington: "family_suburb", Berlin: "family_suburb", Cromwell: "family_suburb", Windsor: "town_corridor",
+  Hartford: "capital",
+  "East Hartford": "capital",
+  Manchester: "capital",
+  "New Britain": "capital",
+  Middletown: "capital",
+  Meriden: "town_corridor",
+  Wallingford: "town_corridor",
+  Southington: "town_corridor",
+  Plainville: "town_corridor",
+  Bristol: "town_corridor",
+  Cheshire: "town_corridor",
+  "West Hartford": "near_capital",
+  Avon: "near_capital",
+  Simsbury: "near_capital",
+  Glastonbury: "near_capital",
+  "South Windsor": "near_capital",
+  Farmington: "family_suburb",
+  Bloomfield: "family_suburb",
+  Wethersfield: "family_suburb",
+  "Rocky Hill": "family_suburb",
+  Newington: "family_suburb",
+  Berlin: "family_suburb",
+  Cromwell: "family_suburb",
+  Windsor: "town_corridor",
+  Enfield: "town_corridor",
+  "Windsor Locks": "town_corridor",
+  Vernon: "town_corridor",
+  Portland: "town_corridor",
+  Durham: "town_corridor",
+  "East Windsor": "family_suburb",
+  Somers: "family_suburb",
+  Suffield: "family_suburb",
+  Granby: "family_suburb",
+  "East Granby": "family_suburb",
+  Canton: "family_suburb",
+  Burlington: "family_suburb",
+  Barkhamsted: "family_suburb",
+  Hartland: "family_suburb",
+  "New Hartford": "family_suburb",
+  Norfolk: "family_suburb",
+  Ellington: "family_suburb",
+  Tolland: "family_suburb",
+  Bolton: "family_suburb",
+  Andover: "family_suburb",
+  Stafford: "family_suburb",
+  Columbia: "family_suburb",
+  Coventry: "family_suburb",
+  Willington: "family_suburb",
+  Union: "family_suburb",
+  "East Hampton": "family_suburb",
+  Middlefield: "family_suburb",
+  Haddam: "family_suburb",
+  "East Haddam": "family_suburb",
+  Chester: "family_suburb",
+  "Deep River": "family_suburb",
+  Killingworth: "family_suburb",
+  Essex: "family_suburb",
+  Westbrook: "family_suburb",
+  Hebron: "family_suburb",
+  Marlborough: "family_suburb",
 };
 
 const PRIORITY: Record<string, ServiceAreaTownPayload> = {
@@ -133,9 +200,9 @@ const PRIORITY: Record<string, ServiceAreaTownPayload> = {
         title: "Program tent with stage lane and rows", detail: "Seating to headcount, head table or stage flagged, service lane kept clear for staff or volunteers.", bestFor: "School or nonprofit agendas with hard start times.", planningTip: "Note if the mic line crosses an aisle; we widen before you print a program.", }, {
         title: "Residential infill reception with rain language", detail: "Frame tent, optional window walls, evening lighting, dance slice only if the lot allows it after stakes.", bestFor: "Hosts who need guests to understand weather backup without panic.", planningTip: "If the grill stays outside the tent, say so. Heat and flow change wall choices.", }, ], featuredTitle: "Explore resources · Hartford", featuredIntro: "Tent hub for modular depth, inventory for SKU compares, community guide when a committee shares the thread.", featuredRentals: [
       {
-        title: "Tent rentals hub", description: "Modular notes, sidewalls, jobsite summary, and resource tabs when one size line is not enough.", href: "/tent-rentals", bestFor: "When footprint is the hardest question.", planningTip: "Bookmark the jobsite tab if parking shares space with stakes.", eventTags: ["Tents", "Layout"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open tent page", }, {
-        title: "Browse inventory", description: "Chairs, tables, tent structures, lighting, and heating in one catalog view.", href: "/rental-inventory", bestFor: "When you want to compare pieces before you commit.", planningTip: "Use wishlist to park alternates while a building contact answers access.", eventTags: ["Catalog"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See inventory", }, {
-        title: "Corporate and community events", description: "School, nonprofit, and company timelines with realistic load in language.", href: "/events/community-school-town", bestFor: "When facilities or parking add rules to the day.", eventTags: ["School", "Corporate"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, ctaLabel: "Read event guide", }, ], faqTitle: "FAQ · Hartford tent & party rentals", faqSubline: "City installs reward specifics in the first message.", faqs: [
+        title: "Tent rentals hub", description: "Modular notes, sidewalls, jobsite summary, and resource tabs when one size line is not enough.", href: "/tent-rentals", bestFor: "When footprint is the hardest question.", planningTip: "Bookmark the jobsite tab if parking shares space with stakes.", eventTags: ["Tents", "Layout"], image: { ...serviceAreaFeaturedImages.highPeakBallast }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open tent page", }, {
+        title: "Browse inventory", description: "Chairs, tables, tent structures, lighting, and heating in one catalog view.", href: "/rental-inventory", bestFor: "When you want to compare pieces before you commit.", planningTip: "Use wishlist to park alternates while a building contact answers access.", eventTags: ["Catalog"], image: { ...serviceAreaFeaturedImages.fiesta2040 }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See inventory", }, {
+        title: "Corporate and community events", description: "School, nonprofit, and company timelines with realistic load in language.", href: "/events/community-school-town", bestFor: "When facilities or parking add rules to the day.", eventTags: ["School", "Corporate"], image: { src: "/images/gallery/ct-hartford-trinity-high-peak-pole-spring.png", alt: "High-peak pole tent setup at a Hartford-area Connecticut outdoor event" }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Read event guide", }, ], faqTitle: "FAQ · Hartford tent & party rentals", faqSubline: "City installs reward specifics in the first message.", faqs: [
       {
         id: "hartford-deliver", question: "Do you deliver tent, table, and chair rentals to Hartford?", answer:
           "Yes. Include date, street or venue, guest count, and whether guests mostly sit, stand, or move between zones. We use that to talk access in the first reply instead of bouncing for basics.", }, {
@@ -169,8 +236,8 @@ const PRIORITY: Record<string, ServiceAreaTownPayload> = {
         title: "Private lawn reception diagram pack", detail: "Frame tent, rounds, service aisle, optional dance wedge, wall plan tied to forecast for family and vendors.", bestFor: "When everyone needs the same PDF to believe the layout.", planningTip: "Share sweetheart or head table placement before we lock width.", }, ], featuredTitle: "Explore resources · West Hartford", featuredIntro: "Wedding guide for vendor language, graduation page for spikes, inventory when SKUs need comparing.", featuredRentals: [
       {
         title: "Wedding tent rentals", description: "Outdoor reception planning with lighting, aisles, and vendor lane language that matches private yards.", href: "/wedding-tent-rentals", bestFor: "Receptions with seated dinner and dancing on grass.", planningTip: "Bring DJ or band footprint early if a stage slice matters.", eventTags: ["Wedding", "Layout"], image: { src: "/images/wedding-tent-hero.png", alt: "Outdoor wedding reception under a white frame tent" }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open wedding guide", }, {
-        title: "Graduation parties", description: "Headcount spikes, food lines, and weather notes for open house style events.", href: "/events/graduation-parties", bestFor: "May and June weekends with shifting arrival times.", planningTip: "Mention if part of the crowd stays inside. We split chair counts.", eventTags: ["Graduation", "Flow"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Read graduation tips", }, {
-        title: "Browse inventory", description: "Chairs, tables, tent sections, and add ons in one catalog.", href: "/rental-inventory", bestFor: "When you want to compare pieces before you commit.", eventTags: ["Catalog"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See inventory", }, ], faqTitle: "FAQ · West Hartford tent & party rentals", faqSubline: "Backyard polish and school nights. Answers stay short.", faqs: [
+        title: "Graduation parties", description: "Headcount spikes, food lines, and weather notes for open house style events.", href: "/events/graduation-parties", bestFor: "May and June weekends with shifting arrival times.", planningTip: "Mention if part of the crowd stays inside. We split chair counts.", eventTags: ["Graduation", "Flow"], image: { ...serviceAreaFeaturedImages.fiesta2040 }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Read graduation tips", }, {
+        title: "Browse inventory", description: "Chairs, tables, tent sections, and add ons in one catalog.", href: "/rental-inventory", bestFor: "When you want to compare pieces before you commit.", eventTags: ["Catalog"], image: { ...serviceAreaFeaturedImages.fiesta3030 }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See inventory", }, ], faqTitle: "FAQ · West Hartford tent & party rentals", faqSubline: "Backyard polish and school nights. Answers stay short.", faqs: [
       {
         id: "wh-deliver", question: "Do you deliver rentals to West Hartford homes and schools?", answer:
           "Yes. Lead with date, street, guest count, and whether guests mostly sit, stand, or surge for an open house. We confirm access, surface type, and install windows from that.", }, {
@@ -204,8 +271,8 @@ const PRIORITY: Record<string, ServiceAreaTownPayload> = {
         title: "Executive remarks on the back lawn", detail: "Compact footprint, presentable seating, lighting aimed at faces, strike that clears the yard.", bestFor: "Hosts who need Monday morning lawns back.", planningTip: "Forward any HOA or town quiet hours so teardown matches reality.", }, ], featuredTitle: "Explore resources · Farmington", featuredIntro: "Tent guide for vocabulary, wedding page for vendor lanes, inventory when SKUs need side-by-side compares.", featuredRentals: [
       {
         title: "Tent guide", description: "Families, sizes, and layout vocabulary before you lock a footprint.", href: "/tents", bestFor: "When you need framing language before you talk to anyone else.", planningTip: "Skim modular notes if your lawn is wider than it is deep.", eventTags: ["Tents", "Systems"], image: { src: "/images/farmington-tent-rental-lakeside-event-tent.png", alt: "Farmington tent on lawn near water" }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open tent guide", }, {
-        title: "Wedding tent rentals", description: "Outdoor reception planning with realistic service and dance lane notes.", href: "/wedding-tent-rentals", bestFor: "Private property receptions with vendors in the mix.", planningTip: "Add vendor parking notes early. They change aisle width.", eventTags: ["Wedding", "Layout"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See wedding options", }, {
-        title: "Browse inventory", description: "Chairs, tables, tent structures, lighting, and heating.", href: "/rental-inventory", bestFor: "When you want side by side comparisons before you commit.", eventTags: ["Seating", "Tables"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Browse inventory", }, ], faqTitle: "FAQ · Farmington tent & party rentals", faqSubline: "Private lawns: slope, vendors, and lighting lead the thread.", faqs: [
+        title: "Wedding tent rentals", description: "Outdoor reception planning with realistic service and dance lane notes.", href: "/wedding-tent-rentals", bestFor: "Private property receptions with vendors in the mix.", planningTip: "Add vendor parking notes early. They change aisle width.", eventTags: ["Wedding", "Layout"], image: { src: "/images/wedding-tent-hero.png", alt: "Outdoor wedding reception under a white frame tent in Connecticut" }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See wedding options", }, {
+        title: "Browse inventory", description: "Chairs, tables, tent structures, lighting, and heating.", href: "/rental-inventory", bestFor: "When you want side by side comparisons before you commit.", eventTags: ["Seating", "Tables"], image: { ...serviceAreaFeaturedImages.fiesta3030 }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Browse inventory", }, ], faqTitle: "FAQ · Farmington tent & party rentals", faqSubline: "Private lawns: slope, vendors, and lighting lead the thread.", faqs: [
       {
         id: "farm-deliver", question: "Do you deliver tent rentals throughout Farmington?", answer:
           "Yes. Include date, street, guest count, formality of seating, and any photos of grade or patio transitions. We talk anchoring and carry distance from that set.", }, {
@@ -237,9 +304,9 @@ const PRIORITY: Record<string, ServiceAreaTownPayload> = {
         title: "Awards night on the school lot", detail: "Rows, stage or head table, spare chairs for families who stand through speeches.", bestFor: "Printed agendas with a hard lot-clear time.", planningTip: "Send the custodial cutoff verbatim; we match labor to it.", }, {
         title: "Community raffle and mingle canopy", detail: "Open sides for circulation, optional walls if wind spikes, tables sized for food or prize stations.", bestFor: "Events where people move more than they sit.", planningTip: "Note if power cords must cross a walk. We plan tape and routing.", }, ], featuredTitle: "Explore resources · Bloomfield", featuredIntro: "Community guide when a committee forwards rules, tent overview for vocabulary, inventory for SKU compares.", featuredRentals: [
       {
-        title: "Community and school events", description: "Layouts and expectations for town and school programs with realistic load in language.", href: "/events/community-school-town", bestFor: "PTO, athletics, or town events with parking rules.", planningTip: "Attach facilities hours if they exist. Saves one round trip.", eventTags: ["School", "Community"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Read community guide", }, {
-        title: "Tent rentals overview", description: "Systems, add ons, and planning tabs when you need vocabulary before you decide width.", href: "/tent-rentals", bestFor: "When tent family matters as much as square footage.", eventTags: ["Tents"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open tent overview", }, {
-        title: "Browse inventory", description: "Chairs, tables, tents, lighting, and heating in one catalog.", href: "/rental-inventory", bestFor: "When you want to compare chairs or tables before you commit.", eventTags: ["Catalog"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See inventory", }, ], faqTitle: "FAQ · Bloomfield tent & party rentals", faqSubline: "School lots and busy backyards. Timing and access first.", faqs: [
+        title: "Community and school events", description: "Layouts and expectations for town and school programs with realistic load in language.", href: "/events/community-school-town", bestFor: "PTO, athletics, or town events with parking rules.", planningTip: "Attach facilities hours if they exist. Saves one round trip.", eventTags: ["School", "Community"], image: { ...serviceAreaFeaturedImages.panoramicTent }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Read community guide", }, {
+        title: "Tent rentals overview", description: "Systems, add ons, and planning tabs when you need vocabulary before you decide width.", href: "/tent-rentals", bestFor: "When tent family matters as much as square footage.", eventTags: ["Tents"], image: { ...serviceAreaFeaturedImages.navitracField }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open tent overview", }, {
+        title: "Browse inventory", description: "Chairs, tables, tents, lighting, and heating in one catalog.", href: "/rental-inventory", bestFor: "When you want to compare chairs or tables before you commit.", eventTags: ["Catalog"], image: { ...serviceAreaFeaturedImages.navitracField }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See inventory", }, ], faqTitle: "FAQ · Bloomfield tent & party rentals", faqSubline: "School lots and busy backyards. Timing and access first.", faqs: [
       {
         id: "bl-deliver", question: "Do you deliver rentals to Bloomfield addresses?", answer:
           "Yes. We install and pick up for homes, schools, and community venues. Lead with date, address, guest count, and whether guests mostly sit, stand, or swirl around food.", }, {
@@ -273,8 +340,8 @@ const PRIORITY: Record<string, ServiceAreaTownPayload> = {
         title: "Garage and dining overflow pack", detail: "Coordinated tables and chairs when part of the party stays inside during peak arrivals.", bestFor: "Graduation weekends when indoors and outdoors share one headcount story.", planningTip: "Label which zone gets cake versus mains so counts stay honest.", }, ], featuredTitle: "Explore resources · Wethersfield", featuredIntro: "Graduation page for spikes, planning hub for sizing talk, tent overview when weather backup matters.", featuredRentals: [
       {
         title: "Graduation parties", description: "Headcount spikes, food lines, and weather notes for open houses.", href: "/events/graduation-parties", bestFor: "May and June when arrivals stack for a few hours.", planningTip: "Mention garage seating. We split chair math early.", eventTags: ["Graduation", "Open house"], image: { src: "/images/wethersfield-ct-party-tent-rental-wedding-reception.png", alt: "Tent reception on a Connecticut residential lawn" }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Read graduation guide", }, {
-        title: "Planning hub", description: "Sizing context and backyard notes that pair with a quote request.", href: "/planning", bestFor: "When you want vocabulary before you email measurements.", planningTip: "Grab the quick planner if dates are firm but layout is fuzzy.", eventTags: ["Planning", "Sizing"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open planning hub", }, {
-        title: "Tent rentals overview", description: "Systems, sidewalls, and add ons when weather backup matters as much as width.", href: "/tent-rentals", bestFor: "Hosts deciding tent family before they lock guest count.", eventTags: ["Tents", "Weather"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See tent options", }, ], faqTitle: "FAQ · Wethersfield tent & party rentals", faqSubline: "Open houses and tight yards. Answers stay concrete.", faqs: [
+        title: "Planning hub", description: "Sizing context and backyard notes that pair with a quote request.", href: "/planning", bestFor: "When you want vocabulary before you email measurements.", planningTip: "Grab the quick planner if dates are firm but layout is fuzzy.", eventTags: ["Planning", "Sizing"], image: { ...serviceAreaFeaturedImages.fiesta2040 }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open planning hub", }, {
+        title: "Tent rentals overview", description: "Systems, sidewalls, and add ons when weather backup matters as much as width.", href: "/tent-rentals", bestFor: "Hosts deciding tent family before they lock guest count.", eventTags: ["Tents", "Weather"], image: { ...serviceAreaFeaturedImages.highPeakBallast }, goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "See tent options", }, ], faqTitle: "FAQ · Wethersfield tent & party rentals", faqSubline: "Open houses and tight yards. Answers stay concrete.", faqs: [
       {
         id: "wet-deliver", question: "Do you deliver rentals throughout Wethersfield?", answer:
           "Yes. Lead with date, street, guest count, and whether the day behaves like an open house or a seated dinner. We confirm access and anchoring assumptions from that.", }, {
@@ -399,13 +466,99 @@ function buildArchetypeTown(townName: string): ServiceAreaTownPayload {
   const featuredRotations: ServiceAreaFeaturedRental[][] = [
     [
       {
-        title: "Tent rentals", description: "Systems, sidewalls, and layout tabs when you need depth beyond a single size guess.", href: "/tent-rentals", bestFor: "Hosts comparing frame options and add ons.", eventTags: ["Tents", "Layout"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Explore tents", }, {
-        title: "Browse inventory", description: "Chairs, tables, structures, lighting, and heating in one scrollable catalog.", href: "/rental-inventory", bestFor: "When you want to compare SKUs before you email.", eventTags: ["Catalog"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Browse stock", }, {
-        title: "Table and chair rentals", description: "Rounds, banquets, and ceremony language without fluff.", href: "/table-chair-rentals", bestFor: "Tent optional or indoor overflow heavy events.", eventTags: ["Seating"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, ctaLabel: "See seating", }, ], [
+        title: "Tent rentals",
+        description: "Systems, sidewalls, and layout tabs when you need depth beyond a single size guess.",
+        href: "/tent-rentals",
+        bestFor: "Hosts comparing frame options and add ons.",
+        eventTags: ["Tents", "Layout"],
+        image: { ...serviceAreaFeaturedImages.navitracField },
+        goodshuffleItemId: "",
+        goodshuffleImageId: "",
+        goodshuffleProductSlug: "",
+        wishlistEnabled: true,
+        waitlistEnabled: false,
+        featuredForTown: true,
+        ctaLabel: "Explore tents",
+      },
       {
-        title: "Browse inventory", description: "Start with chairs or tables, then add tent sections if you need coverage.", href: "/rental-inventory", bestFor: "Open house or graduation style headcount swings.", eventTags: ["Inventory"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, featuredForTown: true, ctaLabel: "Open catalog", }, {
-        title: "Tent rentals", description: "Commercial tent page with jobsite and modular context when you need it.", href: "/tent-rentals", bestFor: "When coverage area is the main unknown.", eventTags: ["Tents"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: true, waitlistEnabled: false, ctaLabel: "Read tent page", }, {
-        title: "Planning hub", description: "Sizing and backyard notes that pair with a real quote conversation.", href: "/planning", bestFor: "First time tent hosts who want sequence, not jargon.", eventTags: ["Planning"], goodshuffleItemId: "", goodshuffleImageId: "", goodshuffleProductSlug: "", wishlistEnabled: false, waitlistEnabled: false, ctaLabel: "Open planning", }, ], ];
+        title: "Browse inventory",
+        description: "Chairs, tables, structures, lighting, and heating in one scrollable catalog.",
+        href: "/rental-inventory",
+        bestFor: "When you want to compare SKUs before you email.",
+        eventTags: ["Catalog"],
+        image: { ...serviceAreaFeaturedImages.fiesta2040 },
+        goodshuffleItemId: "",
+        goodshuffleImageId: "",
+        goodshuffleProductSlug: "",
+        wishlistEnabled: true,
+        waitlistEnabled: false,
+        featuredForTown: true,
+        ctaLabel: "Browse stock",
+      },
+      {
+        title: "Table and chair rentals",
+        description: "Rounds, banquets, and ceremony language without fluff.",
+        href: "/table-chair-rentals",
+        bestFor: "Tent optional or indoor overflow heavy events.",
+        eventTags: ["Seating"],
+        image: { ...serviceAreaFeaturedImages.tentWithGuestTables },
+        goodshuffleItemId: "",
+        goodshuffleImageId: "",
+        goodshuffleProductSlug: "",
+        wishlistEnabled: true,
+        waitlistEnabled: false,
+        featuredForTown: true,
+        ctaLabel: "See seating",
+      },
+    ],
+    [
+      {
+        title: "Browse inventory",
+        description: "Start with chairs or tables, then add tent sections if you need coverage.",
+        href: "/rental-inventory",
+        bestFor: "Open house or graduation style headcount swings.",
+        eventTags: ["Inventory"],
+        image: { ...serviceAreaFeaturedImages.fiesta3030 },
+        goodshuffleItemId: "",
+        goodshuffleImageId: "",
+        goodshuffleProductSlug: "",
+        wishlistEnabled: true,
+        waitlistEnabled: false,
+        featuredForTown: true,
+        ctaLabel: "Open catalog",
+      },
+      {
+        title: "Tent rentals",
+        description: "Commercial tent page with jobsite and modular context when you need it.",
+        href: "/tent-rentals",
+        bestFor: "When coverage area is the main unknown.",
+        eventTags: ["Tents"],
+        image: { ...serviceAreaFeaturedImages.highPeakBallast },
+        goodshuffleItemId: "",
+        goodshuffleImageId: "",
+        goodshuffleProductSlug: "",
+        wishlistEnabled: true,
+        waitlistEnabled: false,
+        featuredForTown: true,
+        ctaLabel: "Read tent page",
+      },
+      {
+        title: "Planning hub",
+        description: "Sizing and backyard notes that pair with a real quote conversation.",
+        href: "/planning",
+        bestFor: "First time tent hosts who want sequence, not jargon.",
+        eventTags: ["Planning"],
+        image: { ...serviceAreaFeaturedImages.panoramicTent },
+        goodshuffleItemId: "",
+        goodshuffleImageId: "",
+        goodshuffleProductSlug: "",
+        wishlistEnabled: false,
+        waitlistEnabled: false,
+        featuredForTown: true,
+        ctaLabel: "Open planning",
+      },
+    ],
+  ];
 
   const quickAnswers: Record<Archetype, [string, string, string]> = {
     capital: [
@@ -414,20 +567,150 @@ function buildArchetypeTown(townName: string): ServiceAreaTownPayload {
       `We equip ${townName} graduation weekends, birthdays, and lawn receptions where neighbor timing matters. Expect questions about gates, grade, and food paths.`, `${townName} parties often split between house and yard. Expect us to ask how headcount peaks and where food lands.`, `Residential lawns in ${townName} need early rain and lighting decisions. Expect those topics in the first thread, not the night before.`, ], town_corridor: [
       `We rent to ${townName} for school, company, and backyard events with practical layouts. Expect questions about lot surfaces and teardown windows.`, `${townName} hosts usually mix seated programs with open mingling. Expect us to clarify flow before tent width.`, `Service-area installs near ${townName} follow the same crew standards as the rest of Connecticut. Expect anchoring notes up front.`, ], };
 
+  const cluster = getTownServiceAreaCluster(townName);
+  const clusterPatterns = cluster ? buildClusterLocalEventPatterns(townName, cluster) : null;
+
+  const metaTitlePool = [
+    `Event tent rental in ${townName}, CT | Party tent rentals & tables | ${business.name}`,
+    `${townName} event tent rentals & party tent rentals | Tables, chairs | ${business.name}`,
+    `Party tent rentals in ${townName}, CT | Event tent rental & setup | ${business.name}`,
+    `${townName}, CT party tent rentals & event tent rental | Tents, tables & chairs | ${business.name}`,
+    `Event tent rentals ${townName}, CT | Party rentals & frame tents | ${business.name}`,
+    `${townName}, CT tent rental for events | Party tent rentals | ${business.name}`,
+    `Party tent rentals & event tent rental · ${townName}, CT | ${business.name}`,
+    `${townName} CT event tent rental | Party tent rentals, tables & chairs | ${business.name}`,
+  ];
+  const metaDescPool = [
+    `Party tent rentals and party rentals in ${townName}, CT: commercial-grade tents, tables, chairs, lighting, delivery & professional setup by ${business.name}. Outdoor weddings, graduations, school events, corporate picnics, and backyard celebrations.`,
+    `${townName}, CT party tent rentals from ${business.name}. Tent footprint and anchoring first; tables and chairs sized to guest flow. Delivery, setup & pickup with the same crew standards you expect statewide.`,
+    `Planning party tent rentals in ${townName}? We quote tents—frame lines, sidewalls, anchoring—then tables and chairs for seated dinners, open houses, or picnics. Itemized quotes with access notes up front.`,
+    `${business.name} serves ${townName}, Connecticut: tent rentals and party rentals including tables, chairs, and lighting, with delivery and professional setup. Mention grass vs. pavement in your first message for accurate anchoring.`,
+    `Outdoor events in ${townName}, CT: tent-first rentals plus tables, chairs, and add-ons. Weddings, graduations, fundraisers, and backyard parties with realistic timing and turf-safe anchoring when your lot requires it.`,
+  ];
+
+  const emKeys: EmphasisKey[] = ["patterns", "planning", "events", "setupBullets", "setups"];
+  const emphasizedMidSection: EmphasisKey | undefined = clusterPatterns
+    ? emKeys[seedMod(townName, "emph", emKeys.length)]
+    : undefined;
+  const localPatternsAfterIntro = clusterPatterns ? seedMod(townName, "lpai", 2) === 1 : false;
+  const setupBulletsBeforeEvents = clusterPatterns ? seedMod(townName, "sbbe", 2) === 1 : false;
+
+  const featuredIntroCluster = [
+    "Tent systems and sidewalls first in the links below—then inventory for tables and chairs once coverage is clear.",
+    "Use the tent hub for vocabulary, inventory to compare chair and table SKUs, planning when sizing is still fuzzy.",
+    "Hosts in this area usually open the tent page, stage a wishlist with chairs, then email photos for anchoring notes.",
+  ];
+
+  const metaTitleDefaultPool = [
+    `Tent & party rentals in ${townName}, CT | Event tent rental | ${business.name}`,
+    `Event tent rental ${townName}, CT | Party tent rentals & tables | ${business.name}`,
+    `Party tent rentals in ${townName}, CT | Tent rental & chairs | ${business.name}`,
+  ];
+
+  const h1ClusterPool = [
+    `Event tent rental in ${townName}, CT · party tent rentals, tables, chairs & setup`,
+    `Party tent rentals in ${townName}, CT · event tents for outdoor weddings & gatherings`,
+    `${townName}, CT event tent rentals & party rentals · tables, chairs & lighting`,
+    `Tent rental & party tent rentals · ${townName}, CT · delivery and professional install`,
+    `Event tent rentals ${townName}, Connecticut · frame tents and party tent options`,
+  ];
+
+  const h1DefaultPool = [
+    `Tent rental & party rentals in ${townName}, CT · tables, chairs & outdoor events`,
+    `Event tent rental ${townName}, CT · party tent rentals with delivery & setup`,
+    `Party tent rentals in ${townName}, CT · tent inventory for backyards, schools & venues`,
+    `${townName}, CT · tent rentals and party rentals · ${business.name}`,
+  ];
+
+  const metaTitle = clusterPatterns
+    ? metaTitlePool[seedMod(townName, "mt", metaTitlePool.length)]!
+    : metaTitleDefaultPool[seedMod(townName, "mtd", metaTitleDefaultPool.length)]!;
+  const metaDescription = clusterPatterns
+    ? metaDescPool[seedMod(townName, "md", metaDescPool.length)]!
+    : `${townName}, CT event tent rental and party tent rentals: tents, tables, chairs, lighting, delivery & professional setup from ${business.name}. Weddings, graduations, corporate and backyard events.`;
+
+  const statewideHeroPool: NonNullable<ServiceAreaTownPayload["hero"]>[] = [
+    {
+      src: serviceAreaFeaturedImages.fiesta3030.src,
+      alt: serviceAreaFeaturedImages.fiesta3030.alt,
+      caption: `Clear frame-tent example—your ${townName} quote still follows your photos, access, and headcount.`,
+    },
+    {
+      src: serviceAreaFeaturedImages.navitracField.src,
+      alt: serviceAreaFeaturedImages.navitracField.alt,
+      caption: `Large lawn footprint—anchoring and width stay specific to ${townName} addresses.`,
+    },
+    {
+      src: serviceAreaFeaturedImages.panoramicTent.src,
+      alt: serviceAreaFeaturedImages.panoramicTent.alt,
+      caption: `Wide reception layout example—we match ${townName} installs to access, grade, and guest flow.`,
+    },
+  ];
+  const statewideHeroFallback = statewideHeroPool[seedMod(townName, "herof", statewideHeroPool.length)]!;
+
   return {
-    metaTitle: `Party rentals in ${townName}, CT | ${business.name}`, metaDescription: `${townName}, CT tent, table and chair rentals with delivery and professional setup from ${business.name}. Weddings, graduations, corporate and backyard events.`, hero: heroPick ?? townHeroFillWhenEmpty[townName] ?? null, quickAnswerTitle: `${townName} · at a glance`, quickAnswer: quickAnswers[arch][v], h1:
-      arch === "capital"
-        ? `${townName}, CT · outdoor programs when access, surfaces & timing align`
-        : arch === "near_capital"
-          ? `${townName} · backyard & school celebrations outdoors`
-          : arch === "family_suburb"
-            ? `${townName} · neighborhood gatherings & graduation season`
-            : `${townName} · tents & tables for schools, companies & backyards`, heroLead: leads[arch][v], trustStripIntro: "Straight expectations before we book crew.", trustPoints: defaultTrustPoints.slice(0, 5), localIntro: intros[arch][v], planningBlockTitle: `Planning your outdoor event · ${townName}`, planningBlockItems: variantIndex(townName + "p") % 2 === 0 ? planningBullets : planningAlt, eventHelpTitle: `Celebrations & gatherings · ${townName}`, eventHelpIntro: "Choose the closest fit—we still confirm surface, headcount, and flow.", eventHelpItems: poolPick, setupTitle: `Site & logistics · ${townName}`, setupIntro: "Honest notes upfront save the most time. Photos welcome.", setupItems: setupPick, setupsTitle: `Layouts we quote often · ${townName}`, setupsIntro: "Starting points—every quote is tailored to your address.", setups: setupsPick, featuredTitle: `Explore resources · ${townName}`, featuredIntro: "Tents, inventory, and planning links hosts use before locking a date.", featuredRentals: featuredRotations[variantIndex(townName + "r") % featuredRotations.length], faqTitle: `FAQ · ${townName} tent & party rentals`, faqSubline: "Delivery and setup first—then the details that shape footprint.", faqs: [
+    metaTitle,
+    metaDescription,
+    hero: heroPick ?? townHeroFillWhenEmpty[townName] ?? statewideHeroFallback,
+    quickAnswerTitle: `${townName} · at a glance`,
+    quickAnswer: quickAnswers[arch][v],
+    h1: clusterPatterns
+      ? h1ClusterPool[seedMod(townName, "h1c", h1ClusterPool.length)]!
+      : h1DefaultPool[seedMod(townName, "h1d", h1DefaultPool.length)]!,
+    heroLead: leads[arch][v],
+    trustStripIntro: "Straight expectations before we book crew.",
+    trustPoints: defaultTrustPoints.slice(0, 5),
+    localIntro: intros[arch][v],
+    ...(clusterPatterns ? { localEventPatterns: clusterPatterns } : {}),
+    ...(clusterPatterns ? { emphasizedMidSection, localPatternsAfterIntro, setupBulletsBeforeEvents } : {}),
+    planningBlockTitle: `Planning your outdoor event · ${townName}`,
+    planningBlockItems: variantIndex(townName + "p") % 2 === 0 ? planningBullets : planningAlt,
+    eventHelpTitle: `Celebrations & gatherings · ${townName}`,
+    eventHelpIntro: "Choose the closest fit—we still confirm surface, headcount, and flow.",
+    eventHelpItems: poolPick,
+    setupTitle: `Site & logistics · ${townName}`,
+    setupIntro: clusterPatterns
+      ? "Tent anchoring and carry paths are the first variables we align for this area—then tables, chairs, and lighting. Photos beat adjectives."
+      : "Honest notes upfront save the most time. Photos welcome.",
+    setupItems: setupPick,
+    setupsTitle: `Layouts we quote often · ${townName}`,
+    setupsIntro: "Starting points—every quote is tailored to your address.",
+    setups: setupsPick,
+    featuredTitle: `Explore resources · ${townName}`,
+    featuredIntro: clusterPatterns
+      ? featuredIntroCluster[seedMod(townName, "fi", featuredIntroCluster.length)]!
+      : "Tents, inventory, and planning links hosts use before locking a date.",
+    featuredRentals: featuredRotations[variantIndex(townName + "r") % featuredRotations.length],
+    faqTitle: `FAQ · ${townName} tent & party rentals`,
+    faqSubline: clusterPatterns
+      ? "Tents and anchoring first—tables and chairs follow guest flow. Answers stay concrete."
+      : "Delivery and setup first—then the details that shape footprint.",
+    faqs: [
       {
-        id: "deliver", question: `Do you deliver tent, table, and chair rentals to ${townName}?`, answer: `Yes. We deliver, install, and pick up for addresses in and around ${townName}. Add your date, street or venue, guest count, and event type so the first reply can be specific.`, }, {
-        id: "surface", question: `Can you set up tents on driveways or hard surfaces in ${townName}?`, answer:
-          "Often yes. When stakes are not the right answer we shift to ballasting that is planned in the quote, not improvised at setup.", }, {
-        id: "events", question: `What events do you actually support in ${townName}?`, answer: `Backyard parties, graduations, weddings, corporate gatherings, and school or community programs are the bulk of our work. Tell us how guests move from arrival through food and we map chairs, tables, and tent size to that flow.`, }, faqBooking, faqPlanning, ], finalCtaTitle: `Your ${townName} date · share the basics`, finalCtaBlurb: `Send date, address, guest count, and one line on seated dinner vs. dance vs. mingle. We reply with options you can forward. Wishlist chairs or tables while RSVPs move.`, primaryCtaLabel: "Email a quote request", wishlistCtaLabel: "Open wishlist", relatedLinksIntro: "Quick reads:", };
+        id: "deliver",
+        question: `Do you deliver party tent rentals and table and chair rentals to ${townName}?`,
+        answer: `Yes. We deliver, install, and pick up in and around ${townName}. Lead with date, street or venue, guest count, and whether you need tent coverage, seating, or both so the first reply stays specific.`,
+      },
+      {
+        id: "surface",
+        question: `Can you set up tents on driveways or hard surfaces in ${townName}?`,
+        answer:
+          "Often yes. When stakes are not the right answer we plan weighted ballast in the quote. Name grass, patio, apron, or lot pavement up front so anchoring matches what we unload.",
+      },
+      {
+        id: "events",
+        question: `What events do you support in ${townName}?`,
+        answer: `Backyard parties, graduations, weddings, corporate gatherings, and school or community programs. We map tent size first when weather matters, then tables and chairs to how guests move from arrival through food.`,
+      },
+      faqBooking,
+      faqPlanning,
+    ],
+    finalCtaTitle: `Your ${townName} date · share the basics`,
+    finalCtaBlurb: `Send date, address, guest count, and one line on seated dinner vs. dance vs. mingle. We reply with options you can forward. Wishlist chairs or tables while RSVPs move.`,
+    primaryCtaLabel: "Email a quote request",
+    wishlistCtaLabel: "Open wishlist",
+    relatedLinksIntro: "Quick reads:",
+  };
 }
 
 export function getServiceAreaTownContent(townName: string): ServiceAreaTownPayload {

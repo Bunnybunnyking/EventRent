@@ -1,6 +1,6 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
-/** Entry point linked from the tent & seating reference; hub lives at `/planning`. */
+/** Legacy alias; canonical hub is `/planning` (not listed in sitemap.xml). */
 export default function PlanningToolsRedirectPage() {
-  redirect("/planning");
+  permanentRedirect("/planning");
 }

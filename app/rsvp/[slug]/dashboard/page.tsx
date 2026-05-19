@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: "Private host dashboard for tracking RSVPs and rental planning.",
     path: `/rsvp/${slug}/dashboard`,
     ogImage: defaultOgImagePath,
+    index: false,
   });
 }
 

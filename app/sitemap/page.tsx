@@ -134,7 +134,7 @@ export default function HtmlSitemapPage() {
             <p className={descClass}>Structured prompts and on-page tools that pair with party guides and quotes.</p>
             <LinkList
               links={[
-                { href: "/planning", label: "Planning hub" }, { href: "/planning-tools", label: "Planning tools hub" }, { href: "/quick-event-planner", label: "Quick Event Planner" }, { href: "/tent-seating-reference", label: "Tent & seating reference" }, { href: "/backyard-party-checklist", label: "Backyard party checklist" }, { href: "/wishlist", label: "Catalog & reserve a tent" }, { href: "/packages/most-booked-event-setups", label: "Most-booked event setups" }, ]}
+                { href: "/planning", label: "Planning hub" }, { href: "/quick-event-planner", label: "Quick Event Planner" }, { href: "/tent-seating-reference", label: "Tent & seating reference" }, { href: "/backyard-party-checklist", label: "Backyard party checklist" }, { href: "/wishlist", label: "Catalog & reserve a tent" }, { href: "/packages/most-booked-event-setups", label: "Most-booked event setups" }, ]}
             />
           </section>
 

@@ -96,7 +96,7 @@ export default function AvGamesHubPage() {
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
-                href="/games"
+                href="/party-games-tools"
                 className="inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm transition hover:border-stone-400 hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a228] focus-visible:ring-offset-2"
               >
                 Open Games &amp; tools hub

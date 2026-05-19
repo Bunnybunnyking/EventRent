@@ -165,7 +165,7 @@ export function BreadcrumbListSchema({ items }: { items: BreadcrumbItem[] }) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: absolutePageUrl(item.path === "/" ? "/" : item.path).replace(/\/$/, "") || siteBaseUrl,
+      item: absolutePageUrl(item.path),
     })),
   };
 

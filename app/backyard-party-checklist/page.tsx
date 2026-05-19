@@ -78,7 +78,7 @@ export default function BackyardPartyChecklistPage() {
           <Breadcrumb
             items={[
               { label: "Home", href: "/" },
-              { label: "Party games & tools", href: "/games" },
+              { label: "Party games & tools", href: "/party-games-tools" },
               { label: "Backyard party checklist" },
             ]}
           />
