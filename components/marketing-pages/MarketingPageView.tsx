@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { CtaActionPair } from "@/components/cta-action-pair";
 import { bookNowHeaderClass } from "@/lib/cta-styles";
 import type { MarketingPageDefinition, MarketingSetupCard } from "@/lib/marketing-pages-types";
 
@@ -204,26 +205,19 @@ export function MarketingPageView({
               {page.finalCta.title}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-stone-700">{page.finalCta.body}</p>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Link href={page.finalCta.primaryHref} className={`${bookNowHeaderClass} justify-center sm:inline-flex`}>
-                {page.finalCta.primaryLabel}
-              </Link>
-              {page.finalCta.secondaryHref && page.finalCta.secondaryLabel ? (
-                <>
-                  <Link
-                    href={page.finalCta.secondaryHref}
-                    className="hidden min-h-[42px] items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-2 text-sm font-semibold text-stone-800 transition hover:border-stone-400 hover:bg-white sm:inline-flex"
-                  >
-                    {page.finalCta.secondaryLabel}
-                  </Link>
-                  <Link
-                    href={page.finalCta.secondaryHref}
-                    className="text-sm font-semibold text-[#7a5a18] underline decoration-[#d4bc88] underline-offset-[3px] hover:text-stone-900 sm:hidden"
-                  >
-                    {page.finalCta.secondaryLabel}
-                  </Link>
-                </>
-              ) : null}
+            <div className="mt-5 [&_.text-stone-200]:text-stone-800 [&_.text-stone-400]:text-stone-600">
+              <CtaActionPair
+                order="book-first"
+                primaryAction={{ href: page.finalCta.primaryHref, label: page.finalCta.primaryLabel }}
+                showCall={false}
+                secondaryAction={
+                  page.finalCta.secondaryHref && page.finalCta.secondaryLabel
+                    ? { href: page.finalCta.secondaryHref, label: page.finalCta.secondaryLabel }
+                    : undefined
+                }
+                labelClassName="text-stone-800"
+                captionClassName="text-stone-600"
+              />
             </div>
           </section>
 

@@ -1,3 +1,9 @@
+import {
+  bloomfieldGoogleHours,
+  formatWeeklyHours,
+  hoursNotOnGoogleNote,
+  type LocationWeeklyHours,
+} from "@/lib/location-hours";
 import { business } from "@/lib/site-data";
 
 export const locationSlugs = ["bloomfield", "wethersfield", "marlborough"] as const;
@@ -14,6 +20,11 @@ export type LocationPhone = {
   label: string;
   phone: string;
   phoneHref: string;
+};
+
+export type LocationEmail = {
+  label: string;
+  address: string;
 };
 
 export type CompanyLocation = {
@@ -34,9 +45,13 @@ export type CompanyLocation = {
   path: `/locations/${LocationSlug}`;
   address: LocationAddress | null;
   addressNote: string | null;
-  hours: string | null;
+  /** Weekly hours aligned with this location’s Google Business Profile when published. */
+  hoursSchedule: LocationWeeklyHours | null;
+  /** Display when GBP has no hours (matches “Add hours” on Google). */
+  hoursNote: string | null;
   mapsUrl: string | null;
   phones: LocationPhone[];
+  email: LocationEmail;
 };
 
 function tel(digits: string): string {
@@ -58,6 +73,10 @@ const mainLine: LocationPhone = {
 
 function mapsQuery(query: string): string {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+function locationEmail(label: string): LocationEmail {
+  return { label, address: business.email };
 }
 
 export const locationsTrustCopy = {
@@ -127,7 +146,8 @@ export const companyLocations: Record<LocationSlug, CompanyLocation> = {
       postalCode: business.postalCode,
     },
     addressNote: null,
-    hours: null,
+    hoursSchedule: bloomfieldGoogleHours,
+    hoursNote: null,
     mapsUrl: mapsQuery(`${business.address}, Bloomfield, CT ${business.postalCode}`),
     phones: [
       mainLine,
@@ -137,6 +157,7 @@ export const companyLocations: Record<LocationSlug, CompanyLocation> = {
         phoneHref: tel("8606581600"),
       },
     ],
+    email: locationEmail("Email (warehouse & delivery)"),
   },
   wethersfield: {
     slug: "wethersfield",
@@ -171,10 +192,16 @@ export const companyLocations: Record<LocationSlug, CompanyLocation> = {
       "Wethersfield strengthens how we serve wedding and corporate customers face-to-face. Consultations, linens, decor, and planning conversations happen here so programs feel coordinated before install day.",
     ctaLabel: "View Wethersfield Location",
     path: "/locations/wethersfield",
-    address: null,
-    addressNote: "Street address for this center — confirm with our team when scheduling a visit.",
-    hours: null,
-    mapsUrl: null,
+    address: {
+      streetAddress: "1233 Silas Deane Hwy",
+      addressLocality: "Wethersfield",
+      addressRegion: "CT",
+      postalCode: "06109",
+    },
+    addressNote: null,
+    hoursSchedule: null,
+    hoursNote: hoursNotOnGoogleNote,
+    mapsUrl: mapsQuery("1233 Silas Deane Hwy, Wethersfield, CT 06109"),
     phones: [
       mainLine,
       {
@@ -183,6 +210,7 @@ export const companyLocations: Record<LocationSlug, CompanyLocation> = {
         phoneHref: tel("8603281930"),
       },
     ],
+    email: locationEmail("Email (bridal & corporate events)"),
   },
   marlborough: {
     slug: "marlborough",
@@ -224,13 +252,20 @@ export const companyLocations: Record<LocationSlug, CompanyLocation> = {
       addressRegion: "CT",
     },
     addressNote: "Near Marlborough Town Hall and the lake — a local customer-facing office for Connecticut Party Rentals.",
-    hours: null,
+    hoursSchedule: null,
+    hoursNote: hoursNotOnGoogleNote,
     mapsUrl: mapsQuery("29 North Main Street, Marlborough, CT"),
     phones: [mainLine],
+    email: locationEmail("Email (quotes & event coordination)"),
   },
 };
 
 export const locationList = locationSlugs.map((slug) => companyLocations[slug]);
+
+export function locationHoursDisplay(location: CompanyLocation): string | null {
+  if (location.hoursSchedule) return formatWeeklyHours(location.hoursSchedule);
+  return location.hoursNote;
+}
 
 export function getLocation(slug: string): CompanyLocation | undefined {
   if (locationSlugs.includes(slug as LocationSlug)) {

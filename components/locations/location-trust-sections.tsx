@@ -12,7 +12,7 @@ import {
 
 export function LocationPurposeSection({ location }: { location: CompanyLocation }) {
   return (
-    <section className="mt-10">
+    <section>
       <p className={sectionEyebrowClass}>What this location supports</p>
       <h2 className={sectionTitleClass}>Purpose at this site</h2>
       <p className={sectionBodyClass}>{location.businessRole}</p>
@@ -30,7 +30,7 @@ export function LocationPurposeSection({ location }: { location: CompanyLocation
 
 export function LocationCustomerBenefitSection({ location }: { location: CompanyLocation }) {
   return (
-    <section className="mt-10">
+    <section className="mt-8">
       <p className={sectionEyebrowClass}>Customer benefit</p>
       <h2 className={sectionTitleClass}>How this location helps you</h2>
       <p className={`${sectionBodyClass} ${panelMutedClass}`}>{location.customerBenefit}</p>

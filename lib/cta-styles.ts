@@ -84,6 +84,53 @@ export const catalogReserveGlassHeroClass = [
 export const bookNowSectionClass =
   `inline-flex items-center justify-center rounded-full min-h-[44px] px-5 py-2.5 text-[15px] leading-tight sm:min-h-[46px] sm:px-7 sm:py-3 sm:text-base md:text-lg md:py-[0.95rem] ${goldCtaCore}`;
 
+/** White outline pill — same footprint as `callNowSectionClass` / `bookNowSectionClass` for paired footer CTAs */
+export const footerSecondaryOutlineClass = [
+  "inline-flex w-full max-w-full items-center justify-center rounded-full",
+  "min-h-[44px] px-5 py-2.5 text-center text-[15px] font-semibold leading-tight sm:min-h-[46px] sm:px-7 sm:py-3 sm:text-base",
+  "border-2 border-stone-300/90 bg-white text-stone-900 shadow-sm",
+  "transition-[background-color,border-color,box-shadow,transform] duration-150",
+  "hover:border-stone-400 hover:bg-stone-50 hover:shadow-md active:scale-[0.99]",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a24a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1d20]",
+  "[font-family:var(--font-display)] touch-manipulation select-none",
+].join(" ");
+
+/** Two-up CTA grid (footer bands, page closers) */
+export const ctaPairGridClass =
+  "mx-auto grid w-full max-w-md grid-cols-1 gap-3 sm:max-w-2xl sm:grid-cols-2 sm:gap-4 sm:items-stretch";
+
+export const ctaPairCellClass = "flex min-h-[4.75rem] flex-col items-center justify-center";
+
+/** Outer padding for sitewide bottom quote / concierge bands */
+export const ctaBandSectionClass = "py-7 sm:py-8";
+
+/** Inner card on light pages (CTASection gradient box) */
+export const ctaBandCardClass =
+  "rounded-2xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] p-6 text-stone-100 shadow-[0_8px_28px_rgba(0,0,0,0.1)] sm:p-8";
+
+/** Full-bleed dark concierge band (homepage) */
+export const ctaBandDarkClass = "border-t border-stone-800 bg-[#111315] py-7 text-stone-100 sm:py-8";
+
+/**
+ * Locations pages — emerald controls (matches site “Text” / planning greens), not gold.
+ * Gold stays for Book Consultation; emerald = branch navigation & location quote.
+ */
+const locationCtaShell =
+  "inline-flex items-center justify-center gap-1.5 rounded-lg min-h-[40px] px-4 py-2 text-sm font-semibold leading-snug sm:min-h-[42px] sm:px-5 touch-manipulation cursor-pointer select-none [font-family:var(--font-display)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f2] active:scale-[0.99]";
+
+/** Same palette as `smsOutlineSecondaryClass`, squared corners for location cards */
+const locationEmeraldCardCore =
+  "border-2 border-emerald-800 bg-gradient-to-b from-[#ecfdf5] to-emerald-100 text-emerald-950 shadow-sm transition-[background-color,border-color,box-shadow] duration-150 hover:border-emerald-900 hover:from-emerald-100 hover:to-emerald-200/90 hover:shadow-md active:brightness-[0.98]";
+
+/** Hub cards: “View Bloomfield Location” */
+export const locationCardCtaClass = `${locationCtaShell} ${locationEmeraldCardCore}`;
+
+const locationEmeraldPanelCore =
+  "border-2 border-emerald-900 bg-gradient-to-b from-emerald-800 to-emerald-900 text-emerald-50 shadow-sm transition-[background-color,border-color,box-shadow] duration-150 hover:from-emerald-700 hover:to-emerald-800 hover:border-emerald-950 hover:shadow-md active:brightness-[0.98]";
+
+/** Identity sidebar: “Request a Quote” — deeper emerald (still not gold) */
+export const locationPanelCtaClass = `${locationCtaShell} w-full ${locationEmeraldPanelCore}`;
+
 /** Contact / quote form footer: smaller gold pills + soft outer glow (pair label with `<span className="relative z-10">`). */
 const quoteFooterGlow =
   "shadow-[0_3px_16px_rgba(42,28,8,0.26),0_0_26px_rgba(175,132,48,0.18),inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-1px_0_rgba(0,0,0,0.06),inset_0_10px_20px_-10px_rgba(255,255,255,0.16)] hover:shadow-[0_5px_22px_rgba(42,28,8,0.3),0_0_34px_rgba(190,150,58,0.24),inset_0_1px_0_rgba(255,255,255,0.58),inset_0_-1px_0_rgba(0,0,0,0.04)]";

@@ -8,13 +8,13 @@ import { PlanningPriorityEssentials } from "@/components/planning/PlanningPriori
 import { PlanningWhyTentsMatter } from "@/components/planning/PlanningWhyTentsMatter";
 import { PlanningTopNav } from "@/components/planning/PlanningTopNav";
 import { QuickSizeReferenceButton } from "@/components/tent-seating-reference/quick-size-reference-button";
-import { CTASection, SectionHeading } from "@/components/sections";
+import { CtaActionPair } from "@/components/cta-action-pair";
+import { SectionHeading } from "@/components/sections";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { BackyardPartyChecklistGenerator } from "@/components/backyard-party-checklist-generator";
 import { QuickEventPlanner } from "@/components/quick-event-planner";
 import { TentSizeEstimator } from "@/components/tent-size-estimator";
-import { CallAndTextCta } from "@/components/call-and-text-stack";
-import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
+import { bookNowSectionClass } from "@/lib/cta-styles";
 import { cardRowHintClass, interactiveCardClass, interactiveTileClass } from "@/lib/interactive-styles";
 import { planningPopularInventoryLinks } from "@/lib/planning-popular-sizes";
 import {
@@ -732,24 +732,19 @@ export function PlanningHub() {
       </section>
 
       {/* 14. Final CTA */}
-      <section className="border-t border-stone-200 bg-[#1a1d20] py-10 text-stone-100 sm:py-14">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">You do not have to figure this out alone</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-stone-300">
+      <section className="border-t border-stone-200 bg-[#1a1d20] py-7 text-stone-100 sm:py-8">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-[1.75rem]">You do not have to figure this out alone</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-stone-300 sm:text-base">
             Start with your guest count, event type, and date. We help you guide the rest: tent size, layout, site fit, and weather readiness. No jargon required.
           </p>
-          <div className="mt-8 flex flex-wrap items-end justify-center gap-3">
-            <CallAndTextCta
-              variant="section"
-              labelClassName="text-stone-200"
-              captionClassName="text-stone-400"
-              linkClassName={callNowSectionClass}
+          <div className="mt-6">
+            <CtaActionPair
+              order="call-first"
+              primaryAction={{ href: "/contact#quote", label: "Book Consultation" }}
             />
-            <Link href="/contact#quote" className={bookNowSectionClass} prefetch={true}>
-              Book Consultation
-            </Link>
           </div>
-          <p className="mt-6 text-sm text-stone-400">
+          <p className="mx-auto mt-4 max-w-xl text-xs leading-relaxed text-stone-400 sm:text-sm">
             Prefer email first?{" "}
             <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
               Book Consultation
@@ -758,8 +753,6 @@ export function PlanningHub() {
           </p>
         </div>
       </section>
-
-      <CTASection />
     </>
   );
 }

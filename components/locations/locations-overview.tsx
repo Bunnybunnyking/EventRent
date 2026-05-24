@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LocationsOverviewTrustSection } from "@/components/locations/location-trust-sections";
 import { SectionHeading } from "@/components/sections";
-import { bookNowSectionClass } from "@/lib/cta-styles";
+import { LocationCtaLink } from "@/components/locations/location-cta-link";
 import { locationList, locationsOverview, locationsTrustCopy } from "@/lib/locations-data";
 import { business } from "@/lib/site-data";
 
@@ -58,10 +58,19 @@ export function LocationsOverview() {
                   </ul>
                   <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a6d3a]">Customer benefit</p>
                   <p className="mt-2 text-sm leading-relaxed text-stone-600">{loc.customerBenefit}</p>
+                  <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8a6d3a]">Contact</p>
+                  <p className="mt-2 text-sm text-stone-600">
+                    <a
+                      href={`mailto:${loc.email.address}`}
+                      className="font-semibold text-stone-900 underline decoration-[#c9a24a]/40 underline-offset-2 hover:text-[#7a5a18]"
+                    >
+                      {loc.email.address}
+                    </a>
+                  </p>
                 </div>
-                <Link href={loc.path} className={`${bookNowSectionClass} mt-6 w-full text-center`}>
-                  <span className="relative z-10">{loc.ctaLabel}</span>
-                </Link>
+                <LocationCtaLink href={loc.path} className="mt-6 self-start">
+                  {loc.ctaLabel}
+                </LocationCtaLink>
               </article>
             ))}
           </div>

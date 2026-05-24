@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CallAndTextCta } from "@/components/call-and-text-stack";
-import { bookNowSectionClass, callNowSectionClass } from "@/lib/cta-styles";
+import { CtaActionPair } from "@/components/cta-action-pair";
+import { ctaBandCardClass, ctaBandSectionClass } from "@/lib/cta-styles";
 import { business, galleryItems, townList } from "@/lib/site-data";
 
 export function SectionHeading({
@@ -101,30 +101,25 @@ export function GalleryGrid({ preview = false }: { preview?: boolean }) {
  */
 export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean }) {
   return (
-    <section className="py-12 sm:py-14" aria-labelledby="cta-quote-heading">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-r from-[#1a1d20] to-[#272b30] p-8 text-stone-100 shadow-[0_12px_40px_rgba(0,0,0,0.12)] md:p-12">
-          <h2 id="cta-quote-heading" className="text-3xl font-semibold tracking-tight sm:text-[2rem]">
+    <section className={ctaBandSectionClass} aria-labelledby="cta-quote-heading">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className={ctaBandCardClass}>
+          <h2 id="cta-quote-heading" className="text-center text-2xl font-semibold tracking-tight sm:text-[1.75rem]">
             Ready to book with confidence?
           </h2>
 
           {showPrimaryCta ? (
             <>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-300 sm:text-lg">
+              <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-stone-300 sm:text-base">
                 Tell us your date, town, and guest count. We will walk through setup with you, answer questions without the runaround, and help you get a layout that works for your people and your place.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:gap-5">
-                <Link href="/contact#quote" className={`${bookNowSectionClass} w-full justify-center sm:w-auto`}>
-                  Book Consultation
-                </Link>
-                <CallAndTextCta
-                  variant="section"
-                  labelClassName="text-stone-200"
-                  captionClassName="text-stone-400"
-                  linkClassName={`${callNowSectionClass} w-full shrink-0 sm:w-auto`}
+              <div className="mt-6">
+                <CtaActionPair
+                  order="book-first"
+                  primaryAction={{ href: "/contact#quote", label: "Book Consultation" }}
                 />
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-stone-400">
+              <p className="mx-auto mt-4 max-w-xl text-center text-xs leading-relaxed text-stone-400 sm:text-sm">
                 No pressure, fast responses. The form takes a few minutes. Start on{" "}
                 <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
                   contact
@@ -134,24 +129,16 @@ export function CTASection({ showPrimaryCta = true }: { showPrimaryCta?: boolean
             </>
           ) : (
             <>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-200 sm:text-lg">
+              <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-stone-200 sm:text-base">
                 Our Event Concierge walks you through venue limits, guest flow, timeline, and layout so nothing gets lost. Share your date, town, and guest count; we get back to you with clear options and a plan you can actually use.
               </p>
-              <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap sm:items-end sm:gap-5">
-                <CallAndTextCta
-                  variant="section"
-                  labelClassName="text-stone-200"
-                  captionClassName="text-stone-400"
-                  linkClassName={`${callNowSectionClass} w-full justify-center sm:w-auto`}
+              <div className="mt-6 border-t border-white/10 pt-6">
+                <CtaActionPair
+                  order="call-first"
+                  primaryAction={{ href: "/contact#quote", label: "Book Consultation" }}
                 />
-                <Link
-                  href="/contact#quote"
-                  className={`${bookNowSectionClass} w-full justify-center text-center sm:w-auto`}
-                >
-                  Book Consultation
-                </Link>
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-stone-400">
+              <p className="mx-auto mt-4 max-w-xl text-center text-xs leading-relaxed text-stone-400 sm:text-sm">
                 Fast responses, no pressure. The form takes a few minutes. Start on{" "}
                 <Link href="/contact#quote" className="font-medium text-[#edc16c] underline underline-offset-2 hover:text-white">
                   contact

@@ -1,6 +1,7 @@
 import { getFaqPageSchemaItems } from "@/lib/faq-data";
 import type { FaqItem } from "@/lib/faq-data";
 import { serializeJsonLd } from "@/lib/json-ld";
+import { openingHoursSpecification } from "@/lib/location-hours";
 import type { CompanyLocation } from "@/lib/locations-data";
 import { locationsOverview } from "@/lib/locations-data";
 import { business } from "@/lib/site-data";
@@ -141,16 +142,25 @@ export function LocationLocalBusinessSchema({ location }: { location: CompanyLoc
     description: location.bodyCopy,
     url: pageUrl,
     telephone: location.phones[0]?.phone ?? business.phone,
-    email: business.email,
+    email: location.email.address,
     parentOrganization: { "@id": businessId },
-    contactPoint: location.phones.map((p) => ({
-      "@type": "ContactPoint",
-      telephone: p.phone,
-      contactType: p.label,
-      email: business.email,
-      areaServed: "US",
-      availableLanguage: ["English"],
-    })),
+    contactPoint: [
+      ...location.phones.map((p) => ({
+        "@type": "ContactPoint",
+        telephone: p.phone,
+        contactType: p.label,
+        email: location.email.address,
+        areaServed: "US",
+        availableLanguage: ["English"],
+      })),
+      {
+        "@type": "ContactPoint",
+        contactType: location.email.label,
+        email: location.email.address,
+        areaServed: "US",
+        availableLanguage: ["English"],
+      },
+    ],
     isPartOf: { "@id": websiteId },
     ...(location.address?.streetAddress
       ? {
@@ -171,6 +181,9 @@ export function LocationLocalBusinessSchema({ location }: { location: CompanyLoc
             addressCountry: "US",
           },
         }),
+    ...(location.hoursSchedule
+      ? { openingHoursSpecification: openingHoursSpecification(location.hoursSchedule) }
+      : {}),
   };
 
   return (

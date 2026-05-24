@@ -3,8 +3,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { GraduationPartyLocalSection } from "@/components/graduation-party-local-section";
 import { FAQSchemaItems } from "@/components/schema";
-import { CallAndTextCta } from "@/components/call-and-text-stack";
-import { bookNowHeaderClass } from "@/lib/cta-styles";
+import { CtaActionPair } from "@/components/cta-action-pair";
 import { business } from "@/lib/site-data";
 import type { ServiceAreaTownPayload } from "@/lib/service-area-town-content";
 
@@ -315,22 +314,22 @@ export function ServiceAreaTownTemplate({ townName, townSlug, content }: Props) 
           <div className="mt-8 rounded-2xl border border-[#d4b87a]/50 bg-gradient-to-br from-[#fcf6e8] to-[#f0e4cc] p-5 sm:p-6">
             <h2 className="text-lg font-semibold text-stone-900 sm:text-xl">{finalTitle}</h2>
             <p className="mt-2 text-sm leading-relaxed text-stone-800 sm:text-[0.9375rem]">{content.finalCtaBlurb}</p>
-            <div className="mt-4 flex flex-wrap gap-2 sm:gap-3">
-              <Link href="/contact#quote" className={bookNowHeaderClass}>
-                {primaryCta}
-              </Link>
+            <div className="mt-4 [&_.text-stone-200]:text-stone-800 [&_.text-stone-400]:text-stone-600">
+              <CtaActionPair
+                order="book-first"
+                primaryAction={{ href: "/contact#quote", label: primaryCta }}
+                labelClassName="text-stone-800"
+                captionClassName="text-stone-600"
+              />
+            </div>
+            <p className="mt-3 text-center">
               <Link
                 href="/wishlist"
-                className="inline-flex min-h-[40px] items-center justify-center rounded-full border-2 border-stone-400 bg-white px-4 py-2 text-sm font-semibold text-stone-800 transition hover:border-stone-500 hover:bg-stone-50"
+                className="text-sm font-semibold text-stone-800 underline decoration-[#c9a24a]/50 underline-offset-2 hover:text-[#6b5420]"
               >
                 {wishlistCta}
               </Link>
-              <CallAndTextCta
-                variant="header"
-                wrapperClassName="items-start sm:items-center"
-                linkClassName={`${bookNowHeaderClass} !flex flex-col justify-center gap-0.5 py-2`}
-              />
-            </div>
+            </p>
             <p className="mt-3 text-xs leading-snug text-stone-600">
               <span className="font-semibold text-stone-800">{content.relatedLinksIntro ?? "Related"}</span>{" "}
               <Link href="/tents" className="font-semibold text-stone-800 underline underline-offset-2">
