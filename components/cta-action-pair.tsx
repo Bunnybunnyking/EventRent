@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import Link from "next/link";
 import { CallAndTextCta } from "@/components/call-and-text-stack";
 import {
@@ -34,8 +33,10 @@ export function CtaActionPair({
   labelClassName = "text-stone-200",
   captionClassName = "text-stone-400",
 }: CtaActionPairProps) {
+  if (!showCall && !primaryAction && !secondaryAction) return null;
+
   const callCell = showCall ? (
-    <div className={ctaPairCellClass}>
+    <div key="call" className={ctaPairCellClass}>
       <CallAndTextCta
         variant="section"
         showCallLabel={false}
@@ -48,7 +49,7 @@ export function CtaActionPair({
   ) : null;
 
   const goldCell = primaryAction ? (
-    <div className={ctaPairCellClass}>
+    <div key="primary" className={ctaPairCellClass}>
       <Link href={primaryAction.href} className={`${bookNowSectionClass} w-full max-w-none text-center`}>
         {primaryAction.label}
       </Link>
@@ -56,25 +57,27 @@ export function CtaActionPair({
   ) : null;
 
   const outlineCell = secondaryAction ? (
-    <div className={ctaPairCellClass}>
+    <div key="secondary" className={ctaPairCellClass}>
       <Link href={secondaryAction.href} className={`${footerSecondaryOutlineClass} w-full max-w-none`}>
         {secondaryAction.label}
       </Link>
     </div>
   ) : null;
 
-  const cells: ReactNode[] = [];
-  if (order === "call-first") {
-    if (callCell) cells.push(callCell);
-    if (outlineCell) cells.push(outlineCell);
-    else if (goldCell) cells.push(goldCell);
-  } else {
-    if (goldCell) cells.push(goldCell);
-    if (outlineCell) cells.push(outlineCell);
-    if (callCell) cells.push(callCell);
-  }
-
-  if (cells.length === 0) return null;
-
-  return <div className={ctaPairGridClass}>{cells}</div>;
+  return (
+    <div className={ctaPairGridClass}>
+      {order === "call-first" ? (
+        <>
+          {callCell}
+          {outlineCell ?? goldCell}
+        </>
+      ) : (
+        <>
+          {goldCell}
+          {outlineCell}
+          {callCell}
+        </>
+      )}
+    </div>
+  );
 }
