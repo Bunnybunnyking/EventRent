@@ -130,6 +130,15 @@ export function Footer() {
               <span className="text-stone-700" aria-hidden>
                 ·
               </span>
+              <Link
+                href="/privacy-policy"
+                className="font-medium text-stone-600 underline-offset-2 hover:text-stone-400 hover:underline"
+              >
+                Privacy
+              </Link>
+              <span className="text-stone-700" aria-hidden>
+                ·
+              </span>
               <span>
                 {business.address && business.address !== "[INSERT BUSINESS ADDRESS]" ? (
                   <>

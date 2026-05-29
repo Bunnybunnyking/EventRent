@@ -367,6 +367,13 @@ export function QuoteForm() {
         >
           <span className="relative z-10">{submitState === "submitting" ? "Sending…" : "Book consultation"}</span>
         </button>
+        <p className="mx-auto mt-2 max-w-md px-1 text-center text-[11px] leading-snug text-stone-500">
+          By submitting, you agree to our{" "}
+          <Link href="/privacy-policy" className="font-medium text-stone-600 underline underline-offset-2 hover:text-stone-800">
+            Privacy Policy
+          </Link>
+          . We do not sell your information or share it with third parties for their marketing without your consent.
+        </p>
         <p className="mx-auto mt-3 max-w-md px-1 text-center text-[13px] leading-relaxed text-stone-600 sm:text-sm">
           Explore our tent inventory, chairs, and tables online, then build a wishlist to help expedite your quote
           when you&apos;re ready.
